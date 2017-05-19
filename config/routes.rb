@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'courses/show'
+
+  get 'courses/new'
+
+  get 'courses/create'
+
+  get 'courses/edit'
+
+  get 'courses/update'
+
+  get 'courses/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
