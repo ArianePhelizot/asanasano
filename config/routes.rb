@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :groups, only: [:new, :create, :edit, :update, :destroy] do
-    #we nest course routes under group routes because we need group_id to create a course
+    # on nest ces routes car on a besoin de group_id pour new, create, edit et update
     resources :courses, only: [:new, :create, :edit, :update]
   end
-  resources :courses, only: [:show, :destroy]
+  resources :courses, only: [:show, :destroy] # on n'a pas besoin de group_id pour show ou destroy un course
   get 'dashboard', to: 'pages#dashboard'
 end
