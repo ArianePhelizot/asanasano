@@ -18,8 +18,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "pundit"
-
 gem 'annotate'
+gem 'money-rails', '~>1'
 
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
