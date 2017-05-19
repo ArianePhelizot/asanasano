@@ -9,4 +9,5 @@
 #
 
 class Coach < ApplicationRecord
+  delegate :photo, to: :course, prefix: true
 end
