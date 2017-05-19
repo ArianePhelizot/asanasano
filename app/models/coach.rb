@@ -9,4 +9,5 @@
 #
 
 class Coach < ApplicationRecord
+    has_many :sports, through: :coaches_sports
 end
