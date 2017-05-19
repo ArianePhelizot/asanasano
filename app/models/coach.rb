@@ -9,5 +9,6 @@
 #
 
 class Coach < ApplicationRecord
-    has_many :sports, through: :coaches_sports
+    has_and_belongs_to_many :sports
+    has_one :user
 end
