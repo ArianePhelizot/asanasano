@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :groups, only: [:new, :create, :edit, :update, :destroy] do
-    resources :courses
+    resources :courses #we nest course routes under group routes because we need group_id to create a course
   end
   get 'dashboard', to: 'pages#dashboard'
 end
