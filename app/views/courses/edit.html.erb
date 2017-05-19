@@ -1,2 +1,14 @@
-<h1>Courses#edit</h1>
-<p>Find me in app/views/courses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Editer mon groupe</h1>
+      <!-- si le user est un coach on veut qu'il ne puisse éditer que le content du cours  -->
+      <% if current_user.coach_id.exists? %>
+        <%= render 'form_edit_coach' %>
+      <% else %>
+      <!-- sinon cela siginifie que le user est le créateur du groupe donc il peut tout éditer -->
+        <%= render 'form_edit'  %>
+      <% end %>
+    </div>
+  </div>
+<div>
