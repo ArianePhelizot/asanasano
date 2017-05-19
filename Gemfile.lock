@@ -222,10 +222,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-
   annotate
   attachinary!
-  master
   autoprefixer-rails
   better_errors
   binding_of_caller
