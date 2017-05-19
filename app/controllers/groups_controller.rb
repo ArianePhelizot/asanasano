@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     else
       render :new
     end
+    authorize @group
   end
 
   def edit
