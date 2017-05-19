@@ -8,12 +8,12 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params(group_params))
     @group.user = current_user
+    authorize @group
     if @group.save
       redirect_to dashboard_path
     else
       render :new
     end
-    authorize @group
   end
 
   def edit
