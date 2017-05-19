@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: 'pages#home'
-  resources :groups, only: [:new, :create, :edit, :update, :destroy]
+  resources :groups, only: [:new, :create, :edit, :update, :destroy] do
+    resources :courses
+  end
   get 'dashboard', to: 'pages#dashboard'
 end
