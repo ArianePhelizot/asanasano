@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.user = current_user
-    authorize @group
+    authorize @group # check authorization before save
     if @group.save
       redirect_to dashboard_path
     else
@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+    authorize @group # check authorization before update
     if @group.update(group_params)
       redirect_to dashboard_path
     else
@@ -28,6 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    authorize @group # check authorization before destroy
     @group.destroy
     redirect_to dashboard_path
   end
