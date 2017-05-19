@@ -6,16 +6,19 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def create?
-      return true
+    return true
   end
 
   def update?
-    record.user == user
-    # - record: the restaurant passed to the `authorize` method in controller
-    # - user:   the `current_user` signed in with Devise.
+    user_is_group_owner?
   end
 
   def destroy?
+    user_is_group_owner?
+  end
+
+  # on teste ici si le user est le créateur du group.
+  def user_is_group_owner?
     record.user == user
   end
 end
