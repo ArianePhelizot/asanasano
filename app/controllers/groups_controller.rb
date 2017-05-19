@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(params(group_params))
+    @group = Group.new(group_params)
     @group.user = current_user
     authorize @group
     if @group.save
@@ -20,8 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
-    if @group.update(params(group_params))
+    if @group.update(group_params)
       redirect_to dashboard_path
     else
       render :edit
