@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>Editer mon groupe</h1>
-      <!-- si le user est un coach on veut qu'il ne puisse éditer que le content du cours  -->
-      <% if current_user.coach_id.exists? %>
-        <%= render 'form_edit_coach' %>
+      <!-- si le user est le créateur du group il peut éditer tous les attributs du cours  -->
+      <% if @user == @course.group.user %>
+        <%= render 'form_edit' %>
       <% else %>
-      <!-- sinon cela siginifie que le user est le créateur du groupe donc il peut tout éditer -->
-        <%= render 'form_edit'  %>
+      <!-- sinon cela siginifie qu'il est coach est dans cas il ne peut éditer que le content -->
+        <%= render 'form_edit_coach'  %>
       <% end %>
     </div>
   </div>
