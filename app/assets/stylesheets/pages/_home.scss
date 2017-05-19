@@ -2,44 +2,55 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-
+// .blur {
+//   filter: blur(1px)
+// }
 .banner {
-  color: black;
+  color: white;
   text-align: center;
-  height: 80vh;
+  height: 90vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.logo-text {
-  color: black;
-  font-weight: bold;
-  font-size: 38px;
-  margin-bottom: 50px;
-}
-
-.wrapper {
-  background-color: white;
-  // padding: 20px 10px 20px 10px;
-  opacity: 0.7;
-  border: grey 1px solid;
+  opacity:1;
+  padding-bottom: 250px;
 
 }
 .banner h1 {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
-  margin:2;
-  // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.2em;
 }
 .banner p {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
+  font-style: italic;
+  color: white;
+  margin: 10px;
 }
 
 
+// .wrapper-white {
+// border-style: solid;
+// border-width: 1px;
+// border-color: black;
+// background-color: white;
+// opacity: 0.9;
+// margin-bottom: 90px;
+// padding-right: 35px;
+// padding-left: 35px;
+// padding-bottom: 20px;
+// opacity: 0.4;
+// }
+// .wrapper-white h2 {
+// font-weight: bold;
+// font-size: 28px;
+// letter-spacing: 0.2em;
+// color: #C48908;
+// }
 
