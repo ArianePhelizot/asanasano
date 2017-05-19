@@ -1,6 +1,8 @@
 class Sport < ApplicationRecord
-  has_attachments :photos
+  has_attachment :photo
+  has_attachment :icon
   has_many :coaches, through: :coaches_sports
 
-  validates :name, presence: true
+  validates :name, :photo, :icon, presence: true
+
 end
