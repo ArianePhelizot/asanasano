@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20170519155032) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.integer  "users_id"
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_groups_on_users_id", using: :btree
+    t.index ["owner_id"], name: "index_groups_on_owner_id", using: :btree
   end
 
   create_table "sports", force: :cascade do |t|
@@ -79,5 +79,4 @@ ActiveRecord::Schema.define(version: 20170519155032) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "groups", "users", column: "users_id"
 end
