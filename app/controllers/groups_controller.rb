@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:edit, :update]
+  before_action :find_group, only: [:edit, :update, :destroy]
 
   def new
     @group = Group.new
@@ -28,6 +28,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group.destroy
+    redirect_to dashboard_path
   end
 
   private
