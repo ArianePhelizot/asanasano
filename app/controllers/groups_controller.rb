@@ -5,6 +5,12 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(params[])
+    @group.user = current_user
+    if @group.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def edit
