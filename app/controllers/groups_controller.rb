@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.new(params[])
   end
 
   def edit
@@ -13,5 +14,11 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :photo)
   end
 end
