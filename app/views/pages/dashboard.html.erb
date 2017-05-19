@@ -1,0 +1,9 @@
+<dov class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% if policy(Group).create? %>
+        <%= link_to "Add new group", new_group_path  %>
+      <% end %>
+    </div>
+  </div>
+</dov>
