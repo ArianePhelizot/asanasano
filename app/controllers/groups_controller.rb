@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def create
+    authorize @group
     @group = Group.new(params(group_params))
     @group.user = current_user
     if @group.save
@@ -13,7 +14,6 @@ class GroupsController < ApplicationController
     else
       render :new
     end
-    authorize @group
   end
 
   def edit
