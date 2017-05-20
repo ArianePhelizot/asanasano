@@ -27,9 +27,9 @@
 
 class Course < ApplicationRecord
 
-  belongs_to: group
-  belongs_to: coach
-  belongs_to: sport
+  belongs_to :group
+  belongs_to :coach
+  belongs_to :sport
 
   enum status: [ :active, :archived ]
 
