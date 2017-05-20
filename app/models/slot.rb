@@ -26,7 +26,7 @@ belongs_to :course
 
 enum status: [ :created, :confirmed, :cancelled, :archived ]
 
-validates :date, :start_time , :end_time , :course_id, :price, presence: true
+validates :date, :start_time , :end_time , :course_id, :price_cents, presence: true
 validates :specificities, length: { maximum: 300 }
 
 end
