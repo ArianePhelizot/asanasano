@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170520140057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Coaches_Groups", id: false, force: :cascade do |t|
+  create_table "coaches_groups", id: false, force: :cascade do |t|
     t.integer "coach_id", null: false
     t.integer "group_id", null: false
     t.index ["coach_id", "group_id"], name: "index_Coaches_Groups_on_coach_id_and_group_id", using: :btree
