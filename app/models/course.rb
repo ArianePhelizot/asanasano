@@ -31,7 +31,7 @@ class Course < ApplicationRecord
   belongs_to :coach
   belongs_to :sport
 
-  enum status: [ :active, :archived ]
+  enum status: [ :draft, :active, :archived ]
 
   validates :name, :address, :capacity_max, :group_id, :coach_id, :sport_id, presence: true
   validates :content, :meeting_point, :details, length: { maximum: 300 }
