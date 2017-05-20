@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520140057) do
+ActiveRecord::Schema.define(version: 20170520155919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,26 @@ ActiveRecord::Schema.define(version: 20170520140057) do
     t.index ["coach_id", "sport_id"], name: "index_coaches_sports_on_coach_id_and_sport_id", using: :btree
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.string   "address"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "meeting_point"
+    t.integer  "capacity_max"
+    t.string   "details"
+    t.integer  "group_id"
+    t.integer  "coach_id"
+    t.integer  "sport_id"
+    t.integer  "status",        default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["coach_id"], name: "index_courses_on_coach_id", using: :btree
+    t.index ["group_id"], name: "index_courses_on_group_id", using: :btree
+    t.index ["sport_id"], name: "index_courses_on_sport_id", using: :btree
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "owner_id"
@@ -60,6 +80,21 @@ ActiveRecord::Schema.define(version: 20170520140057) do
     t.integer "user_id",  null: false
     t.integer "group_id", null: false
     t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "participants_min"
+    t.integer  "price_cents",      default: 0,     null: false
+    t.string   "price_currency",   default: "EUR", null: false
+    t.string   "specificities"
+    t.integer  "status",           default: 0
+    t.integer  "course_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["course_id"], name: "index_slots_on_course_id", using: :btree
   end
 
   create_table "sports", force: :cascade do |t|
@@ -91,4 +126,8 @@ ActiveRecord::Schema.define(version: 20170520140057) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "courses", "coaches"
+  add_foreign_key "courses", "groups"
+  add_foreign_key "courses", "sports"
+  add_foreign_key "slots", "courses"
 end

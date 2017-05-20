@@ -30,6 +30,7 @@ class Course < ApplicationRecord
   belongs_to :group
   belongs_to :coach
   belongs_to :sport
+  has_many :slots
 
   enum status: [ :draft, :active, :archived ]
 
