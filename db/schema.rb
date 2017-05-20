@@ -15,12 +15,6 @@ ActiveRecord::Schema.define(version: 20170520140057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "coaches_groups", id: false, force: :cascade do |t|
-    t.integer "coach_id", null: false
-    t.integer "group_id", null: false
-    t.index ["coach_id", "group_id"], name: "index_coaches_croups_on_coach_id_and_group_id", using: :btree
-  end
-
   create_table "attachinary_files", force: :cascade do |t|
     t.string   "attachinariable_type"
     t.integer  "attachinariable_id"
@@ -40,6 +34,12 @@ ActiveRecord::Schema.define(version: 20170520140057) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "coaches_groups", id: false, force: :cascade do |t|
+    t.integer "coach_id", null: false
+    t.integer "group_id", null: false
+    t.index ["coach_id", "group_id"], name: "index_coaches_groups_on_coach_id_and_group_id", using: :btree
   end
 
   create_table "coaches_sports", id: false, force: :cascade do |t|
