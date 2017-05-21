@@ -17,6 +17,7 @@ class Group < ApplicationRecord
    has_and_belongs_to_many :users
    has_and_belongs_to_many :coaches
    belongs_to :owner, class_name: "User"
+   has_many :courses
 
    validates :name, presence: true, length: { maximum: 20 }
    validates :owner_id, presence: true
