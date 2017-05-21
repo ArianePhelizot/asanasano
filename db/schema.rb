@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520143655) do
+ActiveRecord::Schema.define(version: 20170521142550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,11 +82,27 @@ ActiveRecord::Schema.define(version: 20170520143655) do
     t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
   end
 
+  create_table "slots", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "start_time_hour"
+    t.integer  "start_time_minute"
+    t.integer  "end_time_hour"
+    t.integer  "end_time_minute"
+    t.integer  "participants_min"
+    t.integer  "price_cents",       default: 0,     null: false
+    t.string   "price_currency",    default: "EUR", null: false
+    t.string   "specificities"
+    t.integer  "status",            default: 0
+    t.integer  "course_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["course_id"], name: "index_slots_on_course_id", using: :btree
+  end
+
   create_table "sports", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,4 +130,5 @@ ActiveRecord::Schema.define(version: 20170520143655) do
   add_foreign_key "courses", "coaches"
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
+  add_foreign_key "slots", "courses"
 end
