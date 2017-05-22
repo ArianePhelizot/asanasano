@@ -35,10 +35,10 @@
         <%= link_to "Ajouter une séance", new_slot_path %>
       <% end %>
       <% @course.slots.each do |slot| %>
-        <p><%= slot.start_at.strftime("%A %d %B %Y at %H:%M") %></p>
-        <p><%= slot.end_at.strftime("%A %d %B %Y at %H:%M") %></p>
+        <p><%= slot.start_at.strftime("%A %d %B %Y at %H:%M") %></p> <!-- affiche le sous le format 14:06 -->
+        <p><%= slot.end_at.strftime("%A %d %B %Y at %H:%M") %></p> <!-- affiche le sous le format 14:06 -->
         <p><%= slot.participants_min %></p>
-        <p><%= slot.price_cents %></p> <!-- à modifier en regardant la doc money rails -->
+        <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
         <% if policy(slot).edit? %>
           <%= link_to "Editer séance", edit_slot_path(slot) %>
         <% end %>
