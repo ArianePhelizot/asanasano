@@ -8,6 +8,10 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    # à ce stade le course n'a pas encore de group
+    # l'appel de la méthode record.group ne peut donc pas fonctionner dans course_policy.rb.
+    # on donne donc son group au course pour pouvoir faire 'authorize @course'
+    @course.group = @group
     authorize @course
   end
 
