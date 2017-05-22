@@ -8,7 +8,7 @@
 .banner {
 color: white;
 text-align: center;
-height: 90vh;
+height: 73vh;
 /* if you have a 70px navbar => height: calc(100vh - 70px); */
 background-size: cover !important;
 display: flex;
@@ -48,4 +48,7 @@ font-size: 22px;
 .banner p {
 font-size: 18px;
   }
+}
+
+body {height: 100%; width: 100%
 }
