@@ -29,7 +29,7 @@ class SlotsController < ApplicationController
                                  :start_time_hours,
                                  :start_date_minutes
                                  :end_time_hours
-                                 :end_time_minutes)
+                                 :end_time_minutes) # <!-- vérifier le 's' -->
   end
 
   def find_course

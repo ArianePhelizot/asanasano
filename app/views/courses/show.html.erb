@@ -29,6 +29,17 @@
       <% if policy(@course).destroy? %>
         <%= link_to "Supprimer le cours", course_path(@course), method: "delete" %>
       <% end %>
+      <br>
+      <h2>Les séances</h2>
+      <% @course.slots.each do |slot| %>
+        <p><%= slot.date %></p>
+        <p><%= slot.start_time_hours %></p>
+        <p><%= slot.start_time_minutes %></p>
+        <p><%= slot.end_time_hours %></p>
+        <p><%= slot.end_time_minutes %></p>
+        <p><%= slot.capacity_min %></p> <!-- vérifier le 's' -->
+        <p><%= slot.price %></p> <!-- vérifier c'est price ou price_cents -->
+      <% end %>
     </div>
   </div>
 <div>
