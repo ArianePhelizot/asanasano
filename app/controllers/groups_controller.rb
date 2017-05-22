@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    authorize @group
   end
 
   def update
