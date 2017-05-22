@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.group = @group
-    authorize @c # check authorization before save
+    authorize @course # check authorization before save
     if @course.save
       redirect_to course_path(@course)
     else
