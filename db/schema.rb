@@ -82,15 +82,6 @@ ActiveRecord::Schema.define(version: 20170522123658) do
     t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string   "state"
-    t.string   "teddy_sku"
-    t.integer  "amount_cents", default: 0, null: false
-    t.json     "payment"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "slots", force: :cascade do |t|
     t.date     "date"
     t.integer  "participants_min"
