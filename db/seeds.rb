@@ -1,3 +1,5 @@
+#YourModel.last.id + 1
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -55,7 +57,7 @@ users_attributes = [
     email: "isabelle.ivas@gmail.com",
     password: "azerty",
     phone_number: "0601020304",
-    coach_id: 2
+    # coach_id: 2
   },
   {
     first_name: "Veronica",
@@ -63,7 +65,7 @@ users_attributes = [
     email: "veronica.obama@gmail.com",
     password: "azerty",
     phone_number: "0613990061",
-    coach_id: 1
+    # coach_id: 1
   },
   {
     first_name: "Mathieu",
@@ -71,7 +73,7 @@ users_attributes = [
     email: "mathieu.bonfils@gmail.com",
     password: "azerty",
     phone_number: "0616741821",
-    coach_id: 3
+    # coach_id: 3
   }
 ]
 
@@ -123,10 +125,10 @@ groups_attributes = [
   }
 ]
 
-Group.create!(groups_attributes)
-puts "#{Group.count} groups created"
+# Group.create!(groups_attributes)
+# puts "#{Group.count} groups created"
 
-#Courses seeds
+# #Courses seeds
 
 # courses_attributes = [
 #   {
