@@ -1,10 +1,9 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:edit, :update, :destroy]
+  before_action :find_course, only: [:show, :edit, :update, :destroy]
 
   def show
-    @course = Course.find(params[:id])
   end
 
   def new
@@ -14,7 +13,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.group = @group
-    authorize @c # check authorization before save
+    authorize @course # check authorization before save
     if @course.save
       redirect_to course_path(@course)
     else
@@ -47,7 +46,10 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :sport_id, :address, :meeting_point,
+    params.require(:course).permit(:name,
+                                   :sport_id,
+                                   :address,
+                                   :meeting_point,
                                    :capacity_max,
                                    :details,
                                    :coach_id)
