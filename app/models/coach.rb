@@ -13,5 +13,5 @@ class Coach < ApplicationRecord
     has_and_belongs_to_many :sports
     has_and_belongs_to_many :groups
     has_one :user
-    has_many :courses
+    has_many :courses, dependent: :nullify
 end
