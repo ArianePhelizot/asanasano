@@ -4,6 +4,6 @@
   <%= f.time_select :start_at, value: @slot.start_at.to_time %>
   <%= f.time_select :end_at, value: @slot.end_at.to_time %>
   <%= f.input :participants_min %>
-  <%= f.input :price_cents %>
+  <%= f.input :price %>
   <%= f.button :submit %>
 <% end %>
