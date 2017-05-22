@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:edit, :update]
+  before_action :find_course, only: [:edit, :update, :destroy]
 
   def show
     @course = Course.find(params[:id])
@@ -34,6 +34,9 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    group = @course.group
+    @course.destroy
+    redirect_to group_path(group)
   end
 
   private
