@@ -6,7 +6,7 @@
       <% if @user == @course.group.user %>
         <%= render 'form_edit' %>
       <% else %>
-      <!-- sinon cela siginifie qu'il est coach est dans cas il ne peut éditer que le content -->
+      <!-- sinon cela signifie qu'il est coach est dans cas il ne peut éditer que le content -->
         <%= render 'form_edit_coach'  %>
       <% end %>
     </div>
