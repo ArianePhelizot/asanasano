@@ -8,6 +8,7 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(slot_params)
     @slot.course = @course
+    authorize @slot # check authorization before save
     if @slot.save
       redirect_to course_path(@course)
     else
@@ -19,6 +20,7 @@ class SlotsController < ApplicationController
   end
 
   def update
+    authorize @slot # check authorization before update
     if @slot.update(slot_params)
       redirect_to course_path(@course)
     else
