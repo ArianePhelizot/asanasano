@@ -28,9 +28,8 @@ class Slot < ApplicationRecord
 
   monetize :price_cents
 
-  validates :date, :start_time_hour , :start_time_minute, :end_time_hour, :end_time_minute , :course_id, :price_cents, presence: true
+  validates :start_at, :end_at,  :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
-  validates :start_time_hour, :end_time_hour, inclusion: { in: (1..24).to_a}
-  validates :start_time_minute, :end_time_minute, inclusion: { in: [0, 15, 30, 45]}
+  validates :price, :numericality => true
 
 end
