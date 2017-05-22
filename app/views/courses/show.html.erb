@@ -38,7 +38,7 @@
         <p><%= slot.start_at.strftime("%A %d %B %Y at %H:%M") %></p>
         <p><%= slot.end_at.strftime("%A %d %B %Y at %H:%M") %></p>
         <p><%= slot.participants_min %></p>
-        <p><%= slot.price_cents %></p>
+        <p><%= slot.price_cents %></p> <!-- à modifier en regardant la doc money rails -->
         <% if policy(slot).edit? %>
           <%= link_to "Editer séance", edit_slot_path(slot) %>
         <% end %>
