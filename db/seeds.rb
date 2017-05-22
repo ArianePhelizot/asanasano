@@ -89,9 +89,8 @@ coaches_attributes = [
     description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J'accompagne aussi bien débutants que confirmés"
   },
   {
-    description:
+    description: "Couteau suisse, fan de sport"
   }
-
 ]
 
 Coach.create!(coaches_attributes)
