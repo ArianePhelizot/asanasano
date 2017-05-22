@@ -106,25 +106,25 @@ SPORT.each do |sport|
 puts "#{Sport.count} sports created"
 
 
-#Groups seeds
+# Groups seeds
 
-# groups_attributes = [
-#   {
-#     owner_id: 1,
-#     name: "Les petites cerises"
-#   },
-#   {
-#     owner_id: 2,
-#     name: "Les grosses fraises"
-#   },
-#   {
-#     owner_id: 2,
-#     name: "Les jeunes courgettes"
-#   }
-# ]
+groups_attributes = [
+  {
+    owner_id: 1,
+    name: "Les petites cerises"
+  },
+  {
+    owner_id: 2,
+    name: "Les grosses fraises"
+  },
+  {
+    owner_id: 2,
+    name: "Les jeunes courgettes"
+  }
+]
 
-# Group.create!(groups_attributes)
-# puts "#{Group.count} groups created"
+Group.create!(groups_attributes)
+puts "#{Group.count} groups created"
 
 #Courses seeds
 

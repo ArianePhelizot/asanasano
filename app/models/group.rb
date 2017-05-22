@@ -19,6 +19,6 @@ class Group < ApplicationRecord
    belongs_to :owner, class_name: "User"
    has_many :courses, dependent: :nullify
 
-   validates :name, presence: true, length: { maximum: 20 }
+   validates :name, presence: true, length: { maximum: 100 }
    validates :owner_id, presence: true
 end
