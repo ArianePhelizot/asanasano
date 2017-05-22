@@ -54,7 +54,7 @@ MoneyRails.configure do |config|
   #   :subunit             => "Subcent",
   #   :subunit_to_unit     => 10000,
   #   :thousands_separator => ".",
-  #   :decimal_mark        => ","
+    :decimal_mark        => ","
   }
 
   # Specify a rounding mode
@@ -77,7 +77,7 @@ MoneyRails.configure do |config|
   # Example:
   #
   config.default_format = {
-    :no_cents_if_whole => true, # on ne veut pas de 12,00€ mais juste un 12€
+    # :no_cents_if_whole => true
     :symbol => true, # on veut un symbole €
     # :sign_before_symbol
   }
