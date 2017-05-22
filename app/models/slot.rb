@@ -28,8 +28,9 @@ class Slot < ApplicationRecord
 
   monetize :price_cents
 
-  validates :start_at, :end_at,  :course_id, :price_cents, presence: true
+  validates :date, :start_at, :end_at,  :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
   validates :price, :numericality => true
+  validates :participants_min, inclusion: { in: 0..500}
 
 end
