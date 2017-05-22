@@ -45,17 +45,17 @@ MoneyRails.configure do |config|
   # Register a custom currency
   #
   # Example:
-  # config.register_currency = {
+  config.register_currency = {
   #   :priority            => 1,
   #   :iso_code            => "EU4",
   #   :name                => "Euro with subunit of 4 digits",
-  #   :symbol              => "€",
-  #   :symbol_first        => true,
+    :symbol              => "€",
+    :symbol_first        => false, # on veut le symbole après le prix: 12€ et non €12
   #   :subunit             => "Subcent",
   #   :subunit_to_unit     => 10000,
   #   :thousands_separator => ".",
   #   :decimal_mark        => ","
-  # }
+  }
 
   # Specify a rounding mode
   # Any one of:
@@ -76,11 +76,11 @@ MoneyRails.configure do |config|
   # Default value is nil meaning "ignore this option".
   # Example:
   #
-  # config.default_format = {
-  #   :no_cents_if_whole => nil,
-  #   :symbol => nil,
-  #   :sign_before_symbol => nil
-  # }
+  config.default_format = {
+    :no_cents_if_whole => true, # on ne veut pas de 12,00€ mais juste un 12€
+    :symbol => true, # on veut un symbole €
+    # :sign_before_symbol
+  }
 
   # Set default raise_error_on_money_parsing option
   # It will be raise error if assigned different currency
