@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
   def edit
     # On donne ici le current_user à la vue de #edit pour afficher le bon formulaire...
     #... en fonction de si le current_user est le owner du group ou le coach du cours
+    authorize @group
     @user = current_user
   end
 
