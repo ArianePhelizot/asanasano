@@ -1,0 +1,31 @@
+.wrapper-devise-form {
+  //background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-image: url("bg-form.jpg");
+  background-repeat: no-repeat;
+  //background-color: rgba(white, 0.4);
+  background-size: cover;
+padding-bottom: 30px;
+
+  h2 {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    //background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+    padding: 10px;
+    border-color: none;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    //color: #4481eb;
+    font-weight: bold;
+  }
+}
+

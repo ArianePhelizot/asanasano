@@ -1,0 +1,7 @@
+.form-control {
+  border:0;
+  @include box-shadow(none);
+  border-bottom: 1px solid grey;
+  background-color: transparent;
+}
+
