@@ -31,14 +31,20 @@
       <% end %>
       <br>
       <h2>Les séances</h2>
+      <% if policy(Slot).new? %>
+        <%= link_to "Ajouter une séance", new_slot_path %>
+      <% end %>
       <% @course.slots.each do |slot| %>
         <p><%= slot.date %></p>
-        <p><%= slot.start_time_hours %></p>
-        <p><%= slot.start_time_minutes %></p>
-        <p><%= slot.end_time_hours %></p>
-        <p><%= slot.end_time_minutes %></p>
-        <p><%= slot.capacity_min %></p> <!-- vérifier le 's' -->
-        <p><%= slot.price %></p> <!-- vérifier c'est price ou price_cents -->
+        <p><%= slot.start_time_hour %></p>
+        <p><%= slot.start_time_minute %></p>
+        <p><%= slot.end_time_hour %></p>
+        <p><%= slot.end_time_minute %></p>
+        <p><%= slot.capacity_min %></p>
+        <p><%= slot.price_cents %></p>
+        <% if policy(slot).edit? %>
+          <%= link_to "Editer séance", edit_slot_path(slot) %>
+        <% end %>
       <% end %>
     </div>
   </div>
