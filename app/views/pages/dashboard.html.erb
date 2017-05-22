@@ -1,4 +1,4 @@
-<dov class="container">
+<div class="container">
   <div class="row">
     <div class="col-xs-12">
       <% if policy(Group).new? %>
@@ -11,11 +11,11 @@
         <% if policy(group).destroy? %>
           <%= link_to "Supprimer", group_path(group), method: "delete" %>
         <% end %>
-        <% if policy(Course).new? %>
+        <% if policy(group).new? %>
           <%= link_to "Créer un nouveau cours", new_course_path  %>
         <% end %>
       <% end %>
     </div>
   </div>
-</dov>
+</div>
 

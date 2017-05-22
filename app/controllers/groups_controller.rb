@@ -3,11 +3,13 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    authorize @group
   end
 
   def create
     @group = Group.new(group_params)
-    @group.user = current_user
+    @group.owner = current_user
+    @group.users.push(current_user) #populate the groups_users table
     authorize @group # check authorization before save
     if @group.save
       redirect_to dashboard_path

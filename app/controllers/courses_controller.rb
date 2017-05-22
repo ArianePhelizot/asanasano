@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    authorize @course
   end
 
   def create
