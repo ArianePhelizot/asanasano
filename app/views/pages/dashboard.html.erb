@@ -11,7 +11,7 @@
         <% if policy(group).destroy? %>
           <%= link_to "Supprimer", group_path(group), method: "delete" %>
         <% end %>
-        <% if policy(group).new? %>
+        <% if policy(group).edit? %>
           <%= link_to "Créer un nouveau cours", new_course_path  %>
         <% end %>
       <% end %>
