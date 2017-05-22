@@ -6,9 +6,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(params(group_params))
-    @group.user = current_user
-    authorize @group
+    @group = Group.new(group_params)
+    @group.owner = current_user
+    authorize @group # check authorization before save
     if @group.save
       redirect_to dashboard_path
     else
@@ -20,8 +20,8 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
-    if @group.update(params(group_params))
+    authorize @group # check authorization before update
+    if @group.update(group_params)
       redirect_to dashboard_path
     else
       render :edit
@@ -29,6 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    authorize @group # check authorization before destroy
     @group.destroy
     redirect_to dashboard_path
   end
