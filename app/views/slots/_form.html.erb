@@ -1,0 +1,10 @@
+<%= simple_form_for [@course, @slot] do |f| %>
+  <%= f.input :capacity_min %>
+  <%= f.input :date %>
+  <%= f.input :start_time_hours %> <!-- vérifier le 's' -->
+  <%= f.input :start_time_minutes %> <!-- vérifier le 's' -->
+  <%= f.input :end_time_hours %> <!-- vérifier le 's' -->
+  <%= f.input :end_time_minutes %> <!-- vérifier le 's' -->
+  <%= f.input :price %> <!-- vérifier c'est price ou price_cents -->
+  <%= f.button :submit %>
+<% end %>
