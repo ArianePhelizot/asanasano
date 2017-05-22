@@ -1,6 +1,7 @@
 <%= simple_form_for [@course, @slot] do |f| %>
-  <%= f.input :start_at %>
-  <%= f.input :end_at %>
+  <%= f.date_select :date %>
+  <%= f.time_select :start_at, value: @slot.start_at.to_time %>
+  <%= f.time_select :end_at, value: @slot.end_at.to_time %>
   <%= f.input :participants_min %>
   <%= f.input :price_cents %>
   <%= f.button :submit %>
