@@ -6,7 +6,7 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def update?
@@ -19,6 +19,6 @@ class GroupPolicy < ApplicationPolicy
 
   # on teste ici si le user est le créateur du group.
   def user_is_group_owner?
-    record.user == user
+    record.owner == user
   end
 end

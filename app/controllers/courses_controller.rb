@@ -52,7 +52,8 @@ class CoursesController < ApplicationController
                                    :meeting_point,
                                    :capacity_max,
                                    :details,
-                                   :coach_id)
+                                   :coach_id,
+                                   :content)
   end
 
   def find_group

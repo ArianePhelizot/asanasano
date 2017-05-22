@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <h1>Editer mon groupe</h1>
       <!-- si le user est le créateur du group il peut éditer tous les attributs du cours  -->
-      <% if @user == @course.group.user %>
+      <% if @user == @course.group.owner %>
         <%= render 'form_edit' %>
       <% else %>
       <!-- sinon cela signifie qu'il est coach est dans cas il ne peut éditer que le content -->
