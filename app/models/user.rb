@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_and_belongs_to_many :groups
-  has_many :groups
+  has_many :owned_groups, class_name: "Group", foreign_key: :owner_id
   belongs_to :coach, optional: true
 
   devise :database_authenticatable, :registerable,
