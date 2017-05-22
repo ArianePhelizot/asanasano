@@ -40,7 +40,7 @@
         <p><%= slot.start_time_minute %></p>
         <p><%= slot.end_time_hour %></p>
         <p><%= slot.end_time_minute %></p>
-        <p><%= slot.capacity_min %></p>
+        <p><%= slot.participants_min %></p>
         <p><%= slot.price_cents %></p>
         <% if policy(slot).edit? %>
           <%= link_to "Editer séance", edit_slot_path(slot) %>
