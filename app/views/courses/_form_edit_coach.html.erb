@@ -1,4 +1,4 @@
 <%= simple_form_for [@group, @course] do |f| %>
-  <%= f.input :content, type: :text %> <!-- A VERIFIER--> <!-- on ajoute le content dans le edit -->
+  <%= f.input :content, as: :text %>
   <%= f.button :submit %>
 <% end %>

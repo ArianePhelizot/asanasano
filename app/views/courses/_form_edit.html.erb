@@ -4,8 +4,8 @@
   <%= f.input :address %>
   <%= f.input :meeting_point %>
   <%= f.input :capacity_max %>
-  <%= f.input :details, type: :text %> <!-- A VERIFIER-->
+  <%= f.input :details, as: :text %>
   <%= f.association :coach, collection: @course.group.coaches %>
-  <%= f.input :content, type: :text %> <!-- A VERIFIER--> <!-- on ajoute le content dans le edit -->
+  <%= f.input :content, as: :text %>
   <%= f.button :submit %>
 <% end %>

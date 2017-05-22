@@ -4,7 +4,7 @@
   <%= f.input :address %>
   <%= f.input :meeting_point %>
   <%= f.input :capacity_max %>
-  <%= f.input :details, :text %> <!-- A VERIFIER-->
+  <%= f.input :details, as: :text %>
   <%= f.association :coach, collection: @course.group.coaches %>
   <%= f.button :submit %>
 <% end %>
