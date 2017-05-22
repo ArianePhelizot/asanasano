@@ -100,7 +100,7 @@ puts "#{Coach.count} coaches created"
 
 SPORT = ["YOGA", "PILATES", "FITNESS", "STRETCHING", "DANSE", "ART MARTIAL", "REMISE EN FORME", "CHALLENGE", "RUNNING", "PISCINE", "RAQUETTES", "SPORTS CO"]
 SPORT.each do |sport|
-    Sport.create!({sport})
+    Sport.create!({name: sport})
  end
 
 puts "#{Sport.count} sports created"
