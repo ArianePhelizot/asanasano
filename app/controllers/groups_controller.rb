@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.user = current_user
+    @group.owner = current_user
     authorize @group # check authorization before save
     if @group.save
       redirect_to dashboard_path
