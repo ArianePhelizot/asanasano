@@ -35,11 +35,8 @@
         <%= link_to "Ajouter une séance", new_slot_path %>
       <% end %>
       <% @course.slots.each do |slot| %>
-        <p><%= slot.date %></p>
-        <p><%= slot.start_time_hour %></p>
-        <p><%= slot.start_time_minute %></p>
-        <p><%= slot.end_time_hour %></p>
-        <p><%= slot.end_time_minute %></p>
+        <p><%= slot.start_at.strftime("%A %d %B %Y at %H:%M") %></p>
+        <p><%= slot.end_at.strftime("%A %d %B %Y at %H:%M") %></p>
         <p><%= slot.participants_min %></p>
         <p><%= slot.price_cents %></p>
         <% if policy(slot).edit? %>
