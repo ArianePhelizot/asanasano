@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521142550) do
+ActiveRecord::Schema.define(version: 20170522123658) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,18 +84,16 @@ ActiveRecord::Schema.define(version: 20170521142550) do
 
   create_table "slots", force: :cascade do |t|
     t.date     "date"
-    t.integer  "start_time_hour"
-    t.integer  "start_time_minute"
-    t.integer  "end_time_hour"
-    t.integer  "end_time_minute"
     t.integer  "participants_min"
-    t.integer  "price_cents",       default: 0,     null: false
-    t.string   "price_currency",    default: "EUR", null: false
+    t.integer  "price_cents",      default: 0,     null: false
+    t.string   "price_currency",   default: "EUR", null: false
     t.string   "specificities"
-    t.integer  "status",            default: 0
+    t.integer  "status",           default: 0
     t.integer  "course_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.index ["course_id"], name: "index_slots_on_course_id", using: :btree
   end
 
