@@ -37,5 +37,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  delegate :first_name, to: :coach, prefix: false
+  def first_name
+    user.first_name if coach.present?
+  end
 end
