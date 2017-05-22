@@ -18,6 +18,7 @@ class SlotsController < ApplicationController
   end
 
   def edit
+    authorize @slot
   end
 
   def update
