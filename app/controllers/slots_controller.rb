@@ -3,6 +3,7 @@ class SlotsController < ApplicationController
   before_action :find_slot, only: [:edit, :update]
   def new
     @slot = Slot.new
+    authorize @slot
   end
 
   def create
