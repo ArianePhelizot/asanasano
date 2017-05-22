@@ -30,7 +30,7 @@ class Slot < ApplicationRecord
 
   validates :date, :start_at, :end_at,  :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
-  validates :price, :numericality => true
+  validates :price, numericality: { allow_nil: true }
   validates :participants_min, numericality: { only_integer: true }, inclusion: { in: 0..500}
 
 end
