@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
-  before_action :find_course, only: [:new, :create]
-
+  before_action :find_course, only: [:new, :create, :edit, :update]
+  before_action :find_slot, only: [:edit, :update]
   def new
     @slot = Slot.new
   end
@@ -19,6 +19,11 @@ class SlotsController < ApplicationController
   end
 
   def update
+    if @slot.update(slot_params)
+      redirect_to course_path(@course)
+    else
+      render :edit
+    end
   end
 
   private
@@ -34,5 +39,9 @@ class SlotsController < ApplicationController
 
   def find_course
     @course = course.find(params[:course_id])
+  end
+
+  def find_slot
+    @slot = Slot.find(params[:id])
   end
 end
