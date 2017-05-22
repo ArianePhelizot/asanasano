@@ -54,7 +54,7 @@ users_attributes = [
     last_name: "YVAS",
     email: "isabelle.ivas@gmail.com",
     password: "azerty",
-    phone_number: "0601020304"
+    phone_number: "0601020304",
     coach_id: 2
   },
   {
@@ -69,8 +69,8 @@ users_attributes = [
     first_name: "Mathieu",
     last_name: "BONFILS",
     email: "mathieu.bonfils@gmail.com",
-    password: "azerty"
-    phone_number: "0616741821"
+    password: "azerty",
+    phone_number: "0616741821",
     coach_id: 3
   }
 ]
