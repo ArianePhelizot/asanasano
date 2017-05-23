@@ -170,8 +170,19 @@ course4 = Course.create!(name: "Tai Chi Chuan",
                         meeting_point: "Devant la machine à café",
                         capacity_max: 30,
                         status: 1,
-                        group_id: group2.id,
+                        group_id: group1.id,
                         coach_id: coach3.id,
+                        sport_id: sport6.id)
+
+course5 = Course.create!(name: "Cross fit",
+                        content: "Venez vous faire du mal",
+                        details: "Prévoir des pansements",
+                        address: "73 La Cannebière",
+                        meeting_point: "En bas de l'immeuble",
+                        capacity_max: 15,
+                        status: 1,
+                        group_id: group1.id,
+                        coach_id: coach1.id,
                         sport_id: sport6.id)
 
 puts "#{Course.count} courses created"
@@ -184,6 +195,11 @@ group2.users = [user1, user2]
 group2.save
 group3.users = [user1, user4]
 group3.save
+
+puts "Associating coaches and groups"
+
+group1.coaches = [coach1, coach2, coach3]
+group2.coaches = [coach3]
 
 
 # SLOT SEEDS
