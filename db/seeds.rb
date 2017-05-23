@@ -1,5 +1,3 @@
-#YourModel.last.id + 1
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -47,6 +45,13 @@ coach2 = Coach.create!(description: "Diplomée en 2010, je donne des cours colle
 coach3 = Coach.create!(description: "Couteau suisse, fan de sport")
 
 puts "#{Coach.count} coaches created"
+
+puts "Associating coaches to sports & vice versa"
+
+sport1.coaches = [coach1,coach2]
+sport9.coaches = [coach3]
+coach3.sports = [sport6, sport10,sport5]
+
 
 
 # USER SEEDS
@@ -165,6 +170,15 @@ course4 = Course.create!(name: "Tai Chi Chuan",
                         sport_id: sport6.id)
 
 puts "#{Course.count} courses created"
+
+puts "Associating groups and users"
+
+group1.users = [user1, user2, user3, user4]
+group1.save
+group2.users = [user1, user2]
+group2.save
+group3.users = [user1, user4]
+group3.save
 
 
 # SLOT SEEDS
