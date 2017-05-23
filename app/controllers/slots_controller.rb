@@ -18,7 +18,7 @@ class SlotsController < ApplicationController
   end
 
   def edit
-    authorize @slot
+    authorize @slot # check authorization before edit
   end
 
   def update
@@ -33,11 +33,11 @@ class SlotsController < ApplicationController
   private
 
   def slot_params
-    params.require(:slot).permit(:capacity_min,
+    params.require(:slot).permit(:participants_min,
                                  :date,
-                                 :start_time_hours,
-                                 :start_date_minutes
-                                 :end_time_hours
+                                 :start_at,
+                                 :end_at
+                                 :
                                  :end_time_minutes) # <!-- vérifier le 's' -->
   end
 
