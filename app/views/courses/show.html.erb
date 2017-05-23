@@ -17,7 +17,7 @@
         <% else %>
         <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
       <% end %>
-      <% if @course.coach.exist?  %>
+      <% if @course.coach.first_name.exist?  %>
         <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué dans le model User, le first_name de User à Coach avec prefix: false -->
       <% end %>
       <p>Contenu du cours: <%= @course.content %></p>

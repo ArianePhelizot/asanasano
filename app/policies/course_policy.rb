@@ -10,7 +10,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_group_owner?
+    user_is_group_owner_or_coach?
   end
 
   def destroy?
@@ -20,5 +20,9 @@ class CoursePolicy < ApplicationPolicy
   # on teste ici si le user est le créateur du group.
   def user_is_group_owner?
     record.group.owner == user
+  end
+
+  def user_is_group_owner_or_coach?
+    record.group.owner == user || record.coach == user
   end
 end

@@ -1,14 +1,18 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:edit, :update, :destroy]
+  before_action :find_course, only: [:show, :edit, :update, :destroy]
 
   def show
-    @course = Course.find(params[:id])
   end
 
   def new
     @course = Course.new
+    # à ce stade le course n'a pas encore de group
+    # l'appel de la méthode record.group ne peut donc pas fonctionner dans course_policy.rb.
+    # on donne donc son group au course pour pouvoir faire 'authorize @course'
+    @course.group = @group
+    authorize @course
   end
 
   def create
@@ -23,6 +27,9 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    # On donne ici le current_user à la vue de #edit pour afficher le bon formulaire...
+    #... en fonction de si le current_user est le owner du group ou le coach du cours
+    authorize @group
     @user = current_user
   end
 
@@ -45,10 +52,14 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :sport_id, :address, :meeting_point,
+    params.require(:course).permit(:name,
+                                   :sport_id,
+                                   :address,
+                                   :meeting_point,
                                    :capacity_max,
                                    :details,
-                                   :coach_id)
+                                   :coach_id,
+                                   :content)
   end
 
   def find_group
