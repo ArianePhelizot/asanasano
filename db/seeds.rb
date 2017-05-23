@@ -20,10 +20,18 @@ puts 'Creating users, groups, coaches, courses, slots and sports...'
 
 #Sports seeds
 
-SPORT = ["YOGA", "PILATES", "FITNESS", "STRETCHING", "DANSE", "ART MARTIAL", "REMISE EN FORME", "CHALLENGE", "RUNNING", "PISCINE", "RAQUETTES", "SPORTS CO"]
-SPORT.each do |sport|
-    Sport.create!({name: sport})
- end
+    sport1 = Sport.create!(name: "YOGA")
+    sport2 = Sport.create!(name: "PILATES")
+    sport3 = Sport.create!(name: "FITNESS")
+    sport4 = Sport.create!(name: "STRETCHING")
+    sport5 = Sport.create!(name: "DANSE")
+    sport6 = Sport.create!(name: "ART MARTIAL")
+    sport7 = Sport.create!(name: "REMISE EN FORME")
+    sport8 = Sport.create!(name: "CHALLENGE")
+    sport9 = Sport.create!(name: "RUNNING")
+    sport10 = Sport.create!(name: "PISCINE")
+    sport11 = Sport.create!(name: "RAQUETTES")
+    sport12 = Sport.create!(name: "SPORTS CO")
 
 puts "#{Sport.count} sports created"
 
@@ -39,52 +47,55 @@ puts "#{Coach.count} coaches created"
 
 # Users seeds
 
-user1 = User.create!(first_name: "Ariane",
-                    last_name: "PHELIZOT",
-                    email: "ariane.phelizot@gmail.com",
-                    password: "azerty",
-                    phone_number: "0613990061"
-                    )
+  user1 = User.create!(first_name: "Ariane",
+                      last_name: "PHELIZOT",
+                      email: "ariane.phelizot@gmail.com",
+                      password: "azerty",
+                      phone_number: "0613990061"
+                      )
 
-  user1 = User.create!(first_name: "Cherine",
+  user2 = User.create!(first_name: "Cherine",
                     last_name: "ELFADEL",
                     email: "cherineelf@gmail.com",
                     password: "azerty",
                     phone_number: "0671991204"
                     )
 
-  user1 = User.create!(first_name: "Faustin",
+  user3 = User.create!(first_name: "Faustin",
                       last_name: "VEYSSIERE",
                       email: "faustin.veyssiere@gmail.com",
                       password: "azerty",
                       phone_number: "0782095662"
                       )
 
-  user1 = User.create!(first_name: "Guillaume",
+  user4 = User.create!(first_name: "Guillaume",
                       last_name: "JAUFFRET",
                       email: "guillaume.jauffret@gmail.com",
                       password: "azerty",
                       phone_number: "0665647375"
                     )
-  user1 = User.create!(first_name: "Isabelle",
+  user5 = User.create!(first_name: "Isabelle",
                       last_name: "YVAS",
                       email: "isabelle.ivas@gmail.com",
                       password: "azerty",
-                      phone_number: "0601020304"
+                      phone_number: "0601020304",
+                      coach_id: coach1.id
                     )
 
-  user1 = User.create!( first_name: "Veronica",
+  user6 = User.create!( first_name: "Veronica",
                         last_name: "OBAMA",
                         email: "veronica.obama@gmail.com",
                         password: "azerty",
-                        phone_number: "0613990061"
+                        phone_number: "0613990061",
+                        coach_id: coach2.id
                     )
 
-  user1 = User.create!( first_name: "Mathieu",
+  user7 = User.create!( first_name: "Mathieu",
                       last_name: "BONFILS",
                       email: "mathieu.bonfils@gmail.com",
                       password: "azerty",
-                      phone_number: "0616741821"
+                      phone_number: "0616741821",
+                      coach_id: coach3.id
                     )
 
 puts "#{User.count} users created"
@@ -93,152 +104,115 @@ puts "#{User.count} users created"
 
 # Groups seeds
 
-# groups_attributes = [
-#   {
-#     owner_id: 1,
-#     name: "Les petites cerises"
-#   },
-#   {
-#     owner_id: 2,
-#     name: "Les grosses fraises"
-#   },
-#   {
-#     owner_id: 2,
-#     name: "Les jeunes courgettes"
-#   }
-# ]
 
-# Group.create!(groups_attributes)
-# puts "#{Group.count} groups created"
+group1 = Group.create!(owner_id: user1.id, name: "Les petites cerises")
+group2 = Group.create!(owner_id: user2.id, name: "Les grosses fraises")
+group3 = Group.create!(owner_id: user2.id, name: "Les jeunes courgettes")
 
-# #Courses seeds
+puts "#{Group.count} groups created"
 
-# courses_attributes = [
-#   {
-#     name: "Yoga Hatha",
-#     content: "Niveau Débutant - Un yoga postural accessible à tous, pour se sentir bien dans son corps et dans sa tête. Chaque posture doit se tenir 3 minutes. Chaque séance finit par 10 minutes de méditation ",
-#     details: "Prendre un tapis de yoga et des vêtements souples. NB: vestiaire et douches ",
-#     address: "Rue Joseph Biaggi, 13003 Marseille, France",
-#     meeting_point: "Dernier étage de l'EMD",
-#     capacity_max: 15,
-#     status: 1,
-#     group_id: 1,
-#     coach_id: 2,
-#     sport_id: 1,
-#   },
-#   {
-#     name: "Yoga VInyasa",
-#     content: "Un yoga dynamqie et régénérant - Cours tout niveau",
-#     details: "Venir 10 minutes avant le dabut du cours - NB: vestiaire et douches",
-#     address: "Rue Joseph Biaggi, 13003 Marseille, France",
-#     meeting_point: "Dernier étage de l'EMD",
-#     capacity_max: 15,
-#     status: 2,
-#     group_id: 1,
-#     coach_id: 2,
-#     sport_id: 1,
-#   },
-#   {
-#     name: "Préparation Marseille Cassis 2017",
-#     content: "Entrainement collectif pour être prêt le 29 octobre 2017: être en condition et progresser sans se blesser pour être prêt le jour J ",
-#     details: "Tennis de rigueur!",
-#     address: "Rue Joseph Biaggi, 13003 Marseille, France",
-#     meeting_point: "Devant la cafétériat",
-#     capacity_max: 300,
-#     status:2,
-#     group_id: 2,
-#     coach_id: 3,
-#     sport_id: 9,
-#   },
-#   {
-#     name: "Barre au sol",
-#     content: "Venez tous dansez!",
-#     details: "Ramenez vos tutus",
-#     address: "73 La Cannebière",
-#     meeting_point: "Dans le hall",
-#     capacity_max: 8,
-#     status: 3,
-#     group_id: 2,
-#     coach_id: 3,
-#     sport_id: 5,
-#   },
-#   {
-#     name: "Tai Chi Chuan",
-#     content: "Tous les matins à 9 heures, venez faire 30 minutes d'exercices avant de commencer votre journée",
-#     details: "Venez comme vous êtes",
-#     address: "73 La Cannebière",
-#     meeting_point: "Devant la machine à café",
-#     capacity_max: 30,
-#     status: 2,
-#     group_id: 2,
-#     coach_id: 3,
-#     sport_id: 6,
-#   }
-#
-# Course.create!(courses_attributes)
-# puts "#{Course.count} courses created"
+#Courses seeds
+
+
+course1 = Course.create!(name: "Yoga Hatha",
+                        content: "Niveau Débutant - Un yoga postural accessible à tous, pour se sentir bien dans son corps et dans sa tête. Chaque posture doit se tenir 3 minutes. Chaque séance finit par 10 minutes de méditation ",
+                        details: "Prendre un tapis de yoga et des vêtements souples. NB: vestiaire et douches ",
+                        address: "Rue Joseph Biaggi, 13003 Marseille, France",
+                        meeting_point: "Dernier étage de l'EMD",
+                        capacity_max: 15,
+                        status: 0,
+                        group_id: group1.id,
+                        coach_id: coach2.id,
+                        sport_id: sport1.id)
+
+course2 = Course.create!(name: "Préparation Marseille Cassis 2017",
+                        content: "Entrainement collectif pour être prêt le 29 octobre 2017: être en condition et progresser sans se blesser pour être prêt le jour J ",
+                        details: "Tennis de rigueur!",
+                        address: "Rue Joseph Biaggi, 13003 Marseille, France",
+                        meeting_point: "Devant la cafétériat",
+                        capacity_max: 300,
+                        status:1,
+                        group_id: group2.id,
+                        coach_id: coach3.id,
+                        sport_id: sport9.id)
+
+
+course3 = Course.create!(name: "Barre au sol",
+                        content: "Venez tous dansez!",
+                        details: "Ramenez vos tutus",
+                        address: "73 La Cannebière",
+                        meeting_point: "Dans le hall",
+                        capacity_max: 8,
+                        status: 2,
+                        group_id: group2.id,
+                        coach_id: coach3.id,
+                        sport_id: sport5.id)
+
+
+course4 = Course.create!(name: "Tai Chi Chuan",
+                        content: "Tous les matins à 9 heures, venez faire 30 minutes d'exercices avant de commencer votre journée",
+                        details: "Venez comme vous êtes",
+                        address: "73 La Cannebière",
+                        meeting_point: "Devant la machine à café",
+                        capacity_max: 30,
+                        status: 1,
+                        group_id: group2.id,
+                        coach_id: coach3.id,
+                        sport_id: sport6.id)
+
+puts "#{Course.count} courses created"
 
 
 #Slot seeds
-# slot_attributes = [
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-#   {
-#     date:
-#     start_at:
-#     end_at:
-#     specificities:
-#     participants_min:
-#     price_cents:
-#     status:
-#     course_id:
-#   }
-# ]
+
+# slot1 = Slot.create!(date:
+#                     start_at:
+#                     end_at:
+#                     specificities:
+#                     participants_min:
+#                     price_cents:
+#                     status:
+#                     course_id:
+#                     )
+
+# slot2 = Slot.create!(date:
+#                     start_at:
+#                     end_at:
+#                     specificities:
+#                     participants_min:
+#                     price_cents:
+#                     status:
+#                     course_id:
+#                     )
+
+# slot3 = Slot.create!(date:
+#                     start_at:
+#                     end_at:
+#                     specificities:
+#                     participants_min:
+#                     price_cents:
+#                     status:
+#                     course_id:
+#                     )
+
+# slot4 = Slot.create!(date:
+#                     start_at:
+#                     end_at:
+#                     specificities:
+#                     participants_min:
+#                     price_cents:
+#                     status:
+#                     course_id:
+#                     )
+
+# slot5 = Slot.create!(date:
+#                     start_at:
+#                     end_at:
+#                     specificities:
+#                     participants_min:
+#                     price_cents:
+#                     status:
+#                     course_id:
+#                     )
+
+# puts "#{Slot.count} slots created"
