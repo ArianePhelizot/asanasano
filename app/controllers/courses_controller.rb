@@ -8,6 +8,11 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    # à ce stade le course n'a pas encore de group
+    # l'appel de la méthode record.group ne peut donc pas fonctionner dans course_policy.rb.
+    # on donne donc son group au course pour pouvoir faire 'authorize @course'
+    @course.group = @group
+    authorize @course
   end
 
   def create
@@ -24,6 +29,7 @@ class CoursesController < ApplicationController
   def edit
     # On donne ici le current_user à la vue de #edit pour afficher le bon formulaire...
     #... en fonction de si le current_user est le owner du group ou le coach du cours
+    authorize @group
     @user = current_user
   end
 
