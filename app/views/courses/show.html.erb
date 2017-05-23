@@ -6,69 +6,76 @@
           <div class="text-center">
             <h1>Mon cours</h1>
             <hr>
-            </div>
-            <p><strong>Nom du cours:</strong> <%= @course.name %></p>
-            <p><strong>Sport:</strong> <%= @course.sport.name %></p>
-            <p><strong>Adresse:</strong> <%= @course.address %></p>
-            <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
-            <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
-            <p><strong>Détails:</strong> <%= @course.details %></p>
-
-            <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
-              <%= cl_image_tag @course.coach_photo.path, gravity: :face,
-                                                         width: 50,
-                                                         crop: :fill,
-                                                         radius: :max
-              %> <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
-              <% else %>
-              <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
-            <% end %>
-
-            <% if @course.coach&.first_name.present?  %>
-              <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
-            <% end %>
-
-
-            <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
-            <p><strong>Statut du cours:</strong> <% @course.status %></p>
-            <br>
-
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          </div>
+          <p><strong>Nom du cours:</strong> <%= @course.name %></p>
+          <p><strong>Sport:</strong> <%= @course.sport.name %></p>
+          <p><strong>Adresse:</strong> <%= @course.address %></p>
+          <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
+          <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
+          <p><strong>Détails:</strong> <%= @course.details %></p>
+          <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
+          <%= cl_image_tag @course.coach_photo.path, gravity: :face,
+          width: 50,
+          crop: :fill,
+          radius: :max
+          %> <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
+          <% else %>
+          <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
+          <% end %>
+          <% if @course.coach&.first_name.present?  %>
+          <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
+          <% end %>
+          <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
+          <p><strong>Statut du cours:</strong> <% @course.status %></p>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
               <div class="text-center">
-              <h2>Les séances</h2>
-              <% if policy(@course).edit? %>
+                <h3>Les séances</h3>
+                <% if policy(@course).edit? %>
                 <%= link_to "Ajouter une séance", new_group_course_slot_path(@group, @course), class: "btn btn-default btn-sm" %>
-              <% end %>
-              <% @course.slots.each do |slot| %>
-                <p><%= slot.date %></p>
-                <p><%= slot.start_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 -->
-                <p><%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche le end_at sous le format 14:06 -->
-                <p><%= slot.participants_min %></p>
-                <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
-                <% if policy(slot).edit? %>
-                  <%= link_to "Editer séance", edit_group_course_slot_path(@group, @course, slot), class: "btn btn-default btn-sm" %>
                 <% end %>
-              <% end %>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="wrapper-login">
+          <div class="row">
+            <% @course.slots.each do |slot| %>
+            <p><%= slot.date %></p>
+            <p><%= slot.start_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 -->
+            <p><%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche le end_at sous le format 14:06 -->
+            <p><%= slot.participants_min %></p>
+            <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+            <% if policy(slot).edit? %>
+            <%= link_to "Editer séance", edit_group_course_slot_path(@group, @course, slot) %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+          <div class="wrapper-login">
             <div class="row">
               <div class="col-xs-6">
                 <% if policy(@course).edit? %>
-                  <%= link_to "Editer le cours", edit_group_course_path(@group, @course), class: "btn btn-default btn-sm" %>
+                <%= link_to "Editer le cours", edit_group_course_path(@group, @course), class: "btn btn-default btn-sm" %>
                 <% end %>
               </div>
-
               <div class="col-xs-6">
                 <% if policy(@course).destroy? %>
-                  <%= link_to "Supprimer le cours", course_path(@course), method: "delete", class: "btn btn-default btn-sm" %>
+                <%= link_to "Supprimer le cours", course_path(@course), method: "delete", class: "btn btn-default btn-sm" %>
                 <% end %>
                 <br>
               </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
