@@ -7,10 +7,17 @@
     </div>
     <% @user.groups.sort.each do |group| %>
     <div class="row margin-cards">
+      <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-1 bordered">
+        <% group.courses.sort.each do |course| %>
+        <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
+        <p><%= course.name %></p>
+        <% end %>
+
       <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 bordered padded">
         <div class="bordered">
           <h2><%= group.name %></h2>
         </div>
+        <br>
         <% if policy(group).edit? %>
         <div class="btn btn-success">
           <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create"  %>
@@ -26,13 +33,9 @@
           <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete" %>
           <% end %>
         </div>
+        <br>
       </div>
     </div>
-    <br>
-    <% group.courses.sort.each do |course| %>
-    <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-    <p><%= course.name %></p>
-    <% end %>
     <% end %>
   </div>
 </div>
