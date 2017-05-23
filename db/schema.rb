@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522160058) do
-  
+ActiveRecord::Schema.define(version: 20170523110913) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,12 @@ ActiveRecord::Schema.define(version: 20170522160058) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.index ["course_id"], name: "index_slots_on_course_id", using: :btree
+  end
+
+  create_table "slots_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "slot_id", null: false
+    t.index ["user_id", "slot_id"], name: "index_slots_users_on_user_id_and_slot_id", using: :btree
   end
 
   create_table "sports", force: :cascade do |t|
