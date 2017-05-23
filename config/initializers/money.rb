@@ -47,7 +47,7 @@ MoneyRails.configure do |config|
   # Example:
   config.register_currency = {
   #   :priority            => 1,
-  #   :iso_code            => "EU4",
+    :iso_code            => "EU4",
   #   :name                => "Euro with subunit of 4 digits",
     :symbol              => "€",
     :symbol_first        => false, # on veut le symbole après le prix: 12€ et non €12
