@@ -10,8 +10,8 @@
 puts 'Cleaning database...'
 Slot.destroy_all
 Course.destroy_all
-User.destroy_all
 Group.destroy_all
+User.destroy_all
 Coach.destroy_all
 Sport.destroy_all
 
@@ -20,30 +20,22 @@ puts 'Creating users, groups, coaches, courses, slots and sports...'
 
 # SPORT SEEDS
 
-    sport1 = Sport.create!(name: "YOGA")
-    sport1.icon_url = "icons/yoga_icon.png"
-    sport2 = Sport.create!(name: "PILATES")
-    sport2.icon_url = "icons/pilates_icon.png"
-    sport3 = Sport.create!(name: "FITNESS")
-    sport3.icon_url = "icons/fitness_icon.png"
-    sport4 = Sport.create!(name: "STRETCHING")
-    sport4.icon_url = "icons/stretching_icon.png"
-    sport5 = Sport.create!(name: "DANSE")
-    sport5.icon_url = "icons/danse_icon.png"
-    sport6 = Sport.create!(name: "ART MARTIAL")
-    sport6.icon_url = "icons/art_martial_icon.png"
-    sport7 = Sport.create!(name: "REMISE EN FORME")
-    sport7.icon_url = "icons/remise_en_forme_icon.png"
-    sport8 = Sport.create!(name: "CHALLENGE")
-    sport8.icon_url = "icons/challenge_icon.png"
-    sport9 = Sport.create!(name: "RUNNING")
-    sport9.icon_url = "icons/running_icon.png"
-    sport10 = Sport.create!(name: "PISCINE")
-    sport10.icon_url = "icons/piscine_icon.png"
-    sport11 = Sport.create!(name: "RAQUETTES")
-    sport11.icon_url = "icons/raquettes_icon.png"
-    sport12 = Sport.create!(name: "SPORTS CO")
-    sport12.icon_url = "icons/sports_co_icon.png"
+def open_icon(filename)
+  File.open(Rails.root.join("db", "icons", filename))
+end
+
+sport1 = Sport.create!(name: "YOGA", icon: open_icon("yoga_icon.png"))
+sport2 = Sport.create!(name: "PILATES", icon: open_icon("pilates_icon.png"))
+sport3 = Sport.create!(name: "FITNESS", icon: open_icon("fitness_icon.png"))
+sport4 = Sport.create!(name: "STRETCHING", icon: open_icon("stretching_icon.png"))
+sport5 = Sport.create!(name: "DANSE", icon: open_icon("danse_icon.png"))
+sport6 = Sport.create!(name: "ART MARTIAL", icon: open_icon("art_martial_icon.png"))
+sport7 = Sport.create!(name: "REMISE EN FORME", icon: open_icon("remise_en_forme_icon.png"))
+sport8 = Sport.create!(name: "CHALLENGE", icon: open_icon("challenge_icon.png"))
+sport9 = Sport.create!(name: "RUNNING", icon: open_icon("running_icon.png"))
+sport10 = Sport.create!(name: "PISCINE", icon: open_icon("piscine_icon.png"))
+sport11 = Sport.create!(name: "RAQUETTES", icon: open_icon("raquettes_icon.png"))
+sport12 = Sport.create!(name: "SPORTS CO", icon: open_icon("sports_co_icon.png"))
 
 puts "#{Sport.count} sports created"
 
@@ -59,68 +51,63 @@ puts "#{Coach.count} coaches created"
 
 # USER SEEDS
 
-  user1 = User.create!(first_name: "Ariane",
-                      last_name: "PHELIZOT",
-                      email: "ariane.phelizot@gmail.com",
-                      password: "azerty",
-                      phone_number: "0613990061"
-                      )
-
-  user2 = User.create!(first_name: "Cherine",
-                    last_name: "ELFADEL",
-                    email: "cherineelf@gmail.com",
+user1 = User.create!(first_name: "Ariane",
+                    last_name: "PHELIZOT",
+                    email: "ariane.phelizot@gmail.com",
                     password: "azerty",
-                    phone_number: "0671991204"
+                    phone_number: "0613990061"
                     )
 
-  user3 = User.create!(first_name: "Faustin",
-                      last_name: "VEYSSIERE",
-                      email: "faustin.veyssiere@gmail.com",
-                      password: "azerty",
-                      phone_number: "0782095662"
-                      )
+user2 = User.create!(first_name: "Cherine",
+                  last_name: "ELFADEL",
+                  email: "cherineelf@gmail.com",
+                  password: "azerty",
+                  phone_number: "0671991204"
+                  )
 
-  user4 = User.create!(first_name: "Guillaume",
-                      last_name: "JAUFFRET",
-                      email: "guillaume.jauffret@gmail.com",
-                      password: "azerty",
-                      phone_number: "0665647375"
-                    )
-  user5 = User.create!(first_name: "Isabelle",
-                      last_name: "YVAS",
-                      email: "isabelle.ivas@gmail.com",
-                      password: "azerty",
-                      phone_number: "0601020304",
-                      # coach_id: coach1.id
+user3 = User.create!(first_name: "Faustin",
+                    last_name: "VEYSSIERE",
+                    email: "faustin.veyssiere@gmail.com",
+                    password: "azerty",
+                    phone_number: "0782095662"
                     )
 
-  user6 = User.create!( first_name: "Veronica",
-                        last_name: "OBAMA",
-                        email: "veronica.obama@gmail.com",
-                        password: "azerty",
-                        phone_number: "0613990061",
-                        # coach_id: coach2.id
-                    )
+user4 = User.create!(first_name: "Guillaume",
+                    last_name: "JAUFFRET",
+                    email: "guillaume.jauffret@gmail.com",
+                    password: "azerty",
+                    phone_number: "0665647375"
+                  )
+user5 = User.create!(first_name: "Isabelle",
+                    last_name: "YVAS",
+                    email: "isabelle.ivas@gmail.com",
+                    password: "azerty",
+                    phone_number: "0601020304",
+                    coach: coach1
+                  )
 
-  user7 = User.create!( first_name: "Mathieu",
-                      last_name: "BONFILS",
-                      email: "mathieu.bonfils@gmail.com",
+user6 = User.create!( first_name: "Veronica",
+                      last_name: "OBAMA",
+                      email: "veronica.obama@gmail.com",
                       password: "azerty",
-                      phone_number: "0616741821",
-                      # coach_id: coach3.id
-                    )
+                      phone_number: "0613990061",
+                      coach: coach2
+                  )
+
+user7 = User.create!( first_name: "Mathieu",
+                    last_name: "BONFILS",
+                    email: "mathieu.bonfils@gmail.com",
+                    password: "azerty",
+                    phone_number: "0616741821",
+                    coach: coach3
+                  )
 
 puts "#{User.count} users created"
 
 puts "Associating users and coaches"
 
-coach1.user = user5
-coach2.user = user6
-coach3.user = user7
-
 
 # GROUPS SEEDS
-
 
 group1 = Group.create!(owner_id: user1.id, name: "Les petites cerises")
 group2 = Group.create!(owner_id: user2.id, name: "Les grosses fraises")
@@ -128,8 +115,8 @@ group3 = Group.create!(owner_id: user2.id, name: "Les jeunes courgettes")
 
 puts "#{Group.count} groups created"
 
-# COURSES SEEDS
 
+# COURSES SEEDS
 
 course1 = Course.create!(name: "Yoga Hatha",
                         content: "Niveau Débutant - Un yoga postural accessible à tous, pour se sentir bien dans son corps et dans sa tête. Chaque posture doit se tenir 3 minutes. Chaque séance finit par 10 minutes de méditation ",
