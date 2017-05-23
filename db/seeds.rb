@@ -15,7 +15,7 @@ User.destroy_all
 Coach.destroy_all
 Sport.destroy_all
 
-puts 'Creating users, groups, coaches, courses, slots and sports...'
+puts 'Creating users, groups, coaches, courses and sports...'
 
 
 # SPORT SEEDS
@@ -40,7 +40,12 @@ sport12 = Sport.create!(name: "SPORTS CO", icon: open_icon("sports_co_icon.png")
 puts "#{Sport.count} sports created"
 
 
+## Following seed must only be run in development environment
+exit(0) unless Rails.env.development?
+
+
 # COACH SEEDS
+
 
 coach1 = Coach.create!(description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion")
 coach2 = Coach.create!(description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés")
@@ -220,3 +225,4 @@ puts "#{Course.count} courses created"
 #                     )
 
 # puts "#{Slot.count} slots created"
+
