@@ -5,40 +5,29 @@
       <%= link_to "Ajouter un nouveau groupe", new_group_path  %>
       <% end %>
     </div>
-    <% @user.groups.sort.each do |group| %>
-    <div class="row margin-cards">
-      <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 bordered">
+    <div class="row margin-cards">row
+      <% @user.groups.sort.each do |group| %>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1 padded bordered">
+        <h2 class="bordered"><%= group.name %></h2>
         <% group.courses.sort.each do |course| %>
-        <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-        <p><%= course.name %></p>
-        <% end %>
-      </div>
-      <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 bordered padded">
-        <div class="bordered">
-          <h2><%= group.name %></h2>
-        </div>
-        <br>
-        <% if policy(group).edit? %>
-        <div class="btn btn-success">
-          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create"  %>
-          <% end %>
-        </div>
-        <% if policy(group).edit? %>
-        <div class="btn btn-primary bordered margin-buttons">
-          <%= link_to "Editer", edit_group_path(group), class:"edit" %>
-          <% end %>
-        </div>
-        <% if policy(group).destroy? %>
-        <div class="btn btn-danger bordered">
-          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete" %>
-          <% end %>
-        </div>
-        <br>
-        <% group.courses.sort.each do |course| %>
+        <div class="col-xs-3 padded bordered">
           <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-          <p><%= link_to course.name, course_path(course) %></p>
+          <p><%= course.name %></p>
+        </div>
         <% end %>
+        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-12 padding-bottom">
+          <% if policy(group).edit? %>
+          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create btn btn-success"  %>
+          <% end %>
+          <% if policy(group).edit? %>
+          <%= link_to "Editer", edit_group_path(group), class:"edit btn btn-primary" %>
+          <% end %>
+          <% if policy(group).destroy? %>
+          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
