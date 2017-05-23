@@ -7,24 +7,33 @@
             <h1>Mon cours</h1>
             <hr>
           </div>
-          <p><strong>Nom du cours:</strong> <%= @course.name %></p>
-          <p><strong>Sport:</strong> <%= @course.sport.name %></p>
-          <p><strong>Adresse:</strong> <%= @course.address %></p>
-          <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
-          <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
-          <p><strong>Détails:</strong> <%= @course.details %></p>
-          <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
-          <%= cl_image_tag @course.coach_photo.path, gravity: :face,
-          width: 50,
-          crop: :fill,
-          radius: :max
-          %> <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
-          <% else %>
-          <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
-          <% end %>
-          <% if @course.coach&.first_name.present?  %>
-          <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
-          <% end %>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <p><strong>Nom du cours:</strong> <%= @course.name %></p>
+              <p><strong>Sport:</strong> <%= @course.sport.name %></p>
+              <p><strong>Adresse:</strong> <%= @course.address %></p>
+              <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
+              <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
+              <p><strong>Détails:</strong> <%= @course.details %></p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <h1>hello</h1>
+              <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
+                <%= cl_image_tag @course.coach_photo.path, gravity: :face,
+              width: 50,
+              crop: :fill,
+              radius: :max %> <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
+              <% else %>
+                <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
+              <% end %>
+
+              <% if @course.coach&.first_name.present?  %>
+                <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
+              <% end %>
+            </div>
+          </div>
+
           <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
           <p><strong>Statut du cours:</strong> <% @course.status %></p>
           <div class="row">
