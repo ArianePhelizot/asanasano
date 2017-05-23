@@ -12,9 +12,8 @@ class Sport < ApplicationRecord
   has_attachment :photo
   has_attachment :icon
   has_and_belongs_to_many :coaches
-  has_many :courses
+  has_many :courses, dependent: :nullify
 
   validates :name, presence: true
-  # validates :photo, :icon, presence: true
-
+  validates :icon, presence: true
 end

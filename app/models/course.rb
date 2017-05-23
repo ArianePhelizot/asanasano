@@ -30,7 +30,7 @@ class Course < ApplicationRecord
   belongs_to :group
   belongs_to :coach
   belongs_to :sport
-  has_many :slots
+  has_many :slots, dependent: :nullify
 
   enum status: [ :draft, :active, :archived ]
 
