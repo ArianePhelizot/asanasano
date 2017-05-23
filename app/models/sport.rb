@@ -14,7 +14,7 @@ class Sport < ApplicationRecord
   has_and_belongs_to_many :coaches
   has_many :courses
 
-  validates :name, :photo, :icon, presence: true
+  # validates :name, :photo, :icon, presence: true
   validates :description, length: { maximum: 500 }
 
 end
