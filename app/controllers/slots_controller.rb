@@ -41,7 +41,7 @@ class SlotsController < ApplicationController
   end
 
   def find_course
-    @course = course.find(params[:course_id])
+    @course = Course.find(params[:course_id])
   end
 
   def find_slot
