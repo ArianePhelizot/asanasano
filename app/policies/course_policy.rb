@@ -17,6 +17,11 @@ class CoursePolicy < ApplicationPolicy
     user_is_group_owner?
   end
 
+  def show
+    # TO DO: check if user is member of the group
+    true
+  end
+
   # on teste ici si le user est le créateur du group.
   def user_is_group_owner?
     record.group.owner == user

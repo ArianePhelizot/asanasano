@@ -1,0 +1,9 @@
+<%= simple_form_for [@course, @slot] do |f| %>
+  <%= f.date_select :date, start_year: Date.today.year,
+                           end_year: Date.today.year + 10, discard_day: false %> <!-- pour ne pouvoir sélectionner que les années de l'année en cours à +10 ans -->
+  <%= f.time_select :start_at, value: @slot.start_at.to_time %>
+  <%= f.time_select :end_at, value: @slot.end_at.to_time %>
+  <%= f.input :participants_min %>
+  <%= f.input :price %>
+  <%= f.button :submit %>
+<% end %>
