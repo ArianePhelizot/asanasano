@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   before_action :find_course, only: [:show, :edit, :update, :destroy]
 
   def show
+    @group = @course.group
   end
 
   def new
