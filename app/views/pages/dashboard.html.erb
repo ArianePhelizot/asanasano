@@ -16,34 +16,23 @@
           <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create"  %>
           <% end %>
         </div>
-
         <% if policy(group).edit? %>
-<<<<<<< HEAD
         <div class="btn btn-primary bordered margin-buttons">
           <%= link_to "Editer", edit_group_path(group), class:"edit" %>
           <% end %>
         </div>
         <% if policy(group).destroy? %>
-
         <div class="btn btn-danger bordered">
           <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete" %>
           <% end %>
         </div>
-
-
-
       </div>
-=======
-          <%= link_to "Créer un nouveau cours", new_group_course_path(group)  %>
-        <% end %>
-        <br>
-        <% group.courses.sort.each do |course| %>
-          <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-          <p><%= course.name %></p>
-        <% end %>
-      <% end %>
->>>>>>> master
     </div>
+    <br>
+    <% group.courses.sort.each do |course| %>
+    <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
+    <p><%= course.name %></p>
+    <% end %>
     <% end %>
   </div>
 </div>
