@@ -34,15 +34,10 @@
           <% end %>
         </div>
         <br>
-<<<<<<< HEAD
-      </div>
-=======
         <% group.courses.sort.each do |course| %>
           <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
           <p><%= link_to course.name, course_path(course) %></p>
         <% end %>
-      <% end %>
->>>>>>> 5b52cc516129b1ceef87037ad5cd6451182bb6a5
     </div>
     <% end %>
   </div>
