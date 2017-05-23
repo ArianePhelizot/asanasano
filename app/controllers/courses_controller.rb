@@ -30,12 +30,10 @@ class CoursesController < ApplicationController
   def edit
     # On donne ici le current_user à la vue de #edit pour afficher le bon formulaire...
     #... en fonction de si le current_user est le owner du group ou le coach du cours
-    authorize @group
     @user = current_user
   end
 
   def update
-    authorize @course # check authorization before update
     if @course.update(course_params)
       redirect_to course_path(@course)
     else
@@ -44,7 +42,6 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    authorize @course # check authorization before destroy
     group = @course.group
     @course.destroy
     redirect_to group_path(group)
@@ -69,5 +66,6 @@ class CoursesController < ApplicationController
 
   def find_course
     @course = Course.find(params[:id])
+    authorize @course
   end
 end

@@ -36,7 +36,7 @@ class SlotsController < ApplicationController
     params.require(:slot).permit(:participants_min,
                                  :date,
                                  :start_at,
-                                 :end_at
+                                 :end_at,
                                  :price)
   end
 

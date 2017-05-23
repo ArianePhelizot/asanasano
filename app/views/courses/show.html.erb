@@ -31,7 +31,7 @@
       <% end %>
       <br>
       <h2>Les séances</h2>
-      <% if policy(@group).new? %>
+      <% if policy(@course).edit? %>
         <%= link_to "Ajouter une séance", new_group_course_slot_path(@group, @course) %>
       <% end %>
       <% @course.slots.each do |slot| %>
