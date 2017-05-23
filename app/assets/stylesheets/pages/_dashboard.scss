@@ -1,16 +1,27 @@
 .container-dashboard {
-  margin-bottom: 100px;
+margin-bottom: 100px;
 }
-
 .margin-button-ajouter {
-  margin-top: 50px;
-  margin-bottom: 70px;
+margin-top: 50px;
+margin-bottom: 70px;
 }
-
 .margin-cards {
-  margin-bottom: 30px;
+margin-bottom: 30px;
+color: white;
+}
+.bordered {
+margin-top: 1px;
+}
+.edit {
+color: white;
+}
+.create {
+color: white
+}
+.delete {
+color: white
 }
 
-.bordered {
-  margin-top: 1px;
+.margin-buttons {
+  margin: 20px;
 }
