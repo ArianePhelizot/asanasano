@@ -15,9 +15,35 @@ Course.destroy_all
 Slot.destroy_all
 Sport.destroy_all
 
-
-
 puts 'Creating users, groups, coaches, courses, slots and sports...'
+
+
+#Sports seeds
+
+SPORT = ["YOGA", "PILATES", "FITNESS", "STRETCHING", "DANSE", "ART MARTIAL", "REMISE EN FORME", "CHALLENGE", "RUNNING", "PISCINE", "RAQUETTES", "SPORTS CO"]
+SPORT.each do |sport|
+    Sport.create!({name: sport})
+ end
+
+puts "#{Sport.count} sports created"
+
+
+#Coaches seeds
+
+coaches_attributes = [
+  {
+    description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion"
+  },
+  {
+    description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J'accompagne aussi bien débutants que confirmés"
+  },
+  {
+    description: "Couteau suisse, fan de sport"
+  }
+]
+
+Coach.create!(coaches_attributes)
+puts "#{Coach.count} coaches created"
 
 
 # Users seeds
@@ -57,7 +83,7 @@ users_attributes = [
     email: "isabelle.ivas@gmail.com",
     password: "azerty",
     phone_number: "0601020304",
-    # coach_id: 2
+    coach_id: User.last.id + 2
   },
   {
     first_name: "Veronica",
@@ -65,7 +91,7 @@ users_attributes = [
     email: "veronica.obama@gmail.com",
     password: "azerty",
     phone_number: "0613990061",
-    # coach_id: 1
+    coach_id: User.last.id + 1
   },
   {
     first_name: "Mathieu",
@@ -73,7 +99,7 @@ users_attributes = [
     email: "mathieu.bonfils@gmail.com",
     password: "azerty",
     phone_number: "0616741821",
-    # coach_id: 3
+    coach_id: User.last.id + 3
   }
 ]
 
@@ -81,49 +107,23 @@ User.create!(users_attributes)
 puts "#{User.count} users created"
 
 
-#Coaches seeds
-
-coaches_attributes = [
-  {
-    description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion"
-  },
-  {
-    description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J'accompagne aussi bien débutants que confirmés"
-  },
-  {
-    description: "Couteau suisse, fan de sport"
-  }
-]
-
-Coach.create!(coaches_attributes)
-puts "#{Coach.count} coaches created"
-
-#Sports seeds
-
-SPORT = ["YOGA", "PILATES", "FITNESS", "STRETCHING", "DANSE", "ART MARTIAL", "REMISE EN FORME", "CHALLENGE", "RUNNING", "PISCINE", "RAQUETTES", "SPORTS CO"]
-SPORT.each do |sport|
-    Sport.create!({name: sport})
- end
-
-puts "#{Sport.count} sports created"
-
 
 # Groups seeds
 
-groups_attributes = [
-  {
-    owner_id: 1,
-    name: "Les petites cerises"
-  },
-  {
-    owner_id: 2,
-    name: "Les grosses fraises"
-  },
-  {
-    owner_id: 2,
-    name: "Les jeunes courgettes"
-  }
-]
+# groups_attributes = [
+#   {
+#     owner_id: 1,
+#     name: "Les petites cerises"
+#   },
+#   {
+#     owner_id: 2,
+#     name: "Les grosses fraises"
+#   },
+#   {
+#     owner_id: 2,
+#     name: "Les jeunes courgettes"
+#   }
+# ]
 
 # Group.create!(groups_attributes)
 # puts "#{Group.count} groups created"
@@ -191,7 +191,6 @@ groups_attributes = [
 #     coach_id: 3,
 #     sport_id: 6,
 #   }
-#  ]
-
+#
 # Course.create!(courses_attributes)
 # puts "#{Course.count} courses created"
