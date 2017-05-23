@@ -18,25 +18,37 @@ Sport.destroy_all
 puts 'Creating users, groups, coaches, courses, slots and sports...'
 
 
-#Sports seeds
+# SPORT SEEDS
 
     sport1 = Sport.create!(name: "YOGA")
+    sport1.icon_url = "icons/yoga_icon.png"
     sport2 = Sport.create!(name: "PILATES")
+    sport2.icon_url = "icons/pilates_icon.png"
     sport3 = Sport.create!(name: "FITNESS")
+    sport3.icon_url = "icons/fitness_icon.png"
     sport4 = Sport.create!(name: "STRETCHING")
+    sport4.icon_url = "icons/stretching_icon.png"
     sport5 = Sport.create!(name: "DANSE")
+    sport5.icon_url = "icons/danse_icon.png"
     sport6 = Sport.create!(name: "ART MARTIAL")
+    sport6.icon_url = "icons/art_martial_icon.png"
     sport7 = Sport.create!(name: "REMISE EN FORME")
+    sport7.icon_url = "icons/remise_en_forme_icon.png"
     sport8 = Sport.create!(name: "CHALLENGE")
+    sport8.icon_url = "icons/challenge_icon.png"
     sport9 = Sport.create!(name: "RUNNING")
+    sport9.icon_url = "icons/running_icon.png"
     sport10 = Sport.create!(name: "PISCINE")
+    sport10.icon_url = "icons/piscine_icon.png"
     sport11 = Sport.create!(name: "RAQUETTES")
+    sport11.icon_url = "icons/raquettes_icon.png"
     sport12 = Sport.create!(name: "SPORTS CO")
+    sport12.icon_url = "icons/sports_co_icon.png"
 
 puts "#{Sport.count} sports created"
 
 
-#Coaches seeds
+# COACH SEEDS
 
 coach1 = Coach.create!(description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion")
 coach2 = Coach.create!(description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés")
@@ -45,7 +57,7 @@ coach3 = Coach.create!(description: "Couteau suisse, fan de sport")
 puts "#{Coach.count} coaches created"
 
 
-# Users seeds
+# USER SEEDS
 
   user1 = User.create!(first_name: "Ariane",
                       last_name: "PHELIZOT",
@@ -79,7 +91,7 @@ puts "#{Coach.count} coaches created"
                       email: "isabelle.ivas@gmail.com",
                       password: "azerty",
                       phone_number: "0601020304",
-                      coach_id: coach1.id
+                      # coach_id: coach1.id
                     )
 
   user6 = User.create!( first_name: "Veronica",
@@ -87,7 +99,7 @@ puts "#{Coach.count} coaches created"
                         email: "veronica.obama@gmail.com",
                         password: "azerty",
                         phone_number: "0613990061",
-                        coach_id: coach2.id
+                        # coach_id: coach2.id
                     )
 
   user7 = User.create!( first_name: "Mathieu",
@@ -95,14 +107,19 @@ puts "#{Coach.count} coaches created"
                       email: "mathieu.bonfils@gmail.com",
                       password: "azerty",
                       phone_number: "0616741821",
-                      coach_id: coach3.id
+                      # coach_id: coach3.id
                     )
 
 puts "#{User.count} users created"
 
+puts "Associating users and coaches"
+
+coach1.user = user5
+coach2.user = user6
+coach3.user = user7
 
 
-# Groups seeds
+# GROUPS SEEDS
 
 
 group1 = Group.create!(owner_id: user1.id, name: "Les petites cerises")
@@ -111,7 +128,7 @@ group3 = Group.create!(owner_id: user2.id, name: "Les jeunes courgettes")
 
 puts "#{Group.count} groups created"
 
-#Courses seeds
+# COURSES SEEDS
 
 
 course1 = Course.create!(name: "Yoga Hatha",
@@ -163,7 +180,7 @@ course4 = Course.create!(name: "Tai Chi Chuan",
 puts "#{Course.count} courses created"
 
 
-#Slot seeds
+# SLOT SEEDS
 
 # slot1 = Slot.create!(date:
 #                     start_at:
