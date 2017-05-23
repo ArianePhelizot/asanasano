@@ -30,80 +30,63 @@ puts "#{Sport.count} sports created"
 
 #Coaches seeds
 
-coaches_attributes = [
-  {
-    description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion"
-  },
-  {
-    description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J'accompagne aussi bien débutants que confirmés"
-  },
-  {
-    description: "Couteau suisse, fan de sport"
-  }
-]
+coach1 = Coach.create!(description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion")
+coach2 = Coach.create!(description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés")
+coach3 = Coach.create!(description: "Couteau suisse, fan de sport")
 
-Coach.create!(coaches_attributes)
 puts "#{Coach.count} coaches created"
 
 
 # Users seeds
 
-users_attributes = [
-  {
-    first_name: "Ariane",
-    last_name: "PHELIZOT",
-    email: "ariane.phelizot@gmail.com",
-    password: "azerty",
-    phone_number: "0613990061"
-  },
-  {
-    first_name: "Cherine",
-    last_name: "ELFADEL",
-    email: "cherineelf@gmail.com",
-    password: "azerty",
-    phone_number: "0671991204"
-  },
-  {
-    first_name: "Faustin",
-    last_name: "VEYSSIERE",
-    email: "faustin.veyssiere@gmail.com",
-    password: "azerty",
-    phone_number: "0782095662"
-  },
-  {
-    first_name: "Guillaume",
-    last_name: "JAUFFRET",
-    email: "guillaume.jauffret@gmail.com",
-    password: "azerty",
-    phone_number: "0665647375"
-  },
-  {
-    first_name: "Isabelle",
-    last_name: "YVAS",
-    email: "isabelle.ivas@gmail.com",
-    password: "azerty",
-    phone_number: "0601020304",
-    coach_id: User.last.id + 2
-  },
-  {
-    first_name: "Veronica",
-    last_name: "OBAMA",
-    email: "veronica.obama@gmail.com",
-    password: "azerty",
-    phone_number: "0613990061",
-    coach_id: User.last.id + 1
-  },
-  {
-    first_name: "Mathieu",
-    last_name: "BONFILS",
-    email: "mathieu.bonfils@gmail.com",
-    password: "azerty",
-    phone_number: "0616741821",
-    coach_id: User.last.id + 3
-  }
-]
+user1 = User.create!(first_name: "Ariane",
+                    last_name: "PHELIZOT",
+                    email: "ariane.phelizot@gmail.com",
+                    password: "azerty",
+                    phone_number: "0613990061"
+                    )
 
-User.create!(users_attributes)
+  user1 = User.create!(first_name: "Cherine",
+                    last_name: "ELFADEL",
+                    email: "cherineelf@gmail.com",
+                    password: "azerty",
+                    phone_number: "0671991204"
+                    )
+
+  user1 = User.create!(first_name: "Faustin",
+                      last_name: "VEYSSIERE",
+                      email: "faustin.veyssiere@gmail.com",
+                      password: "azerty",
+                      phone_number: "0782095662"
+                      )
+
+  user1 = User.create!(first_name: "Guillaume",
+                      last_name: "JAUFFRET",
+                      email: "guillaume.jauffret@gmail.com",
+                      password: "azerty",
+                      phone_number: "0665647375"
+                    )
+  user1 = User.create!(first_name: "Isabelle",
+                      last_name: "YVAS",
+                      email: "isabelle.ivas@gmail.com",
+                      password: "azerty",
+                      phone_number: "0601020304"
+                    )
+
+  user1 = User.create!( first_name: "Veronica",
+                        last_name: "OBAMA",
+                        email: "veronica.obama@gmail.com",
+                        password: "azerty",
+                        phone_number: "0613990061"
+                    )
+
+  user1 = User.create!( first_name: "Mathieu",
+                      last_name: "BONFILS",
+                      email: "mathieu.bonfils@gmail.com",
+                      password: "azerty",
+                      phone_number: "0616741821"
+                    )
+
 puts "#{User.count} users created"
 
 
