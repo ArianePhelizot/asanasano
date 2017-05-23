@@ -15,6 +15,6 @@ class Sport < ApplicationRecord
   has_many :courses, dependent: :nullify
 
   validates :name, presence: true
-  # validates :icon, presence: true
+  validates :icon, presence: true
 
 end
