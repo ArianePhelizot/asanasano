@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
   def destroy
     group = @course.group
     @course.destroy
-    redirect_to group_path(group)
+    redirect_to dashboard_path
   end
 
   private
