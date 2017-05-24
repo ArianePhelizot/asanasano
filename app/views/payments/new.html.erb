@@ -10,7 +10,7 @@
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-name="Ma séance"
     data-email="<%= current_user.email %>"
-    data-description="Séance <%= @order.slot %>"
+    data-description="Séance <%= @order.slot.course.name %>"
     data-amount="<%= @order.amount_cents %>"
     data-currency="<%= @order.amount.currency %>"></script>
 
