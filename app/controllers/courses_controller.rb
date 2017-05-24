@@ -41,6 +41,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  def publish
+  end
+
+
   def destroy
     group = @course.group
     @course.destroy
