@@ -89,6 +89,12 @@
               <%= link_to "Editer le cours", edit_group_course_path(@group, @course), class: "btn btn-courses btn-sm" %>
               <% end %>
             </div>
+         <!--    <div class="col-xs-4">
+              <% if policy(@course).edi? %>
+              <%= link_to "Publier le cours",  , class: "btn btn-courses btn-sm" %>
+              <% end %>
+              <br>
+            </div> -->
             <div class="col-xs-6">
               <% if policy(@course).destroy? %>
               <%= link_to "Supprimer le cours", course_path(@course), method: "delete", class: "btn btn-courses btn-sm" %>
