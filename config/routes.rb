@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       resources :slots, only: [:new, :create, :edit, :update]
     end
   end
+
   resources :courses, only: [:show, :destroy] # on n'a pas besoin de group_id pour show ou destroy un course
+
   get 'dashboard', to: 'pages#dashboard'
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 end

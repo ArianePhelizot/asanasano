@@ -43,6 +43,10 @@
         <% if policy(slot).edit? %>
           <%= link_to "Editer séance", edit_group_course_slot_path(@group, @course, slot) %>
         <% end %>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'slot_id', @slot.id %>
+          <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+        <% end %>
       <% end %>
     </div>
   </div>
