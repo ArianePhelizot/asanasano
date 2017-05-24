@@ -37,4 +37,8 @@ class Course < ApplicationRecord
   validates :name, :address, :capacity_max, :group_id, :sport_id, presence: true
   validates :content, :meeting_point, :details, length: { maximum: 300 }
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 0..500}
+
+  def sorted_slots
+    slots.sort_by(&:date)
+  end
 end
