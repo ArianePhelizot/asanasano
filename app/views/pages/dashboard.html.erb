@@ -1,33 +1,41 @@
-<div class="container-dashboard">
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-2 col-lg-offset-2 bordered margin-button-ajouter text-center">
-      <% if policy(Group).new? %>
-      <%= link_to "Ajouter un nouveau groupe", new_group_path  %>
-      <% end %>
+<div href="dashboard-background-container" class="dashboard-bg-container">
+  <div class="row" href="add_a_group_button_row">
+    <div class="col-xs-offset-2 col-sm-6 col-md-12 col-sm-offset-2 col-lg-6 col-lg-offset-1">
+      <div class="add_a_group_button" href="add_a_group_button">
+        <% if policy(Group).new? %>
+        <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"add-a-group-button btn btn-success" %>
+        <% end %>
+      </div>
     </div>
-    <div class="row margin-cards">row
-      <% @user.groups.sort.each do |group| %>
-      <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1 padded bordered">
-        <h2 class="bordered"><%= group.name %></h2>
+  </div>
+  <% @user.groups.sort.each do |group| %>
+  <div class="row bordered">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1" href="group-cards">
+      <div class="">
+        <div class="group-title" href="group-title">
+          <%= group.name%>
+        </div>
         <% group.courses.sort.each do |course| %>
-        <div class="col-xs-3 padded bordered">
-          <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-          <p><%= course.name %></p>
+        <div class="col-sm-6 col-md-4 col-lg-3" href="course-cards">
+          <div class="card-courses-layout" href="course-cards">
+            <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
+            <p><%= course.name %></p>
+          </div>
         </div>
         <% end %>
-        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-12 padding-bottom">
+        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-12" href="create-edit-delete">
           <% if policy(group).edit? %>
-          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create btn btn-success"  %>
+          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
           <% end %>
           <% if policy(group).edit? %>
-          <%= link_to "Editer", edit_group_path(group), class:"edit btn btn-primary" %>
+          <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
           <% end %>
           <% if policy(group).destroy? %>
-          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete btn btn-danger" %>
+          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
           <% end %>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
+  <% end %>
 </div>

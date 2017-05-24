@@ -1,35 +1,82 @@
-.container-dashboard {
-margin-bottom: 100px;
-}
-.margin-button-ajouter {
-margin-top: 50px;
-margin-bottom: 70px;
-}
-.margin-cards {
-margin-bottom: 30px;
-color: black;
-}
-.bordered {
-margin-top: 1px;
-}
-.edit {
+// DASHBOARD BACKGROUND CONTAINER //
+.dashboard-bg-container {
+background-color: white;
+padding-bottom: 100px;
+padding-top: 50px;
+border:solid black 1px;
 color: white;
 }
-.create {
-color: white
+
+// .groups-container {
+//   border: solid black 1px;
+// }
+// MARGIN //
+// Buttons (small,medium and big):
+.margin-small-buttons {
+margin: 10px;
 }
-.delete {
-color: white
+.margin-medium-buttons {
+margin: 10px;
+}
+.margin-big-buttons {
+margin: 20px;
+}
+//
+// Div & others:
+.small-margin {
+margin: 10px;
+}
+.medium-margin {
+margin:20px;
+}
+.big-margin {
+margin: 30px;
+}
+//
+// PADDING //
+// Buttons padding:
+.buttons-padding {
+padding: 10px;
+}
+//
+// CARDS (courses) //
+// Cards layout:
+.card-courses-layout {
+border: solid $blue 1px;
+color: $blue;
+margin-bottom: 30px;
+}
+//
+
+// BUTTONS //
+.create-button {
+
+}
+.edit-button {
+
+color: white;
+padding: 10px 15px;
+border-radius: 4px;
+font-weight: bold;
+background: grey;
+transition: background 0.3s ease;
+}
+.delete-button {
+
+}
+.add-a-group-button {
+  margin-bottom: 40px;
+}
+//
+
+.bordered {
+border: solid grey 1px;
 }
 
-.margin-buttons {
-  margin: 20px;
-}
-
-.margin-bottom {
-  margin-bottom: 10px;
-}
-
-.padding-bottom {
-  padding-top: 30px;
+.group-title {
+  color: black;
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
