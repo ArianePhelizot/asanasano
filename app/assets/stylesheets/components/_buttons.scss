@@ -46,6 +46,19 @@
   color: white;
 }
 
+.btn-courses {
+  color: white;
+  border: 2px solid white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
 
-
+.btn-courses:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
 
