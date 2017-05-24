@@ -1,15 +1,15 @@
 // formulaire color
 .wrapper-login {
-  background-color: rgba(white, 0.6);
+  background-color: rgba(white, 0.6); //rgba(white, 0.6);
   padding: 20px;
   margin-top: 20px;
+  @include box-shadow(#9E9E9E 2px 2px 20px);
 }
 
 // background image + formulaire content
 
 .wrapper-devise-form {
-  //background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  background-image: url("bg-form2.jpg");
+  background: #F3F3F3;
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 30px;
@@ -25,6 +25,14 @@
     font-variant: small-caps;
     text-transform: lowercase;
     font-weight: 400;
+  }
+
+  h3 {
+
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-variant: small-caps;
+    text-transform: lowercase;
   }
 
   .btn {
