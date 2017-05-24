@@ -2,9 +2,13 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.
+    # la méthode authorize s'exécute dans le fichier (payment_policy.rb)
+    authorize @order
   end
 
   def create
+    authorize @order
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]

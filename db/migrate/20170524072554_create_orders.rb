@@ -1,8 +1,8 @@
 class CreateOrders < ActiveRecord::Migration[5.0]
   def change
     create_table :orders do |t|
-      t.string :state
-      t.string :slot_sku
+      t.integer :state
+      t.references :slot
       t.monetize :amount, currency: { present: false }
       t.json :payment
 

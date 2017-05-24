@@ -58,7 +58,7 @@
               <div class="col-xs-6 price-slot">
                 <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
                 <%= form_tag orders_path do %>
-                  <%= hidden_field_tag 'slot_id', @slot.id %>
+                  <%= hidden_field_tag 'slot_id', slot.id %>
                   <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
                 <% end %>
               </div>

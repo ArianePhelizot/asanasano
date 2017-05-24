@@ -5,8 +5,12 @@ class OrdersController < ApplicationController
 
   def create
     @slot = Slot.find(params[:slot_id])
-    order  = Order.create!(slot_sku: @slot.sku, amount: @slot.price, state: 'pending')
-
-    redirect_to new_order_payment_path(order)
+    order  = Order.new(slot: @slot, amount: @slot.price, state: :pending)
+    authorize order
+    if order.save
+      redirect_to new_order_payment_path(order)
+    else
+      render courses/show
+    end
   end
 end

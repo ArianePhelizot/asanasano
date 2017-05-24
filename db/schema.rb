@@ -83,12 +83,13 @@ ActiveRecord::Schema.define(version: 20170524072554) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "state"
-    t.string   "slot_sku"
+    t.integer  "state"
+    t.integer  "slot_id"
     t.integer  "amount_cents", default: 0, null: false
     t.json     "payment"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["slot_id"], name: "index_orders_on_slot_id", using: :btree
   end
 
   create_table "slots", force: :cascade do |t|
