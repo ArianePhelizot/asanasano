@@ -1,4 +1,4 @@
-<div href="dashboard-background-container" class="dashboard-bg-container">
+<div class="dashboard-bg-container">
   <div class="row">
     <div class="col-xs-offset-2 col-sm-6 col-md-12 col-sm-offset-2 col-lg-6 col-lg-offset-1">
       <div class="add_a_group_button">
@@ -16,24 +16,29 @@
           <%= group.name%>
         </div>
         <% group.courses.sort.each do |course| %>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-          <div class="card-courses-layout">
-            <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
-            <p><%= course.name %></p>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+
+            <div class="card-courses-layout">
+            <%= image_tag "avatar.jpg", class: "avatar" %>
+              <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill %>
+              <p><%= course.name %></p>
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
-        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-12">
-          <% if policy(group).edit? %>
-          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
-          <% end %>
-          <% if policy(group).edit? %>
-          <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
-          <% end %>
-          <% if policy(group).destroy? %>
-          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
-          <% end %>
+        <div class="row">
+          <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-12">
+            <% if policy(group).edit? %>
+            <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
+            <% end %>
+            <% if policy(group).edit? %>
+            <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
+            <% end %>
+            <% if policy(group).destroy? %>
+            <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
