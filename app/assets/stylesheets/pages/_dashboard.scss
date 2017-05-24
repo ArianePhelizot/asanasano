@@ -1,0 +1,79 @@
+// DASHBOARD BACKGROUND CONTAINER //
+.dashboard-bg-container {
+// background-color: white;
+padding-bottom: 100px;
+border:solid black 1px;
+color: black;
+background-size: cover;
+background-image: url(bg-form2.jpg)
+}
+.add_a_group_button {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+// GROUPS //
+.groups-card {
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  border: solid grey 1px;
+  padding-bottom: 25px;
+  background-color: white;
+  opacity: 0.9;
+}
+.group-title {
+  color: $blue;
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+// CARDS (courses) //
+// Cards layout:
+.card-courses-layout {
+  border: solid grey 1px;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+// MARGIN //
+// Buttons (small,medium and big):
+.margin-small-buttons {
+margin: 10px;
+}
+.margin-medium-buttons {
+margin: 10px;
+}
+.margin-big-buttons {
+margin: 20px;
+}
+
+// Div & others:
+.small-margin {
+margin: 10px;
+}
+.medium-margin {
+margin:20px;
+}
+.big-margin {
+margin: 30px;
+}
+
+// PADDING //
+// Buttons padding:
+.buttons-padding {
+padding: 10px;
+}
+
+// BORDER  //
+.bordered {
+border: solid grey 1px;
+}
+
+.avatar {
+
+}
+
