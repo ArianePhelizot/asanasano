@@ -30,16 +30,6 @@ background-image: url(bg-form2.jpg)
   margin-bottom: 20px;
 }
 
-// CARDS (courses) //
-// Cards layout:
-.card-courses-layout {
-  border: solid grey 1px;
-  color: black;
-  margin-bottom: 20px;
-  font-weight: bold;
-  margin-left: 20px;
-  margin-right: 20px;
-}
 
 // MARGIN //
 // Buttons (small,medium and big):
@@ -78,10 +68,13 @@ border: solid grey 1px;
 // CARDS //
 .card {
   height: 175px;
-  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-color: white;
   color: black;
   position: relative;
+  font-weight: lighter;
+  text-shadow: none;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .card-user {
   position: absolute;
