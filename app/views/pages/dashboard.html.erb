@@ -37,7 +37,7 @@
         <div class="card">
           <div class="card-category"></div>
           <div class="card-description">
-            <p><%= course.name %></p>
+            <%= link_to course.name, course_path(course) %>
           </div>
           <div class="card-user avatar">
             <%= image_tag "avatar.jpg", class: "avatar"%>

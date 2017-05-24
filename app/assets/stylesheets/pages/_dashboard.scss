@@ -4,12 +4,13 @@ position:relative;
 padding-bottom: 100px;
 border:solid black 1px;
 color: black;
-background-size: cover;
-background-image: url(bg-form2.jpg)
+// background-size: cover;
+// background-image: url(bg-form2.jpg)
+background-color: #F3F3F3;
 }
 .add_a_group_button {
   margin-bottom: 20px;
-  margin-top: 30px;
+  margin-top: 45px;
 }
 
 // GROUPS //
@@ -19,11 +20,25 @@ background-image: url(bg-form2.jpg)
   margin-right: 40px;
   margin-left: 40px;
   margin-bottom: 30px;
-  border: solid grey 1px;
+  border: solid #F3F3F3 1px;
   padding-bottom: 25px;
-  background-color: #F3F3F3;
-  opacity: 0.9;
+  background-color: white;
+  border-radius: 3px;
+  padding-right:40px;
 }
+
+// .groups-card:hover {
+//   position: relative;
+//   margin-top: 60px;
+//   margin-right: 40px;
+//   margin-left: 40px;
+//   margin-bottom: 30px;
+//   border: solid #F3F3F3 1px;
+//   padding-bottom: 25px;
+//   background-color: #F3F3F3;
+//   border-radius: 3px;
+// }
+
 .group-title {
   color: $blue;
   font-weight: bold;
@@ -75,8 +90,9 @@ border: solid grey 1px;
   position: relative;
   text-shadow: none;
   margin-left: 40px;
-  margin-right: 40px;
   margin-top: 40px;
+  margin-bottom: 40px;
+  border: #CCCCCC solid 1px;
 }
 .card-user {
   position: absolute;
@@ -125,6 +141,11 @@ border: solid grey 1px;
   position:absolute;
   top: 20px;
   right: 20px;
+}
 
+.sport-icon-card {
+}
+
+.avatar-card {
 
 }
