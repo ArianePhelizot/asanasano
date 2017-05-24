@@ -2,14 +2,54 @@
 .dashboard-bg-container {
 background-color: white;
 padding-bottom: 100px;
-padding-top: 50px;
+// padding-top: 50px;
 border:solid black 1px;
 color: white;
 }
 
-// .groups-container {
-//   border: solid black 1px;
-// }
+.add_a_group_button {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+// GROUPS //
+.groups-card {
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  border: solid grey 1px;
+  padding-bottom: 25px;
+}
+
+.group-title {
+  color: black;
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+// CARDS (courses) //
+// Cards layout:
+.card-courses-layout {
+  border: solid grey 1px;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // MARGIN //
 // Buttons (small,medium and big):
 .margin-small-buttons {
@@ -21,7 +61,7 @@ margin: 10px;
 .margin-big-buttons {
 margin: 20px;
 }
-//
+
 // Div & others:
 .small-margin {
 margin: 10px;
@@ -32,51 +72,17 @@ margin:20px;
 .big-margin {
 margin: 30px;
 }
-//
+
 // PADDING //
 // Buttons padding:
 .buttons-padding {
 padding: 10px;
 }
-//
-// CARDS (courses) //
-// Cards layout:
-.card-courses-layout {
-border: solid $blue 1px;
-color: $blue;
-margin-bottom: 30px;
-}
-//
 
-// BUTTONS //
-.create-button {
 
-}
-.edit-button {
-
-color: white;
-padding: 10px 15px;
-border-radius: 4px;
-font-weight: bold;
-background: grey;
-transition: background 0.3s ease;
-}
-.delete-button {
-
-}
-.add-a-group-button {
-  margin-bottom: 40px;
-}
-//
-
+// BORDER  //
 .bordered {
 border: solid grey 1px;
 }
 
-.group-title {
-  color: black;
-  font-weight: bold;
-  font-size: 28px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
