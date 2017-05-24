@@ -3,6 +3,7 @@
   background-color: rgba(white, 0.6); //rgba(white, 0.6);
   padding: 20px;
   margin-top: 20px;
+  @include box-shadow(#9E9E9E 2px 2px 20px);
 }
 
 // background image + formulaire content

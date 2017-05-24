@@ -36,7 +36,6 @@
           </div>
 
           <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
-          <p><strong>Statut du cours:</strong> <% @course.status %></p>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
               <div class="text-center">
@@ -56,10 +55,13 @@
           <div class="row">
             <div class="col-xs-6">
               <% @course.slots.each do |slot| %>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= slot.date %></p>
+              <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
               <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
-              <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.participants_min %></p>
+              <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
+              <p><strong>Statut:</strong> <% slot.status %></p>
+
             </div>
+
             <div class="col-xs-6 price-slot">
               <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
             </div>
