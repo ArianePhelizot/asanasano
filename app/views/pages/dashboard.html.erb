@@ -17,17 +17,19 @@
           </div>
         </div>
       </div>
-      <div class="row">  
-        <div class="buttons">
-          <% if policy(group).edit? %>
-          <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
-          <% end %>
-          <% if policy(group).edit? %>
-          <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
-          <% end %>
-          <% if policy(group).destroy? %>
-          <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
-          <% end %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="buttons">
+            <% if policy(group).edit? %>
+            <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
+            <% end %>
+            <% if policy(group).edit? %>
+            <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
+            <% end %>
+            <% if policy(group).destroy? %>
+            <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -46,6 +48,6 @@
           </div>
         <% end %>
       </div>
-    </div>  
+    </div>
   <% end %>
 </div>
