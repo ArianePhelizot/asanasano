@@ -1,5 +1,3 @@
-#YourModel.last.id + 1
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -15,7 +13,7 @@ User.destroy_all
 Coach.destroy_all
 Sport.destroy_all
 
-puts 'Creating users, groups, coaches, courses, slots and sports...'
+puts 'Creating users, groups, coaches, courses and sports...'
 
 
 # SPORT SEEDS
@@ -24,29 +22,41 @@ def open_icon(filename)
   File.open(Rails.root.join("db", "icons", filename))
 end
 
-sport1 = Sport.create!(name: "YOGA", icon: open_icon("yoga_icon.png"))
-sport2 = Sport.create!(name: "PILATES", icon: open_icon("pilates_icon.png"))
-sport3 = Sport.create!(name: "FITNESS", icon: open_icon("fitness_icon.png"))
-sport4 = Sport.create!(name: "STRETCHING", icon: open_icon("stretching_icon.png"))
-sport5 = Sport.create!(name: "DANSE", icon: open_icon("danse_icon.png"))
-sport6 = Sport.create!(name: "ART MARTIAL", icon: open_icon("art_martial_icon.png"))
-sport7 = Sport.create!(name: "REMISE EN FORME", icon: open_icon("remise_en_forme_icon.png"))
-sport8 = Sport.create!(name: "CHALLENGE", icon: open_icon("challenge_icon.png"))
-sport9 = Sport.create!(name: "RUNNING", icon: open_icon("running_icon.png"))
-sport10 = Sport.create!(name: "PISCINE", icon: open_icon("piscine_icon.png"))
-sport11 = Sport.create!(name: "RAQUETTES", icon: open_icon("raquettes_icon.png"))
-sport12 = Sport.create!(name: "SPORTS CO", icon: open_icon("sports_co_icon.png"))
+sport1 = Sport.create!(name: "yoga", icon: open_icon("yoga_icon.png"))
+sport2 = Sport.create!(name: "pilates", icon: open_icon("pilates_icon.png"))
+sport3 = Sport.create!(name: "fitness", icon: open_icon("fitness_icon.png"))
+sport4 = Sport.create!(name: "stretching", icon: open_icon("stretching_icon.png"))
+sport5 = Sport.create!(name: "danse", icon: open_icon("danse_icon.png"))
+sport6 = Sport.create!(name: "art martial", icon: open_icon("art_martial_icon.png"))
+sport7 = Sport.create!(name: "remise en forme", icon: open_icon("remise_en_forme_icon.png"))
+sport8 = Sport.create!(name: "challenge", icon: open_icon("challenge_icon.png"))
+sport9 = Sport.create!(name: "running", icon: open_icon("running_icon.png"))
+sport10 = Sport.create!(name: "piscine", icon: open_icon("piscine_icon.png"))
+sport11 = Sport.create!(name: "raquettes", icon: open_icon("raquettes_icon.png"))
+sport12 = Sport.create!(name: "sport co", icon: open_icon("sports_co_icon.png"))
 
 puts "#{Sport.count} sports created"
 
 
+## Following seed must only be run in development environment
+exit(0) unless Rails.env.development?
+
+
 # COACH SEEDS
+
 
 coach1 = Coach.create!(description: "Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion")
 coach2 = Coach.create!(description: "Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés")
 coach3 = Coach.create!(description: "Couteau suisse, fan de sport")
 
 puts "#{Coach.count} coaches created"
+
+puts "Associating coaches to sports & vice versa"
+
+sport1.coaches = [coach1,coach2]
+sport9.coaches = [coach3]
+coach3.sports = [sport6, sport10,sport5]
+
 
 
 # USER SEEDS
@@ -160,11 +170,36 @@ course4 = Course.create!(name: "Tai Chi Chuan",
                         meeting_point: "Devant la machine à café",
                         capacity_max: 30,
                         status: 1,
-                        group_id: group2.id,
+                        group_id: group1.id,
                         coach_id: coach3.id,
                         sport_id: sport6.id)
 
+course5 = Course.create!(name: "Cross fit",
+                        content: "Venez vous faire du mal",
+                        details: "Prévoir des pansements",
+                        address: "73 La Cannebière",
+                        meeting_point: "En bas de l'immeuble",
+                        capacity_max: 15,
+                        status: 1,
+                        group_id: group1.id,
+                        coach_id: coach1.id,
+                        sport_id: sport6.id)
+
 puts "#{Course.count} courses created"
+
+puts "Associating groups and users"
+
+group1.users = [user1, user2, user3, user4]
+group1.save
+group2.users = [user1, user2]
+group2.save
+group3.users = [user1, user4]
+group3.save
+
+puts "Associating coaches and groups"
+
+group1.coaches = [coach1, coach2, coach3]
+group2.coaches = [coach3]
 
 
 # SLOT SEEDS
@@ -220,3 +255,4 @@ puts "#{Course.count} courses created"
 #                     )
 
 # puts "#{Slot.count} slots created"
+

@@ -1,8 +1,10 @@
 class SlotsController < ApplicationController
   before_action :find_course, only: [:new, :create, :edit, :update]
   before_action :find_slot, only: [:edit, :update]
+
   def new
     @slot = Slot.new
+    @slot.course = @course
     authorize @slot
   end
 

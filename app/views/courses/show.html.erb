@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="wrapper-devise-form">
   <div class="container">
     <div class="row">
@@ -88,4 +89,52 @@
           </div>
         </div>
       </div>
+=======
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Mon cours</h1>
+      <p>Nom du cours: <%= @course.name %></p>
+      <p>Sport: <%= @course.sport.name %></p>
+      <p>Adresse: <%= @course.address %></p>
+      <p>Point de rendez-vous: <%= @course.meeting_point %></p>
+      <p>Nombre maximum de participant: <%= @course.capacity_max %></p>
+      <p>Détails: <%= @course.details %></p>
+      <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
+        <%= cl_image_tag @course.coach_photo.path, gravity: :face,
+                                                   width: 50,
+                                                   crop: :fill,
+                                                   radius: :max
+        %> <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
+        <% else %>
+        <% image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
+      <% end %>
+      <% if @course.coach&.first_name.present?  %>
+        <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
+      <% end %>
+      <p>Contenu du cours: <%= @course.content %></p>
+      <p>Statut du cours: <% @course.status %></p>
+      <br>
+      <% if policy(@course).edit? %>
+        <%= link_to "Editer le cours", edit_group_course_path(@group, @course) %>
+      <% end %>
+      <% if policy(@course).destroy? %>
+        <%= link_to "Supprimer le cours", course_path(@course), method: "delete" %>
+      <% end %>
+      <br>
+      <h2>Les séances</h2>
+      <% if policy(@course).edit? %>
+        <%= link_to "Ajouter une séance", new_course_slot_path(@course) %>
+      <% end %>
+      <% @course.slots.each do |slot| %>
+        <p>Date: <%= slot.date.strftime("%A %d %B %Y")%></p>
+        <p>Horaire de début: <%= slot.start_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 -->
+        <p>Horaire de fin: <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche le end_at sous le format 14:06 -->
+        <p>Nombre min. de participants: <%= slot.participants_min %></p>
+        <p>Prix: <%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+        <% if policy(slot).edit? %>
+          <%= link_to "Editer séance", edit_course_slot_path(@course, slot) %>
+        <% end %>
+      <% end %>
+>>>>>>> master
     </div>
