@@ -39,7 +39,7 @@ puts "#{Sport.count} sports created"
 
 
 ## Following seed must only be run in development environment
-exit(0) unless Rails.env.development?
+# exit(0) unless Rails.env.development?
 
 
 # COACH SEEDS
