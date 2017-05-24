@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   # ... et non dans leur propre show
   resources :groups, only: [:new, :create, :edit, :update, :destroy] do
     # On nest ces routes car on a besoin de group_id pour new, create, edit et update
-    resources :courses, only: [:new, :create, :edit, :update] do
-      patch 'publish', to: 'courses#publish'
-    end
+    resources :courses, only: [:new, :create, :edit, :update]
+    patch "courses/:id", to: "courses#publish", as: :course_publish
   end
 
   resources :courses, only: [:show, :destroy] do
