@@ -1,6 +1,6 @@
 // DASHBOARD BACKGROUND CONTAINER //
 .dashboard-bg-container {
-// background-color: white;
+// position:relative;
 padding-bottom: 100px;
 border:solid black 1px;
 color: black;
@@ -14,6 +14,7 @@ background-image: url(bg-form2.jpg)
 
 // GROUPS //
 .groups-card {
+  position: relative;
   margin-right: 40px;
   margin-left: 40px;
   margin-bottom: 30px;
@@ -71,15 +72,15 @@ border: solid grey 1px;
   background-color: white;
   color: black;
   position: relative;
-  font-weight: lighter;
   text-shadow: none;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
 }
 .card-user {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: -10px;
+  top: -10px;
 }
 .card-category {
   position: absolute;
@@ -113,3 +114,16 @@ border: solid grey 1px;
   opacity: 0.1;
 }
 
+.sport-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.buttons {
+  position:absolute;
+  top: 20px;
+  right: 20px;
+
+
+}
