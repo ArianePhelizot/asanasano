@@ -4,10 +4,9 @@
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <div class="wrapper-login">
           <div class="text-center">
-            <h1>Mon cours</h1>
+            <h1><%= @course.name %></h1>
             <hr>
           </div>
-
           <div class="row">
             <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
               <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
@@ -21,21 +20,17 @@
 
               <% if @course.coach&.first_name.present?  %>
                 <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
-              <% else %>
-                <p>Toto</p>
               <% end %>
             </div>
             <div class="col-xs-12 col-sm-8">
-              <p><strong>Nom du cours:</strong> <%= @course.name %></p>
               <p><strong>Sport:</strong> <%= @course.sport.name %></p>
               <p><strong>Adresse:</strong> <%= @course.address %></p>
               <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
               <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
               <p><strong>Détails:</strong> <%= @course.details %></p>
+              <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
             </div>
           </div>
-
-          <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
               <div class="text-center">
@@ -52,30 +47,31 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <div class="wrapper-login">
-          <div class="row">
-            <div class="col-xs-6">
-              <% @course.slots.each do |slot| %>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
-              <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
-              <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
-              <p><strong>Statut:</strong> <% slot.status %></p>
-
-            </div>
-
-            <div class="col-xs-6 price-slot">
-              <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
-            </div>
+          <% @course.slots.each do |slot| %>
+            <div class="row">
+              <div class="col-xs-6">
+                  <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
+                  <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
+                  <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
+                  <p><strong>Statut:</strong> <%= slot.status %></p>
+              </div>
+              <div class="col-xs-6 price-slot">
+                <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+                <%= form_tag orders_path do %>
+                  <%= hidden_field_tag 'slot_id', slot.id %>
+                  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+                <% end %>
+              </div>
               <br>
-            <div class="col-xs-12">
-              <div class="text-center">
-                  <% if policy(slot).edit? %>
-                  <%= link_to "Editer séance", edit_course_slot_path(@course, slot) %>
-                  <% end %>
+              <div class="col-xs-12">
+                <div class="text-center">
+                    <% if policy(slot).edit? %>
+                    <%= link_to "Editer séance", edit_course_slot_path(@course, slot) %>
+                    <% end %>
+                </div>
               </div>
             </div>
-              <% end %>
-
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

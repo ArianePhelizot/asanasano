@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   end# on n'a pas besoin de group_id pour show ou destroy un course
 
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 end
