@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
-  before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:show, :edit, :update, :destroy]
+  before_action :find_group, only: [:new, :create, :edit, :update, :publish]
+  before_action :find_course, only: [:show, :edit, :update, :destroy, :publish]
 
   def show
     @group = @course.group
