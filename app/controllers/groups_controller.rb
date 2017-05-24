@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     @group.users.push(current_user) #populate the groups_users table
 
     if @group.save
-      redirect_to dashboard_path
+      redirect_to new_group_course_path(@group)
     else
       render :new
     end
