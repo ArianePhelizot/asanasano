@@ -61,7 +61,7 @@
             <p><%= slot.participants_min %></p>
             <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
             <% if policy(slot).edit? %>
-            <%= link_to "Editer séance", edit_group_course_slot_path(@group, @course, slot) %>
+            <%= link_to "Editer séance", edit_course_slot_path(@course, slot) %>
             <% end %>
             <% end %>
           </div>
