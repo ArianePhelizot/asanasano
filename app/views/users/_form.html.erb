@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <div class="text-center">
+        <%= simple_form_for(@user) do |f| %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email %>
+        <%= f.input :phone_number %>
+        <%= f.input :photo, as: :attachinary, label: 'Profile picture' %>
+        <%= f.submit "Update profile", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
