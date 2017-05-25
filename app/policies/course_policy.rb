@@ -13,6 +13,14 @@ class CoursePolicy < ApplicationPolicy
     user_is_group_owner_or_coach?
   end
 
+  def publish?
+    user_is_group_owner_or_coach?
+  end
+
+  def depublish?
+    user_is_group_owner_or_coach?
+  end
+
   def destroy?
     user_is_group_owner?
   end
