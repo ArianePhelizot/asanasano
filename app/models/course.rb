@@ -41,4 +41,14 @@ class Course < ApplicationRecord
   def sorted_slots
     slots.sort_by(&:date)
   end
+
+  def publishable?
+    valid? && slots.any? && draft?
+  end
+
+  def depublishable?
+    active? && !slots.any?
+  end
+
+
 end
