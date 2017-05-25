@@ -47,18 +47,17 @@
 }
 
 .btn-courses {
-  color: #2C75FF;
-  border: 2px solid #FF5E4D;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  //color: #2C75FF;
+  //border: 2px solid #FF5E4D;
   padding: 10px 15px;
-  border-radius: 50px;
+  border-radius: 3px;
   font-weight: bold;
-  opacity: 0.6;
 }
 
 .btn-courses:hover {
-  opacity: 1;
   text-decoration: none;
-  //color: #ffffff;
+  background-image: linear-gradient(108deg, #1354AB 0%, #80d0c7 0%);
   font-weight: 500;
 }
 
