@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
+  resources :users, only: [:update]
+  get 'profile', to: 'pages#profile'
+  get 'profile/edit', to: 'pages#edit_profile'
+
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
