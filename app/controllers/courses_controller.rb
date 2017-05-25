@@ -42,8 +42,21 @@ class CoursesController < ApplicationController
   end
 
   def publish
+    if @course.publishable?
+      @course.active!
+      # TODO envoyer les emails
+      flash[:notice] = "Le cours a été publié et les emails envoyés."
+    end
+    redirect_to dashboard_path
   end
 
+  def depublish
+    if @course.depublishable?
+      @course.draft!
+      flash[:notice] = "Le cours a été désactivé et n'est plus visible des membres du groupe."
+    end
+    redirect_to dashboard_path
+  end
 
   def destroy
     group = @course.group
@@ -61,7 +74,9 @@ class CoursesController < ApplicationController
                                    :capacity_max,
                                    :details,
                                    :coach_id,
-                                   :content)
+                                   :content,
+                                   :status
+                                   )
   end
 
   def find_group
