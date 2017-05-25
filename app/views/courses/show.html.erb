@@ -80,7 +80,10 @@
               <div class="col-xs-12">
                 <div class="text-center">
                     <% if policy(slot).edit? %>
-                    <%= link_to "Editer séance", edit_course_slot_path(@course, slot) %>
+                    <%= link_to edit_course_slot_path(@course, slot) do
+                    %>
+                      <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                      <% end %>
                     <% end %>
                 </div>
               </div>
