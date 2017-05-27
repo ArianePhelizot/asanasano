@@ -24,7 +24,6 @@
             </div>
           </div>
          <hr>
-
           <div class="row">
             <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
               <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
@@ -63,7 +62,9 @@
               <div class="text-center">
                 <h3>Les séances</h3>
                 <% if policy(@course).edit? %>
-                <%= link_to "Ajouter une séance", new_course_slot_path(@course), class: "btn btn-courses btn-sm" %>
+                <%= link_to new_course_slot_path(@course) do %>
+                  <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                <% end %>
                 <% end %>
               </div>
             </div>
@@ -80,7 +81,7 @@
                 <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
                 <%= form_tag orders_path do %>
                   <%= hidden_field_tag 'slot_id', slot.id %>
-                  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+                  <%= submit_tag 'Purchase' %>
                 <% end %>
               </div>
               <br>
@@ -92,6 +93,7 @@
                       <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
                       <% end %>
                     <% end %>
+                  <hr>
                 </div>
               </div>
             </div>
