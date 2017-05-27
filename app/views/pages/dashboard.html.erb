@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-          <!-- groups-card-title -->
+          <!-- groups-title -->
           <div class="group-title">
             <%= group.name%>
           </div>
@@ -27,10 +27,10 @@
       </div>
 
 
-      <!-- CARD -->
+      <!-- CARD-CONTAINER -->
       <div class="row">
         <% group.courses.sort.each do |course| %>
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="col-xs-12 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
             <div class="card">
               <div class="card-category"></div>
               <div class="card-description">
@@ -49,7 +49,7 @@
           </div>
 
               <!-- CRUD-BUTTONS -->
-      <!-- <div class="row">
+   <!--    <div class="row">
         <div class="col-xs-12">
           <div class="buttons">
             <% if policy(group).edit? %>
