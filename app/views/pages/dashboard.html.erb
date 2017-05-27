@@ -1,71 +1,65 @@
 <!-- DASHBOARD BACKGROUND CONTAINER-->
-<div class="dashboard-bg">
-      <!-- add_a_group_button -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+    <!-- add_a_group_button -->
       <div class="add_a_group_button">
-        <% if policy(Group).new? %>
-          <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn green-button" %>
-        <% end %>
+      <% if policy(Group).new? %>
+      <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn green-button" %>
+      <% end %>
       </div>
+    </div>
 
+    <!-- GROUP-ROW -->
 
-
-
-<!-- GROUP-CONTAINER -->
     <% @user.groups.sort.each do |group| %>
-    <div class="group-container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-          <!-- groups-title -->
-          <div class="group-title">
-            <%= group.name%>
-          </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        <!-- groups-title -->
+        <div class="group-title">
+          <%= group.name%>
         </div>
       </div>
 
-
-      <!-- CARD-CONTAINER -->
+      <!-- CARD-ROW -->
       <div class="row">
         <% group.courses.sort.each do |course| %>
-          <div class="col-xs-12 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
-            <div class="card">
-              <div class="card-category"></div>
-              <div class="card-description">
-                <%= link_to course.name, course_path(course) %>
-              </div>
-              <div>
-                <% if course.slots.any? %>
-                  <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
-                <% end %>
-              </div>
-              <div class="card-user avatar">
-                <%= image_tag "avatar.jpg", class: "avatar"%>
-              </div>
-              <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+        <div class="col-xs-12 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3"></div>
+        <div class="card">
+          <div class="card-category"></div>
+          <div class="card-description">
+            <%= link_to course.name, course_path(course) %>
+          </div>
+          <div>
+            <% if course.slots.any? %>
+            <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
+            <% end %>
+          </div>
+          <div class="card-user avatar">
+            <%= image_tag "avatar.jpg", class: "avatar"%>
+          </div>
+          <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+        </div>
+        <!-- CRUD-BUTTONS -->
+        <!--    <div class="row">
+          <div class="col-xs-12">
+            <div class="buttons">
+              <% if policy(group).edit? %>
+              <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
+              <% end %>
+              <% if policy(group).edit? %>
+              <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
+              <% end %>
+              <% if policy(group).destroy? %>
+              <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
+              <% end %>
             </div>
           </div>
-
-              <!-- CRUD-BUTTONS -->
-   <!--    <div class="row">
-        <div class="col-xs-12">
-          <div class="buttons">
-            <% if policy(group).edit? %>
-              <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
-            <% end %>
-            <% if policy(group).edit? %>
-              <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
-            <% end %>
-            <% if policy(group).destroy? %>
-              <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
-            <% end %>
-          </div>
-        </div>
-      </div> -->
+        </div> -->
         <% end %>
       </div>
 
-
-
+    <% end %>
     </div>
-  <% end %>
+
 </div>
