@@ -40,6 +40,7 @@
       <div class="row">
         <% group.courses.sort.each do |course| %>
         <div class="col-xs-12 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
+          <!-- CARD -->
           <div class="card">
             <div class="card-category"></div>
             <div class="card-description">
@@ -55,7 +56,6 @@
             </div>
             <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
           </div>
-          <!-- CRUD-BUTTONS -->
           <% end %>
         </div>
       </div>
