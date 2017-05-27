@@ -47,9 +47,8 @@
 }
 
 .btn-courses {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  //color: #2C75FF;
-  //border: 2px solid #FF5E4D;
+  color: #3FA6AE;
+  border: 1px solid;
   padding: 10px 15px;
   border-radius: 3px;
   font-weight: bold;
@@ -57,7 +56,6 @@
 
 .btn-courses:hover {
   text-decoration: none;
-  background-image: linear-gradient(108deg, #1354AB 0%, #80d0c7 0%);
   font-weight: 500;
 }
 
