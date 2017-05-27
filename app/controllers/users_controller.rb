@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-before_action :set_user, only: [:show, :edit, :update]
+before_action :set_user, only: [:profile, :edit, :update]
 
-  def show
+  def profile
   end
 
   def edit
