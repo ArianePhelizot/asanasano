@@ -1,13 +1,12 @@
 // DASHBOARD BACKGROUND CONTAINER //
-.dashboard-bg {
+.dashboard-bg-container {
 position:relative;
 padding-bottom: 100px;
-
 color: black;
 background-size: cover;
 background-color: #ECECEC;
 }
-.add_a_group_button {
+.group-crud-buttons {
   margin-bottom: 20px;
   margin-top: 45px;
 }
@@ -15,9 +14,8 @@ background-color: #ECECEC;
 // GROUP-CONTAINER //
 .group-container {
   background-color: #ECECEC;
-  margin-top: 80px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 30px;
+
 }
 
 .group-title {
