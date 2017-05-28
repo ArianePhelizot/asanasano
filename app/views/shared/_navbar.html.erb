@@ -22,7 +22,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo? %>
-            <%= cl_image_tag(@user.photo.path, gravity: :face,
+            <%= cl_image_tag(current_user.photo.path, gravity: :face,
                                            width: 30,
                                            height: 30,
                                            crop: "fill",
