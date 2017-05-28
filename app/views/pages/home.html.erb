@@ -1,23 +1,29 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%=image_path("bg5.jpg")%>);">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <div class="banner-content">
-          <h1 class="title">Organisez des séances de sport au travail</h1>
-          <p class="catch">Simplifiez-vous la vie avec Asanasano !</p>
-        </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(168, 31, 0, 0.65) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("yoga-bg.jpg") %> );">
+  <div class="banner-content">
+    <h1>Organisez des séances de sport au travail</h1>
+    <p>Simplifiez-vous la vie avec Asanasano !</p>
+     <!-- if current user not connected => sign-up: new_user_registration_path -->
+    <% if !user_signed_in? %>
+      <%= link_to "Commencer", new_user_registration_path, class: "btn btn-default" %>
+    <!-- if current user's signed in => dashboard: dashboard_path -->
+    <% else %>
+      <%= link_to "Commencer", dashboard_path, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <div class="col-xs-4 step">
+        <p>1</p>
+        <h4>hello</h4>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <!-- if current user not connected => sign-up: new_user_registration_path -->
-        <% if !user_signed_in? %>
-            <%= link_to "Commencer maintenant !", new_user_registration_path, class: "btn-freeletics" %>
-        <!-- if current user's signed in => dashboard: dashboard_path -->
-          <% else %>
-             <%= link_to "Commencer maintenant !", dashboard_path, class: "btn-freeletics" %>
-        <% end %>
-  <!--         <a href="" class="btn-freeletics">Commencer maintenant !</a> -->
+      <div class="col-xs-4 step">
+        <p>2</p>
+      </div>
+      <div class="col-xs-4 step">
+        <p>3</p>
       </div>
     </div>
   </div>
