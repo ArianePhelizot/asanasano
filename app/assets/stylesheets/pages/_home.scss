@@ -19,13 +19,18 @@ opacity:1;
 padding-top: 50px;
 }
 
-.step {
-  border: 1px solid black;
-  border-radius: 50px;
-  background-color: white;
-  width: 70px;
-  height: 70px;
+.blue {
+  //border: 2px solid red;
+  //border-radius: 70px;
+  //background-color: white;
+  //width: 70px;
+  //height: 70px;
   margin-top: -22px;
+}
+
+.step {
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
 
 @media screen and (max-width: 767px) {
