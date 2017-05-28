@@ -30,7 +30,7 @@
                 <%= cl_image_tag @course.coach_photo.path, gravity: :face,
                                                            width: 50,
                                                            crop: :fill,
-                                                           radius: :max %> 
+                                                           radius: :max %>
               <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
               <% else %>
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
@@ -88,7 +88,7 @@
           <% if !@course.slots.any? %>
             <div class="row">
               <div class="col-xs-12">
-                <p>Il n'y a pas de séance programmée pour ce cours.</p> 
+                <p>Il n'y a pas de séance programmée pour ce cours.</p>
                 <br>
                 <p>
                   Contacter <%= @course.group.owner.first_name %> <%= @course.group.owner.last_name %> pour en savoir plus: <%= @course.group.owner.email %>.
@@ -132,7 +132,6 @@
               </div>
             <% end %>
           <% end %>
-          </div>
         </div>
       </div>
     </div>
