@@ -152,7 +152,7 @@ course2 = Course.create!(name: "Préparation Marseille Cassis 2017",
 
 
 course3 = Course.create!(name: "Barre au sol",
-                        content: "Venez tous dansez!",
+                        content: "Venez tous danser!",
                         details: "Ramenez vos tutus",
                         address: "73 La Cannebière",
                         meeting_point: "Dans le hall",

@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: 'pages#home'
+
+  patch "courses/:id/publish", to: "courses#publish", as: :course_publish
+  patch "courses/:id/depublish", to: "courses#depublish", as: :course_depublish
   # On a une route pour toutes les méthodes de group sauf pour show car on affiche les groups dans le dashboard...
   # ... et non dans leur propre show
   resources :groups, only: [:new, :create, :edit, :update, :destroy] do
     # On nest ces routes car on a besoin de group_id pour new, create, edit et update
     resources :courses, only: [:new, :create, :edit, :update]
+
   end
 
   resources :courses, only: [:show, :destroy] do
@@ -20,7 +24,14 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
+  resources :users, only: [:edit, :update]
+  get 'profile', to: 'users#profile', as: :profile
+  # get 'profile', to: 'pages#profile'
+  # get 'profile/edit', to: 'pages#edit_profile'
+
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
+
+  resources :coaches, only: [:edit, :update]
 end

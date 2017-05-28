@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:show, :edit, :update, :destroy]
+  before_action :find_course, only: [:show, :edit, :update, :destroy, :publish, :depublish]
 
   def show
     @group = @course.group
@@ -41,6 +41,23 @@ class CoursesController < ApplicationController
     end
   end
 
+  def publish
+    if @course.publishable?
+      @course.active!
+      # TODO envoyer les emails
+      flash[:notice] = "Le cours a été publié et les emails envoyés."
+    end
+    redirect_to dashboard_path
+  end
+
+  def depublish
+    if @course.depublishable?
+      @course.draft!
+      flash[:notice] = "Le cours a été désactivé et n'est plus visible des membres du groupe."
+    end
+    redirect_to dashboard_path
+  end
+
   def destroy
     group = @course.group
     @course.destroy
@@ -57,7 +74,9 @@ class CoursesController < ApplicationController
                                    :capacity_max,
                                    :details,
                                    :coach_id,
-                                   :content)
+                                   :content,
+                                   :status
+                                   )
   end
 
   def find_group

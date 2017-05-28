@@ -35,6 +35,8 @@ class User < ApplicationRecord
   belongs_to :coach, optional: true
   has_and_belongs_to_many :slots
 
+  has_attachment :photo
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
