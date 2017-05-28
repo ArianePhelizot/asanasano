@@ -22,6 +22,7 @@ gem 'autoprefixer-rails'
 gem "pundit"
 gem 'annotate'
 gem 'money-rails', '~>1'
+gem 'stripe'
 
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
