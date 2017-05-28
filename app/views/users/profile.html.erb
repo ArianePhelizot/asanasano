@@ -13,14 +13,16 @@
       <p>Nom: <%= @user.last_name %></p>
       <p>Email: <%= @user.email %></p>
       <p>Téléphone: <%= @user.phone_number %></p>
-
+      <%= link_to "Editer mon profil utilisateur", edit_user_path(@user) %>
       <br>
       <% if !current_user.coach_id.nil? %>
         <p>Description: <%= @user.coach.description %></p>
-        <p>Sports: <%= @user.coach.sports.name %></p>
+        <p>Sports: <%= @user.coach.sports.map {|s| s.name}.reduce(:+) %></p>
         <% end%>
       <br>
-      <%= link_to "Edit my profile", edit_user_path(@user) %>
+      <%= link_to "Editer mon profil coach", edit_user_path(@user) %>
+
+
     </div>
   </div>
 </div>
