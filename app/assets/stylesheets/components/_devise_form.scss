@@ -6,7 +6,10 @@
   @include box-shadow(#9E9E9E 2px 2px 20px);
 }
 
-// background image + formulaire content
+.wrapper-login p {
+  font-size: 15px;
+}
+// formulaire content
 
 .wrapper-devise-form {
   background: #F3F3F3;

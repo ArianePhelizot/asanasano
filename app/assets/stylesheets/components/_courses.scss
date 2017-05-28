@@ -11,8 +11,9 @@
 }
 
 .price-slot p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
+  font-style: italic;
 }
 
 .pencil, .add-icon{
@@ -21,10 +22,16 @@
 }
 
 .pencil:hover {
-  color: #FF5E4D;
+  color: #3FA6AE;
 }
 
 .buy-btn {
-  background-color: red;
-  border-color: none;
+  background-color: #FFB80E;
+  border: none;
+  border-radius: 2px;
+  color: white;
 }
+
+// .add-icon:hover {
+//   color: #3FA6AE;
+// }

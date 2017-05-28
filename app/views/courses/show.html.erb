@@ -85,7 +85,7 @@
                 <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
                 <%= form_tag orders_path do %>
                   <%= hidden_field_tag 'slot_id', slot.id %>
-                  <%= submit_tag 'Acheter', class: "buy-btn" %>
+                  <%= submit_tag 'Acheter', class: "buy-btn btn-sm" %>
                 <% end %>
               </div>
               <br>
