@@ -147,7 +147,7 @@
             <div class="col-xs-4">
               <% if policy(@course).publish? && @course.publishable? %>
                 <%= link_to "Publier le cours", course_publish_path(@course),
-                    class: "btn btn-courses btn-sm"
+                    class: "btn btn-courses btn-sm",
                     method: "patch",
                     data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } %>
               <% elsif policy(@course).publish? && @course.draft? && !@course.publishable? %>
