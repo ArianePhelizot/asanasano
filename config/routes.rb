@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
+
+  resources :coaches, only: [:edit, :update]
 end
