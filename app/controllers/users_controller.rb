@@ -12,7 +12,7 @@ before_action :set_user, only: [:profile, :edit, :update]
     if @user.update(user_params)
       redirect_to profile_path
     else
-      render :edit_profile
+      render :edit
     end
   end
 
