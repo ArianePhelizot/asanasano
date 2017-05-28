@@ -60,7 +60,7 @@
                   </p>
                 <% elsif @course.active? && @course.depublishable? %>
                   <p>
-                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name} %>.
+                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>.
                   </p>
                 <% else %>
                   <p>
@@ -147,14 +147,16 @@
             <div class="col-xs-4">
               <% if policy(@course).publish? && @course.publishable? %>
                 <%= link_to "Publier le cours", course_publish_path(@course),
+                    class: "btn btn-courses btn-sm"
                     method: "patch",
-                    data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." }, class: "btn btn-courses btn-sm" %>
+                    data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } %>
               <% elsif policy(@course).publish? && @course.draft? && !@course.publishable? %>
                 <a href="#" class = "btn btn-courses btn-sm disabled" >Publier le cours</a>
               <% elsif policy(@course).publish? && @course.active? && @course.depublishable? %>
                   <%= link_to "Désactiver le cours", course_depublish_path(@course),
+                      class: "btn btn-courses btn-sm",
                       method: "patch",
-                      data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" }, class: "btn btn-courses btn-sm" %>
+                      data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" } %>
               <% elsif @course.active? && !@course.depublishable?%>
                 <a href="#" class = "btn btn-courses btn-sm disabled" >Désactiver le cours</a>
               <% end %>
