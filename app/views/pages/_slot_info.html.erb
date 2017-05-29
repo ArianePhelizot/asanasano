@@ -1,0 +1,20 @@
+<div class="next_slot">
+
+  <p>Prochaine séance</p>
+  <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
+  <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p>
+  <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= slot.course.capacity_max %></p>
+
+  <!-- Si le user est inscrit à la prochaine séance-->
+  <% if slot.users.include?(current_user) %>
+    <p>Inscrit</p>
+  <!-- Si le cours est complet-->
+  <% elsif slot.is_full? %>
+    <p>Complet</p>
+  <!-- Sinon-->
+  <% else %>
+    <%= link_to "S'inscrire", course_path(slot.course) %>
+  <% end %>
+
+
+    </div>
