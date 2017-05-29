@@ -3,6 +3,7 @@
 
   <div class="dashboard-bg-container">
 
+    <!-- AJOUTER UN NOUVEAU GROUPE -->
     <div class="row">
       <div class="col-xs-offset-1 col-sm-12 col-md-12 col-lg-12">
         <!-- add_a_group_button -->
@@ -14,6 +15,18 @@
       </div>
     </div>
 
+    <!-- MES PROCHAINES SEANCES -->
+    <h2>Mes prochaines séances </h2>
+    <div class="row">
+      <% current_user.next_slots.each do |slot| %>
+        <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
+          <%= render 'dashboard-slot-card', slot: slot %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
+    <h2>Tous mes cours </h2>
     <% @user.groups.sort.each do |group| %>
 
     <!-- GROUP-ROW -->
@@ -30,7 +43,7 @@
           <div class="col-xs-offset-2">
             <div class="group-crud-buttons">
               <% if policy(group).edit? %>
-                <%= link_to "Créer un nouveau groupe", new_group_course_path(group), class:"create-button btn btn-primary"  %>
+                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
               <% end %>
               <% if policy(group).edit? %>
                 <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
