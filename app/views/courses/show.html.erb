@@ -113,16 +113,7 @@
                 </div>
                 <div class="col-xs-6 price-slot">
                   <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
-                  <% if @course.capacity_max == slot.users.count %>
-                    <%= form_tag orders_path do %>
-                      <%= hidden_field_tag 'slot_id', slot.id %>
-                      <%= submit_tag 'Complet', class: "buy-btn btn-sm btn btn-warning", disabled: true %>
-                    <% end %>
-                  <% end %>
-                  <%= form_tag orders_path do %>
-                    <%= hidden_field_tag 'slot_id', slot.id %>
-                    <%= submit_tag "M'inscrire", class: "buy-btn btn-sm" %>
-                  <% end %>
+                  <div id="slot-button"><%= render 'slot_button', slot: slot %></div>
                 </div>
                 <br>
                 <div class="col-xs-12">

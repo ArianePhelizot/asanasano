@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
   before_action :find_course, only: [:new, :create, :edit, :update]
-  before_action :find_slot, only: [:edit, :update]
+  before_action :find_slot, only: [:edit, :update, :desinscription]
 
   def new
     @slot = Slot.new
@@ -29,6 +29,15 @@ class SlotsController < ApplicationController
       redirect_to course_path(@course)
     else
       render :edit
+    end
+  end
+
+  def desinscription
+    authorize @slot
+    @slot.users.delete(current_user)
+    respond_to do |format|
+      format.html { redirect_to course_path(@slot.course) }
+      format.js  # <-- will render `app/views/slots/desinscription.js.erb`
     end
   end
 
