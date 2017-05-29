@@ -34,4 +34,8 @@ class Slot < ApplicationRecord
   validates :price, numericality: { allow_nil: true }
   validates :participants_min, numericality: { only_integer: true }, inclusion: { in: 0..500}
 
+  def is_full?
+    users.count == course.capacity_max
+  end
+
 end
