@@ -1,6 +1,6 @@
 <div class="card">
 
-  <!-- Affichage du statut seulement pour les group owner et coach -->
+  <!-- Affichage du statut seulement pour les group-owners et coaches -->
   <div class="course_status">
     <% if policy(course).update? %>
       <% if course.draft? %>
@@ -34,14 +34,25 @@
     </div>
 
     <div class="next_slot">
+        <!-- S'il y a une prochaine séance -->
         <% if !course.next_slot.nil? %>
           <p>Prochaine séance</p>
           <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(course.next_slot.date, format: :long) %></p>
           <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= course.next_slot.start_at.strftime("%H:%M") %> - <%= course.next_slot.end_at.strftime("%H:%M") %></p>
           <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= course.next_slot.users.count %> / <%= course.capacity_max %></p>
 
-<!-- rajouter ici inscrit/complet / s'inscrire => besoin de repasser d'abord par un pull master -->
+          <!-- Si le user est inscrit à la prochaine séance-->
+          <% if course.next_slot.users.include?(current_user) %>
+            <p>Inscrit</p>
+          <!-- Si le cours est complet-->
+          <% elsif course.next_slot.is_full? %>
+            <p>Complet</p>
+          <!-- Sinon-->
+          <% else %>
+            <%= link_to "S'inscrire", course_path(course) %>
+          <% end %>
 
+        <!-- S'il n'y a pas de prochaine séance -->
         <% else %>
           <p>Pas de prochaine séance prévue</p>
         <% end %>
