@@ -14,10 +14,19 @@
   <!-- Infos communes -->
   <div class="course-name">
     <%= link_to course.name, course_path(course) %>
+    <% if !course.coach_id.nil? %>
+      <p>avec <%= course.coach.first_name %></p>
+    <% end %>
   </div>
   <div>
-    <% if course.slots.any? %>
-    <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
+    <% if !course.next_slot.nil? %>
+      <p>Prochaine séance</p>
+      <p><%= course.next_slot.date.strftime("%a %d %B %Y") %></p>
+      <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(course.next_slot.date, format: :long) %></p>
+      <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= course.next_slot.start_at.strftime("%H:%M") %> - <%= course.next_slot.end_at.strftime("%H:%M") %></p>
+      <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= course.next_slot.users.count %> / <%= course.capacity_max %></p>
+    <% else %>
+      <p>Pas de prochaine séance prévue</p>
     <% end %>
   </div>
   <div class="card-user avatar">
