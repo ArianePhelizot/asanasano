@@ -106,16 +106,22 @@
               </div>
               <div class="row">
                 <div class="col-xs-6">
-                  <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
-                  <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
-                  <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
-                  <p><strong>Statut:</strong> <%= slot.status %></p>
+                  <p><i class="fa fa-calendar"></i>  <%= l(slot.date, format: :long) %></p>
+                  <p><i class="fa fa-clock-o"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
+                  <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
+                  <p><strong>Places restantes: <%= @course.capacity_max - slot.users.count %></strong></p>
                 </div>
                 <div class="col-xs-6 price-slot">
                   <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+                  <% if @course.capacity_max == slot.users.count %>
+                    <%= form_tag orders_path do %>
+                      <%= hidden_field_tag 'slot_id', slot.id %>
+                      <%= submit_tag 'Complet', class: "buy-btn btn-sm btn btn-warning", disabled: true %>
+                    <% end %>
+                  <% end %>
                   <%= form_tag orders_path do %>
                     <%= hidden_field_tag 'slot_id', slot.id %>
-                    <%= submit_tag 'Acheter', class: "buy-btn btn-sm" %>
+                    <%= submit_tag "M'inscrire", class: "buy-btn btn-sm" %>
                   <% end %>
                 </div>
                 <br>
