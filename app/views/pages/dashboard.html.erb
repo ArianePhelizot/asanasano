@@ -1,66 +1,97 @@
 <!-- DASHBOARD BACKGROUND CONTAINER-->
 <div class="container">
+
   <div class="dashboard-bg-container">
+
     <div class="row">
       <div class="col-xs-offset-1 col-sm-12 col-md-12 col-lg-12">
         <!-- add_a_group_button -->
         <div class="add_a_group_button">
           <% if policy(Group).new? %>
-          <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn green-button" %>
+            <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn green-button" %>
           <% end %>
         </div>
       </div>
     </div>
+
     <% @user.groups.sort.each do |group| %>
+
     <!-- GROUP-ROW -->
-    <div class="group-container b">
-      <!-- group-title -->
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-        <div class="group-title">
-          <%= group.name%>
-        </div>
-      </div>
-      <!-- group-crud-buttons -->
-      <div class="row">
-        <div class="col-xs-offset-2">
-          <div class="group-crud-buttons">
-            <% if policy(group).edit? %>
-            <%= link_to "Créer un nouveau groupe", new_group_course_path(group), class:"create-button btn btn-primary"  %>
-            <% end %>
-            <% if policy(group).edit? %>
-            <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
-            <% end %>
-            <% if policy(group).destroy? %>
-            <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
-            <% end %>
+      <div class="group-container b">
+        <!-- group-title -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+          <div class="group-title">
+            <%= group.name%>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <% group.courses.sort.each do |course| %>
-        <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
-
-
-          <!-- CARD -->
-          <div class="card">
-            <div class="course-name">
-              <%= link_to course.name, course_path(course) %>
-            </div>
-            <div>
-              <% if course.slots.any? %>
-              <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
+        <!-- group-crud-buttons -->
+        <div class="row">
+          <div class="col-xs-offset-2">
+            <div class="group-crud-buttons">
+              <% if policy(group).edit? %>
+                <%= link_to "Créer un nouveau groupe", new_group_course_path(group), class:"create-button btn btn-primary"  %>
+              <% end %>
+              <% if policy(group).edit? %>
+                <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
+              <% end %>
+              <% if policy(group).destroy? %>
+                <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
               <% end %>
             </div>
-            <div class="card-user avatar">
-              <%= image_tag "avatar.jpg", class: "avatar"%>
-            </div>
-            <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
           </div>
+        </div>
+        <div class="row">
+          <% group.courses.sort.each do |course| %>
+            <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
+
+              <!-- Si coach ou group owner => afficher tous les cours -->
+              <% if policy(course).update? %>
+                <!-- COURSE-CARD -->
+                <div class="card">
+                  <div class="course-name">
+                    <%= link_to course.name, course_path(course) %>
+                  </div>
+                  <div>
+                    <% if course.slots.any? %>
+                    <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
+                    <% end %>
+                  </div>
+                  <div class="card-user avatar">
+                    <%= image_tag "avatar.jpg", class: "avatar"%>
+                  </div>
+                  <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+                </div>
+                <!-- END-COURSE-CARD -->
+
+              <!-- Sinon, n'afficher que les cours active -->
+              <% else %>
+                <% if course.active? %>
+                  <!-- COURSE-CARD -->
+                  <div class="card">
+                    <div class="course-name">
+                      <%= link_to course.name, course_path(course) %>
+                    </div>
+                    <div>
+                      <% if course.slots.any? %>
+                      <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
+                      <% end %>
+                    </div>
+                    <div class="card-user avatar">
+                      <%= image_tag "avatar.jpg", class: "avatar"%>
+                    </div>
+                    <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+                  </div>
+                  <!-- END-COURSE-CARD -->
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
-    </div>
+
     <% end %>
+    <!-- END-GROUP-ROW -->
+
   </div>
 </div>
