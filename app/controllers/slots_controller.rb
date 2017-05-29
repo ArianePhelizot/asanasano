@@ -11,11 +11,18 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(slot_params)
     @slot.course = @course
+    @group = @course.group
     authorize @slot # check authorization before save
     if @slot.save
-      redirect_to course_path(@course)
+      respond_to do |format|
+        format.html { redirect_to course_path(@course) }
+        format.js  # <-- will render `app/views/slots/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'courses/show' }
+        format.js  # <-- idem
+      end
     end
   end
 
