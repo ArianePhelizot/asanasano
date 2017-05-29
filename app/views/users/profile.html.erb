@@ -18,7 +18,7 @@
       <br>
       <% if !current_user.coach_id.nil? %>
         <p>Description: <%= @user.coach.description %></p>
-        <p>Sports: <%= @user.coach.sports.map {|s| s.name}.reduce(:+) %></p>
+        <p>Sports: <%= @user.coach.sports.map {|s| s.name}.join(", ") %></p>
         <% end%>
       <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
 
