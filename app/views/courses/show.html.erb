@@ -46,7 +46,7 @@
               <p><strong>Sport:</strong> <%= @course.sport.name %></p>
               <p><strong>Adresse:</strong> <%= @course.address %></p>
               <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
-              <p><strong>Nombre maximum de participant:</strong> <%= @course.capacity_max %></p>
+              <p><strong>Nombre maximum de participants:</strong> <%= @course.capacity_max %></p>
               <p><strong>Détails:</strong> <%= @course.details %></p>
               <p><strong>Statut:</strong> <%= @course.status.capitalize %>.
               <!-- precisions sur les implications liées au statut -->
@@ -110,6 +110,7 @@
                   <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
                   <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
                   <p><strong>Statut:</strong> <%= slot.status %></p>
+                  <p><strong>Is course full?:</strong> <%= is_full?(slot) %></p>
                 </div>
                 <div class="col-xs-6 price-slot">
                   <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
