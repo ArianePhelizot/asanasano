@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   def show
     @group = @course.group
+    @user = current_user
   end
 
   def new

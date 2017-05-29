@@ -105,31 +105,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-6">
-                  <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(slot.date, format: :long) %></p>
-                  <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
-                  <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= slot.users.count %> / <%= @course.capacity_max %></p>
-                  <p><strong>Statut:</strong> <%= slot.status %></p>
-                  <p><strong>Is course full?:</strong> <%= slot.is_full? %></p>
-                </div>
-                <div class="col-xs-6 price-slot">
-                  <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
-                  <%= form_tag orders_path do %>
-                    <%= hidden_field_tag 'slot_id', slot.id %>
-                    <%= submit_tag 'Acheter', class: "buy-btn btn-sm" %>
-                  <% end %>
-                </div>
-                <br>
-                <div class="col-xs-12">
-                  <div class="text-center">
-                    <% if policy(slot).edit? %>
-                      <%= link_to edit_course_slot_path(@course, slot) do %>
-                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                      <% end %>
-                    <% end %>
-                    <hr>
-                  </div>
-                </div>
+                <div id="slot-card"><%= render 'slot_card', slot: slot, course: @course %></div>
               </div>
             <% end %>
           <% end %>
