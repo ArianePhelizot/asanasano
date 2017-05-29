@@ -4,6 +4,7 @@
       <div class="text-center">
         <%= simple_form_for(@coach) do |f| %>
         <%= f.input :description %>
+        <%= f.association :sports, collection: Sport.all, as: :check_boxes %>
         <%= f.submit "Update profile", class: "btn btn-primary" %>
         <% end %>
       </div>
