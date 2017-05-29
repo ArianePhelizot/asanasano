@@ -75,6 +75,9 @@
     .text-justify-sm {
         text-align: justify;
     }
+    .padding-sm {
+      padding: 0 50px;
+    }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
