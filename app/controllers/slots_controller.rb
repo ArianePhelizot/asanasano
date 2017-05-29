@@ -35,8 +35,9 @@ class SlotsController < ApplicationController
   def desinscription
     authorize @slot
     @slot.users.delete(current_user)
+    @course = @slot.course
     respond_to do |format|
-      format.html { redirect_to course_path(@slot.course) }
+      format.html { redirect_to course_path(@course) }
       format.js  # <-- will render `app/views/slots/desinscription.js.erb`
     end
   end
