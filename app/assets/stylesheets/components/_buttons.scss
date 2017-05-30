@@ -70,10 +70,16 @@
 .btn-default {
   background-image: linear-gradient(to top, #E56161 25%, #ffb199 100%);
   border: none;
+  @include box-shadow(#9E9E9E 2px 2px 20px);
+  color: white;
+  font-weight: 300;
+  font-variant: small-caps;
+  text-transform: uppercase;
 }
 
 .btn-default:hover {
   background-color: #E56161;
-  font-weight: bold;
+  font-weight: 400;
+  color: white;
 }
 
