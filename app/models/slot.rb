@@ -31,7 +31,8 @@ class Slot < ApplicationRecord
 
   validates :date, :start_at, :end_at,  :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
-  validates :price, numericality: { allow_nil: true, greater_than_or_equal_to: 0 }
+  validates :price, numericality: { allow_nil: true, greater_than_or_equal_to: 0,
+                                    message: "Entrez un prix supérieur ou égal à 0€" }
   validates :participants_min, numericality: { only_integer: true }
 
   validate :participants_min_between_one_and_capacity_max
