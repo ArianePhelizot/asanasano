@@ -51,11 +51,7 @@ class Course < ApplicationRecord
     valid? && slots.any? && draft?
   end
 
-
-
   def depublishable?
     active? && !slots.any?
   end
-
-
 end
