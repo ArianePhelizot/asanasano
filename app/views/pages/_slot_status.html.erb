@@ -1,0 +1,10 @@
+<!-- Si le user est inscrit à la prochaine séance-->
+  <% if slot.users.include?(current_user) %>
+    <p>Inscrit</p>
+  <!-- Si le cours est complet-->
+  <% elsif slot.is_full? %>
+    <p>Complet</p>
+  <!-- Sinon-->
+  <% else %>
+    <%= link_to "S'inscrire", course_path(slot.course) %>
+  <% end %>

@@ -39,4 +39,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def next_slots
+    sorted_slots = self.slots.sort_by(&:date)
+    sorted_slots.select { |slot| slot.date >= Time.now}
+  end
 end
