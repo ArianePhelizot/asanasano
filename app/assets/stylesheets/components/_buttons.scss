@@ -45,7 +45,20 @@
   text-decoration: none;
   color: white;
 }
-
+.btn-book {
+  color: black;
+  border: 1px solid black;
+  padding: 10px 15px;
+  border-radius: 50px;
+  opacity: 0.6;
+}
+.btn-book:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #E56161;
+  border: 1px solid #E56161;
+  cursor: pointer;
+}
 .btn-courses {
   //padding: 10px 15px;
   border-radius: 3px;

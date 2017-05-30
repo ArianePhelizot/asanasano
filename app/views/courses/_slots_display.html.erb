@@ -9,13 +9,6 @@
     </div>
   </div>
 <% else %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="text-center">
-        <h3>Réserver une séance</h3>
-      </div>
-    </div>
-  </div>
   <% course.next_slots.each do |slot| %>
     <div class="row">
       <div id="slot-card-<%= slot.id %>"><%= render 'courses/slot_card', slot: slot, course: course %></div>

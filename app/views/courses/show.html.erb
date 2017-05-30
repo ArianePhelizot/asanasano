@@ -109,13 +109,20 @@
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
         <div class="wrapper-login">
           <div class="row">
-            <div class="col-xs-12 pencil">
+            <div class="col-xs-12 text-center-xs text-center-sm text-right-md text-right-lg mg-btm-20 mg-top-10">
               <% if policy(@course).edit? %>
-                <i class="fa fa-plus-square-o fa-2x" id="new_form_button" style="cursor: pointer"></i>
+                <a class="btn-book" id="new_form_button">Ajouter une séance</a>
               <% end %>
             </div>
-            <div class="col-xs-12 text-center hidden" id="new_slot_form">
+            <div class="col-xs-6 col-xs-offset-3 text-center hidden" id="new_slot_form">
               <%= render 'slots/form', course: @course, slot: @slot %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-center mg-btm-10">
+                <h2>Réserver une séance</h2>
+              </div>
             </div>
           </div>
           <div id="slots_display">
