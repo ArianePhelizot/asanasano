@@ -49,11 +49,12 @@
                 <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
               <% end %>
               <% if policy(group).destroy? %>
-                <%= link_to "Supprimer", group_path(group), method: "delete", class:"delete-button btn btn-danger" %>
+                <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger" %>
               <% end %>
             </div>
           </div>
         </div>
+
         <div class="row">
           <% group.courses.sort.each do |course| %>
             <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
