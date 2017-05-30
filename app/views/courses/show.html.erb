@@ -87,7 +87,7 @@
             </div>
           </div>
           <div id="slots_display">
-            <% if !@course.slots.any? %>
+            <% if @course.slots.empty? %>
               <div class="row">
                 <div class="col-xs-12">
                   <p>Il n'y a pas de séance programmée pour ce cours.</p>
@@ -98,16 +98,16 @@
                 </div>
               </div>
             <% else %>
-              <% @course.slots.each do |slot| %>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <div class="text-center">
-                      <h3>Les séances</h3>
-                    </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                  <div class="text-center">
+                    <h3>Les séances</h3>
                   </div>
                 </div>
+              </div>
+              <% @course.next_slots.each do |slot| %>
                 <div class="row">
-                  <div id="slot-card"><%= render 'slot_card', slot: slot, course: @course %></div>
+                  <div id="slot-card-#{slot.id}"><%= render 'slot_card', slot: slot, course: @course %></div>
                 </div>
               <% end %>
             <% end %>

@@ -3,5 +3,5 @@
   $('#new_slot_form').html("<%= j render 'form', course: @course, slot: @slot %>");
 <% else %>
   // in course show, we load the div containing slots display
-  $('#slots_display').load('courses/show');
+  $('#slots_display').load('courses/show' + '#slots_display');
 <% end %>
