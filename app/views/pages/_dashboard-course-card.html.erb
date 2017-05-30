@@ -1,18 +1,23 @@
 <div class="card">
+  <!-- Affichage des infos génériques du cours -->
+  <%= render 'course_info', course: course %>
 
   <!-- Affichage du statut seulement pour les group-owners et coaches -->
   <div class="course_status">
     <% if policy(course).update? %>
       <% if course.draft? %>
-        <p>non publié</p>
+        <div class="published-green-circle">
+          <!-- <p>non publié</p> -->
+        </div>
       <% else course.active? %>
-        <p>publié</p>
+        <div class="non-published-red-circle">
+          <!-- <p>publié</p> -->
+        </div>
       <% end %>
     <% end %>
   </div>
 
-  <!-- Affichage des infos génériques du cours -->
-  <%= render 'course_info', course: course %>
+
 
   <!-- Affichage de la prochaine séance s'il y en a une-->
   <% if course.next_slot.present? %>

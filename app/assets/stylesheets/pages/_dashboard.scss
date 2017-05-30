@@ -35,8 +35,8 @@ background-color: white;
 // CARD-CONTAINER //
 .card {
   position: relative;
-  height: 260px;
-  width: 200px;
+  height: 300px;
+  width: 220px;
   background-color: white;
   color: black;
   text-shadow: none;
@@ -61,7 +61,13 @@ border: solid black 1px;
 }
 
 .sport-icon {
-
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border: solid red 1px;
+  margin-left: 80px;
+  margin-top: -20px;
+  background-color: white;
 }
 
 .coach-info {
@@ -81,6 +87,24 @@ border: solid black 1px;
 .course-status {
 
 }
+.published-green-circle {
+  margin-left: 5px;
+  margin-top: 5px;
+  background-color: #60C95D;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+}
+
+.non-published-red-circle {
+  margin-left: 5px;
+  margin-top: 5px;
+  background-color: #F96161;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+}
+
 
 .course_access {
 
