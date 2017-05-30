@@ -1,24 +1,104 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%=image_path("bg5.jpg")%>);">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <div class="banner-content">
-          <h1 class="title">Organisez des séances de sport au travail</h1>
-          <p class="catch">Simplifiez-vous la vie avec Asanasano !</p>
-        </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(168, 31, 0, 0.65) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("yoga-bg.jpg") %> );">
+  <div class="banner-content">
+    <h1>Organisez des séances de sport au travail</h1>
+    <p>Simplifiez-vous la vie avec Asanasano !</p>
+     <!-- if current user not connected => sign-up: new_user_registration_path -->
+    <% if !user_signed_in? %>
+      <%= link_to "Commencer", new_user_registration_path, class: "btn btn-default" %>
+    <!-- if current user's signed in => dashboard: dashboard_path -->
+    <% else %>
+      <%= link_to "Commencer", dashboard_path, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<!-- container steps-->
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <div class="col-xs-4">
+          <h1><span class="style-circle">1</span></h1>
+        <h4 class="step">inscrivez vous</h4>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <!-- if current user not connected => sign-up: new_user_registration_path -->
-        <% if !user_signed_in? %>
-            <%= link_to "Commencer maintenant !", new_user_registration_path, class: "btn-freeletics" %>
-        <!-- if current user's signed in => dashboard: dashboard_path -->
-          <% else %>
-             <%= link_to "Commencer maintenant !", dashboard_path, class: "btn-freeletics" %>
-        <% end %>
-  <!--         <a href="" class="btn-freeletics">Commencer maintenant !</a> -->
+      <div class="col-xs-4">
+          <h1><span class="style-circle">2</span></h1>
+        <h4 class="step">créez un groupe</h4>
+      </div>
+      <div class="col-xs-4">
+          <h1><span class="style-circle">3</span></h1>
+        <h4 class="step">réservez vos cours</h4>
       </div>
     </div>
   </div>
+  <br>
+  <hr>
+</div>
+
+<!-- container avantages Asanasano-->
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+    <h3 class="testimony">ce que vous apporte Asanasano</h3>
+      <div class="col-xs-12 ">
+        <p class="avantages">
+          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor.</p>
+      </div>
+      <div class="col-xs-12">
+        <p class="avantages">
+          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor.</p>
+      </div>
+      <div class="col-xs-12">
+        <p class="avantages">
+          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- container témoignages-->
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h3 class="testimony">témoignages</h3>
+    </div>
+  <br>
+    <div class="col-xs-12 col-md-4 padding-sm">
+      <div class="testimonial">
+          <div class="pic">
+              <%= image_tag "avatar.png", class: "avatar-home" %>
+          </div>
+          <p class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor. Proin sed euismod tellus. Nunc sodales, quam et porttitor accumsan, lectus dolor laoreet dolor, a scelerisque.
+          </p>
+          <h3 class="testimonial-title">Guillaume - Web Developer</h3>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4 padding-sm">
+      <div class="testimonial">
+          <div class="pic">
+              <%= image_tag "avatar.png", class: "avatar-home" %>
+          </div>
+          <p class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc.
+          </p>
+          <h3 class="testimonial-title">Faustin - Coach Crossfit</h3>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4 padding-sm">
+      <div class="testimonial">
+        <div class="pic">
+            <%= image_tag "avatar.png", class: "avatar-home" %>
+        </div>
+          <p class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor. Proin sed euismod tellus. Nunc sodales, quam et porttitor accumsan, lectus dolor laoreet dolor, a scelerisque.
+          </p>
+        <h3 class="testimonial-title">Ariane- Product Manager</h3>
+      </div>
+    </div>
+  </div>
+  <br>
 </div>

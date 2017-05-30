@@ -19,15 +19,49 @@ opacity:1;
 padding-top: 50px;
 }
 
+.step {
+  margin-top: 55px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.step, .testimony {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+.style-circle {
+  //background-image: linear-gradient(to bottom left, #E56161 0%, #ffb199 100%);
+  border-left: 3px solid #e86a67;
+  //border-right: 3px solid #ffb199;
+  border-bottom: 2px solid #e89567;
+  border-radius: 50%;
+  padding: 21px 37px;
+}
+
+.avantages {
+  font-size: 13px;
+  color: #808080;
+  padding: 30px;
+}
+
+ .fa {
+  padding-right: 20px;
+  color: black;
+ }
+
+.avatar-home {
+  width: 74px;
+}
+
 @media screen and (max-width: 767px) {
 .banner {
   padding-bottom: 150px;
 }
-
-
-font-weight: bold;
-text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
+
 .banner p {
 font-size: 22px;
 font-weight: lighter;
@@ -50,3 +84,51 @@ font-size: 18px;
   }
 }
 
+
+.testimonial{
+    padding: 20px 15px;
+    text-align: center;
+}
+.testimonial .pic{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+.testimonial .pic img{
+    width: 100%;
+    height: auto;
+}
+.testimonial .description{
+    padding: 0 15px;
+    font-size: 13px;
+    color: #808080;
+    line-height: 26px;
+}
+.testimonial .testimonial-title{
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #000;
+    text-transform: uppercase;
+    position: relative;
+}
+.testimonial .testimonial-title:after{
+    content: "\f10d";
+    font-family: 'FontAwesome';
+    display: inline-block;
+    width: 100%;
+    font-size: 35px;
+    color: #e86a67;
+    margin-top: 30px;
+}
+.owl-theme .owl-controls .owl-page span{
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 20px;
+    background: #f3904d;
+    margin: 5px 7px;
+    opacity: 0.5;
+}

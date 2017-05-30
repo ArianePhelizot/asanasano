@@ -66,3 +66,14 @@
   text-align: center;
   text-decoration: none;
 }
+
+.btn-default {
+  background-image: linear-gradient(to top, #E56161 25%, #ffb199 100%);
+  border: none;
+}
+
+.btn-default:hover {
+  background-color: #E56161;
+  font-weight: bold;
+}
+
