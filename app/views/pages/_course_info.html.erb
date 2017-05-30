@@ -2,8 +2,8 @@
 
     <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
 
-    <div class="course-name">
-      <%= link_to course.name, course_path(course) %>
+    <div class="course-name-div">
+      <%= link_to course.name, course_path(course), class:"course-name" %>
     </div>
 
     <div class="coach-info">

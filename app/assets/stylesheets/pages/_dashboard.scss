@@ -56,9 +56,17 @@ border: solid black 1px;
 
 }
 
-.course-name {
-
+.course-name-div {
+  position: absolute;
+  left: 80px;
+  background-color: #5288F1;
+  text-align: center;
 }
+.course-name{
+  color: white;
+  font-size: 16px;
+}
+
 
 .sport-icon {
   border-radius: 50px;
