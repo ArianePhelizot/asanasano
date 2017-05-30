@@ -1,10 +1,10 @@
-<%= simple_form_for [@group, @course] do |f| %>
+<%= simple_form_for [group, course] do |f| %>
   <%= f.input :name %>
   <%= f.association :sport, collection: Sport.all %>
   <%= f.input :address %>
   <%= f.input :meeting_point %>
   <%= f.input :capacity_max %>
   <%= f.input :details, as: :text %>
-  <%= f.association :coach, collection: @course.group.coaches %>
+  <%= f.association :coach, collection: course.group.coaches %>
   <%= f.button :submit, class: "btn btn-success" %>
 <% end %>

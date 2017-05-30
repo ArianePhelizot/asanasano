@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
   def show
     @group = @course.group
     @user = current_user
+    @slot = Slot.new
   end
 
   def new
