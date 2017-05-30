@@ -3,6 +3,8 @@ class SlotsController < ApplicationController
   before_action :find_slot, only: [:edit, :update, :desinscription]
 
   def new
+    # récupérer les infos de la dernière séance créée
+    # créer la nouvelle slot avec ces attributs
     @slot = Slot.new
     @slot.course = @course
     authorize @slot

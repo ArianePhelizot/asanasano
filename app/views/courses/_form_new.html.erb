@@ -1,4 +1,4 @@
-<%= simple_form_for([group, course], remote: true) do |f| %>
+<%= simple_form_for [group, course] do |f| %>
   <%= f.input :name %>
   <%= f.association :sport, collection: Sport.all %>
   <%= f.input :address %>
