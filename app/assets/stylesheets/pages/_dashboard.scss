@@ -88,8 +88,9 @@ border: solid black 1px;
 
 }
 .published-green-circle {
-  margin-left: 5px;
-  margin-top: 5px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
   background-color: #60C95D;
   border-radius: 50px;
   height: 15px;
@@ -97,8 +98,9 @@ border: solid black 1px;
 }
 
 .non-published-red-circle {
-  margin-left: 5px;
-  margin-top: 5px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
   background-color: #F96161;
   border-radius: 50px;
   height: 15px;
