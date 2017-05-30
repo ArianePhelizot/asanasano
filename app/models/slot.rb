@@ -34,8 +34,17 @@ class Slot < ApplicationRecord
   validates :price, numericality: { allow_nil: true }
   validates :participants_min, numericality: { only_integer: true }, inclusion: { in: 0..500}
 
+  validate :participants_min_between_one_and_capacity_max
+
+  def participants_min_between_one_and_capacity_max
+    if participants_min > course.capacity_max || participants_min < 1
+      errors.add(:participants_min, "Le nombre minimum de participants doit être
+                   compris entre 1 et #{course.capacity_max} (capacité maximale
+                   du cours).")
+    end
+  end
+
   def is_full?
     users.count == course.capacity_max
   end
-
 end
