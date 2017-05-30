@@ -10,7 +10,7 @@
 
     <div class="coach-info">
       <div class="coach-name">
-          <% if !course.coach_id.nil? %>
+          <% if course.coach_id.present? %>
           <p>avec <%= course.coach.first_name %></p>
         <% end %>
       </div>
