@@ -3,7 +3,7 @@
   <%= f.association :sport, collection: Sport.all %>
   <%= f.input :address %>
   <%= f.input :meeting_point %>
-  <%= f.input :capacity_max %>
+  <%= f.input :capacity_max, collection: 1..500 %>
   <%= f.input :details, as: :text %>
   <%= f.association :coach, collection: @course.group.coaches %>
   <%= f.input :content, as: :text %>
