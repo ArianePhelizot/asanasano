@@ -1,5 +1,4 @@
 <div class="card">
-
   <!-- Affichage du statut seulement pour les group-owners et coaches -->
   <div class="course_status">
     <% if policy(course).update? %>
@@ -10,10 +9,8 @@
       <% end %>
     <% end %>
   </div>
-
   <!-- Affichage des infos génériques du cours -->
   <%= render 'course_info', course: course %>
-
   <!-- Affichage de la prochaine séance s'il y en a une-->
   <% if course.next_slot.present? %>
     <p>Prochaine séance</p>
@@ -23,16 +20,13 @@
     <div class="course_access">
       <%= link_to "Toutes les séances", course_path(course) %>
     </div>
-
   <% else %>
     <p>Pas de prochaine séance prévue</p>
       <div class="course_access">
+        <!-- Accès au cours et à l'ensemble de ses séances-->
         <%= link_to "Détails du cours", course_path(course) %>
       </div>
   <% end %>
-
-  <!-- Accès au cours et à l'ensemble de ses séances-->
-
 
  </div>
 </div>

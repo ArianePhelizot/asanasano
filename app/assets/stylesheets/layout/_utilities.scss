@@ -4,12 +4,19 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
+// links
+.info-link {
+  text-decoration: underline;
+  cursor: pointer
+}
+.info-link:hover {
+  color: #E56161;
+}
 // Paddings
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
 }
-
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -23,13 +30,10 @@
 .bg-dark-blue {
   background: #3b5998;
 }
-
-
 .margin {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 .text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
     text-align: left;
 }

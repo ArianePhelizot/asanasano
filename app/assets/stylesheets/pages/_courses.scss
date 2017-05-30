@@ -5,33 +5,31 @@
     width: 64px;
   }
 }
-
 .price-slot {
   text-align: right;
 }
-
 .price-slot p {
   font-size: 16px;
   font-weight: 500;
   font-style: italic;
 }
-
-.pencil, .add-icon{
+.pencil {
   text-align: right;
-
 }
-
 .pencil :hover {
-  color: #3FA6AE;
+  color: #E56161;
 }
-
 .buy-btn {
   background-color: #FFB80E;
   border: none;
   border-radius: 2px;
   color: white;
 }
+.unmarged-top h1 {
+  margin-top: 6px;
+}
+.margin-top {
+  margin-top: 20px;
+}
 
-// .add-icon:hover {
-//   color: #3FA6AE;
-// }
+
