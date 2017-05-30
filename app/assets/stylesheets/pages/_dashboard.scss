@@ -132,10 +132,14 @@ border: solid black 1px;
 #calendar-icon {
   position: absolute;
   left: 30px;
+  top: 10px;
 }
 .text-date {
   position: absolute;
   color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
 }
 
 #clock-icon {
@@ -144,6 +148,11 @@ border: solid black 1px;
 }
 .text-hours {
   position: absolute;
+  color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
+  top: 100px;
 
 }
 
@@ -153,6 +162,11 @@ border: solid black 1px;
 }
 .text-users-count {
   position: absolute;
+  color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
+  top: 100px;
 
 }
 
