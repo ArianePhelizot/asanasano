@@ -21,7 +21,7 @@
 
   <!-- Affichage de la prochaine séance s'il y en a une-->
   <% if course.next_slot.present? %>
-    <p>Prochaine séance</p>
+    <!-- <p>Prochaine séance</p> -->
     <%= render 'slot_info', slot: course.next_slot %>
     <!-- Affichage du statut de la prochaine séance s'il y en a une: inscrit / complet / s'inscrire-->
     <%= render 'slot_status', slot: course.next_slot %>

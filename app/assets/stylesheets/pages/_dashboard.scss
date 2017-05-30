@@ -117,12 +117,44 @@ border: solid black 1px;
 
 
 .course_access {
-
+  position: absolute;
+  bottom: 15px;
+  left: 40px;
 }
 
 // SLOT_INFO //
+.next_slot {
+  position: absolute;
+  top: 130px;
+  left: 10px;
+}
 
+#calendar-icon {
+  position: absolute;
+  left: 30px;
+}
+.text-date {
+  position: absolute;
+  color: blue;
+}
 
+#clock-icon {
+  position: absolute;
+
+}
+.text-hours {
+  position: absolute;
+
+}
+
+#user-icon {
+  position: absolute;
+
+}
+.text-users-count {
+  position: absolute;
+
+}
 
 // SLOT_STATUS//
 .registered-for-the-course {
