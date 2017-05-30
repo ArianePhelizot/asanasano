@@ -12,17 +12,48 @@
   </div>
 
   <!-- Infos communes -->
-  <div class="course-name">
-    <%= link_to course.name, course_path(course) %>
-  </div>
-  <div>
-    <% if course.slots.any? %>
-    <p><%= course.sorted_slots.first.date.strftime("%A %d %B %Y") %></p>
-    <% end %>
-  </div>
-  <div class="card-user avatar">
-    <%= image_tag "avatar.jpg", class: "avatar"%>
-  </div>
-  <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+  <div class="course-info">
 
+    <div class="course-name">
+      <%= link_to course.name, course_path(course) %>
+    </div>
+
+    <div class="sport-icon">
+      <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
+    </div>
+
+    <div class="coach-info">
+      <div class="coach-name">
+          <% if !course.coach_id.nil? %>
+          <p>avec <%= course.coach.first_name %></p>
+        <% end %>
+      </div>
+      <div class="card-user avatar">
+        <%= image_tag "avatar.jpg", class: "avatar"%>
+      </div>
+    </div>
+
+    <div class="next_slot">
+        <% if !course.next_slot.nil? %>
+          <p>Prochaine séance</p>
+          <p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(course.next_slot.date, format: :long) %></p>
+          <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= course.next_slot.start_at.strftime("%H:%M") %> - <%= course.next_slot.end_at.strftime("%H:%M") %></p>
+          <p><i class="fa fa-user-o" aria-hidden="true"></i>  <%= course.next_slot.users.count %> / <%= course.capacity_max %></p>
+
+<!-- rajouter ici inscrit/complet / s'inscrire => besoin de repasser d'abord par un pull master -->
+
+        <% else %>
+          <p>Pas de prochaine séance prévue</p>
+        <% end %>
+    </div>
+
+    <div class="course_access">
+      <%= link_to "Toutes les séances", course_path(course) %>
+    </div>
+
+ </div>
 </div>
+
+
+
+

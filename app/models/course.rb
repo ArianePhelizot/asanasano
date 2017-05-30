@@ -38,8 +38,10 @@ class Course < ApplicationRecord
   validates :content, :meeting_point, :details, length: { maximum: 300 }
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 0..500}
 
-  def sorted_slots
-    slots.sort_by(&:date)
+  def next_slot
+    sorted_slots = slots.sort_by(&:date)
+    next_slots = sorted_slots.select { |slot| slot.date >= Time.now}
+    next_slot = next_slots.first
   end
 
   def publishable?
