@@ -4,17 +4,16 @@
     <p>Simplifiez-vous la vie avec Asanasano !</p>
      <!-- if current user not connected => sign-up: new_user_registration_path -->
     <% if !user_signed_in? %>
-      <%= link_to "Créez votre groupe", new_user_registration_path, class: "btn btn-default btn-lg" %>
+      <%= link_to "Commencez", new_user_registration_path, class: "btn btn-default btn-lg" %>
     <!-- if current user's signed in => dashboard: dashboard_path -->
     <% else %>
-      <%= link_to "Créez votre groupe", dashboard_path, class: "btn btn-default btn-lg" %>
+      <%= link_to "Commencez", dashboard_path, class: "btn btn-default btn-lg" %>
     <% end %>
   </div>
 </div>
 <!-- container steps-->
 <br>
 <br>
-
 <div class="container">
   <div class="row">
     <div class="text-center">
@@ -39,77 +38,94 @@
 <!-- container avantages Asanasano-->
 <div class="container">
   <div class="row">
-    <div class="text-center">
-    <h3 class="testimony">ce que vous apporte Asanasano</h3>
-      <div class="col-xs-12 ">
+    <div class="">
+      <div class="col-xs-12 col-sm-11 col-sm-offset-1 text-center-xs">
+        <h5> Du sport, où et quand vous voulez</h5>
         <p class="avantages">
-          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i></p>
+        Zéro temps de trajet : le sport vient à vous.
+        <br>Des coach de qualité, certifiés, vous proposent des activités adaptées à votre contexte : <br> vos envies, vos besoins, vos dispos, vos locaux.</p>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-3 text-center-xs text-right-sm text-right-md text-right-lg">
+        <h5>En toute simplicité</h5>
         <p class="avantages">
-          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor.</p>
+          Participation, réservation, paiement, rappels, feedbacks....laissez-vous guider. <br> Tout est pensé pour une expérience simple et fluide.</p>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-11 col-sm-offset-1 text-center-xs">
+        <h5>A petit prix</h5>
         <p class="avantages">
-          <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor finibus risus. Vivamus quis aliquet nibh. Nunc vitae felis nunc. Nam scelerisque maximus tempor.</p>
+          Pris mini car les cours sont partagés entre collègues et amis. <br>
+          Votre CE ou votre société peuvent même, s’ils le souhaitent, participer</p>
       </div>
     </div>
   </div>
 </div>
+<br>
 <!-- container témoignages-->
 <hr>
 <div class="container">
   <div class="row">
+
     <div class="text-center">
       <h3 class="testimony">témoignages</h3>
     </div>
   <br>
-    <div class="col-xs-12 col-sm-6 col-md-6 padding-sm">
+    <div class="col-xs-12 col-sm-6 col-md-6">
       <div class="testimonial">
           <div class="pic">
               <%= image_tag "Amelie.png", class: "avatar-home" %>
           </div>
-          <p class="description">
-               Le leetchi, du cours collectif! Avant, je devais relancer toutes les semaines mes collègues pour savoir qui allait venir, leur rappeler de prendre leurs affaires et collecter l’argent...un boulot à plein temps ! J’étais à deux doigts de ranger les baskets.
-          </p>
-          <h3 class="testimonial-title">Amélie - Service Designer</h3>
+          <div>
+            <p class="description">
+              Le leetchi du cours collectif! Avant, je devais relancer toutes les semaines mes collègues pour savoir qui allait venir, leur rappeler de prendre leurs affaires et collecter l’argent...un boulot à plein temps ! J’étais à deux doigts de ranger les baskets.
+            </p>
+            <h3 class="testimonial-title">Amélie - Service Designer</h3>
+          </div>
+
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-6 padding-sm">
+    <div class="col-xs-12 col-sm-6 col-md-6">
       <div class="testimonial">
           <div class="pic">
               <%= image_tag "kevin.png", class: "avatar-home" %>
           </div>
-          <p class="description">
+          <div>
+            <p class="description">
               Je pratique maintenant le Taï Chi 2 fois par semaine entre midi et deux dans la pépinière où je travaille. C’est une pratique douce mais physique et qui me permet de retrouver de l’énergie. Indispensable quand on code toute la journée.
-          </p>
-          <h3 class="testimonial-title">Kévin - Fullstack Developper</h3>
+            </p>
+            <h3 class="testimonial-title">Kévin - Fullstack Developper</h3>
+          </div>
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-6 padding-sm">
+    <div class="col-xs-12 col-sm-6 col-md-6" style="margin-right: 1px">
       <div class="testimonial">
         <div class="pic">
             <%= image_tag "odaia.png", class: "avatar-home" %>
         </div>
+        <div>
           <p class="description">
-              Super le cours de 45’. En une heure changement compris, j’arrive enfin à me bouger sur ma pause déjeuner...et prendre un peu soin de moi.
+            Super le cours de 45’. En une heure changement compris, j’arrive enfin à me bouger sur ma pause déjeuner...et prendre un peu soin de moi.
           </p>
-        <h3 class="testimonial-title">Odaïa- Product Manager</h3>
+          <h3 class="testimonial-title">Odaïa- Product Manager</h3>
+        </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 padding-sm">
+
+    <div class="col-xs-12 col-sm-6 col-md-6" style="margin-right: -1px">
       <div class="testimonial">
         <div class="pic">
             <%= image_tag "loic.png", class: "avatar-home" %>
         </div>
-        <p class="description">
+        <div>
+          <p class="description">
             Je prends des conseils de pro et m’entraine avec des collègues pour le semi-marathon.
-        </p>
-        <h3 class="testimonial-title">Loïc - Start-up CEO</h3>
+          </p>
+          <h3 class="testimonial-title">Loïc - Start-up CEO</h3>
+        </div>
       </div>
     </div>
+
   </div>
   <br>
 </div>

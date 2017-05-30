@@ -29,9 +29,7 @@ padding-top: 50px;
 }
 
 .style-circle {
-  //background-image: linear-gradient(to bottom left, #E56161 0%, #ffb199 100%);
   border-left: 3px solid #e86a67;
-  //border-right: 3px solid #ffb199;
   border-bottom: 2px solid #e89567;
   border-radius: 50%;
   padding: 21px 37px;
@@ -39,12 +37,30 @@ padding-top: 50px;
 
 .avantages {
   font-size: 13px;
-  color: #808080;
-  padding: 30px;
+  //color: #808080;
+  padding-top: 10px;
+
 }
 
+// .left-border {
+//   border-left: 5px solid grey;
+// }
+
+// .right-border {
+//   border-right: 3px solid grey;
+// }
+
+h5 .fa {
+  padding-right: 5px;
+}
+
+h5 {
+  font-variant: small-caps;
+  text-transform: lowercase;
+
+}
  .fa {
-  padding-right: 20px;
+  //padding-right: 20px;
   color: black;
  }
 
@@ -106,18 +122,19 @@ font-size: 18px;
     line-height: 26px;
 }
 .testimonial .testimonial-title{
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 3px;
     color: #000;
     text-transform: uppercase;
     position: relative;
+    margin-top: 17px;
 }
 .testimonial .testimonial-title:after{
     content: "\f10d";
     font-family: 'FontAwesome';
     display: inline-block;
     width: 100%;
-    font-size: 35px;
+    font-size: 32px;
     color: #e86a67;
     margin-top: 30px;
 }
