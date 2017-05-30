@@ -7,13 +7,13 @@
 
   <div class="form-group">
     <label for="slot_start_at_4i">Heure de début</label>
-    <%= f.time_select :start_at, class: "form-control" %> <!-- value: @slot.start_at.to_time -->
+    <%= f.time_select :start_at, class: "form-control", minute_step: 15 %> <!-- value: @slot.start_at.to_time -->
   </div>
   <div class="form-group">
     <label for="slot_end_at_4i">Heure de fin</label>
-    <%= f.time_select :end_at, class: "form-control" %> <!-- value: @slot.start_at.to_time -->
+    <%= f.time_select :end_at, class: "form-control", minute_step: 15 %> <!-- value: @slot.start_at.to_time -->
   </div>
-  <%= f.input :participants_min, label: 'Nombre minimum de participants' %>
+  <%= f.input :participants_min, label: 'Nombre minimum de participants', collection: 1..@course.capacity_max, default: 1 %>
   <%= f.input :price, label: 'Prix(€) de la séance' %>
   <%= f.button :submit, "Ajouter", id:"slot-submit-btn" %>
 <% end %>
