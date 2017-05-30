@@ -12,7 +12,7 @@
       <%= button_tag type: "submit", class: "buy-btn btn-sm", disabled: true do %>
         <i class="fa fa-check-circle-o"></i> Inscrit
       <% end %>
-      <%= link_to "Me désinscrire", desinscription_slot_path(slot),
+      <%= link_to "Se désinscrire", desinscription_slot_path(slot),
           method: 'patch',
           remote: true,
           data: { confirm: "Êtes-vous sûr de vouloir vous désinscrire?" } %>
