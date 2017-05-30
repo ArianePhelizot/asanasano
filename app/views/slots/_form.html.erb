@@ -1,4 +1,4 @@
-<%= simple_form_for [@course, @slot] do |f| %>
+<%= simple_form_for([@course, @slot], remote: true) do |f| %>
   <%= f.input :date,
               start_year: Date.today.year,
               end_year: Date.today.year + 10,
@@ -15,5 +15,5 @@
   </div>
   <%= f.input :participants_min, label: 'Nombre minimum de participants' %>
   <%= f.input :price, label: 'Prix(€) de la séance' %>
-  <%= f.submit "Ajouter" %>
+  <%= f.button :submit, "Ajouter", id:"slot-submit-btn" %>
 <% end %>

@@ -1,1 +1,1 @@
-$('#slot-card').html("<%= j render 'courses/slot_card', slot: @slot, course: @course %>");
+$("#slot-card-<%= @slot.id %>").html("<%= j render 'courses/slot_card', slot: @slot, course: @course %>");

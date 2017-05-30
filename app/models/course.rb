@@ -39,14 +39,18 @@ class Course < ApplicationRecord
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 0..500}
 
   def next_slot
-    sorted_slots = slots.sort_by(&:date)
-    next_slots = sorted_slots.select { |slot| slot.date >= Time.now}
-    next_slot = next_slots.first
+    slots.sort_by(&:date).select { |slot| slot.date >= Time.now }.first
+  end
+
+  def next_slots
+    slots.sort_by(&:date).select { |slot| slot.date >= Time.now }
   end
 
   def publishable?
     valid? && slots.any? && draft?
   end
+
+
 
   def depublishable?
     active? && !slots.any?
