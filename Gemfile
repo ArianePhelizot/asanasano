@@ -11,6 +11,8 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'redis'
 
+gem 'omniauth-facebook'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
