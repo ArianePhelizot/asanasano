@@ -41,9 +41,9 @@
           <div class="group-title">
             <%= group.name%>
           </div>
-          <!-- CREATE A NEW GROUP -->
+          <!-- CREATE A NEW COURSE -->
           <div class="row">
-            <div class="">
+            <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
               <% if policy(group).edit? %>
                 <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
               <% end %>
