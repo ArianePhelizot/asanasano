@@ -41,7 +41,7 @@
         <!-- group-crud-buttons -->
 
               <% if policy(group).edit? %>
-                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary", id:"create-a-new-course-button" %>
+                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
               <% end %>
               <% if policy(group).edit? %>
                 <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning", id:"edit-button" %>
