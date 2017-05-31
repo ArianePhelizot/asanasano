@@ -10,6 +10,7 @@
   color: black;
 }
 .pencil {
+  color:white;
   text-align: right;
 }
 .pencil :hover {
@@ -75,4 +76,25 @@
 }
 #more-course-info {
   padding-bottom: 50px;
+}
+.edit-delete-icons-color {
+  color: white;
+}
+.edit-delete-icons-color:hover {
+  color: #E56161;
+}
+.banner-show {
+  color: white;
+  height: 100px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  opacity:1;
+  padding-top: 5px;
+}
+.margin-slot-buttons {
+  margin-top: 35px;
+  margin-right: 30px;
+}
+.course-show-header {
+  padding:0px;
 }
