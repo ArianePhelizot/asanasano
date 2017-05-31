@@ -16,7 +16,7 @@
         <% if policy(slot).desinscription? %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'slot_id', slot.id %>
-            <%= button_tag type: "submit", class: "buy-btn btn-sm", disabled: true do %>
+            <%= button_tag type: "submit", class: "buy-btn", disabled: true do %>
               <i class="fa fa-check-circle-o"></i> Inscrit
             <% end %>
           <% end %>
@@ -29,12 +29,12 @@
       <% elsif slot.is_full? %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'slot_id', slot.id %>
-          <%= submit_tag 'Complet', class: "buy-btn btn-sm", disabled: true %>
+          <%= submit_tag 'Complet', class: "buy-btn", disabled: true %>
         <% end %>
       <% else %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'slot_id', slot.id %>
-          <%= submit_tag "M'inscrire", class: "buy-btn btn-sm" %>
+          <%= submit_tag "M'inscrire", class: "buy-btn" %>
         <% end %>
       <% end %>
     </div>

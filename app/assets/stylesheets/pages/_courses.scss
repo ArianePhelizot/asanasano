@@ -49,8 +49,11 @@
   color: #999999;
   font-size: 12px;
 }
-
 .desincription-link:hover {
+  color: #777777;
+  text-decoration: none;
+}
+.desincription-link:focus {
   color: #777777;
   text-decoration: none;
 }
