@@ -36,15 +36,16 @@ background-color: white;
 .card {
   position: relative;
   height: 340px;
-  width: 220px;
+  width: 218px;
   background-color: white;
   color: black;
   text-shadow: none;
   margin-top: 40px;
   margin-bottom: 40px;
-  border: #CCCCCC solid 1px;
 }
+#card-design {
 
+}
 
 // BORDER  //
 .b {
@@ -69,6 +70,7 @@ border: solid black 1px;
   color: white;
   font-size: 16px;
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 
@@ -84,14 +86,15 @@ border: solid black 1px;
   background-color: white;
 }
 
+// COACH INFOS //
+#avatar-coach
+
 .coach-info {
 
 }
-
 .coach-name {
 
 }
-
 .card-user {
 
 }
@@ -111,6 +114,7 @@ border: solid black 1px;
   width: 15px;
 }
 
+// RED CIRCLE - COURSE OFFLINE //
 .non-published-red-circle {
   position: absolute;
   top: 5px;
@@ -119,6 +123,16 @@ border: solid black 1px;
   border-radius: 50px;
   height: 15px;
   width: 15px;
+}
+.non-published-red-circle :hover {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #F96161;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+
 }
 
 // DESINSCRIPTION BUTTON //
