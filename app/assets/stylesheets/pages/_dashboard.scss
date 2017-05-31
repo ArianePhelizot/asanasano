@@ -89,18 +89,22 @@ border: solid black 1px;
 #avatar-coach {
   position: absolute;
   top: 65px;
-  right: 95px;
+  right: 90px;
 }
-
+.card-user {
+border-color: grey;
+border-radius: 50px;
+border: solid 1px grey;
+width: 41px;
+height: 41px;
+}
 .coach-info {
 
 }
 .coach-name {
 
 }
-.card-user {
 
-}
 
 
 // DASHBOARD-COURSE-CARD //
