@@ -68,7 +68,7 @@ border: solid black 1px;
 .course-name{
   color: white;
   font-size: 16px;
-
+  text-transform: uppercase;
 }
 
 
@@ -121,18 +121,81 @@ border: solid black 1px;
   width: 15px;
 }
 
-
-.course_access {
+// DESINSCRIPTION BUTTON //
+#se-desinscrire {
   position: absolute;
-  bottom: 15px;
-  left: 40px;
+  bottom: 0px;
+  text-align: center;
+  width: 218px;
+  height: 52px;
+  background-color: #AFAFAF;
+  border: solid 1px #878787;
+  padding-top: 12px;
 }
+#desinscription-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+// AJOUTER-UNE-SEANCE BUTTON //
+#ajouter-une-seance {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 218px;
+  height: 52px;
+  background-color: #FF8606;
+  border: solid 1px #FF4A00;
+  padding-top: 12px;
+}
+#ajouter-une-seance-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+
+// METTRE-EN-LIGNE BUTTON //
+#mettre-en-ligne {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 218px;
+  height: 52px;
+  background-color: #60C95D;
+  border: solid 1px #57AF54;
+  padding-top: 12px;
+}
+#mettre-en-ligne-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+// TOUTES-LES-SEANCES BUTTON //
+#toutes-les-seances {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 218px;
+  height: 52px;
+  background-color: #60C95D;
+  border: solid 1px #57AF54;
+  padding-top: 12px;
+}
+#toutes-les-seances-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+
 
 // SLOT_INFO //
 .next_slot {
   position: absolute;
   top: 130px;
-  left: 10px;
 }
 
 #calendar-icon {
@@ -146,10 +209,13 @@ border: solid black 1px;
   left: 60px;
   width: 180px;
   font-size: 12px;
+  top: 10px;
 }
 
 #clock-icon {
   position: absolute;
+  left: 30px;
+  top: 50px;
 
 }
 .text-hours {
@@ -158,12 +224,14 @@ border: solid black 1px;
   left: 60px;
   width: 180px;
   font-size: 12px;
-  top: 100px;
+  top: 50px;
 
 }
 
 #user-icon {
   position: absolute;
+  left: 30px;
+  top: 90px;
 
 }
 .text-users-count {
@@ -172,8 +240,7 @@ border: solid black 1px;
   left: 60px;
   width: 180px;
   font-size: 12px;
-  top: 100px;
-
+  top: 92px;
 }
 
 // SLOT_STATUS//
