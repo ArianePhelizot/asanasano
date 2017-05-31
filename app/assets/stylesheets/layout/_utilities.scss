@@ -58,6 +58,7 @@
     .text-justify-xs {
         text-align: justify;
     }
+
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .text-left-not-sm, .text-center-not-sm, .text-right-not-sm, .text-justify-not-sm {
@@ -78,6 +79,14 @@
     .padding-sm {
       padding: 0 50px;
     }
+    .avantages-border-left {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
+    }
+    .avantages-border-right {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
+    }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
@@ -95,6 +104,14 @@
     .text-justify-md {
         text-align: justify;
     }
+    .avantages-border-right {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
+    }
+    .avantages-border-left {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
+    }
 }
 @media (min-width: 1200px) {
     .text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
@@ -111,5 +128,13 @@
     }
     .text-justify-lg {
         text-align: justify;
+    }
+    .avantages-border-left {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
+    }
+    .avantages-border-right {
+      border-right: 4px solid #ffb199;
+      padding-right: 20px;
     }
 }
