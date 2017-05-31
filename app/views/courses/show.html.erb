@@ -27,11 +27,8 @@
           <div class="row">
 
             <% if @course.address.present?  %>
-              <%# image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=250x250&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}&key=ENV[API_KEY_GOOLE_MAP]", class: "map" %>
 
-              <img src = "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red?key=<%= ENV['API_KEY_GOOLE_MAP']%>|<%= @course.address %>" alt ="map">
-
-              <%# image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=240x240&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}", class: "map" %>
+              <img src = "https://maps.googleapis.com/maps/api/staticmap?key=<%= ENV['API_KEY_GOOLE_MAP']%>&zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|<%= @course.address %>" alt ="map">
             <% end %>
 
             <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
