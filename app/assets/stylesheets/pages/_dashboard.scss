@@ -1,3 +1,7 @@
+.wrapper-dashboard {
+  padding: 90px 120px 90px 120px;
+}
+
 // DASHBOARD BACKGROUND CONTAINER //
 .dashboard-bg-container {
 position:relative;
@@ -25,8 +29,9 @@ background-color: white;
 .group-container {
   position:relative;
   background-color: white;
-  margin: 10px 10px 30px 10px;
-  border: solid 1px #B74484;
+  margin: 30px 0px 30px 0px;
+  box-shadow: 1px 3px 12px #999999;
+
 }
 .group-title {
   color: black;
