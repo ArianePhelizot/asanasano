@@ -3,17 +3,7 @@
 
   <div class="dashboard-bg-container">
 
-    <!-- AJOUTER UN NOUVEAU GROUPE -->
-    <div class="row">
-      <div class="col-xs-offset-1 col-sm-12 col-md-12 col-lg-12">
-        <!-- add_a_group_button -->
-        <div class="add_a_group_button">
-          <% if policy(Group).new? %>
-            <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn green-button" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
 
     <!-- MES PROCHAINES SEANCES -->
     <h2>Mes prochaines séances </h2>
@@ -27,6 +17,19 @@
 
     <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
     <h2>Tous mes cours </h2>
+
+    <!-- AJOUTER UN NOUVEAU GROUPE -->
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offet-3">
+        <!-- add_a_group_button -->
+
+          <% if policy(Group).new? %>
+            <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn add-a-new-group" %>
+          <% end %>
+
+      </div>
+    </div>
+
     <% @user.groups.sort.each do |group| %>
 
     <!-- GROUP-ROW -->
