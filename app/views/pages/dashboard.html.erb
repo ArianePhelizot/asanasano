@@ -35,6 +35,12 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="group-container">
+          <% if policy(group).edit? %>
+            <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning", id:"edit-button" %>
+          <% end %>
+          <% if policy(group).destroy? %>
+            <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger", id:"delete-button" %>
+          <% end %>
           <!-- group-title -->
           <div class="group-title">
             <%= group.name%>
@@ -47,15 +53,6 @@
               <% end %>
             </div>
           </div>
-
-
-              <% if policy(group).edit? %>
-                <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning", id:"edit-button" %>
-              <% end %>
-              <% if policy(group).destroy? %>
-               <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger", id:"delete-button" %>
-              <% end %>
-
 
           <div class="row">
           <% group.courses.sort.each do |course| %>
@@ -71,9 +68,10 @@
               <% end %>
             </div>
           <% end %>
+          </div>
         </div>
-         </div>
-      <% end %>
-
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
