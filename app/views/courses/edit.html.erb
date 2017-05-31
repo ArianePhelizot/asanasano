@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Editer mon groupe</h1>
+      <h1>Editer mon cours</h1>
       <!-- si le user est le créateur du group il peut éditer tous les attributs du cours  -->
       <% if @user == @course.group.owner %>
         <%= render 'form_edit' %>

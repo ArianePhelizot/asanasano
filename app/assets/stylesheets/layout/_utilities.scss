@@ -4,12 +4,49 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
-// Paddings
+// links
+.info-link {
+  cursor: pointer
+}
+.info-link:hover {
+  color: #E56161;
+}
+// Paddings - margins
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
 }
-
+.padding-rgt-lft-25 {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.padding-rgt-lft-150 {
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.mg-btm-top-h2 h2 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+.margin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.mg-top-30 {
+  margin-top: 30px
+}
+.mg-btm-10 {
+  margin-bottom: 10px
+}
+.mg-btm-20 {
+  margin-bottom: 20px
+}
+.mg-btm-30 {
+  margin-bottom: 30px
+}
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -23,13 +60,6 @@
 .bg-dark-blue {
   background: #3b5998;
 }
-
-
-.margin {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 .text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
     text-align: left;
 }
@@ -43,98 +73,120 @@
     text-align: justify;
 }
 @media (max-width: 767px) {
-    .text-left-not-xs, .text-center-not-xs, .text-right-not-xs, .text-justify-not-xs {
-        text-align: inherit;
-    }
-    .text-left-xs {
-        text-align: left;
-    }
-    .text-center-xs {
-        text-align: center;
-    }
-    .text-right-xs {
-        text-align: right;
-    }
-    .text-justify-xs {
-        text-align: justify;
-    }
+  .text-left-not-xs, .text-center-not-xs, .text-right-not-xs, .text-justify-not-xs {
+      text-align: inherit;
+  }
+  .text-left-xs {
+      text-align: left;
+  }
+  .text-center-xs {
+      text-align: center;
+  }
+  .text-right-xs {
+      text-align: right;
+  }
+  .text-justify-xs {
+      text-align: justify;
+  }
+  .pdg-xs-slots {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
+  .pd-top-xs-slot-price {
+    padding-top: 20px;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-    .text-left-not-sm, .text-center-not-sm, .text-right-not-sm, .text-justify-not-sm {
-        text-align: inherit;
-    }
-    .text-left-sm {
-        text-align: left;
-    }
-    .text-center-sm {
-        text-align: center;
-    }
-    .text-right-sm {
-        text-align: right;
-    }
-    .text-justify-sm {
-        text-align: justify;
-    }
-    .padding-sm {
-      padding: 0 50px;
-    }
-    .avantages-border-left {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
-    .avantages-border-right {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
+  .text-left-not-sm, .text-center-not-sm, .text-right-not-sm, .text-justify-not-sm {
+      text-align: inherit;
+  }
+  .text-left-sm {
+      text-align: left;
+  }
+  .text-center-sm {
+      text-align: center;
+  }
+  .text-right-sm {
+      text-align: right;
+  }
+  .text-justify-sm {
+      text-align: justify;
+  }
+  .padding-sm {
+    padding: 0 50px;
+  }
+  .pdg-sm-slots {
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-    .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
-        text-align: inherit;
-    }
-    .text-left-md {
-        text-align: left;
-    }
-    .text-center-md {
-        text-align: center;
-    }
-    .text-right-md {
-        text-align: right;
-    }
-    .text-justify-md {
-        text-align: justify;
-    }
-    .avantages-border-right {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
-    .avantages-border-left {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
+  .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
+      text-align: inherit;
+  }
+  .text-left-md {
+      text-align: left;
+  }
+  .text-center-md {
+      text-align: center;
+  }
+  .text-right-md {
+      text-align: right;
+  }
+  .text-justify-md {
+      text-align: justify;
+  }
+  .pd-md-wrapper-slot-card {
+    padding: 20px 50px;
+  }
+  .pdg-md-slots {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
 }
 @media (min-width: 1200px) {
-    .text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
-        text-align: inherit;
-    }
-    .text-left-lg {
-        text-align: left;
-    }
-    .text-center-lg {
-        text-align: center;
-    }
-    .text-right-lg {
-        text-align: right;
-    }
-    .text-justify-lg {
-        text-align: justify;
-    }
-    .avantages-border-left {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
-    .avantages-border-right {
-      border-right: 4px solid #ffb199;
-      padding-right: 20px;
-    }
+  .text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
+      text-align: inherit;
+  }
+  .text-left-lg {
+      text-align: left;
+  }
+  .text-center-lg {
+      text-align: center;
+  }
+  .text-right-lg {
+      text-align: right;
+  }
+  .text-justify-lg {
+      text-align: justify;
+  }
+  .pdg-lg-slots {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
 }
