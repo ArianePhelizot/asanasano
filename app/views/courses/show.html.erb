@@ -93,7 +93,7 @@
             <% elsif @course.active? && !@course.depublishable?%>
               <a href="#" class = "btn btn-courses btn-sm disabled" >Désactiver le cours</a>
             <% end %>
-            <p class="info-link" id="more-info">> Plus d'infos</p>
+            <p class="info-link" id="more-info">Plus d'infos...</p>
           </div>
           <div class="col-xs-12">
             <div class="hidden "id="more-course-info">
@@ -109,7 +109,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
-      <div class="padding-rgt-lft-150">
+      <div class="pdg-lg-slots pdg-md-slots pdg-sm-slots pdg-xs-slots">
         <div class="row">
           <div class="col-xs-12 text-center-xs text-center-sm text-right-md text-right-lg mg-btm-20 mg-top-10">
             <% if policy(@course).edit? %>

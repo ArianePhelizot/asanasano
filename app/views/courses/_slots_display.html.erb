@@ -10,7 +10,7 @@
   </div>
 <% else %>
   <% course.next_slots.each do |slot| %>
-    <div class="wrapper-slot-card">
+    <div class="wrapper-slot-card height-sm-wrapper-slot-card">
       <div class="row" >
         <div id="slot-card-<%= slot.id %>">
             <%= render 'courses/slot_card', slot: slot, course: course %>
