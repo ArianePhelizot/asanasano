@@ -10,8 +10,8 @@ background-color: white;
 // MES PROCHAINES SEANCES - CONTAINER //
 .mes-prochaines-seances-container {
   border: solid 1px #B74484;
-  margin-bottom: 70px;
-}
+  padding-left: 30px;
+  }
 
 // .separator-seances-cours {
 //   height: 1px;
@@ -46,6 +46,7 @@ background-color: white;
   padding-top: 10px;
 }
 
+
 .tous-mes-cours-title {
   margin: 0px;
 }
@@ -62,9 +63,6 @@ background-color: white;
   right: 120px;
 }
 #create-a-new-course-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
   background-color: #60C95D;
   border: #45B442 1px solid;
   color: white;

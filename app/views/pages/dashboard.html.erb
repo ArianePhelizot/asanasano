@@ -6,80 +6,78 @@
 
 
     <!-- MES PROCHAINES SEANCES -->
-    <h2>Mes prochaines séances </h2>
     <div class="mes-prochaines-seances-container">
-      <div class="row">
-        <% @user.next_slots.each do |slot| %>
-          <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
-            <%= render 'dashboard-slot-card', slot: slot %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-<!--
-    <div class="row">
-      <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
-        <div class="separator-seances-cours">
-        </div>
-      </div>
-    </div> -->
-    <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
+      <h2>Mes prochaines séances </h2>
 
-
-    <!-- AJOUTER UN NOUVEAU GROUPE -->
-    <div class="row">
-      <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
-        <!-- add_a_group_button -->
-
-          <% if policy(Group).new? %>
-            <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn add-a-new-group" %>
-          <% end %>
-
-      </div>
-    </div>
-
-    <h2 class="tous-mes-cours-title">Tous mes cours </h2>
-    <% @user.groups.sort.each do |group| %>
-
-    <!-- GROUP-ROW -->
-      <div class="group-container b">
-        <!-- group-title -->
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-          <div class="group-title">
-            <%= group.name%>
-          </div>
-        </div>
-        <!-- group-crud-buttons -->
-
-              <% if policy(group).edit? %>
-                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
-              <% end %>
-              <% if policy(group).edit? %>
-                <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning", id:"edit-button" %>
-              <% end %>
-              <% if policy(group).destroy? %>
-                <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger", id:"delete-button" %>
-              <% end %>
 
         <div class="row">
-          <% group.courses.sort.each do |course| %>
-            <div class="col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-3 col-lg-1">
-              <!-- Si coach ou group owner => afficher tous les cours -->
-              <% if policy(course).update? %>
-                <%= render 'dashboard-course-card', course: course %>
-              <!-- Sinon, n'afficher que les acours actifs pour les simples membres -->
-              <% else %>
-                <% if course.active? %>
-                  <%= render 'dashboard-course-card', course: course %>
-                <% end %>
-              <% end %>
+          <% @user.next_slots.each do |slot| %>
+            <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
+              <%= render 'dashboard-slot-card', slot: slot %>
             </div>
           <% end %>
         </div>
       </div>
 
-    <% end %>
+    <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
+    <!-- AJOUTER UN NOUVEAU GROUPE -->
+    <div class="row">
+      <div class="col-xs-offset-3 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
+        <!-- add_a_group_button -->
+
+          <% if policy(Group).new? %>
+            <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn add-a-new-group" %>
+          <% end %>
+        </div>
+    </div>
+
+
+    <div class="group-container">
+      <h2 class="tous-mes-cours-title">Tous mes cours </h2>
+      <% @user.groups.sort.each do |group| %>
+
+      <!-- GROUP-ROW -->
+
+          <!-- group-title -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+            <div class="group-title">
+              <%= group.name%>
+            </div>
+          </div>
+          <!-- group-crud-buttons -->
+              <div class="row">
+                <div class="col-xs-offset-3 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
+                  <% if policy(group).edit? %>
+                    <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
+                  <% end %>
+                  </div>
+               </div>
+                <% if policy(group).edit? %>
+                  <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning", id:"edit-button" %>
+                <% end %>
+                <% if policy(group).destroy? %>
+                  <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger", id:"delete-button" %>
+                <% end %>
+
+          <div class="row">
+            <% group.courses.sort.each do |course| %>
+              <div class="col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-3 col-lg-1">
+                <!-- Si coach ou group owner => afficher tous les cours -->
+                <% if policy(course).update? %>
+                  <%= render 'dashboard-course-card', course: course %>
+                <!-- Sinon, n'afficher que les acours actifs pour les simples membres -->
+                <% else %>
+                  <% if course.active? %>
+                    <%= render 'dashboard-course-card', course: course %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
     <!-- END-GROUP-ROW -->
 
   </div>
