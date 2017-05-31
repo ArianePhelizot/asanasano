@@ -46,6 +46,11 @@
   padding: 20px 53px;
 }
 .desincription-link {
-
+  color: #999999;
+  font-size: 12px;
 }
 
+.desincription-link:hover {
+  color: #777777;
+  text-decoration: none;
+}

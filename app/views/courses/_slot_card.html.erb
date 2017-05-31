@@ -22,6 +22,7 @@
           <% end %>
           <%= link_to "Me désinscrire", desinscription_slot_path(slot),
               method: 'patch',
+              class:"desincription-link",
               remote: true,
               data: { confirm: "Êtes-vous sûr de vouloir vous désinscrire?" }
           %>
