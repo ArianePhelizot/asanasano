@@ -15,5 +15,5 @@
   </div>
   <%= f.input :participants_min, label: 'Nombre minimum de participants', collection: 1..@course.capacity_max, default: 1 %>
   <%= f.input :price, label: 'Prix(€) de la séance' %>
-  <%= f.button :submit, "Ajouter", id:"slot-submit-btn" %>
+  <%= f.button :submit, "Ajouter", id:"slot-submit-btn", class:"btn-add" %>
 <% end %>

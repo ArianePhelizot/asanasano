@@ -4,13 +4,6 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
-// links
-.info-link {
-  cursor: pointer
-}
-.info-link:hover {
-  color: #E56161;
-}
 // Paddings - margins
 .padded {
   padding-top: 5em;
@@ -35,8 +28,8 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.mg-top-30 {
-  margin-top: 30px
+.mg-top-50 {
+  margin-top: 50px
 }
 .mg-btm-10 {
   margin-bottom: 10px
@@ -92,7 +85,6 @@
     padding-left: 10px;
     padding-right: 10px;
   }
-
   .pd-top-xs-slot-price {
     padding-top: 20px;
   }
@@ -119,6 +111,9 @@
   .pdg-sm-slots {
     padding-left: 85px;
     padding-right: 85px;
+  }
+  .pd-top-sm-slot-price {
+  padding-top: 20px;
   }
   .avantages-border-left {
     border-right: 4px solid #ffb199;
@@ -152,6 +147,9 @@
     padding-left: 40px;
     padding-right: 40px;
   }
+  .pd-top-md-slot-price {
+    padding-top: 20px;
+  }
   .avantages-border-right {
     border-right: 4px solid #ffb199;
     padding-right: 20px;
@@ -180,6 +178,9 @@
   .pdg-lg-slots {
     padding-left: 150px;
     padding-right: 150px;
+  }
+  .pd-top-lg-slot-price {
+    padding-top: 20px;
   }
   .avantages-border-left {
     border-right: 4px solid #ffb199;
