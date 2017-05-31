@@ -1,26 +1,28 @@
-<div class="container pd-0">
-  <div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(181, 98, 87, 0.65) 0%, rgba(51, 71, 98, 0.22) 50%), url(<%= image_path("header-course-show.png") %> );">
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
-        <div class=" text-center  ">
-          <h1 class="titles-home"><%= @course.name %></h1>
+<div class="container">
+  <div class="course-show-header">
+    <div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(181, 98, 87, 0.65) 0%, rgba(51, 71, 98, 0.22) 50%), url(<%= image_path("header-course-show.png") %> );">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class=" text-center  ">
+            <h1 class="titles-home"><%= @course.name %></h1>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-3 pencil">
-        <div class="margin-slot-buttons">
-            <% if policy(@course).edit? %>
-              <%= link_to edit_group_course_path(@group, @course) do %>
-                <i class="fa fa-pencil edit-delete-icons-color"></i>
+        <div class="col-xs-3 pencil">
+          <div class="margin-slot-buttons">
+              <% if policy(@course).edit? %>
+                <%= link_to edit_group_course_path(@group, @course) do %>
+                  <i class="fa fa-pencil edit-delete-icons-color"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          &nbsp; <!-- espace -->
-            <% if policy(@course).destroy? %>
-              <%= link_to course_path(@course),
-                   method: "delete",
-                   data: { confirm: "Êtes-vous sûr de vouloir supprimer ce cours?" } do %>
-                   <i class="fa fa-trash-o edit-delete-icons-color"></i>
+            &nbsp; <!-- espace -->
+              <% if policy(@course).destroy? %>
+                <%= link_to course_path(@course),
+                     method: "delete",
+                     data: { confirm: "Êtes-vous sûr de vouloir supprimer ce cours?" } do %>
+                     <i class="fa fa-trash-o edit-delete-icons-color"></i>
+                <% end %>
               <% end %>
-            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -31,17 +33,16 @@
         <div class="row">
           <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
             <div class="mg-btm-20 coach-pic text-center-xs margin-top-20">
-              <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
+              <% if @course.coach&.photo? %>
                 <%= cl_image_tag @course.coach_photo.path, gravity: :face,
                                                            width: 50,
                                                            crop: :fill,
                                                            radius: :max %>
-              <!-- on peut appeler coach_photo sur @course car on a délégué dans le model Coach, la méthode photo à Course avec prefix: true -->
               <% else %>
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
               <% end %>
               <% if @course.coach&.first_name.present?  %>
-                <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
+                <p>Coach: <%= @course.coach.first_name %></p>
               <% else %>
                 <p class="text-center-xs">Coach</p>
               <% end %>
@@ -140,6 +141,5 @@
     </div>
   </div>
 </div>
-
 <% content_for :meta_title, "#{@course.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @course.content %>
