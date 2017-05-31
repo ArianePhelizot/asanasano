@@ -40,24 +40,24 @@
         </div>
         <!-- group-crud-buttons -->
         <div class="row">
-          <div class="col-xs-offset-2">
-            <div class="group-crud-buttons">
-              <% if policy(group).edit? %>
-                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary"  %>
-              <% end %>
-              <% if policy(group).edit? %>
-                <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning" %>
-              <% end %>
-              <% if policy(group).destroy? %>
-                <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
           <% group.courses.sort.each do |course| %>
             <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-1">
+
+            <!-- Create-Course-Button -->
+            <% if policy(group).edit? %>
+                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"create-button btn btn-primary", id:"create-a-new-course-button" %>
+            <% end %>
+
+            <!-- Edit-Group-Button -->
+            <% if policy(group).edit? %>
+              <%= link_to "Editer", edit_group_path(group), class:"delete-button btn btn-warning", id:"delete-button" %>
+            <% end %>
+
+            <!-- Delete-Group-Button -->
+             <% if policy(group).destroy? %>
+              <%= link_to "Supprimer", group_path(group), method: "delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" }, class:"delete-button btn btn-danger", id:"delete-button"%>
+            <% end %>
+
               <!-- Si coach ou group owner => afficher tous les cours -->
               <% if policy(course).update? %>
                 <%= render 'dashboard-course-card', course: course %>
