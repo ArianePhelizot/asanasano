@@ -168,31 +168,10 @@ height: 41px;
 }
 
 // DESINSCRIPTION BUTTON //
-// #se-desinscrire {
-//   position: absolute;
-//   bottom: 0px;
-//   text-align: center;
-//   width: 140px;
-//   height: 32px;
-//   background-color: white;
-//   border: solid 1px #AFAFAF;
-//   padding-top: 3px;
-//   left: 36px;
-//   bottom: 15px;
-// }
-// #se-desinscrire:hover{
-//   position: absolute;
-//   bottom: 0px;
-//   text-align: center;
-//   width: 140px;
-//   height: 32px;
-//   background-color: white;
-//   border: solid 1px black;
-//   padding-top: 3px;
-//   left: 36px;
-//   bottom: 15px;
+#se-desinscrire {
+  padding-top: 20px;
+}
 
-// }
 #desinscription-text {
   color: #AFAFAF;
   // text-transform: uppercase;
@@ -207,7 +186,6 @@ height: 41px;
   padding-top: 6px;
   left: 36px;
   bottom: 15px;
-
 }
 #desinscription-text:hover{
   color: #AFAFAF;
