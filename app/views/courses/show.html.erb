@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
       <div class="padding-rgt-lft-25">
         <div class="row">
-          <div class="margin-top">
+          <div class="margin-top-20">
             <div class="col-xs-2">
               <%= cl_image_tag @course.sport.icon.path, width: 50,
                                                         height: 50,
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="col-xs-2 pencil">
-              <div class="margin-top">
+              <div class="margin-top-20">
                   <% if policy(@course).edit? %>
                     <%= link_to edit_group_course_path(@group, @course) do %>
                       <i class="fa fa-pencil fa-lg"></i>
@@ -111,13 +111,17 @@
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
       <div class="pdg-lg-slots pdg-md-slots pdg-sm-slots pdg-xs-slots">
         <div class="row">
-          <div class="col-xs-12 text-center-xs text-center-sm text-right-md text-right-lg mg-btm-20 mg-top-10">
-            <% if policy(@course).edit? %>
-              <a class="btn-book" id="new_form_button">Ajouter une séance</a>
-            <% end %>
+          <div class="col-xs-12 mg-btm-10 mg-top-30">
+            <div class="text-center">
+              <% if policy(@course).edit? %>
+                <a class="btn-book" id="new_form_button">Ajouter une séance</a>
+              <% end %>
+            </div>
           </div>
-          <div class="col-xs-6 col-xs-offset-3 text-center hidden" id="new_slot_form">
-            <%= render 'slots/form', course: @course, slot: @slot %>
+          <div class="col-xs-6 col-xs-offset-3" >
+            <div class=" hidden wrapper-new-slot" id="new_slot_form">
+                <%= render 'slots/form', course: @course, slot: @slot %>
+            </div>
           </div>
         </div>
         <div class="row">

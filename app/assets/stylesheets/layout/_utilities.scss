@@ -16,13 +16,6 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
-.mg-btm-top-h2 h2 {
-  margin-top: 6px;
-  margin-bottom: 50px;
-}
-.margin-top {
-  margin-top: 20px;
-}
 .padding-rgt-lft-25 {
   padding-left: 25px;
   padding-right: 25px;
@@ -30,6 +23,29 @@
 .padding-rgt-lft-150 {
     padding-left: 150px;
     padding-right: 150px;
+}
+.mg-btm-top-h2 h2 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+.margin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.mg-top-30 {
+  margin-top: 30px
+}
+.mg-btm-10 {
+  margin-bottom: 10px
+}
+.mg-btm-20 {
+  margin-bottom: 20px
+}
+.mg-btm-30 {
+  margin-bottom: 30px
 }
 // Backgrounds
 .bg-black {
@@ -43,19 +59,6 @@
 }
 .bg-dark-blue {
   background: #3b5998;
-}
-.margin {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.mg-top-10 {
-  margin-top: 10px
-}
-.mg-btm-10 {
-  margin-bottom: 10px
-}
-.mg-btm-20 {
-  margin-bottom: 20px
 }
 .text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
     text-align: left;

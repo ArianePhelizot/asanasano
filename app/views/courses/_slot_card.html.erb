@@ -12,7 +12,7 @@
     <div class="price-slot text-center">
       <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
     </div>
-    <div class="slot-button text-center">
+    <div class="text-center">
         <% if policy(slot).desinscription? %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'slot_id', slot.id %>
