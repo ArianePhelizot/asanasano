@@ -40,16 +40,22 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #999999;
   font-size: 14px;
   text-align: center;
   min-width: 160px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #777777;
   text-decoration: none;
+  font-weight: bold;
 }
 
+.navbar-wagon-link:focus {
+  color: #777777;
+  text-decoration: none;
+  font-weight: bold;
+}
 /* Navbar right button */
 .navbar-wagon-button {
   margin-left: 10px;
