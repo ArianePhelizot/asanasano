@@ -25,6 +25,13 @@
           </div>
          <hr>
           <div class="row">
+
+            <% if @course.address.present?  %>
+              <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=240x240&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}", class: "map" %>
+              <img src = "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=240x240&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}" class = "map">
+              <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=240x240&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}", class: "map" %>
+            <% end %>
+
             <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
               <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
                 <%= cl_image_tag @course.coach_photo.path, gravity: :face,
@@ -40,7 +47,9 @@
               <% else %>
                 <p>Coach</p>
               <% end %>
+
             <br>
+
             </div>
             <div class="col-xs-12 col-sm-8">
               <p><strong>Sport:</strong> <%= @course.sport.name %></p>
