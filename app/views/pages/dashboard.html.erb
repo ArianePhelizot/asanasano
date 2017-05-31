@@ -1,51 +1,44 @@
-<!-- DASHBOARD BACKGROUND CONTAINER-->
 <div class="wrapper-dashboard">
-
+  <!-- DASHBOARD BACKGROUND CONTAINER-->
   <div class="dashboard-bg-container">
-
-
 
     <!-- MES PROCHAINES SEANCES -->
     <h2>Mes prochaines séances </h2>
-    <div class="mes-prochaines-seances-container">
 
 
-
-        <div class="row">
+    <div class="row">
+      <div class="mes-prochaines-seances-container">
           <% @user.next_slots.each do |slot| %>
-            <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
+          <div class="col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-2 col-lg-3">
               <%= render 'dashboard-slot-card', slot: slot %>
-            </div>
+          </div>
           <% end %>
-        </div>
       </div>
+    </div>
 
     <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
     <!-- AJOUTER UN NOUVEAU GROUPE -->
     <div class="row">
       <div class="col-xs-offset-3 col-sm-offset-4 col-md-offset-5 col-lg-3">
         <!-- add_a_group_button -->
-
           <% if policy(Group).new? %>
             <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn add-a-new-group" %>
           <% end %>
-        </div>
+      </div>
     </div>
 
-
-<h2 class="tous-mes-cours-title">Tous mes cours </h2>
-      <% @user.groups.sort.each do |group| %>
-      <div class="group-container">
-
+    <!-- TOUS MES COURS -->
+    <h2 class="tous-mes-cours-title">Tous mes cours </h2>
+    <% @user.groups.sort.each do |group| %>
       <!-- GROUP-ROW -->
-
-          <!-- group-title -->
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="group-container">
+            <!-- group-title -->
             <div class="group-title">
               <%= group.name%>
             </div>
-          </div>
+      </div>
           <!-- group-crud-buttons -->
               <div class="row">
                 <div class="col-xs-offset-3 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
@@ -76,10 +69,9 @@
               </div>
             <% end %>
           </div>
-          </div>
       <% end %>
-
+      </div>
+        </div>
     <!-- END-GROUP-ROW -->
-
   </div>
 </div>
