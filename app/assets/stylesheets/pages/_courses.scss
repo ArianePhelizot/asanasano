@@ -3,11 +3,6 @@
     width: 64px;
   }
 }
-.price-slot {
-  // position: absolute;
-  // top: 30px;
-  // right: 23px;
-}
 .price-slot p {
   font-size: 30px;
   font-weight: bold;
@@ -21,12 +16,13 @@
   color: #E56161;
 }
 .buy-btn {
+  text-align: center;
   border: none;
   border-radius: 2px;
   color: white;
   background-image: linear-gradient(to top, #E56161 25%, #ffb199 100%);
   font-size: 18px;
-
+  padding: 5px 15px;
 }
 .course-title h2 {
   margin-top: 14px;
