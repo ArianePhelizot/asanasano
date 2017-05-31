@@ -7,21 +7,25 @@ background-size: cover;
 background-color: white;
 }
 
-.add_a_group_button {
-  margin-top: 10px;
-
+// MES PROCHAINES SEANCES - CONTAINER //
+.mes-prochaines-seances-container {
+  border: solid 1px #B74484;
+  margin-bottom: 70px;
 }
 
-.group-crud-buttons {
-  margin-bottom: 20px;
-  margin-top: 30px;
-}
+// .separator-seances-cours {
+//   height: 1px;
+//   border: 1px solid #FF7400;
+//   width: 200px;
+//   margin-top: 80px;
+//   margin-bottom: 80px;
+// }
 
 // GROUP-CONTAINER //
 .group-container {
   position:relative;
   background-color: white;
-  margin: 30px 10px 30px 10px;
+  margin: 10px 10px 30px 10px;
   border: solid 1px #B74484;
 }
 .group-title {
@@ -40,6 +44,10 @@ background-color: white;
   text-decoration: none;
   height: 48px;
   padding-top: 10px;
+}
+
+.tous-mes-cours-title {
+  margin: 0px;
 }
 
  // CRUD BUTTONS //
