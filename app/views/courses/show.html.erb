@@ -29,7 +29,7 @@
             <% if @course.address.present?  %>
               <%# image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=250x250&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}&key=ENV[API_KEY_GOOLE_MAP]", class: "map" %>
 
-              <img src = "https://www.google.com/maps/embed/v1/place?key=<%=ENV['API_KEY_GOOLE_MAP']%>&q=<%=@course.address%>" allowfullscreen, class="map">
+              <img src = "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red?key=<%= ENV['API_KEY_GOOLE_MAP']%>|<%= @course.address %>" alt ="map">
 
               <%# image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=240x240&sensor=false&maptype=roadmap&markers=color:red|#{@course.address}", class: "map" %>
             <% end %>
