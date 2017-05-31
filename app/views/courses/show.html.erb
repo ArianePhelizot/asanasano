@@ -126,9 +126,13 @@
               <h2>Réserver une séance</h2>
             </div>
           </div>
-        </div>
-        <div id="slots_display">
-          <%= render 'slots_display', course: @course %>
+          <div class="row">
+            <div class="col-xs-12">
+              <div id="slots_display">
+                <%= render 'slots_display', course: @course %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-md-9">
+  <div class="col-xs-12 col-sm-9">
     <p><i class="fa fa-calendar"></i>  <%= l(slot.date, format: :long) %></p>
     <p><i class="fa fa-clock-o"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
     <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
@@ -8,11 +8,11 @@
       <%= link_to "Editer la séance", edit_course_slot_path(course, slot) %>
     <% end %>
   </div>
-  <div class="col-xs-12 col-md-3">
-    <div class="price-slot">
+  <div class="col-xs-12 col-sm-3 pd-top-xs-slot-price">
+    <div class="price-slot text-center">
       <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
     </div>
-    <div class="slot-button">
+    <div class="slot-button text-center">
         <% if policy(slot).desinscription? %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'slot_id', slot.id %>
