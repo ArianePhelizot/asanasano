@@ -12,10 +12,25 @@
 .info-link:hover {
   color: #E56161;
 }
-// Paddings
+// Paddings - margins
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
+}
+.mg-btm-top-h2 h2 {
+  margin-top: 6px;
+  margin-bottom: 50px;
+}
+.margin-top {
+  margin-top: 20px;
+}
+.padding-rgt-lft-25 {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.padding-rgt-lft-150 {
+    padding-left: 150px;
+    padding-right: 150px;
 }
 // Backgrounds
 .bg-black {
