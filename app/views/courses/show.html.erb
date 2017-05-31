@@ -28,7 +28,7 @@
 
             <% if @course.address.present?  %>
 
-              <img src = "https://maps.googleapis.com/maps/api/staticmap?key=<%= ENV['API_KEY_GOOLE_MAP']%>&zoom=15&size=300x300&sensor=false&maptype=roadmap&markers=color:red|<%= @course.address %>" alt ="map" class = "map">
+              <img src = "https://maps.googleapis.com/maps/api/staticmap?key=<%= ENV['API_KEY_GOOLE_MAP']%>&zoom=15&size=300x300&sensor=false&maptype=roadmap&markers=color:red|<%= @course.address %>" alt ="map">
             <% end %>
 
             <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
