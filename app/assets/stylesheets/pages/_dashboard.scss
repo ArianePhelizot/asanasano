@@ -19,6 +19,7 @@ background-color: white;
 
 // GROUP-CONTAINER //
 .group-container {
+  position:relative;
   background-color: white;
   margin: 30px 10px 30px 10px;
   border: solid 2px #A5A2A2;
@@ -31,18 +32,18 @@ background-color: white;
 }
  // CRUD BUTTONS //
 #delete-button {
-  position: absolute;
+
   bottom: 10px;
   right: 10px;
 }
 #edit-button {
-  position: absolute;
+
   bottom: 10px;
   right: 10px;
 }
 #create-a-new-course-button {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   right: 10px;
 }
 
