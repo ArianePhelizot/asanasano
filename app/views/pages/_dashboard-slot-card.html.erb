@@ -3,7 +3,7 @@
   <%= render 'course_info', course: slot.course %>
   <%= render 'slot_info', slot: slot %>
 
-  <div class="course_access" id="se-desinscrire">
+  <div id="se-desinscrire">
     <%= link_to "Se désinscrire", desinscription_from_dashboard_slot_path(slot),
     method: 'patch', id:"desinscription-text",
     data: { confirm: "Êtes-vous sûr de vouloir vous désinscrire?" } %>
