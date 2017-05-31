@@ -32,9 +32,9 @@
     </div>
 
 
-    <div class="group-container">
-      <h2 class="tous-mes-cours-title">Tous mes cours </h2>
+<h2 class="tous-mes-cours-title">Tous mes cours </h2>
       <% @user.groups.sort.each do |group| %>
+      <div class="group-container">
 
       <!-- GROUP-ROW -->
 
@@ -75,9 +75,9 @@
               </div>
             <% end %>
           </div>
-        </div>
-
+          </div>
       <% end %>
+
     <!-- END-GROUP-ROW -->
 
   </div>
