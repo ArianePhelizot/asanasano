@@ -1,31 +1,43 @@
-<div class="wrapper-devise-form">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <div class="wrapper-login">
-          <div class="row">
-            <div class="col-xs-12 pencil">
-              <% if policy(@course).edit? %>
-                <%= link_to edit_group_course_path(@group, @course) do %>
-                  <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                <% end %>
-              <% end %>
-            &nbsp; <!-- espace -->
-              <% if policy(@course).destroy? %>
-                <%= link_to course_path(@course), method: "delete" do %>
-                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                <% end %>
-              <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+      <div class="padding-rgt-lft-25">
+        <div class="row">
+          <div class="margin-top-20">
+            <div class="col-xs-2">
+              <%= cl_image_tag @course.sport.icon.path, width: 50,
+                                                        height: 50,
+                                                        crop: :fill,
+                                                        class:"sport-icon" %>
             </div>
-            <div class="col-xs-12">
-              <div class="text-center">
-                 <h1><%= @course.name %></h1>
+            <div class="col-xs-8">
+              <div class="text-center course-title">
+                 <h2><%= @course.name %></h2>
+              </div>
+            </div>
+            <div class="col-xs-2 pencil">
+              <div class="margin-top-20">
+                  <% if policy(@course).edit? %>
+                    <%= link_to edit_group_course_path(@group, @course) do %>
+                      <i class="fa fa-pencil fa-lg"></i>
+                    <% end %>
+                  <% end %>
+                &nbsp; <!-- espace -->
+                  <% if policy(@course).destroy? %>
+                    <%= link_to course_path(@course),
+                         method: "delete",
+                         data: { confirm: "Êtes-vous sûr de vouloir supprimer ce cours?" } do %>
+                         <i class="fa fa-trash-o fa-lg"></i>
+                    <% end %>
+                  <% end %>
               </div>
             </div>
           </div>
-         <hr>
-          <div class="row">
-            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-9 course-coach-info">
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-12 col-sm-1 col-md-1">
+            <div class="mg-btm-20 coach-pic text-center">
               <% if @course.coach&.photo? %> <!-- le & à la fin de coach teste si coach exist. Cela évite d'appeler la méthode photo sur le coach si ce dernier n'existe pas -->
                 <%= cl_image_tag @course.coach_photo.path, gravity: :face,
                                                            width: 50,
@@ -38,92 +50,90 @@
               <% if @course.coach&.first_name.present?  %>
                 <p>Coach: <%= @course.coach.first_name %></p> <!-- on peut appeler first_name sur #coach même si ce dernier n'a pas d'attribut first_name car on a délégué first_name au model User -->
               <% else %>
-                <p>Coach</p>
-              <% end %>
-            <br>
-            </div>
-            <div class="col-xs-12 col-sm-8">
-              <p><strong>Sport:</strong> <%= @course.sport.name %></p>
-              <p><strong>Adresse:</strong> <%= @course.address %></p>
-              <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
-              <p><strong>Nombre maximum de participants:</strong> <%= @course.capacity_max %></p>
-              <p><strong>Détails:</strong> <%= @course.details %></p>
-              <p><strong>Statut:</strong> <%= @course.status.capitalize %>.
-              <!-- precisions sur les implications liées au statut -->
-                <% if @course.draft? && @course.publishable? %> </p>
-                  <p>
-                    ATTENTION, ce cours n'est pas encore mis en ligne. Pour que l'ensemble des membres du groupe <%= @course.group.name %> puissent y avoir accès et réserver leur première séance. il est nécessaire au prélable de le publier.
-                  </p>
-                <% elsif @course.draft? %>
-                  <p>
-                    ATTENTION, ce cours n'a pas été encore mis en ligne. Pour pouvoir le publier, l'ensemble des champs obligatoires doivent être renseignés et une première séance doit être programmée.
-                  </p>
-                <% elsif @course.active? && @course.depublishable? %>
-                  <p>
-                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>.
-                  </p>
-                <% else %>
-                  <p>
-                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>. Pour le désactiver, il est nécessaire de s'assurer au préalable qu'il n'y ait aucune séance associée.
-                  </p>
-                <% end %>
-              <p><strong>Contenu du cours:</strong> <%= @course.content %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <div class="wrapper-login">
-          <div class="row">
-            <div class="col-xs-12 add-icon">
-              <% if policy(@course).edit? %>
-                <i class="fa fa-plus-square-o fa-2x" id="new_form_button" style="cursor: pointer"></i>
+                <p class="text-center">Coach</p>
               <% end %>
             </div>
-            <div class="col-xs-12 text-center hidden" id="new_slot_form">
-              <%= render 'slots/form', course: @course, slot: @slot %>
-            </div>
           </div>
-          <div id="slots_display">
-            <%= render 'slots_display', course: @course %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <div class="wrapper-login">
-          <div class="row">
-            <div class="col-xs-4">
-              <% if policy(@course).edit? %>
-                <%= link_to "Editer le cours", edit_group_course_path(@group, @course), class: "btn btn-courses btn-sm" %>
+          <div class="col-xs-12 text-center-xs">
+            <p><strong>Adresse:</strong> <%= @course.address %></p>
+            <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
+            <% if policy(@course).edit? %>
+              <p id="status"><strong>Statut du cours:</strong> <%= @course.status.capitalize %></p>
+              <% if @course.draft? && @course.publishable? %> </p>
+                <p class="text-justify">
+                  ATTENTION, ce cours n'est pas encore mis en ligne. Pour que l'ensemble des membres du groupe <%= @course.group.name %> puissent y avoir accès et réserver leur première séance. il est nécessaire au prélable de le publier.
+                </p>
+              <% elsif @course.draft? %>
+                <p class="text-justify">
+                  ATTENTION, ce cours n'a pas été encore mis en ligne. Pour pouvoir le publier, l'ensemble des champs obligatoires doivent être renseignés et une première séance doit être programmée.
+                </p>
+              <% elsif @course.active? && @course.depublishable? %>
+                <p class="text-justify">
+                  Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>.
+                </p>
+              <% else %>
+                <p class="text-justify">
+                  Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>. Pour le désactiver, il est nécessaire de s'assurer au préalable qu'il n'y ait aucune séance associée.
+                </p>
               <% end %>
-            </div>
-            <div class="col-xs-4">
-              <% if policy(@course).publish? && @course.publishable? %>
-                <%= link_to "Publier le cours", course_publish_path(@course),
+            <% end %>
+            <% if policy(@course).publish? && @course.publishable? %>
+              <%= link_to "Publier le cours", course_publish_path(@course),
+                  class: "btn btn-courses btn-sm",
+                  method: "patch",
+                  data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } %>
+            <% elsif policy(@course).publish? && @course.draft? && !@course.publishable? %>
+              <a href="#" class = "btn btn-courses btn-sm disabled" >Publier le cours</a>
+            <% elsif policy(@course).publish? && @course.active? %>
+                <%= link_to "Désactiver le cours", course_depublish_path(@course),
                     class: "btn btn-courses btn-sm",
                     method: "patch",
-                    data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } %>
-              <% elsif policy(@course).publish? && @course.draft? && !@course.publishable? %>
-                <a href="#" class = "btn btn-courses btn-sm disabled" >Publier le cours</a>
-              <% elsif policy(@course).publish? && @course.active? && @course.depublishable? %>
-                  <%= link_to "Désactiver le cours", course_depublish_path(@course),
-                      class: "btn btn-courses btn-sm",
-                      method: "patch",
-                      data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" } %>
-              <% elsif @course.active? && !@course.depublishable?%>
-                <a href="#" class = "btn btn-courses btn-sm disabled" >Désactiver le cours</a>
-              <% end %>
-              <br>
+                    data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" } %>
+            <% elsif @course.active? && !@course.depublishable?%>
+              <a href="#" class = "btn btn-courses btn-sm disabled" >Désactiver le cours</a>
+            <% end %>
+            <p class="info-link" id="more-info">Plus d'infos...</p>
+          </div>
+          <div class="col-xs-12">
+            <div class="hidden" id="more-course-info">
+              <!-- precisions sur les implications liées au statut -->
+              <p class="text-justify"><strong>Contenu du cours:</strong> <%= @course.content %></p>
+              <p class="text-justify"><strong>Détails:</strong> <%= @course.details %></p>
+              <p><strong>Nombre maximum de participants:</strong> <%= @course.capacity_max %></p>
             </div>
-            <div class="col-xs-4">
-              <% if policy(@course).destroy? %>
-                <%= link_to "Supprimer le cours", course_path(@course), method: "delete", class: "btn btn-courses btn-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row wrapper-slots-display">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+      <div class="pdg-lg-slots pdg-md-slots pdg-sm-slots pdg-xs-slots">
+        <div class="row">
+          <div class="col-xs-12 mg-btm-10 mg-top-50">
+            <div class="text-center">
+              <% if policy(@course).edit? %>
+                <a class="btn-book" id="new_form_button">Ajouter une séance</a>
               <% end %>
-              <br>
+            </div>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3" >
+            <div class=" hidden wrapper-new-slot" id="new_slot_form">
+                <%= render 'slots/form', course: @course, slot: @slot %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-center mg-btm-top-h2">
+              <h2 id="title-slot-display">Réserver une séance</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div id="slots_display">
+                <%= render 'slots_display', course: @course %>
+              </div>
             </div>
           </div>
         </div>

@@ -45,7 +45,26 @@
   text-decoration: none;
   color: white;
 }
-
+.btn-book {
+  color: white;
+  border: 1px solid white;
+  padding: 10px 15px;
+  border-radius: 50px;
+}
+.btn-book:hover {
+  text-decoration: none;
+  color: #E56161;
+  border: 1px solid #E56161;
+  cursor: pointer;
+}
+.btn-add {
+  color: #E56161;
+  border: 1px solid #E56161;
+  padding: 10px 15px;
+  border-radius: 50px;
+  opacity: 1;
+  background-color: none;
+}
 .btn-courses {
   //padding: 10px 15px;
   border-radius: 3px;
