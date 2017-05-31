@@ -4,22 +4,16 @@
       <div class="padding-rgt-lft-25">
         <div class="row">
           <div class="margin-top-20">
-            <div class="col-xs-2">
-              <%= cl_image_tag @course.sport.icon.path, width: 50,
-                                                        height: 50,
-                                                        crop: :fill,
-                                                        class:"sport-icon" %>
-            </div>
-            <div class="col-xs-8">
+            <div class="col-xs-6 col-xs-offset-3">
               <div class="text-center course-title">
                  <h2><%= @course.name %></h2>
               </div>
             </div>
-            <div class="col-xs-2 pencil">
+            <div class="col-xs-3 pencil">
               <div class="margin-top-20">
                   <% if policy(@course).edit? %>
                     <%= link_to edit_group_course_path(@group, @course) do %>
-                      <i class="fa fa-pencil fa-lg"></i>
+                      <i class="fa fa-pencil edit-delete-icons-color"></i>
                     <% end %>
                   <% end %>
                 &nbsp; <!-- espace -->
@@ -27,7 +21,7 @@
                     <%= link_to course_path(@course),
                          method: "delete",
                          data: { confirm: "Êtes-vous sûr de vouloir supprimer ce cours?" } do %>
-                         <i class="fa fa-trash-o fa-lg"></i>
+                         <i class="fa fa-trash-o edit-delete-icons-color"></i>
                     <% end %>
                   <% end %>
               </div>
