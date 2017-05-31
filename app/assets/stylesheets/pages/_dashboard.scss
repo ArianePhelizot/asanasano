@@ -58,17 +58,23 @@ border: solid black 1px;
 
 .course-name-div {
   position: absolute;
-  left: 80px;
+  top: 0px;
   background-color: #5288F1;
   text-align: center;
+  width: 218px;
+  height: 52px;
+  padding-top: 26px;
 }
 .course-name{
   color: white;
   font-size: 16px;
+
 }
 
 
 .sport-icon {
+  position: absolute;
+  z-index:1;
   border-radius: 50px;
   width: 50px;
   height: 50px;
