@@ -120,6 +120,14 @@
     padding-left: 85px;
     padding-right: 85px;
   }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
@@ -144,6 +152,14 @@
     padding-left: 40px;
     padding-right: 40px;
   }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
 }
 @media (min-width: 1200px) {
   .text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
@@ -164,5 +180,13 @@
   .pdg-lg-slots {
     padding-left: 150px;
     padding-right: 150px;
+  }
+  .avantages-border-left {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
+  }
+  .avantages-border-right {
+    border-right: 4px solid #ffb199;
+    padding-right: 20px;
   }
 }
