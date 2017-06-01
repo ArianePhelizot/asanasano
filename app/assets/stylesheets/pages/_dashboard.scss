@@ -37,7 +37,7 @@ padding: 60px 120px 60px 120px;
   background-color: white;
   box-shadow: 1px 3px 12px #999999;
   margin-bottom: 60px;
-  padding: 0px 30px 40px 40px;
+  padding: 30px 30px 40px 40px;
 }
 .group-title {
   color: #777780;
@@ -55,12 +55,16 @@ padding: 60px 120px 60px 120px;
 #delete-button {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 15px;
+  color:black;
+  margin-top: 7px;
 }
 #edit-button {
   position: absolute;
   top: 10px;
-  right: 120px;
+  right: 45px;
+  color:black;
+  margin-top: 7px;
 }
 #create-a-new-course-button {
   background-color: #60C95D;
