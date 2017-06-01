@@ -12,6 +12,13 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
+.padded-sm {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.no-left-pd{
+  padding-left: 0;
+}
 .padding-rgt-lft-25 {
   padding-left: 25px;
   padding-right: 25px;
@@ -30,6 +37,9 @@
 .margin {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.no-margin {
+  margin: 0;
 }
 .mg-top-50 {
   margin-top: 50px
