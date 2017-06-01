@@ -1,6 +1,10 @@
 // WRAPPER DASHBOARD //
 .wrapper-dashboard {
 padding: 60px 120px 60px 120px;
+background-image: linear-gradient(-225deg,
+                    rgba(96,108,136,0.6),
+                    rgba(96,108,136,0.6)),
+                    url('bg-form2.jpg');
 }
 
 // MES PROCHAINES SEANCES //
@@ -354,8 +358,8 @@ height: 41px;
 }
 
 .button-add-a-new-group {
-  color: #777780;
-  border: 1px solid #777780;
+  color: white;
+  border: 1px solid white;
   padding: 10px 15px;
   border-radius: 50px;
   display: table;
@@ -363,8 +367,8 @@ height: 41px;
 }
 .button-add-a-new-group:hover {
   text-decoration: none;
-  color: #E56161;
-  border: 1px solid #E56161;
+  color: white;
+  border: 1px solid white;
   cursor: pointer;
   display: table;
   margin: 0 auto;
