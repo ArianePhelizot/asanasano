@@ -9,8 +9,9 @@
   </div>
   <div class="coach-info">
     <div class="coach-name">
+    Coach:
       <% if course.coach_id.present? %>
-        <p>Coach: <%= course.coach.first_name %></p>
+        <%= course.coach.first_name %>
       <% end %>
     </div>
     <div class="card-user avatar" id="avatar-coach">
