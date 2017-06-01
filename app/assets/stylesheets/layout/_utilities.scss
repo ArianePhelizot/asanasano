@@ -3,6 +3,10 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
+.white-shadow-text {
+  color: white;
+  text-shadow: #494444 2px 2px 5px;
+}
 .small-pd-rght-lft {
   padding-right: 10px;
   padding-left: 10px;
@@ -221,7 +225,6 @@
     //  padding-right: 20px;
     //}
 }
-
 @media (min-width: 1200px){
   .avantages-border-right {
     border-right: none;

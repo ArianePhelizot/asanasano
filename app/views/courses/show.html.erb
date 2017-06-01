@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
         <div class=" text-center">
-          <h1 class="titles-home no-margin"><%= @course.name %></h1>
+          <h1 class="white-shadow-text no-margin"><%= @course.name %></h1>
         </div>
       </div>
       <div class="col-xs-2 col-xs-offset-1 col-sm-3 col-sm-offset-0 pencil">
@@ -125,15 +125,8 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="text-center mg-btm-top-h2">
-              <h2 id="title-slot-display">Réserver une séance</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div id="slots_display">
-                <%= render 'slots_display', course: @course %>
-              </div>
+            <div id="slots_display">
+              <%= render 'slots_display', course: @course %>
             </div>
           </div>
         </div>
