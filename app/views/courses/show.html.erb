@@ -8,11 +8,29 @@
       </div>
       <div class="col-xs-2 col-xs-offset-1 col-sm-3 col-sm-offset-0 pencil">
         <div class="margin-slot-buttons no-left-pd">
-            <% if policy(@course).edit? %>
-              <%= link_to edit_group_course_path(@group, @course) do %>
-                <i class="fa fa-pencil edit-delete-icons-color"></i>
-              <% end %>
+          <% if policy(@course).publish? && @course.publishable? %>
+            <%= link_to course_publish_path(@course),
+                method: "patch",
+                data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } do %>
+              <i class="fa-power-off edit-delete-icons-color"></i>
             <% end %>
+          <% elsif policy(@course).publish? && @course.draft? && !@course.publish %>
+            <i class="fa-power-off edit-delete-icons-color"></i>
+          <% elsif policy(@course).publish? && @course.active? %>
+            <%= link_to course_depublish_path(@course),
+                method: "patch",
+                data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" } do %>
+              <i class="fa fa-pause edit-delete-icons-color"></i>
+            <% end %>
+          <% elsif @course.active? && !@course.depublishable?%>
+            <i class="fa fa-pause edit-delete-icons-color"></i>
+          <% end %>
+          &nbsp; <!-- espace -->
+          <% if policy(@course).edit? %>
+            <%= link_to edit_group_course_path(@group, @course) do %>
+              <i class="fa fa-pencil edit-delete-icons-color"></i>
+            <% end %>
+          <% end %>
           &nbsp; <!-- espace -->
             <% if policy(@course).destroy? %>
               <%= link_to course_path(@course),
@@ -73,21 +91,6 @@
                     Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>. Pour le désactiver, il est nécessaire de s'assurer au préalable qu'il n'y ait aucune séance associée.
                   </p>
                 <% end %>
-              <% end %>
-              <% if policy(@course).publish? && @course.publishable? %>
-                <%= link_to "Publier le cours", course_publish_path(@course),
-                    class: "btn btn-courses btn-sm",
-                    method: "patch",
-                    data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaient, une séance." } %>
-              <% elsif policy(@course).publish? && @course.draft? && !@course.publishable? %>
-                <a href="#" class = "btn btn-courses btn-sm disabled" >Publier le cours</a>
-              <% elsif policy(@course).publish? && @course.active? %>
-                  <%= link_to "Désactiver le cours", course_depublish_path(@course),
-                      class: "btn btn-courses btn-sm",
-                      method: "patch",
-                      data: { confirm: "Prêt à désactiver ce cours? Il ne sera alors plus visible aux membres du groupe" } %>
-              <% elsif @course.active? && !@course.depublishable?%>
-                <a href="#" class = "btn btn-courses btn-sm disabled" >Désactiver le cours</a>
               <% end %>
               <p class="info-link" id="more-info">Plus d'infos...</p>
             </div>
