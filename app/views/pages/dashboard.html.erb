@@ -41,15 +41,7 @@
           <div class="group-title">
             <%= group.name%>
           </div>
-          <div class="row">
-            <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5">
-              <div>
-                <% if policy(group).edit? %>
-                  <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+
           <div class="row">
             <% group.courses.sort.each do |course| %>
 
@@ -63,6 +55,9 @@
 
           <% end %>
            </div>
+           <% if policy(group).edit? %>
+                  <%= link_to "Créer une nouvelle activité", new_group_course_path(group), class:"button-add-a-new-group", id:"create-a-new-course-button" %>
+                <% end %>
         </div>
 
   <% end %>
