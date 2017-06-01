@@ -64,13 +64,14 @@
 }
 .info-link {
   cursor: pointer;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  text-decoration: underline;
 }
 .info-link:hover {
   color: #E56161;
 }
 #more-course-info {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 .edit-delete-icons-color {
   color: white;
