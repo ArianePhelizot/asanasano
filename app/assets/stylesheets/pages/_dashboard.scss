@@ -1,25 +1,33 @@
 // WRAPPER DASHBOARD //
 .wrapper-dashboard {
-padding: 60px 30px 60px 30px;
+padding: 60px 120px 60px 120px;
 }
 
 // MES PROCHAINES SEANCES //
 .mes-prochaines-seances-container {
   background-color: white;
   box-shadow: 1px 3px 12px #999999;
+  padding: 60px 30px 40px 40px;
   }
 
 // PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES //
 // AJOUTER UN NOUVEAU GROUPE //
 .add-a-new-group {
+  background-image: linear-gradient(to top, #E56161 25%, #ffb199 100%);
+  border: none;
+  @include box-shadow(#9E9E9E 2px 2px 20px);
+  color: white;
+  font-weight: 300;
+  font-variant: small-caps;
+  text-transform: uppercase;
   background-color: #F056AB;
   border: #B74484 1px solid;
   color: white;
-  font-size: 16px;
-  text-align: center;
   text-decoration: none;
   height: 48px;
   padding-top: 10px;
+  margin-top: 100px;
+  margin-left: 50%;
 }
 
 // TOUS MES COURS //
@@ -29,16 +37,19 @@ padding: 60px 30px 60px 30px;
   background-color: white;
   box-shadow: 1px 3px 12px #999999;
   margin-bottom: 60px;
-
+  padding: 0px 30px 40px 40px;
 }
 .group-title {
   color: black;
   font-weight: bold;
   font-size: 28px;
   text-align: center;
+  margin-top: 20px;
 }
-.tous-mes-cours-title {
-  margin: 0px;
+.toutes-mes-activites-title {
+  position: absolute;
+  left:50%;
+  margin-left:-100px;
 }
 
  // CRUD BUTTONS //
@@ -78,13 +89,13 @@ padding: 60px 30px 60px 30px;
  // CARD-CONTAINER-SEANCES //
 .card-seances {
   position: relative;
-  height: 300px;
+  height: 340px;
   width: 218px;
   background-color: white;
   color: black;
   text-shadow: none;
   border: 1px grey solid;
-  // box-shadow: 1px 2px 6px #A5A2A2;
+  margin-bottom: 30px;
 }
 .course-name-div {
   position: absolute;
@@ -244,13 +255,14 @@ height: 41px;
   background-color: #60C95D;
   border: solid 1px #57AF54;
   padding-top: 12px;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 #toutes-les-seances-text {
   color: white;
   // text-transform: uppercase;
   font-size: 14px;
 }
-
 
 
 // SLOT_INFO //
@@ -306,3 +318,40 @@ height: 41px;
   border: solid 1px black;
 }
 
+.inscrit-status {
+  position: absolute;
+  bottom: 70px;
+  color: #60C95D;
+  text-transform: uppercase;
+  left: 80px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.complet-status {
+  position: absolute;
+  color: red;
+  bottom: 70px;
+  left: 78px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.no-seance {
+  color: red;
+  position: absolute;
+  bottom: 130px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.coach-name {
+  position: absolute;
+  top: 110px;
+  left: 55px;
+
+}

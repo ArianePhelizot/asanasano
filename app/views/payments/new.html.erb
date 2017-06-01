@@ -1,28 +1,35 @@
-<div class="container padded">
+
+<div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="text-center">
+        <div class="col-xs-12">
+          <h1>Réserver ma séance :  <%= @order.slot.course.name %></h1>
+        <%= form_tag order_payments_path(@order) do %>
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
+        <div class="wrapper-payment">
+          <article>
+            <label>
+              <span class="amount">Total : <%= humanized_money_with_symbol(@order.amount) %></span>
+            </label>
+          </article>
 
-      <h1>Réserver ma séance : <%= @order.slot.course.name %></h1>
-      <%= form_tag order_payments_path(@order) do %>
-        <article>
-          <label class="amount">
-            <span>Montant: <%= humanized_money_with_symbol(@order.amount) %></span>
-          </label>
-        </article>
+          <div class="pay-card">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="Ma séance"
+              data-email="<%= current_user.email %>"
+              data-description="Séance <%= @order.slot.course.name %>"
+              data-amount="<%= @order.amount_cents %>"
+              data-currency="<%= @order.amount.currency %>"></script>
 
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="Ma séance"
-          data-email="<%= current_user.email %>"
-          data-description="Séance <%= @order.slot.course.name %>"
-          data-amount="<%= @order.amount_cents %>"
-          data-currency="<%= @order.amount.currency %>"></script>
-
-      <% end %>
-
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row text-center padded">
+    <div class="row text-center padded">
     <div class="col-xs-12 col-sm-4">
       <h3>Sécurisé</h3>
       <i class="fa fa-lock text-lg" aria-hidden="true"></i>
@@ -42,7 +49,4 @@
     </div>
 
   </div>
-
 </div>
-
-
