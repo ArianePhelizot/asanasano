@@ -4,9 +4,9 @@
   <div>
     <h2>Mes prochaines séances</h2>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="mes-prochaines-seances-container">
+  <div class="mes-prochaines-seances-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
         <% @user.next_slots.each do |slot| %>
         <%= render 'dashboard-slot-card', slot: slot %>
         <% end %>
@@ -28,13 +28,11 @@
   <div class="tous-mes-cours-title">
     <h2>Mes activités</h2>
   </div>
-
-
   <% @user.groups.sort.each do |group| %>
     <!-- GROUP-CONTAINER -->
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="group-container">
+    <div class="group-container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
           <div id="edit-button">
             <% if policy(group).edit? %>
               <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning"%>
