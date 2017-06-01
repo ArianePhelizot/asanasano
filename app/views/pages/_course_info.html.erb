@@ -16,7 +16,7 @@
     </div>
 
     <div class="avatar" id="avatar-coach">
-      <% if course.coach.user&.photo? %>
+      <% if course.coach&.user&.photo? %>
         <%= cl_image_tag course.coach.user.photo.path, gravity: :face,
                                                            width: 50,
                                                            crop: :fill,
