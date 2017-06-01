@@ -1,6 +1,10 @@
 // WRAPPER DASHBOARD //
 .wrapper-dashboard {
 padding: 60px 120px 60px 120px;
+background-image: linear-gradient(-225deg,
+                    rgba(96,108,136,0.6),
+                    rgba(96,108,136,0.6)),
+                    url('bg-form2.jpg');
 }
 
 // MES PROCHAINES SEANCES //
@@ -37,41 +41,40 @@ padding: 60px 120px 60px 120px;
   background-color: white;
   box-shadow: 1px 3px 12px #999999;
   margin-bottom: 60px;
-  padding: 0px 30px 40px 40px;
+  padding: 30px 30px 40px 40px;
 }
 .group-title {
-  color: black;
-  font-weight: bold;
+  color: #777780;
+  font-weight: lighter;
   font-size: 28px;
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 .toutes-mes-activites-title {
-  position: absolute;
-  left:50%;
-  margin-left:-100px;
+  margin-top: 100px;
+  color:white;
 }
 
  // CRUD BUTTONS //
 #delete-button {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 15px;
+  color:black;
+  margin-top: 7px;
 }
 #edit-button {
   position: absolute;
   top: 10px;
-  right: 120px;
+  right: 45px;
+  color:black;
+  margin-top: 7px;
 }
 #create-a-new-course-button {
-  background-color: #60C95D;
-  border: #45B442 1px solid;
-  color: white;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
   margin-top: 25px;
   margin-bottom: 80px;
+
 }
 
 // CARD-CONTAINER-COURS //
@@ -100,7 +103,7 @@ padding: 60px 120px 60px 120px;
 .course-name-div {
   position: absolute;
   top: 0px;
-  background-color: #5288F1;
+  background-color: #e86a67;
   text-align: center;
   width: 216px;
   height: 51px;
@@ -118,7 +121,7 @@ padding: 60px 120px 60px 120px;
   border-radius: 50px;
   width: 38px;
   height: 38px;
-  border: solid red 1px;
+  border: solid #999999 1px;
   margin-left: 88px;
   margin-top: -20px;
   background-color: white;
@@ -217,9 +220,10 @@ height: 41px;
   text-align: center;
   width: 216px;
   height: 52px;
-  background-color: #FF8606;
-  border: solid 1px #FF4A00;
+  background-color: #777780;
+  border: solid 1px white;
   padding-top: 12px;
+  text-transform: uppercase;
 }
 #ajouter-une-seance-text {
   color: white;
@@ -252,8 +256,8 @@ height: 41px;
   text-align: center;
   width: 216px;
   height: 52px;
-  background-color: #60C95D;
-  border: solid 1px #57AF54;
+  background-color: #A0A0A0;
+  border: solid 1px white;
   padding-top: 12px;
   text-transform: uppercase;
   font-size: 18px;
@@ -353,5 +357,25 @@ height: 41px;
   position: absolute;
   top: 110px;
   left: 55px;
-
 }
+
+.button-add-a-new-group {
+  color: grey;
+  border: 1px solid grey;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: table;
+  margin: 0 auto;
+}
+.button-add-a-new-group:hover {
+  text-decoration: none;
+  color: grey;
+  border: 1px solid grey;
+  cursor: pointer;
+  display: table;
+  margin: 0 auto;
+}
+.prochaines-seances-text {
+  color:white;
+}
+
