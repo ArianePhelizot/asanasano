@@ -1,7 +1,8 @@
 <% if @slot.errors.any? %>
-  // Render new slot form with errors
-  $('#new_slot_form').html("<%= j render 'form', course: @course, slot: @slot %>");
+  $("#new_slot_form").html("<%= j render 'slots/form', course: @course, slot: @slot %>");
 <% else %>
-  // in course show, we load the div containing slots display
-  $('#slots_display').load('courses/show');
+  $("#slots_display").html("<%= j render 'courses/slots_display', course: @course %>");
+  $('html, body').animate({
+      scrollTop: $("#slot-card-<%= @slot.id %>").offset().top
+  }, 'fast');
 <% end %>

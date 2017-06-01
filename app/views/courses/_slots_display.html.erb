@@ -1,0 +1,19 @@
+<% if course.slots.empty? %>
+  <p>Il n'y a pas de séance programmée pour ce cours.</p>
+  <br>
+  <p>
+    Contacter <%= course.group.owner.first_name %> <%= course.group.owner.last_name %> pour en savoir plus: <%= course.group.owner.email %>.
+  </p>
+<% else %>
+  <% course.next_slots.each do |slot| %>
+    <div class="row" >
+      <div class="col-xs-12">
+        <div class="wrapper-slot-card">
+          <div id="slot-card-<%= slot.id %>">
+              <%= render 'courses/slot_card', slot: slot, course: course %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
