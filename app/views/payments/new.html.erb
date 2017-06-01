@@ -1,32 +1,30 @@
-
 <div class="container">
   <div class="row">
-      <div class="text-center">
-        <div class="col-xs-12">
-          <h1>Réserver ma séance :  <%= @order.slot.course.name %></h1>
-        <%= form_tag order_payments_path(@order) do %>
-        </div>
+    <div class="text-center">
+      <div class="col-xs-12">
+        <h1>Réserver ma séance :  <%= @order.slot.course.name %></h1>
+      </div>
+      <%= form_tag order_payments_path(@order) do %>
         <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
-        <div class="wrapper-payment">
-          <article>
-            <label>
-              <span class="amount">Total : <%= humanized_money_with_symbol(@order.amount) %></span>
-            </label>
-          </article>
-
-          <div class="pay-card">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-name="Ma séance"
-              data-email="<%= current_user.email %>"
-              data-description="Séance <%= @order.slot.course.name %>"
-              data-amount="<%= @order.amount_cents %>"
-              data-currency="<%= @order.amount.currency %>"></script>
-
-            <% end %>
+          <div class="wrapper-payment">
+            <article>
+              <label>
+                <span class="amount">Total : <%= humanized_money_with_symbol(@order.amount) %></span>
+              </label>
+            </article>
+            <div class="pay-card">
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-name="Ma séance"
+                data-email="<%= current_user.email %>"
+                data-description="Séance <%= @order.slot.course.name %>"
+                data-amount="<%= @order.amount_cents %>"
+                data-currency="<%= @order.amount.currency %>">
+              </script>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
     <div class="row text-center padded">
