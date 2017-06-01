@@ -1,14 +1,16 @@
 <!-- WRAPPER DASHBOARD -->
 <div class="wrapper-dashboard">
   <!-- MES PROCHAINES SEANCES -->
-  <h2>Mes prochaines séances</h2>
+  <div>
+    <h2>Mes prochaines séances</h2>
+  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="mes-prochaines-seances-container">
         <% @user.next_slots.each do |slot| %>
         <%= render 'dashboard-slot-card', slot: slot %>
-      </div>
         <% end %>
+      </div>
     </div>
   </div>
   <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
@@ -24,37 +26,50 @@
   </div>
   <!-- TOUS MES COURS -->
   <div class="tous-mes-cours-title">
-  <h2>Tous mes cours </h2>
+   <h2>Tous mes cours </h2>
   </div>
+
+
   <% @user.groups.sort.each do |group| %>
-  <!-- GROUP-CONTAINER -->
+    <!-- GROUP-CONTAINER -->
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="group-container">
-        <div id="edit-button">
-          <% if policy(group).edit? %>
-            <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning"%>
-          <% end %>
-        </div>
-        <div id="delete-button"">
-          <% if policy(group).destroy? %>
-            <%= link_to "Supprimer", group_path(group),
-                        method: "delete",
-                        data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" },
-                        class:"delete-button btn btn-danger"
-            %>
-          <% end %>
+
+
+
+
+
+          <div id="edit-button">
+            <% if policy(group).edit? %>
+              <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning"%>
+            <% end %>
           </div>
-          <!-- group-title -->
+
+
+          <div id="delete-button"">
+            <% if policy(group).destroy? %>
+              <%= link_to "Supprimer", group_path(group),
+                         method: "delete",
+                         data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" },
+                         class:"delete-button btn btn-danger"
+              %>
+            <% end %>
+          </div>
+
+                    <!-- group-title -->
           <div class="group-title">
             <%= group.name%>
           </div>
-          <!-- CREATE A NEW COURSE -->
+
+  <!-- CREATE A NEW COURSE -->
           <div class="row">
             <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
-              <% if policy(group).edit? %>
-                <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
-              <% end %>
+              <div>
+                <% if policy(group).edit? %>
+                  <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
+                <% end %>
+              </div>
             </div>
           </div>
 
@@ -67,14 +82,16 @@
                 <!-- Sinon, n'afficher que les acours actifs pour les simples membres -->
                 <% else %>
                   <% if course.active? %>
-                    <%= render 'dashboard-course-card', course: course %>
                   <% end %>
                 <% end %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+
         </div>
       </div>
+    </div>
+
   <% end %>
-  </div>
 </div>
+
