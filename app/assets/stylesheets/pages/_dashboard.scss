@@ -359,13 +359,15 @@ height: 41px;
   border: 1px solid #777780;
   padding: 10px 15px;
   border-radius: 50px;
-  margin-left: 50%;
+  display: table;
+  margin: 0 auto;
 }
 .button-add-a-new-group:hover {
   text-decoration: none;
   color: #E56161;
   border: 1px solid #E56161;
   cursor: pointer;
-  margin-left: 50%;
+  display: table;
+  margin: 0 auto;
 }
 
