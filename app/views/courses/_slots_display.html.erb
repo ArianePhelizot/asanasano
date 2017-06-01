@@ -1,9 +1,9 @@
 <% if course.slots.empty? %>
-  <div class="text-center white-shadow-text">
+  <div class="text-center white-shadow-text margin-30">
     <p>Il n'y a pas de séance programmée pour ce cours.</p>
     <br>
     <p>
-      Contacter <%= course.group.owner.first_name %> <%= course.group.owner.last_name %> pour en savoir plus: <%= course.group.owner.email %>.
+      Contacter <%= course.group.owner.first_name %> <%= course.group.owner.last_name %> pour en savoir plus: <strong><%= course.group.owner.email %></strong>.
     </p>
   </div>
 <% else %>
