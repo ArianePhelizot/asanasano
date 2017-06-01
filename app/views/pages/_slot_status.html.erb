@@ -1,7 +1,8 @@
 <!-- Si le user est inscrit à la prochaine séance-->
+
   <% if slot.users.include?(current_user) %>
-    <p>Inscrit</p>
+    <div class="inscrit-status">Inscrit</div>
   <!-- Si le cours est complet-->
   <% else slot.is_full? %>
-    <p>Complet</p>
+    <div class="complet-status">Complet</div>
   <% end %>
