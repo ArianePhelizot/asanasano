@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
   before_action :find_course, only: [:new, :create, :edit, :update]
-  before_action :find_slot, only: [:edit, :update, :desinscription, :desinscription_from_dashboard]
+  before_action :find_slot, only: [:edit, :update, :destroy, :desinscription, :desinscription_from_dashboard]
 
   def new
     # récupérer les infos de la dernière séance créée
@@ -39,6 +39,13 @@ class SlotsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    authorize @slot
+    @course = @slot.course
+    @slot.destroy
+    redirect_to course_path(@course)
   end
 
   def desinscription
