@@ -153,6 +153,7 @@ height: 41px;
   top: 5px;
   left: 5px;
   background-color: #60C95D;
+  border: 1px white solid;
   border-radius: 50px;
   height: 15px;
   width: 15px;
@@ -164,6 +165,7 @@ height: 41px;
   top: 5px;
   left: 5px;
   background-color: #F96161;
+  border: 1px white solid;
   border-radius: 50px;
   height: 15px;
   width: 15px;
@@ -275,21 +277,21 @@ height: 41px;
 // SLOT_INFO //
 .next_slot {
   position: absolute;
-  top: 130px;
+  top: 148px;
 }
 
 #calendar-icon {
   position: absolute;
   left: 30px;
-  top: 10px;
+  top: 25px;
 }
 .text-date {
   position: absolute;
-  color: blue;
+  color: #777780;
   left: 60px;
   width: 180px;
   font-size: 12px;
-  top: 10px;
+  top: 25px;
 }
 
 #clock-icon {
@@ -300,7 +302,7 @@ height: 41px;
 }
 .text-hours {
   position: absolute;
-  color: blue;
+  color: #777780;
   left: 60px;
   width: 180px;
   font-size: 12px;
@@ -310,16 +312,16 @@ height: 41px;
 #user-icon {
   position: absolute;
   left: 30px;
-  top: 90px;
+  top: 73px;
 
 }
 .text-users-count {
   position: absolute;
-  color: blue;
+  color: #777780;
   left: 60px;
   width: 180px;
   font-size: 12px;
-  top: 92px;
+  top: 73px;
 }
 .b {
   border: solid 1px black;
@@ -354,6 +356,7 @@ height: 41px;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  left: 56px;
 }
 
 .coach-name {
