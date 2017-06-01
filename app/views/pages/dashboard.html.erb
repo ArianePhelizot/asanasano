@@ -23,22 +23,28 @@
     </div>
   </div>
   <!-- TOUS MES COURS -->
-  <h2 class="tous-mes-cours-title">Tous mes cours </h2>
+  <div class="tous-mes-cours-title">
+  <h2>Tous mes cours </h2>
+  </div>
   <% @user.groups.sort.each do |group| %>
   <!-- GROUP-CONTAINER -->
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="group-container">
+        <div id="edit-button">
           <% if policy(group).edit? %>
-            <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning", id:"edit-button" %>
+            <%= link_to "Editer", edit_group_path(group), class:"edit-button btn btn-warning"%>
           <% end %>
+        </div>
+        <div id="delete-button"">
           <% if policy(group).destroy? %>
             <%= link_to "Supprimer", group_path(group),
                         method: "delete",
                         data: { confirm: "Êtes-vous sûr de vouloir supprimer le groupe #{group.name.capitalize}?" },
-                        class:"delete-button btn btn-danger",
-                        id:"delete-button" %>
+                        class:"delete-button btn btn-danger"
+            %>
           <% end %>
+          </div>
           <!-- group-title -->
           <div class="group-title">
             <%= group.name%>
