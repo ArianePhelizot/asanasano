@@ -31,6 +31,7 @@
 #  facebook_picture_url   :string
 #  token                  :string
 #  token_expiry           :datetime
+#  admin                  :boolean          default("false"), not null
 #
 # Indexes
 #

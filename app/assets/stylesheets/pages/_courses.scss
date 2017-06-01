@@ -62,11 +62,6 @@
   color: #777777;
   text-decoration: none;
 }
-
-#title-slot-display {
-  color: white;
-  text-shadow: #494444 2px 2px 5px;
-}
 .info-link {
   cursor: pointer;
   margin-bottom: 30px;
@@ -83,18 +78,22 @@
 .edit-delete-icons-color:hover {
   color: #E56161;
 }
+.slot-icons {
+  color: #777777;
+}
+.slot-icons:hover {
+  color: #E56161;
+}
 .banner-show {
   color: white;
-  height: 100px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   opacity:1;
-  padding-top: 5px;
 }
 .margin-slot-buttons {
-  margin-top: 35px;
   margin-right: 30px;
+  margin-top: 13px;
 }
 .course-show-header {
-  padding:0px;
+  padding: 0px;
 }

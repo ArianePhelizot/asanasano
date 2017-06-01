@@ -16,11 +16,11 @@
       <%= link_to "Editer mon profil utilisateur", edit_user_path(@user) %>
       <br>
       <br>
-      <% if !current_user.coach_id.nil? %>
+      <% unless current_user.coach_id.nil? %>
         <p>Description: <%= @user.coach.description %></p>
         <p>Sports: <%= @user.coach.sports.map {|s| s.name}.join(", ") %></p>
-        <% end%>
-      <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
+        <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
+      <% end%>
 
 
     </div>
