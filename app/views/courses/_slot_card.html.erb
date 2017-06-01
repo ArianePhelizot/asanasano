@@ -4,8 +4,11 @@
     <p><i class="fa fa-clock-o"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
     <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
     <p><strong>Places restantes: <%= course.capacity_max - slot.users.count %></strong></p>
+
     <% if policy(slot).edit? %>
-      <%= link_to "Editer la séance", edit_course_slot_path(course, slot) %>
+      <%= link_to edit_course_slot_path(course, slot) do %>
+        <i class="fa fa-pencil slot-icons"></i>
+      <% end %>
     <% end %>
   </div>
   <div class="col-xs-12 col-sm-4 pd-top-xs-slot-price pd-top-sm-slot-price pd-top-md-slot-price pd-top-lg-slot-price">
