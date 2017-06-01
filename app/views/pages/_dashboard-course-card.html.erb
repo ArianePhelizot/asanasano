@@ -1,34 +1,42 @@
-<div class="card">
+<div class="card-cours">
+  <!-- Affichage des infos génériques du cours -->
+  <%= render 'course_info', course: course %>
   <!-- Affichage du statut seulement pour les group-owners et coaches -->
   <div class="course_status">
     <% if policy(course).update? %>
       <% if course.draft? %>
-        <p>non publié</p>
+        <div class="published-green-circle">
+          <!-- <p>non publié</p> -->
+        </div>
       <% else course.active? %>
-        <p>publié</p>
+        <div class="non-published-red-circle">
+          <!-- <p>publié</p> -->
+        </div>
       <% end %>
     <% end %>
   </div>
-  <!-- Affichage des infos génériques du cours -->
-  <%= render 'course_info', course: course %>
   <!-- Affichage de la prochaine séance s'il y en a une-->
   <% if course.next_slot.present? %>
-    <p>Prochaine séance</p>
+    <!-- <p>Prochaine séance</p> -->
     <%= render 'slot_info', slot: course.next_slot %>
     <!-- Affichage du statut de la prochaine séance s'il y en a une: inscrit / complet / s'inscrire-->
+    <div class="b">
     <%= render 'slot_status', slot: course.next_slot %>
-    <div class="course_access">
-      <%= link_to "Toutes les séances", course_path(course) %>
+    </div>
+    <div id="toutes-les-seances">
+      <%= link_to "Toutes les séances",
+                  course_path(course),
+                  id:"toutes-les-seances-text" %>
     </div>
   <% else %>
     <p>Pas de prochaine séance prévue</p>
-      <div class="course_access">
-        <!-- Accès au cours et à l'ensemble de ses séances-->
-        <%= link_to "Détails du cours", course_path(course) %>
-      </div>
+    <div id="ajouter-une-seance">
+      <%= link_to "Ajouter une séance",
+                  course_path(course),
+                  id:"ajouter-une-seance-text" %>
+    </div>
   <% end %>
-
- </div>
+  <!-- Accès au cours et à l'ensemble de ses séances-->
 </div>
 
 
