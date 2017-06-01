@@ -35,7 +35,7 @@ class Course < ApplicationRecord
   enum status: [ :draft, :active, :archived ]
 
   validates :name, :address, :capacity_max, :group_id, :sport_id, presence: true
-  validates :content, :meeting_point, :details, length: { maximum: 300 }
+  validates :name, length: { maximum: 20 }
   validates :content, :meeting_point, :details, length: { maximum: 300 }
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500,
                            message: "Vous devez entrez un nombre entre 1 et 500" }
