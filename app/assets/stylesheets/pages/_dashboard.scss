@@ -1,54 +1,308 @@
-// DASHBOARD BACKGROUND CONTAINER //
-.dashboard-bg-container {
-position:relative;
-padding-bottom: 100px;
-color: black;
-background-size: cover;
-background-color: white;
+// WRAPPER DASHBOARD //
+.wrapper-dashboard {
+padding: 60px 30px 60px 30px;
 }
 
-.add_a_group_button {
-  margin-top: 10px;
+// MES PROCHAINES SEANCES //
+.mes-prochaines-seances-container {
+  background-color: white;
+  box-shadow: 1px 3px 12px #999999;
+  }
 
+// PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES //
+// AJOUTER UN NOUVEAU GROUPE //
+.add-a-new-group {
+  background-color: #F056AB;
+  border: #B74484 1px solid;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  height: 48px;
+  padding-top: 10px;
 }
 
-.group-crud-buttons {
-  margin-bottom: 20px;
-  margin-top: 30px;
-}
-
-// GROUP-CONTAINER //
+// TOUS MES COURS //
+// GROUP-ROW //
 .group-container {
-  background-color: #ECECEC;
-  margin: 30px 10px 30px 10px;
+  position: relative;
+  background-color: white;
+  box-shadow: 1px 3px 12px #999999;
+  margin-bottom: 60px;
 
 }
-
 .group-title {
   color: black;
   font-weight: bold;
   font-size: 28px;
   text-align: center;
 }
+.tous-mes-cours-title {
+  margin: 0px;
+}
 
+ // CRUD BUTTONS //
+#delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#edit-button {
+  position: absolute;
+  top: 10px;
+  right: 120px;
+}
+#create-a-new-course-button {
+  background-color: #60C95D;
+  border: #45B442 1px solid;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 25px;
+  margin-bottom: 80px;
+}
 
-// CARD-CONTAINER //
-.card {
+// CARD-CONTAINER-COURS //
+.card-cours {
   position: relative;
-  height: 260px;
-  width: 200px;
+  height: 340px;
+  width: 218px;
   background-color: white;
   color: black;
   text-shadow: none;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border: #CCCCCC solid 1px;
+  margin-bottom: 100px;
+  border: 1px grey solid;
+}
+
+ // CARD-CONTAINER-SEANCES //
+.card-seances {
+  position: relative;
+  height: 300px;
+  width: 218px;
+  background-color: white;
+  color: black;
+  text-shadow: none;
+  border: 1px grey solid;
+  // box-shadow: 1px 2px 6px #A5A2A2;
+}
+.course-name-div {
+  position: absolute;
+  top: 0px;
+  background-color: #5288F1;
+  text-align: center;
+  width: 216px;
+  height: 51px;
+  padding-top: 20px;
+}
+.course-name{
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.sport-icon {
+  position: absolute;
+  z-index:1;
+  border-radius: 50px;
+  width: 38px;
+  height: 38px;
+  border: solid red 1px;
+  margin-left: 88px;
+  margin-top: -20px;
+  background-color: white;
+}
+
+// COACH INFOS //
+#avatar-coach {
+  position: absolute;
+  top: 65px;
+  right: 90px;
+}
+.card-user {
+border-color: grey;
+border-radius: 50px;
+border: solid 1px grey;
+width: 41px;
+height: 41px;
+}
+
+// DASHBOARD-COURSE-CARD //
+.course-status {
+
+}
+.published-green-circle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #60C95D;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+}
+
+// RED CIRCLE - COURSE OFFLINE //
+.non-published-red-circle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #F96161;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+}
+.non-published-red-circle :hover {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #F96161;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+
+}
+
+// DESINSCRIPTION BUTTON //
+#se-desinscrire {
+  padding-top: 20px;
+}
+
+#desinscription-text {
+  color: #AFAFAF;
+  // text-transform: uppercase;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 140px;
+  height: 32px;
+  background-color: white;
+  border: solid 1px #AFAFAF;
+  padding-top: 6px;
+  left: 36px;
+  bottom: 15px;
+}
+#desinscription-text:hover{
+  color: #AFAFAF;
+  // text-transform: uppercase;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 140px;
+  height: 32px;
+  background-color: white;
+  border: solid 1px black;
+  left: 36px;
+  bottom: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+// AJOUTER-UNE-SEANCE BUTTON //
+#ajouter-une-seance {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 216px;
+  height: 52px;
+  background-color: #FF8606;
+  border: solid 1px #FF4A00;
+  padding-top: 12px;
+}
+#ajouter-une-seance-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
 }
 
 
-// BORDER  //
+// METTRE-EN-LIGNE BUTTON //
+#mettre-en-ligne {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 216px;
+  height: 52px;
+  background-color: #60C95D;
+  border: solid 1px #57AF54;
+  padding-top: 12px;
+}
+#mettre-en-ligne-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+// TOUTES-LES-SEANCES BUTTON //
+#toutes-les-seances {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 216px;
+  height: 52px;
+  background-color: #60C95D;
+  border: solid 1px #57AF54;
+  padding-top: 12px;
+}
+#toutes-les-seances-text {
+  color: white;
+  // text-transform: uppercase;
+  font-size: 14px;
+}
+
+
+
+// SLOT_INFO //
+.next_slot {
+  position: absolute;
+  top: 130px;
+}
+
+#calendar-icon {
+  position: absolute;
+  left: 30px;
+  top: 10px;
+}
+.text-date {
+  position: absolute;
+  color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
+  top: 10px;
+}
+
+#clock-icon {
+  position: absolute;
+  left: 30px;
+  top: 50px;
+
+}
+.text-hours {
+  position: absolute;
+  color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
+  top: 50px;
+
+}
+#user-icon {
+  position: absolute;
+  left: 30px;
+  top: 90px;
+
+}
+.text-users-count {
+  position: absolute;
+  color: blue;
+  left: 60px;
+  width: 180px;
+  font-size: 12px;
+  top: 92px;
+}
 .b {
-border: solid black 1px;
+  border: solid 1px black;
 }
-
 

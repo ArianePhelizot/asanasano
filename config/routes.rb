@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
+
   root to: 'pages#home'
 
   patch "courses/:id/publish", to: "courses#publish", as: :course_publish

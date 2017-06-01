@@ -17,4 +17,8 @@ class Coach < ApplicationRecord
 
   delegate :first_name, to: :user
   delegate :photo, to: :course, prefix: true
+
+  def name
+    "#{user&.first_name} #{user&.last_name} "
+  end
 end

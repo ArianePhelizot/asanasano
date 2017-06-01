@@ -1,14 +1,20 @@
-<div class="container">
+<div class="container padded">
   <div class="row">
-    <div class="col-xs-12">
-      <h1>Editer mon groupe</h1>
-      <!-- si le user est le créateur du group il peut éditer tous les attributs du cours  -->
-      <% if @user == @course.group.owner %>
-        <%= render 'form_edit' %>
-      <% else %>
-      <!-- sinon cela signifie qu'il est coach est dans cas il ne peut éditer que le content -->
-        <%= render 'form_edit_coach'  %>
-      <% end %>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <div class="wrapper-login padded">
+        <div class="text-center">
+          <h1>Editer mon cours</h1>
+          <!-- si le user est le créateur du group il peut éditer tous les attributs du cours  -->
+          <% if @user == @course.group.owner %>
+            <%= render 'form_edit' %>
+          <% else %>
+          <!-- sinon cela signifie qu'il est coach est dans cas il ne peut éditer que le content -->
+            <%= render 'form_edit_coach'  %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-<div>
+</div>
+
+
