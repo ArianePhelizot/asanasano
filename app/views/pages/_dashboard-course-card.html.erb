@@ -22,7 +22,6 @@
     <!-- Affichage du statut de la prochaine séance s'il y en a une: inscrit / complet / s'inscrire-->
 
     <%= render 'slot_status', slot: course.next_slot %>
-
     <div id="toutes-les-seances">
       <%= link_to "Toutes les séances",
                   course_path(course),

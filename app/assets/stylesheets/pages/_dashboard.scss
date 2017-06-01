@@ -314,8 +314,13 @@ height: 41px;
 }
 
 .inscrit-status {
-  color: green;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #60C95D;
   margin-top: 100px;
+  text-transform: uppercase;
+  border: solid 1px white;
 }
 
 .complet-status {
