@@ -1,13 +1,13 @@
 <div class="course-show-header">
-  <div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(181, 98, 87, 0.65) 0%, rgba(51, 71, 98, 0.22) 50%), url(<%= image_path("header-course-show.png") %> );">
+  <div class="banner-show padded-sm" style="background-image: linear-gradient(-225deg, rgba(181, 98, 87, 0.65) 0%, rgba(51, 71, 98, 0.22) 50%), url(<%= image_path("header-course-show.png") %> );">
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
-        <div class=" text-center  ">
-          <h1 class="titles-home"><%= @course.name %></h1>
+        <div class=" text-center">
+          <h1 class="white-shadow-text no-margin"><%= @course.name %></h1>
         </div>
       </div>
-      <div class="col-xs-3 pencil">
-        <div class="margin-slot-buttons">
+      <div class="col-xs-2 col-xs-offset-1 col-sm-3 col-sm-offset-0 pencil">
+        <div class="margin-slot-buttons no-left-pd">
             <% if policy(@course).edit? %>
               <%= link_to edit_group_course_path(@group, @course) do %>
                 <i class="fa fa-pencil edit-delete-icons-color"></i>
@@ -125,15 +125,8 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="text-center mg-btm-top-h2">
-              <h2 id="title-slot-display">Réserver une séance</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div id="slots_display">
-                <%= render 'slots_display', course: @course %>
-              </div>
+            <div id="slots_display">
+              <%= render 'slots_display', course: @course %>
             </div>
           </div>
         </div>
