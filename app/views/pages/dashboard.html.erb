@@ -50,7 +50,7 @@
             <%= group.name%>
           </div>
           <div class="row">
-            <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5 col-lg-offset-5">
+            <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-5">
               <div>
                 <% if policy(group).edit? %>
                   <%= link_to "Créer un nouveau cours", new_group_course_path(group), class:"btn btn-success", id:"create-a-new-course-button" %>
@@ -58,9 +58,10 @@
               </div>
             </div>
           </div>
+          <div class="row">
             <% group.courses.sort.each do |course| %>
-            <div class="row">
-              <div class="col-xs-offset-1 col-xs-12 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2 col-lg-offset-1 col-lg-3 ">
+
+              <div class="col-xs-offset-1 col-xs-12 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2 col-lg-offset-1 col-lg-3">
                 <!-- Si coach ou group owner => afficher tous les cours -->
                 <% if policy(course).update? %>
                   <%= render 'dashboard-course-card', course: course %>
@@ -70,8 +71,9 @@
                   <% end %>
                 <% end %>
               </div>
-            </div>
+
           <% end %>
+           </div>
         </div>
   <% end %>
 </div>
