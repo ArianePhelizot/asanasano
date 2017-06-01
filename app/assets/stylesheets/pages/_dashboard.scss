@@ -22,6 +22,7 @@ padding: 60px 120px 60px 120px;
   height: 48px;
   padding-top: 10px;
   margin-top: 100px;
+  margin-left: 50%;
 }
 
 // TOUS MES COURS //
@@ -39,8 +40,10 @@ padding: 60px 120px 60px 120px;
   font-size: 28px;
   text-align: center;
 }
-.tous-mes-cours-title {
-  margin: 0px;
+.toutes-mes-activites-title {
+  position: absolute;
+  left:50%;
+  margin-left:-100px;
 }
 
  // CRUD BUTTONS //
@@ -86,7 +89,7 @@ padding: 60px 120px 60px 120px;
   color: black;
   text-shadow: none;
   border: 1px grey solid;
-  // box-shadow: 1px 2px 6px #A5A2A2;
+  margin-bottom: 30px;
 }
 .course-name-div {
   position: absolute;
@@ -246,13 +249,14 @@ height: 41px;
   background-color: #60C95D;
   border: solid 1px #57AF54;
   padding-top: 12px;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 #toutes-les-seances-text {
   color: white;
   // text-transform: uppercase;
   font-size: 14px;
 }
-
 
 
 // SLOT_INFO //
