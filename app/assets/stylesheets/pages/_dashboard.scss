@@ -74,6 +74,7 @@ background-image: linear-gradient(-225deg,
 #create-a-new-course-button {
   margin-top: 25px;
   margin-bottom: 80px;
+
 }
 
 // CARD-CONTAINER-COURS //
@@ -359,8 +360,8 @@ height: 41px;
 }
 
 .button-add-a-new-group {
-  color: white;
-  border: 1px solid white;
+  color: grey;
+  border: 1px solid grey;
   padding: 10px 15px;
   border-radius: 50px;
   display: table;
@@ -368,8 +369,8 @@ height: 41px;
 }
 .button-add-a-new-group:hover {
   text-decoration: none;
-  color: white;
-  border: 1px solid white;
+  color: grey;
+  border: 1px solid grey;
   cursor: pointer;
   display: table;
   margin: 0 auto;
