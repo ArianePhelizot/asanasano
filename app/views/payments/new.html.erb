@@ -1,17 +1,48 @@
-<h1>Payer ma séance <%= @order.slot.course.name %></h1>
-<%= form_tag order_payments_path(@order) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-    </label>
-  </article>
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Ma séance"
-    data-email="<%= current_user.email %>"
-    data-description="Séance <%= @order.slot.course.name %>"
-    data-amount="<%= @order.amount_cents %>"
-    data-currency="<%= @order.amount.currency %>"></script>
+      <h1>Réserver ma séance : <%= @order.slot.course.name %></h1>
+      <%= form_tag order_payments_path(@order) do %>
+        <article>
+          <label class="amount">
+            <span>Montant: <%= humanized_money_with_symbol(@order.amount) %></span>
+          </label>
+        </article>
 
-<% end %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="Ma séance"
+          data-email="<%= current_user.email %>"
+          data-description="Séance <%= @order.slot.course.name %>"
+          data-amount="<%= @order.amount_cents %>"
+          data-currency="<%= @order.amount.currency %>"></script>
+
+      <% end %>
+
+    </div>
+  </div>
+  <div class="row text-center padded">
+    <div class="col-xs-12 col-sm-4">
+      <h3>Sécurisé</h3>
+      <i class="fa fa-lock text-lg" aria-hidden="true"></i>
+      <p>Votre achat est 100% sécurisé</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <h3>Remboursable</h3>
+      <i class="fa fa-credit-card text-lg" aria-hidden="true"></i>
+      <p>Soyez remboursé si vous ne pouvez pas assister au cours</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <h3>Sans frais</h3>
+      <i class="fa fa-clock-o text-lg" aria-hidden="true"></i>
+      <p>Payez en plusieurs fois sans frais</p>
+    </div>
+
+  </div>
+
+</div>
+
+

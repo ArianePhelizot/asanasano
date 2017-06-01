@@ -68,6 +68,10 @@
 .text-justify-not-xs, .text-justify-not-sm, .text-justify-not-md, .text-justify-not-lg {
     text-align: justify;
 }
+
+.text-lg{
+  font-size: 2em;
+}
 @media (max-width: 767px) {
   .text-left-not-xs, .text-center-not-xs, .text-right-not-xs, .text-justify-not-xs {
       text-align: inherit;
