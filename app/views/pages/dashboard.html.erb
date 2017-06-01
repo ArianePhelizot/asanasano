@@ -23,11 +23,11 @@
   <div class="row">
     <div class="col-md-9 col-lg-10">
       <!-- AJOUTER UN NOUVEAU GROUPE -->
-      <div class="add-a-group-button">
+
         <% if policy(Group).new? %>
-          <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"btn add-a-new-group" %>
+          <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"button-add-a-new-group" %>
         <% end %>
-      </div>
+
     </div>
   </div>
 

@@ -40,16 +40,15 @@ padding: 60px 120px 60px 120px;
   padding: 0px 30px 40px 40px;
 }
 .group-title {
-  color: black;
-  font-weight: bold;
+  color: #777780;
+  font-weight: lighter;
   font-size: 28px;
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 .toutes-mes-activites-title {
-  position: absolute;
-  left:50%;
-  margin-left:-100px;
+  margin-top: 100px;
 }
 
  // CRUD BUTTONS //
@@ -353,5 +352,20 @@ height: 41px;
   position: absolute;
   top: 110px;
   left: 55px;
-
 }
+
+.button-add-a-new-group {
+  color: #777780;
+  border: 1px solid #777780;
+  padding: 10px 15px;
+  border-radius: 50px;
+  margin-left: 50%;
+}
+.button-add-a-new-group:hover {
+  text-decoration: none;
+  color: #E56161;
+  border: 1px solid #E56161;
+  cursor: pointer;
+  margin-left: 50%;
+}
+
