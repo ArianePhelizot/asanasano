@@ -65,7 +65,8 @@ user1 = User.create!(first_name: "Ariane",
                     last_name: "PHELIZOT",
                     email: "ariane.phelizot@gmail.com",
                     password: "azerty",
-                    phone_number: "0613990061"
+                    phone_number: "0613990061",
+                    admin: true
                     )
 
 user2 = User.create!(first_name: "Cherine",
