@@ -32,13 +32,14 @@ padding: 60px 120px 60px 120px;
   background-color: white;
   box-shadow: 1px 3px 12px #999999;
   margin-bottom: 60px;
-  padding: 40px 30px 40px 30px;
+  padding: 0px 30px 40px 30px;
 }
 .group-title {
   color: black;
   font-weight: bold;
   font-size: 28px;
   text-align: center;
+  margin-top: 20px;
 }
 .toutes-mes-activites-title {
   position: absolute;
@@ -49,12 +50,12 @@ padding: 60px 120px 60px 120px;
  // CRUD BUTTONS //
 #delete-button {
   position: absolute;
-  top: 10px;
+  top: 25px;
   right: 10px;
 }
 #edit-button {
   position: absolute;
-  top: 10px;
+  top: 25px;
   right: 120px;
 }
 #create-a-new-course-button {
