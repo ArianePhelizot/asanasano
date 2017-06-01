@@ -27,7 +27,7 @@
         <% if policy(slot).desinscription? %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'slot_id', slot.id %>
-            <%= button_tag type: "submit", class: "buy-btn", disabled: true do %>
+            <%= button_tag type: "submit", class: "registered-btn", disabled: true do %>
               <i class="fa fa-check-circle-o"></i> Inscrit
             <% end %>
           <% end %>
