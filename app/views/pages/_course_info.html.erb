@@ -14,8 +14,19 @@
         <%= course.coach.first_name %>
       <% end %>
     </div>
-    <div class="card-user avatar" id="avatar-coach">
-      <%= image_tag "avatar.jpg", class: "avatar"%>
+
+    <div class="avatar" id="avatar-coach">
+      <% if course.coach.user&.photo? %>
+        <%= cl_image_tag course.coach.user.photo.path, gravity: :face,
+                                                           width: 50,
+                                                           crop: :fill,
+                                                           radius: :max,
+                                                           class: "avatar" %>
+    <% else %>
+          <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", class: "avatar" %>
+    <% end %>
     </div>
+
+
   </div>
 </div>

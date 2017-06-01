@@ -51,8 +51,8 @@
         <div class="row">
           <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
             <div class="mg-btm-20 coach-pic text-center-xs text-center-sm margin-top-20">
-              <% if @course.coach&.photo? %>
-                <%= cl_image_tag @course.coach_photo.path, gravity: :face,
+              <% if @course.coach.user&.photo? %>
+                <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
                                                            width: 50,
                                                            crop: :fill,
                                                            radius: :max %>
