@@ -109,7 +109,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-md-4">
-      <div class="text-center margin-top-20">
+      <div class="text-center margin">
         <% if @course.address.present? %>
         <img src = "https://maps.googleapis.com/maps/api/staticmap?key=<%= ENV['API_KEY_GOOLE_MAP']%>&zoom=15&size=250x250&sensor=false&maptype=roadmap&markers=color:red|<%= @course.address %>" alt ="map">
       <% end %>
