@@ -3,12 +3,15 @@
     <%= cl_image_tag course.sport.icon.path, width: 40, height: 40, crop: :fill, class:"sport-icon" %>
   </div>
   <div class="course-name-div">
-    <%= link_to course.name, course_path(course), class:"course-name" %>
+    <p class="course-name">
+      <%= course.name %>
+    </p>
   </div>
   <div class="coach-info">
     <div class="coach-name">
+    Coach:
       <% if course.coach_id.present? %>
-        <p>Coach: <%= course.coach.first_name %></p>
+        <%= course.coach.first_name %>
       <% end %>
     </div>
     <div class="card-user avatar" id="avatar-coach">

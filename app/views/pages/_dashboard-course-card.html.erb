@@ -20,16 +20,15 @@
     <!-- <p>Prochaine séance</p> -->
     <%= render 'slot_info', slot: course.next_slot %>
     <!-- Affichage du statut de la prochaine séance s'il y en a une: inscrit / complet / s'inscrire-->
-    <div class="b">
+
     <%= render 'slot_status', slot: course.next_slot %>
-    </div>
     <div id="toutes-les-seances">
       <%= link_to "Toutes les séances",
                   course_path(course),
                   id:"toutes-les-seances-text" %>
     </div>
   <% else %>
-    <p>Pas de prochaine séance prévue</p>
+    <div class="no-seance">Pas de prochaine séance prévue</div>P
     <div id="ajouter-une-seance">
       <%= link_to "Ajouter une séance",
                   course_path(course),
