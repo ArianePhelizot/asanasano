@@ -23,6 +23,7 @@ class PaymentsController < ApplicationController
 
     @order.update(payment: charge.to_json, state: 'paid')
     @order.slot.users.push(current_user)
+    flash[:notice] = "Vous êtes bien inscrit à la séance #{l(@order.slot.date, format: :long)}."
     redirect_to course_path(@order.slot.course)
 
   rescue Stripe::CardError => e
