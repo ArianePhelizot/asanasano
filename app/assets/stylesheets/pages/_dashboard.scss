@@ -97,7 +97,7 @@ padding: 60px 120px 60px 120px;
 .course-name-div {
   position: absolute;
   top: 0px;
-  background-color: #5288F1;
+  background-color: #e86a67;
   text-align: center;
   width: 216px;
   height: 51px;
@@ -215,8 +215,9 @@ height: 41px;
   width: 216px;
   height: 52px;
   background-color: #777780;
-
+  border: solid 1px white;
   padding-top: 12px;
+  text-transform: uppercase;
 }
 #ajouter-une-seance-text {
   color: white;
@@ -249,8 +250,8 @@ height: 41px;
   text-align: center;
   width: 216px;
   height: 52px;
-  background-color: #60C95D;
-  border: solid 1px #57AF54;
+  background-color: #A0A0A0;
+  border: solid 1px white;
   padding-top: 12px;
   text-transform: uppercase;
   font-size: 18px;
