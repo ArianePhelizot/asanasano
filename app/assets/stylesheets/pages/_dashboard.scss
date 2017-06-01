@@ -13,11 +13,16 @@ padding: 60px 120px 60px 120px;
 // PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES //
 // AJOUTER UN NOUVEAU GROUPE //
 .add-a-new-group {
+  background-image: linear-gradient(to top, #E56161 25%, #ffb199 100%);
+  border: none;
+  @include box-shadow(#9E9E9E 2px 2px 20px);
+  color: white;
+  font-weight: 300;
+  font-variant: small-caps;
+  text-transform: uppercase;
   background-color: #F056AB;
   border: #B74484 1px solid;
   color: white;
-  font-size: 16px;
-  text-align: center;
   text-decoration: none;
   height: 48px;
   padding-top: 10px;
