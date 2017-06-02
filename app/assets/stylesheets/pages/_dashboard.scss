@@ -1,10 +1,67 @@
 // WRAPPER DASHBOARD //
+@media (max-width: 767px) {
+  .wrapper-dashboard {
+padding: 60px 5px 60px 5px;
+background-image: linear-gradient(-225deg,
+                    rgba(96,108,136,0.6),
+                    rgba(96,108,136,0.6)),
+                    url('bg-form2.jpg');
+
+}
+
+.prochaines-seances-text {
+  font-size: 32px;
+  text-align: center;
+}
+
+.toutes-mes-activites-title {
+  font-size: 32px;
+  text-align: center;
+  }
+
+// CARD-CONTAINER-COURS //
+.card-cours {
+  position: relative;
+  height: 340px;
+  width: 218px;
+  background-color: white;
+  color: black;
+  text-shadow: none;
+  margin-bottom: 100px;
+  border: 1px grey solid;
+  margin-left: 30px;
+}
+
+ // CARD-CONTAINER-SEANCES //
+.card-seances {
+  position: relative;
+  height: 340px;
+  width: 218px;
+  background-color: white;
+  color: black;
+  text-shadow: none;
+  border: 1px grey solid;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+
+
+
+
+
+
+}
+
+
+@media (min-width: 1200px){
 .wrapper-dashboard {
 padding: 60px 120px 60px 120px;
 background-image: linear-gradient(-225deg,
                     rgba(96,108,136,0.6),
                     rgba(96,108,136,0.6)),
                     url('bg-form2.jpg');
+}
 }
 
 // MES PROCHAINES SEANCES //
@@ -131,11 +188,20 @@ background-image: linear-gradient(-225deg,
 }
 
 // COACH INFOS //
+.avatar-photo {
+  border: 1px black solid;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+
+}
 #avatar-coach {
   position: absolute;
   top: 65px;
   right: 90px;
 }
+
+
 .card-user {
 border-color: grey;
 border-radius: 50px;
