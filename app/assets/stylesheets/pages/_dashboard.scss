@@ -1,10 +1,34 @@
 // WRAPPER DASHBOARD //
+@media (max-width: 767px) {
+  .wrapper-dashboard {
+padding: 60px 5px 60px 5px;
+background-image: linear-gradient(-225deg,
+                    rgba(96,108,136,0.6),
+                    rgba(96,108,136,0.6)),
+                    url('bg-form2.jpg');
+
+}
+
+.prochaines-seances-text {
+  font-size: 32px;
+  text-align: center;
+}
+
+.toutes-mes-activites-title {
+  font-size: 32px;
+  text-align: center;
+  }
+}
+
+
+@media (min-width: 1200px){
 .wrapper-dashboard {
 padding: 60px 120px 60px 120px;
 background-image: linear-gradient(-225deg,
                     rgba(96,108,136,0.6),
                     rgba(96,108,136,0.6)),
                     url('bg-form2.jpg');
+}
 }
 
 // MES PROCHAINES SEANCES //
