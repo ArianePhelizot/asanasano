@@ -50,12 +50,13 @@
       <div class="padding-rgt-lft-25">
         <div class="row">
           <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
-            <div class="mg-btm-20 coach-pic text-center-xs text-center-sm margin-top-20">
+            <div class="mg-btm-20 text-center-xs text-center-sm margin-top-20">
               <% if @course.coach&.user&.photo? %>
                 <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
                                                            width: 50,
                                                            crop: :fill,
-                                                           radius: :max %>
+                                                           radius: :max,
+                                                           id:"coach-avatar-course" %>
               <% else %>
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" %>
               <% end %>

@@ -1,8 +1,3 @@
-.coach-pic {
-  img {
-    width: 64px;
-  }
-}
 .price-slot p {
   font-size: 30px;
   font-weight: bold;
@@ -114,4 +109,10 @@
   border-radius: 50px;
   opacity: 1;
   background-color: none;
+}
+#coach-avatar-course {
+  border: 2px #e86a67 solid;
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
 }
