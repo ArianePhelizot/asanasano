@@ -3,5 +3,5 @@
 meta_product_name: "Asanasano"
 meta_title: "Asanasano - Organisez des séances de sport au sein de votre entreprise"
 meta_description: "Asanasano, la première plateforme qui simplifie l'organisation de séances de sport au bureau : communication, réservation, paiement."
-meta_image: "ASANASANO.png"                       # should exist in `app/assets/images/`
+meta_image: "facebook-card.png"                       # should exist in `app/assets/images/`
 twitter_account: "@asanasano_fr"   # required for Twitter Cards
