@@ -5,11 +5,11 @@
   <div class="course_status">
     <% if policy(course).update? %>
       <% if course.draft? %>
-        <div class="published-green-circle">
+        <div class="non-published-red-circle">
           <!-- <p>non publié</p> -->
         </div>
       <% else course.active? %>
-        <div class="non-published-red-circle">
+        <div class="published-green-circle">
           <!-- <p>publié</p> -->
         </div>
       <% end %>
