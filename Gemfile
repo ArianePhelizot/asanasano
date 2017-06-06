@@ -8,6 +8,7 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'devise-i18n'
 gem 'redis'
 
