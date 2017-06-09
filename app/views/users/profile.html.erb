@@ -1,28 +1,71 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-      <h1>Mon profil</h1>
-      <% if @user.photo %>
-        <%= cl_image_tag(@user.photo.path, gravity: :face,
-                                           width: 100,
-                                           height: 100,
-                                           crop: "fill",
-                                           radius: :max) %>
-      <% end %>
-      <p>Prénom: <%= @user.first_name %></p>
-      <p>Nom: <%= @user.last_name %></p>
-      <p>Email: <%= @user.email %></p>
-      <p>Téléphone: <%= @user.phone_number %></p>
-      <%= link_to "Editer mon profil utilisateur", edit_user_path(@user) %>
-      <br>
-      <br>
-      <% unless current_user.coach_id.nil? %>
-        <p>Description: <%= @user.coach.description %></p>
-        <p>Sports: <%= @user.coach.sports.map {|s| s.name}.join(", ") %></p>
-        <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
-      <% end%>
+<div class="wrapper-devise-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded">
+        <div class="wrapper-login">
+          <div class="text-center">
+
+            <h1>Mon profil</h1>
+
+            <!-- Picture -->
+            <% if @user.photo %>
+              <%= cl_image_tag(@user.photo.path, gravity: :face,
+                                                 width: 100,
+                                                 height: 100,
+                                                 crop: "fill",
+                                                 radius: :max,
+                                                 class: "avatar-profile") %>
+
+            <% elsif %>
+              <%= image_tag current_user.facebook_picture_url, class: "avatar-profile" %>
+
+            <% else %>
+              <%= image_tag "man.png", class: "avatar-profile" %>
+            <% end %>
+
+            <!-- DTETAILS -->
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class = "cat">PRENOM</td>
+                  <td class = "input"><%= @user.first_name %></td>
+                </tr>
+                 <tr>
+                  <td class = "cat">NOM</td>
+                  <td class = "input"><%= @user.last_name %></td>
+                </tr>
+                  <td class = "cat">EMAIL</td>
+                  <td class = "input"><%= @user.email %></td>
+                <tr>
+                  <td class = "cat">TELEPHONE</td>
+                  <td class = "input"><%= @user.phone_number %></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <br>
+            <%= link_to "Editer mon profil utilisateur", edit_user_path(@user) %>
+
+            <!-- For coaches only -->
+            <br>
+            <br>
+            <% unless current_user.coach_id.nil? %>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class = "cat">DESCRIPTION</td>
+                  <td class = "input"><%= @user.coach.description %></td>
+                  <td class = "cat">SPORTS</td>
+                  <td class = "input"><%= @user.coach.sports.map {|s| s.name}.join(", ") %></td>
+                </tr>
+                <br>
+              <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
+            <% end%>
 
 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
