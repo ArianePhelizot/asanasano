@@ -16,17 +16,24 @@
       <%= link_to t(".dashboard", default: "Tableau de bord"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
+
+      <!-- Different use cases depending on user picture status-->
+          <!-- if user personnalized its photo -->
           <% if current_user.photo? %>
             <%= cl_image_tag(current_user.photo.path, gravity: :face,
                                            width: 30,
                                            height: 30,
                                            crop: "fill",
                                            radius: :max, id: "navbar-wagon-menu", "data-toggle" => "dropdown") %>
-         <!-- If no profile picture  -->
-          <% else %>
+
+          <!-- if user has a fb picture -->
+          <% elsif %>
+            <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <!-- otherwise -->
+           <% else %>
             <%= image_tag "man.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
-
+      <!-- --------- -->
 
           <!-- Dropdown menu  -->
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
