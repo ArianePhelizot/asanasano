@@ -44,10 +44,10 @@ class User < ApplicationRecord
 
   has_attachment :photo
 
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, omniauth_providers: [:facebook]
+  devise :invitable, :omniauthable, omniauth_providers: [:facebook]
 
   def next_slots
     sorted_slots = self.slots.sort_by(&:date)
