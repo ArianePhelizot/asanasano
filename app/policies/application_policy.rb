@@ -34,7 +34,7 @@ class ApplicationPolicy
     update?
   end
 
-   def depublish?
+  def depublish?
     update?
   end
 

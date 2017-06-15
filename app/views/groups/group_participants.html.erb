@@ -1,0 +1,49 @@
+
+<div class="course-show-header">
+  <div class="row wrapper-participants-display">
+    <h1 class="white-shadow-text text-center" id="group-participants-title">Liste des participants
+    <br>
+    <%= @group.name %></h1>
+
+    <div class="container">
+
+      <!-- Pour tous: Liste des participants -->
+      <div class="row">
+
+        <% @group.users.each do |user|%>
+
+          <div class="user-card col-xs-4 col-sm-3 text-center">
+            <!-- Different use cases depending on user picture status-->
+                  <!-- if user personnalized its photo -->
+            <div>
+              <% if user.photo? %>
+                <%= cl_image_tag(user.photo.path, gravity: :face,
+                                                     crop: "fill",
+                                                     radius: :max, id: "user-card-photo") %>
+
+                <!-- if user has a fb picture -->
+                <% elsif user.facebook_picture_url? %>
+                      <%= image_tag user.facebook_picture_url, class: "avatar", id: "user-card-photo" %>
+                <!-- otherwise -->
+                <% else %>
+                  <%= image_tag "user-white.png", class: "avatar", id: "user-card-photo"%>
+                <% end %>
+                <!-- --------- -->
+            </div>
+            <div class="white-shadow-text">
+              <%= user.first_name %>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+
+      <!-- Si owner du groupe: Liste des invitations en cours + module d'invitations -->
+
+    </div>
+  </div>
+</div>
+
+
+

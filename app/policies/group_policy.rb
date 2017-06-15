@@ -21,4 +21,9 @@ class GroupPolicy < ApplicationPolicy
   def user_is_group_owner?
     record.owner == user
   end
-end
+
+  def group_participants?
+    true
+  end
+
+ end

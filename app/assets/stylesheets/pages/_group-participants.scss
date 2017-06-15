@@ -1,0 +1,22 @@
+#group-participants-title {
+  margin: 30px;
+}
+
+.user-card {
+  margin: 20px;
+  font-size: 20px;
+}
+
+#user-card-photo {
+ width: 70px;
+ height:70px;
+}
+
+.wrapper-participants-display {
+  background-image: linear-gradient(-225deg,
+                    rgba(96,108,136,0.6),
+                    rgba(96,108,136,0.6)),
+                    url('bg-form2.jpg');
+  background-size: cover;
+  height: 100vh;
+}

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:edit, :update, :destroy]
+  before_action :find_group, only: [:edit, :update, :destroy, :group_participants]
 
   def new
     @group = Group.new
@@ -37,6 +37,11 @@ class GroupsController < ApplicationController
     authorize @group # check authorization before destroy
     @group.destroy
     redirect_to dashboard_path
+  end
+
+  def group_participants
+     authorize @group
+     @group.users
   end
 
   private
