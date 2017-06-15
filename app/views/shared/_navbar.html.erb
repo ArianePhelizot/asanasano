@@ -27,7 +27,7 @@
                                            radius: :max, id: "navbar-wagon-menu", "data-toggle" => "dropdown") %>
 
           <!-- if user has a fb picture -->
-          <% elsif %>
+          <% elsif current_user.facebook_picture_url? %>
             <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <!-- otherwise -->
            <% else %>
