@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'devise-i18n'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'redis'
 
 gem 'sass-rails'

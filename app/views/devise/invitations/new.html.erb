@@ -1,0 +1,25 @@
+<div class="wrapper-devise-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded">
+        <div class="wrapper-login">
+          <div class="text-center">
+
+            <h2><%= t "devise.invitations.new.header" %></h2>
+
+            <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
+              <%= devise_error_messages! %>
+
+            <% resource.class.invite_key_fields.each do |field| -%>
+              <%= f.input field %>
+            <% end -%>
+
+            <%= f.button :submit, t("devise.invitations.new.submit_button") %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

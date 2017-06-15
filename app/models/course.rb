@@ -14,7 +14,7 @@
 #  group_id      :integer
 #  coach_id      :integer
 #  sport_id      :integer
-#  status        :integer          default("0")
+#  status        :integer          default("draft")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

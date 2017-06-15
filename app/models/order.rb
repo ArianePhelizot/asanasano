@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  state        :integer
 #  slot_id      :integer
-#  amount_cents :integer          default("0"), not null
+#  amount_cents :integer          default(0), not null
 #  payment      :json
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

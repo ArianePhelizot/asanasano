@@ -5,10 +5,10 @@
 #  id               :integer          not null, primary key
 #  date             :date
 #  participants_min :integer
-#  price_cents      :integer          default("0"), not null
+#  price_cents      :integer          default(0), not null
 #  price_currency   :string           default("EUR"), not null
 #  specificities    :string
-#  status           :integer          default("0")
+#  status           :integer          default("created")
 #  course_id        :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
