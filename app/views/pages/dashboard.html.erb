@@ -28,7 +28,6 @@
             <% if policy(group).edit? %>
               <%= link_to "", edit_group_path(group), class:"fa fa-pencil edit-delete-icons-color", id:"edit-button"%>
             <% end %>
-          </div>
 
             <% if policy(group).destroy? %>
               <%= link_to "", group_path(group),
@@ -37,6 +36,8 @@
                          class:"fa fa-trash-o edit-delete-icons-color", id:"delete-button"
               %>
             <% end %>
+            <%= link_to "", group_participants_path(group), class:"fa fa-users edit-delete-icons-color", id:"participants-button"%>
+          </div>
 
           <div class="group-title blue-shadow-text">
             <%= group.name%>
@@ -55,9 +56,14 @@
 
           <% end %>
            </div>
-           <% if policy(group).edit? %>
-                  <%= link_to "Créer une nouvelle activité", new_group_course_path(group), class:"button-add-a-new-group", id:"create-a-new-course-button" %>
-                <% end %>
+             <% if policy(group).edit? %>
+               <div class="text-center">
+                  <ul class="list-inline text-align-center">
+                    <li><%= link_to "Créer une nouvelle activité", new_group_course_path(group), class:"button-add-a-new-group" %></li>
+                    <li><%= link_to "Inviter des participants", new_user_invitation_path, class:"button-add-a-new-group" %></li>
+                  </ul>
+                </div>
+              <% end %>
         </div>
 
   <% end %>
