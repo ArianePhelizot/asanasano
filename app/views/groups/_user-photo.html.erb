@@ -1,0 +1,18 @@
+<!-- Different use cases depending on user picture status-->
+  <!-- if user personnalized its photo -->
+  <% if user.photo? %>
+    <%= cl_image_tag(user.photo.path, gravity: :face,
+                                         width: 50,
+                                         crop: "fill",
+                                         id:"avatar-user-photo",
+                                         class: "border-white") %>
+
+  <!-- if user has a fb picture -->
+  <% elsif user.facebook_picture_url? %>
+    <%= image_tag user.facebook_picture_url, id: "avatar-user-photo", class: "border-white" %>
+  <!-- otherwise -->
+  <% else %>
+    <%= image_tag "user-white.png", id: "avatar-user-photo" %>
+  <% end %>
+
+

@@ -16,7 +16,7 @@
                                                  radius: :max,
                                                  class: "avatar-profile") %>
 
-            <% elsif %>
+            <% elsif current_user.facebook_picture_url? %>
               <%= image_tag current_user.facebook_picture_url, class: "avatar-profile" %>
 
             <% else %>

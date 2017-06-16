@@ -1,49 +1,78 @@
 
 <div class="course-show-header">
   <div class="row wrapper-participants-display">
-    <h1 class="white-shadow-text text-center" id="group-participants-title">Liste des participants
-    <br>
-    <%= @group.name %></h1>
+    <h1 class="white-shadow-text text-center" id="group-participants-title"><%= @group.name %></h1>
 
-    <div class="container">
+    <!-- POUR TOUS-->
 
-      <!-- Pour tous: Liste des participants -->
+    <!-- Liste des participants -->
+    <div class="people-list">
+    <h3>Liste des participants</h3>
+
       <div class="row">
-
         <% @group.users.each do |user|%>
 
           <div class="user-card col-xs-4 col-sm-3 text-center">
-            <!-- Different use cases depending on user picture status-->
-                  <!-- if user personnalized its photo -->
-            <div>
-              <% if user.photo? %>
-                <%= cl_image_tag(user.photo.path, gravity: :face,
-                                                     crop: "fill",
-                                                     radius: :max, id: "user-card-photo") %>
+              <div>
+                <%= render 'user-photo', user: user,  id: "user-card-photo", class: "avatar" %>
+              </div>
 
-                <!-- if user has a fb picture -->
-                <% elsif user.facebook_picture_url? %>
-                      <%= image_tag user.facebook_picture_url, class: "avatar", id: "user-card-photo" %>
-                <!-- otherwise -->
-                <% else %>
-                  <%= image_tag "user-white.png", class: "avatar", id: "user-card-photo"%>
-                <% end %>
-                <!-- --------- -->
-            </div>
-            <div class="white-shadow-text">
-              <%= user.first_name %>
-            </div>
+              <div class="white-text">
+                <%= user.first_name %>
+              </div>
           </div>
-
         <% end %>
-
       </div>
-
-      <!-- Si owner du groupe: Liste des invitations en cours + module d'invitations -->
-
     </div>
+
+    <!-- Liste des coaches -->
+    <div class="people-list">
+    <h3>Liste des coaches</h3>
+
+      <% if @group.coaches.count >0 %>
+        <div class="row">
+          <% @group.coaches.each do |coach|%>
+
+            <div class="user-card col-xs-4 col-sm-3 text-center">
+                <div>
+                  <%= render 'user-photo', user: coach.user,  id: "user-card-photo", class: "avatar" %>
+                </div>
+
+                <div class="white-text">
+                  <%= coach.first_name %>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
+
+    <!-- Owner du groupe -->
+    <div class="people-list">
+    <h3>Créateur du groupe</h3>
+
+      <div class="row">
+          <div class="user-card col-xs-4 col-sm-3 text-center">
+              <div>
+                <%= render 'user-photo', user: @group.owner,  id: "user-card-photo", class: "avatar" %>
+              </div>
+
+              <div class="white-text">
+                <%= @group.owner.first_name %>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- OWNER ONLY: Liste des invitations en cours + module d'invitations -->
+
+    <% if policy(@group).edit? %>
+        <div class="text-center padded-sm">
+          <%= link_to "Inviter des participants", new_user_invitation_path, class:"button-add-a-new-group" %>
+        </div>
+    <% end %>
+
   </div>
 </div>
-
-
-
