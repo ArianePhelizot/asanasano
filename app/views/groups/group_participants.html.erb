@@ -68,5 +68,11 @@
 
     <!-- OWNER ONLY: Liste des invitations en cours + module d'invitations -->
 
+    <% if policy(@group).edit? %>
+        <div class="text-center padded-sm">
+          <%= link_to "Inviter des participants", new_user_invitation_path, class:"button-add-a-new-group" %>
+        </div>
+    <% end %>
+
   </div>
 </div>
