@@ -1,7 +1,12 @@
-#group-participants-title {
-  margin: 30px;
+.participants-container {
+  padding: 30px 10px;
 }
 
+.people-list {
+  border-bottom: 1px solid white;
+  margin-top: 50px;
+  margin-left: 5px;
+}
 .user-card {
   margin: 20px;
   font-size: 20px;
@@ -12,11 +17,43 @@
  height:70px;
 }
 
+#avatar-user-photo {
+  width: 90px;
+ height: 90px;
+ border-radius: 50%;
+box-shadow: #494444 2px 2px 5px;
+}
+
+.border-white {
+  border: solid white 5px;
+}
+
+.wrapper-participants-display, h2 {
+  color: white;
+}
+
 .wrapper-participants-display {
-  background-image: linear-gradient(-225deg,
+    background-image: linear-gradient(-225deg,
                     rgba(96,108,136,0.6),
                     rgba(96,108,136,0.6)),
                     url('bg-form2.jpg');
-  background-size: cover;
-  height: 100vh;
+    background-size: cover;
+}
+
+@media (max-width: 991px) {
+  .wrapper-participants-display {
+    padding: 60px 100px 60px 100px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .wrapper-participants-display{
+    padding: 60px 100px 60px 100px;
+  }
+}
+
+@media (min-width: 1200px){
+  .wrapper-participants-display {
+    padding: 60px 120px 60px 120px;
+  }
 }
