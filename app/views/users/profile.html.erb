@@ -23,7 +23,7 @@
               <%= image_tag "man.png", class: "avatar-profile" %>
             <% end %>
 
-            <!-- DTETAILS -->
+            <!-- DETAILS -->
             <table class="table">
               <tbody>
                 <tr>
@@ -39,6 +39,10 @@
                 <tr>
                   <td class = "cat">TELEPHONE</td>
                   <td class = "input"><%= @user.phone_number %></td>
+                </tr>
+                <tr>
+                  <td class = "cat">MES GROUPES</td>
+                  <td class = "input"><%= @user.groups.map { |group| group.name}.join(", ") %></td>
                 </tr>
               </tbody>
             </table>
