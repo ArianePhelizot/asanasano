@@ -42,8 +42,9 @@
                 </tr>
                 <tr>
                   <td class = "cat">MES GROUPES</td>
-                  <td class = "input"><%= @user.groups.map { |group| group.name}.join(", ") %></td>
+                  <td class = "input"><%=  raw @user.groups.map { |group| link_to group.name, group_participants_path(group) }.join(", ") %></td>
                 </tr>
+
               </tbody>
             </table>
 
