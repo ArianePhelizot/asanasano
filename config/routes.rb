@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   get 'groups/:id/participants', to: 'groups#group_participants', as: :group_participants
+  get 'groups/:id/remove_current_user_from_group', to: 'groups#remove_current_user_from_group', as: :remove_current_user_from_group
 
   resources :courses, only: [:show, :destroy] do
     # On neste ces routes ici car on a besoin du course_id pour new, create, edit et update (mais pas group_id)

@@ -72,6 +72,11 @@
         <div class="text-center padded-sm">
           <%= link_to "Inviter des participants", new_user_invitation_path, class:"button-add-a-new-group" %>
         </div>
+    <% else %>
+        <div class="text-center padded-sm">
+          <%= link_to "Me retirer de ce groupe", remove_current_user_from_group_path(@group), class:"button-add-a-new-group" %>
+        </div>
+
     <% end %>
 
   </div>
