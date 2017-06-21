@@ -54,19 +54,22 @@
             <!-- For coaches only -->
             <br>
             <br>
-            <% unless current_user.coach_id.nil? %>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td class = "cat">DESCRIPTION</td>
-                  <td class = "input"><%= @user.coach.description %></td>
-                  <td class = "cat">SPORTS</td>
-                  <td class = "input"><%= @user.coach.sports.map {|s| s.name}.join(", ") %></td>
-                </tr>
-                <br>
-              <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
-            <% end%>
-
+            <% if current_user.coach_id? %>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td class = "cat">DESCRIPTION</td>
+                    <td class = "input"><%= @user.coach.description %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">SPORTS</td>
+                    <td class = "input"><%= @user.coach.sports.map {|s| s.name}.join(", ") %></td>
+                  </tr>
+                  <br>
+                 </tbody>
+                </table>
+                <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
+              <% end%>
 
           </div>
         </div>
