@@ -36,6 +36,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 group :development do
   gem 'binding_of_caller'
   gem 'web-console'
+  gem 'letter_opener'
 end
 
 group :development, :test do

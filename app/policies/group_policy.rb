@@ -26,4 +26,8 @@ class GroupPolicy < ApplicationPolicy
     true
   end
 
+  def remove_current_user_from_group?
+    true
+  end
+
  end

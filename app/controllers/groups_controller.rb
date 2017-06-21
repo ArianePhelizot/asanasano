@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:edit, :update, :destroy, :group_participants]
+  before_action :find_group, only: [:edit, :update, :destroy, :group_participants, :remove_current_user_from_group]
 
   def new
     @group = Group.new
@@ -42,6 +42,12 @@ class GroupsController < ApplicationController
   def group_participants
      authorize @group
      @group.users
+  end
+
+  def remove_current_user_from_group
+    authorize @group
+    @group.users.delete(current_user)
+    redirect_to dashboard_path
   end
 
   private
