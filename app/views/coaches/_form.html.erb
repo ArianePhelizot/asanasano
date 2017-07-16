@@ -5,7 +5,21 @@
         <%= simple_form_for(@coach) do |f| %>
         <%= f.input :description %>
         <%= f.association :sports, collection: Sport.all, as: :check_boxes %>
-        <%= f.submit "Update profile", class: "btn btn-primary" %>
+        <%= f.input :experience, label: "Nombre d'années d'expérience", collection: 1..50 %>
+        <%= f.input_field :languages,
+            collection: ["Allemand",
+                         "Anglais",
+                         "Arabe",
+                         "Chinois",
+                         "Français",
+                         "Hindi",
+                         "Italien",
+                         "Portuguais",
+                          "Russe"],
+            multiple: true,
+            as: :check_boxes,
+            default: 1  %>
+        <%= f.submit "Mettre à jour mon profil", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

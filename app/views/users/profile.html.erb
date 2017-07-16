@@ -49,7 +49,7 @@
             </table>
 
             <br>
-            <%= link_to "Editer mon profil utilisateur", edit_user_path(@user) %>
+            <%= link_to "Modifier mon profil utilisateur", edit_user_path(@user) %>
 
             <!-- For coaches only -->
             <br>
@@ -63,12 +63,20 @@
                   </tr>
                   <tr>
                     <td class = "cat">SPORTS</td>
-                    <td class = "input"><%= @user.coach.sports.map {|s| s.name}.join(", ") %></td>
+                    <td class = "input"><%= @user.coach.sports.map {|s| s.name.capitalize}.join(", ") %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">EXPERIENCE</td>
+                    <td class = "input"><%= @user.coach.experience %> années </td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">LANGUES</td>
+                    <td class = "input"><%= @user.coach.languages.map {|language| language}.join(", ") %> </td>
                   </tr>
                   <br>
                  </tbody>
                 </table>
-                <%= link_to "Editer mon profil coach", edit_coach_path(@user.coach_id) %>
+                <%= link_to "Modifier mon profil coach", edit_coach_path(@user.coach_id) %>
               <% end%>
 
           </div>
