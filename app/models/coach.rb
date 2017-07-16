@@ -6,6 +6,8 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  experience  :integer
+#  languages   :text             default([]), is an Array
 #
 
 class Coach < ApplicationRecord
@@ -17,6 +19,8 @@ class Coach < ApplicationRecord
 
   delegate :first_name, to: :user
   delegate :photo, to: :course, prefix: true
+
+  validates :experience, numericality: { allow_nil: true }, inclusion: { in: 0...50 }
 
   def name
     "#{user&.first_name} #{user&.last_name} "
