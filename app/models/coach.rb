@@ -6,6 +6,8 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  experience  :integer
+#  languages   :text             default([]), is an Array
 #
 
 class Coach < ApplicationRecord
