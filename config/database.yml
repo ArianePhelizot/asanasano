@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: asanasano_production
-  username: asanasano
+  # username: asanasano
   password: <%= ENV['ASANASANO_DATABASE_PASSWORD'] %>
