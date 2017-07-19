@@ -60,6 +60,8 @@ class User < ApplicationRecord
 
   devise :invitable, :omniauthable, omniauth_providers: [:facebook]
 
+  after_create :send_welcome_email
+
   def next_slots
     sorted_slots = self.slots.sort_by(&:date)
     sorted_slots.select { |slot| slot.date >= Time.now}
@@ -84,6 +86,12 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 
 end
