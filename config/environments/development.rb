@@ -28,6 +28,7 @@ Rails.application.configure do
   end
 
   # Lines added according to Le Wagon course on transactional emails.
+  # change config.action_mailer.delivery_method from :letter_opener to :smtp to send real mails
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
