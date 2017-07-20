@@ -91,7 +91,9 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    unless self.invitation_token?
+      UserMailer.welcome(self).deliver_now
+    end
   end
 
 end
