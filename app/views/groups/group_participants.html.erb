@@ -70,7 +70,7 @@
 
     <% if policy(@group).edit? %>
         <div class="text-center padded-sm">
-          <%= link_to "Inviter des participants", new_user_invitation_path, class:"button-add-a-new-group" %>
+        <%= link_to "Inviter des participants", new_group_invitation_path(@group), class:"button-add-a-new-group" %>
         </div>
     <% else %>
         <div class="text-center padded-sm">
