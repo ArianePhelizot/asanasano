@@ -3,14 +3,24 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Attachinary::Engine => "/attachinary"
 
+  # Setting Home
+  root to: 'pages#home'
+
+  # Routes related to Devise and Devise invitable
   devise_for :users,
     :controllers => {
       :invitations => 'users/invitations',
       :omniauth_callbacks => 'users/omniauth_callbacks'
     }
 
+    devise_scope :user do
+      match "/groups/:group_id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_group_invitation"
+      match "/groups/:group_id/users/invitations", :to => "users/invitations#create", :via => "post"
+    end
 
-  root to: 'pages#home'
+  # Dashboard
+  get 'dashboard', to: 'pages#dashboard', as: :dashboard
+
 
   patch "courses/:id/publish", to: "courses#publish", as: :course_publish
   patch "courses/:id/depublish", to: "courses#depublish", as: :course_depublish
@@ -39,7 +49,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
   resources :users, only: [:edit, :update]
   get 'profile', to: 'users#profile', as: :profile
