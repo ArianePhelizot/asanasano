@@ -14,6 +14,9 @@
               <%= f.input field %>
             <% end -%>
 
+            <!--  in order to track the group to which new user is invited -->
+            <%=f.hidden_field :group_id, value: params[:group_id]%>
+
             <%= f.button :submit, t("devise.invitations.new.submit_button") %>
             <% end %>
 
