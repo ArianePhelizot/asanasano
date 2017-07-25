@@ -37,6 +37,11 @@ group :development do
   gem 'binding_of_caller'
   gem 'web-console'
   gem 'letter_opener'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-minitest'
+  gem 'guard-brakeman'
 end
 
 group :development, :test do
