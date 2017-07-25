@@ -7,16 +7,23 @@ class Users::InvitationsController < Devise::InvitationsController
     # end
   # end
 
-  before_action :find_group, only: :create
+
 
   # POST /resource/invitation
   def create
+
+
+    #invite_resource déclenche l'envoi du mail. Comment du coup à la création, prendre en compte l'udate des groupes
     self.resource = invite_resource
+    # group tracking
+    self.resource.groups.push(find_group)
+
     resource_invited = resource.errors.empty?
 
     yield resource if block_given?
 
     if resource_invited
+
       if is_flashing_format? && self.resource.invitation_sent_at
         set_flash_message :notice, :send_instructions, :email => self.resource.email
       end
@@ -25,9 +32,6 @@ class Users::InvitationsController < Devise::InvitationsController
       else
         respond_with resource, :location => after_invite_path_for(current_inviter, resource)
       end
-
-      # group tracking
-      self.resource.groups.push(@group)
 
     else
       respond_with_navigational(resource) { render :new }
