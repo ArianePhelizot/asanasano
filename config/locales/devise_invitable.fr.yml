@@ -14,8 +14,8 @@ fr:
         submit_button: "Définir mon mot de passe"
     mailer:
       invitation_instructions:
-        subject: 'Instruction de confirmation'
+        subject: 'Vous êtes invité(e) sur ASANASANO...'
         hello: 'Bonjour %{email}'
-        someone_invited_you: "vous a invité à rejoindre le groupe: %{group}, sur ASANASANO (%{url}), vous pouvez accepter cette invitation via le lien ci-dessous."
+        someone_invited_you: "vous a invité(e) à rejoindre le groupe: %{group}, sur ASANASANO (%{url}), vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepter l'invitation"
-        ignore: "Si vous ne souhaitez pas accepter cette invitation, veuillez ignorer cet e-mail.<br />Votre compte ne sera pas créé tant que vous n'accéderez pas au lien ci-dessous et que vous ayez défini votre mot de passe."
+        ignore: "Vous ne souhaitez pas accepter cette invitation ? Il vous suffit d'ignorer cet e-mail.<br />Votre compte ne sera pas créé tant que vous n'accéderez pas au lien ci-dessous et que vous ayez défini votre mot de passe."

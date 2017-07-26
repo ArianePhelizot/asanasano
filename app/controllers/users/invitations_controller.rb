@@ -1,39 +1,36 @@
 class Users::InvitationsController < Devise::InvitationsController
 
-def invite_resource
-    # group tracking
-    super do |u|
-      u.groups.push(find_group)
-    end
-  end
+  # def invite_resource
+  #   # group tracking
+  #   super do |u|
+  #     u.groups.push(find_group)
+  #   end
+  # end
 
+  def invite_resource(&block)
 
+    # je regarde si je connais l'adresse email
+    @user = User.find_by(email: invite_params[:email])
 
+    # si le user existe et n'appartient pas déjà au groupe
+    if @user && !@user.groups.include?(find_group)
+      @user.groups.push(find_group)
+      # invite! instance method returns a Mail::Message instance
+      @user.invite!(current_user)
+      # return the user instance to match expected return type
+      @user
 
-  # POST /resource/invitation
-  def create
+    # si le user existe et appartient déjà au groupe
+    elsif @user && @user.groups.include?(find_group)
+      # comportement par défaut mais avec une custimization à prévoir du message d'erreur (vs email déjà pris)
+      super
 
-
-    #invite_resource déclenche l'envoi du mail. Comment du coup à la création, prendre en compte l'udate des groupes
-    self.resource = invite_resource
-
-    resource_invited = resource.errors.empty?
-
-    yield resource if block_given?
-
-    if resource_invited
-
-      if is_flashing_format? && self.resource.invitation_sent_at
-        set_flash_message :notice, :send_instructions, :email => self.resource.email
-      end
-      if self.method(:after_invite_path_for).arity == 1
-        respond_with resource, :location => after_invite_path_for(current_inviter)
-      else
-        respond_with resource, :location => after_invite_path_for(current_inviter, resource)
-      end
-
+    # si le user n'existe pas
     else
-      respond_with_navigational(resource) { render :new }
+      # comportement classique + rajout au groupe
+      super do |u|
+        u.groups.push(find_group)
+      end
     end
 
   end
