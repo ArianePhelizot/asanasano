@@ -66,7 +66,28 @@
       </div>
     </div>
 
+
     <!-- OWNER ONLY: Liste des invitations en cours + module d'invitations -->
+
+    <!-- Liste des invitations en cours -->
+    <% if policy(@group).edit? %>
+      <div class="people-list">
+          <h3>Liste des invitations en cours </h3>
+
+            <div class="row">
+              <% @group.pending_invited_users_only.each do |user|%>
+
+                <div class="user-card col-xs-12 text-center">
+
+                    <div class="white-text">
+                      <%= user.email %>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+    <% end %>
 
     <% if policy(@group).edit? %>
         <div class="text-center padded-sm">

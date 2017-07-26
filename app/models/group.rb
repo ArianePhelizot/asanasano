@@ -28,4 +28,11 @@ class Group < ApplicationRecord
     end
   end
 
+  def pending_invited_users_only
+    self.users.select do |user|
+      user.invitation_token?
+    end
+  end
+
+
 end
