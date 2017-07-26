@@ -1,11 +1,12 @@
 class Users::InvitationsController < Devise::InvitationsController
-  # def update
-    # if some_condition
-    #   redirect_to root_path
-    # else
-    #   super
-    # end
-  # end
+
+def invite_resource
+    # group tracking
+    super do |u|
+      u.groups.push(find_group)
+    end
+  end
+
 
 
 
@@ -15,8 +16,6 @@ class Users::InvitationsController < Devise::InvitationsController
 
     #invite_resource déclenche l'envoi du mail. Comment du coup à la création, prendre en compte l'udate des groupes
     self.resource = invite_resource
-    # group tracking
-    self.resource.groups.push(find_group)
 
     resource_invited = resource.errors.empty?
 

@@ -1,7 +1,7 @@
 <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
 
 <p><%= (User.find(@resource.invited_by_id).first_name? && User.find(@resource.invited_by_id).last_name?) ? User.find(@resource.invited_by_id).first_name + " " + User.find(@resource.invited_by_id).last_name : User.find(@resource.invited_by_id).email %>
-<%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url ) %></p>
+<%= t("devise.mailer.invitation_instructions.someone_invited_you", group: @resource.groups.last.name, url: root_url ) %></p>
 
 <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_user_invitation_url(@resource, :invitation_token => @token) %></p>
 
