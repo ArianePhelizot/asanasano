@@ -10,7 +10,7 @@
     <h3>Liste des participants</h3>
 
       <div class="row">
-        <% @group.users.each do |user|%>
+        <% @group.group_joined_users_only.each do |user|%>
 
           <div class="user-card col-xs-4 col-sm-3 text-center">
               <div>

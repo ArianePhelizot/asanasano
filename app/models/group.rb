@@ -21,4 +21,11 @@ class Group < ApplicationRecord
 
    validates :name, presence: true, length: { maximum: 100 }
    validates :owner_id, presence: true
+
+  def group_joined_users_only
+    self.users.select do |user|
+      !user.invitation_token?
+    end
+  end
+
 end
