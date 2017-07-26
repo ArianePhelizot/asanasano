@@ -10,7 +10,7 @@
     <h3>Liste des participants</h3>
 
       <div class="row">
-        <% @group.group_joined_users_only.each do |user|%>
+        <% @group.group_joined_users_only.uniq.each do |user|%>
 
           <div class="user-card col-xs-4 col-sm-3 text-center">
               <div>
@@ -75,7 +75,7 @@
           <h3>Liste des invitations en cours </h3>
 
             <div class="row">
-              <% @group.pending_invited_users_only.each do |user|%>
+              <% @group.pending_invited_users_only.uniq.each do |user|%>
 
                 <div class="user-card col-xs-12 text-center">
 
