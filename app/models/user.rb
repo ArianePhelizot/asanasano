@@ -88,6 +88,11 @@ class User < ApplicationRecord
     return user
   end
 
+  def mail_root
+    match_data = self.email.match(/(..*)*@/)
+    match_data[1]
+  end
+
   private
 
   def send_welcome_email

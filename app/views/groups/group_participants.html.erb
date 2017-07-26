@@ -18,7 +18,7 @@
               </div>
 
               <div class="white-text">
-                <%= user.first_name %>
+                <%= user.first_name || user.mail_root %>
               </div>
           </div>
         <% end %>
