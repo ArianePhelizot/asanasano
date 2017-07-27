@@ -5,7 +5,7 @@
   <%= f.input :meeting_point %>
   <%= f.input :capacity_max, collection: 1..500 %>
   <%= f.input :details, as: :text %>
-  <%= f.association :coach, collection: @course.group.coaches %>
+  <%= f.association :coach, collection: Coach.all %>
   <%= f.input :content, as: :text %>
-  <%= f.button :submit, value: "Mofifier" %>
+  <%= f.button :submit, value: "Enregistrer" %>
 <% end %>
