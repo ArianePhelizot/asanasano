@@ -9,7 +9,7 @@ text-align: center;
 height: 73vh;
 /* if you have a 70px navbar => height: calc(100vh - 70px); */
 background-size: cover !important;
-display: flex;
+// display: flex;
 align-items: center;
 justify-content: center;
 padding-top: 50px;
@@ -136,4 +136,24 @@ font-size: 18px;
 }
 .titles-home {
   text-shadow: #494444 2px 2px 5px;
+}
+
+#keep-in-touch {
+  margin-bottom: 25px;
+  height: 350px;
+}
+
+#keep-in-touch-content {
+  height: 40px;
+  margin-top: 75px;
+}
+
+#keep-in-touch-content h1{
+  margin-bottom: 35px;
+}
+
+#btn-keep-in-touch {
+  background-color: #536A88;
+  color:white;
+
 }
