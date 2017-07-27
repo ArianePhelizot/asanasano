@@ -21,7 +21,7 @@
   </div>
   <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
 
-  <% @user.groups.sort.each do |group| %>
+  <% @user.groups.uniq.sort.each do |group| %>
     <!-- GROUP-CONTAINER -->
     <div class="group-container">
           <div >
