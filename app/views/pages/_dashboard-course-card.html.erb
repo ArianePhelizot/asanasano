@@ -22,6 +22,7 @@
     <!-- Affichage du statut de la prochaine séance s'il y en a une: inscrit / complet / s'inscrire-->
 
     <%= render 'slot_status', slot: course.next_slot %>
+
     <div id="toutes-les-seances">
       <%= link_to "Toutes les séances",
                   course_path(course),
@@ -29,11 +30,30 @@
     </div>
   <% else %>
     <div class="no-seance">Aucune séance</div>
-    <div id="ajouter-une-seance">
-      <%= link_to "Ajouter une séance",
-                  course_path(course),
-                  id:"ajouter-une-seance-text" %>
-    </div>
+
+    <% if policy(course).update? && course.active? %>
+      <div id="ajouter-une-seance">
+        <%= link_to "Ajouter une séance",
+                    course_path(course),
+                    id:"ajouter-une-seance-text" %>
+      </div>
+
+    <% elsif policy(course).update? && !course.active? %>
+      <div id="ajouter-une-seance">
+          <%= link_to "Publier l'activité",
+                      course_path(course),
+                      id:"ajouter-une-seance-text" %>
+        </div>
+    <% else %>
+        <div id="ajouter-une-seance">
+        <%= link_to "En savoir plus",
+                    course_path(course),
+                    id:"ajouter-une-seance-text" %>
+        </div>
+
+    <% end %>
+
+
   <% end %>
   <!-- Accès au cours et à l'ensemble de ses séances-->
 </div>

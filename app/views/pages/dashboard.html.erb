@@ -50,7 +50,7 @@
                 <!-- Si coach ou group owner => afficher tous les cours -->
                 <% if policy(course).update? || course.active? %>
                   <%= render 'dashboard-course-card', course: course %>
-                <!-- Sinon, n'afficher que les acours actifs pour les simples membres -->
+                <!-- Sinon, n'afficher que les cours actifs pour les simples membres -->
                 <% end %>
               </div>
 
