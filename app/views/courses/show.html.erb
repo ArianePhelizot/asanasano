@@ -63,12 +63,12 @@
               <% if @course.coach&.first_name.present?  %>
                 <p>Coach: <%= @course.coach.first_name %></p>
 
-                <!-- Button trigger modal -->
+                <!-- Button trigger modal PRESENTATION DU COACH-->
                 <button  class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#myModal">
                   <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 </button>
 
-                <!-- Modal -->
+                <!-- Modal PRESENTATION DU COACH-->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -131,6 +131,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- END OF COACH PRESENTATION MODAL-->
 
               <% else %>
                 <p class="text-center-xs text-center-sm">Coach</p>
@@ -204,6 +205,7 @@
             </div>
           </div>
         </div>
+        <!-- PRESENTATION DES DIFFERENTS SLOTS-->
         <div class="row">
           <div class="col-xs-12">
             <div id="slots_display">
