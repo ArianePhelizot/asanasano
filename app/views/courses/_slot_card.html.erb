@@ -1,9 +1,59 @@
 <div class="row">
+  <!-- SLOT INFOS -->
   <div class="col-xs-12 col-sm-8">
+    <!-- SLOT DATE -->
     <p><i class="fa fa-calendar"></i>  <%= l(slot.date, format: :long) %></p>
+    <!-- SLOT TIME -->
     <p><i class="fa fa-clock-o"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
-    <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
+    <!-- SLOT INSCRIPTIONS -->
+    <!-- CASE: no registration yet -->
+    <% if slot.users.count==0 %>
+      <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
+    <% else %>
+    <!-- CASE: some people do registered -->
+    <!-- Button trigger modal SLOT REGISTERED PEOPLE-->
+      <p><i class="fa fa-users" data-toggle="modal" data-target="#SlotParticipantsModal"></i> <%= slot.users.count %></p>
+
+      <!-- Modal REGISTERED PEOPLE LIST-->
+      <div class="modal fade" id="SlotParticipantsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">LISTE DES INSCRITS</h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <% slot.users.each do |user|%>
+
+                  <div class="user-card col-xs-4 col-sm-3 text-center">
+                      <div>
+                        <%= render 'shared/user-photo', user: user,  id: "user-card-photo", class: "avatar" %>
+                      </div>
+
+                      <div>
+                        <%= user.first_name || user.mail_root %>
+                      </div>
+                  </div>
+
+                <% end %>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END OF REGISTERED PEOPLE LIST MODAL-->
+
+    <% end %>
+
+
+    <!-- SLOT LEFT AVAILABILITIES -->
     <p><strong>Places restantes: <%= course.capacity_max - slot.users.count %></strong></p>
+
+    <!-- MODIFY & DESTROY -->
     <div>
       <% if policy(slot).edit? %>
         <%= link_to edit_course_slot_path(course, slot) do %>
@@ -19,6 +69,9 @@
       <% end %>
     </div>
   </div>
+
+
+  <!-- PRICE & SUBSCRIBE ACTION / CANCEL ACTION OR FULL INFO -->
   <div class="col-xs-12 col-sm-4 pd-top-xs-slot-price pd-top-sm-slot-price pd-top-md-slot-price pd-top-lg-slot-price">
     <div class="price-slot text-center">
       <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
