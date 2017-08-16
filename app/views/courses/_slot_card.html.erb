@@ -7,12 +7,13 @@
     <p><i class="fa fa-clock-o"></i>  <%= slot.start_at.strftime("%H:%M") %> - <%= slot.end_at.strftime("%H:%M") %></p> <!-- affiche start_at sous le format 14:06 --><!-- affiche le end_at sous le format 14:06 -->
     <!-- SLOT INSCRIPTIONS -->
     <!-- CASE: no registration yet -->
-    <% if slot.users.count==0 %>
-      <p><i class="fa fa-users"></i> <%= slot.users.count %></p>
-    <% else %>
+    <i class="fa fa-users"></i> <%= slot.users.count %> &nbsp
+    <% unless slot.users.count==0 %>
     <!-- CASE: some people do registered -->
     <!-- Button trigger modal SLOT REGISTERED PEOPLE-->
-      <p><i class="fa fa-users" data-toggle="modal" data-target="#SlotParticipantsModal"></i> <%= slot.users.count %></p>
+    <i class="fa fa-external-link"data-toggle="modal" data-target="#SlotParticipantsModal">  </i>
+
+<!--       <i class="fa fa-external-link" aria-hidden="true"></i> -->
 
       <!-- Modal REGISTERED PEOPLE LIST-->
       <div class="modal fade" id="SlotParticipantsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
