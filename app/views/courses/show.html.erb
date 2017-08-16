@@ -61,12 +61,10 @@
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic"%>
               <% end %>
               <% if @course.coach&.first_name.present?  %>
-                <p>Coach: <%= @course.coach.first_name %></p>
+                <p>Coach: <%= @course.coach.first_name %> &nbsp
 
                 <!-- Button trigger modal PRESENTATION DU COACH-->
-                <button  class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#myModal">
-                  <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                </button>
+                  <i class="fa fa-external-link" data-toggle="modal" data-target="#myModal"></i> </p>
 
                 <!-- Modal PRESENTATION DU COACH-->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
