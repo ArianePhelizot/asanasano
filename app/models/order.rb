@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: orders
@@ -19,5 +21,5 @@ class Order < ApplicationRecord
   monetize :amount_cents
   belongs_to :slot
 
-  enum state: [ :pending, :paid ]
+  enum state: %i(pending paid)
 end

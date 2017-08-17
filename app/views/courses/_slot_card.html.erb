@@ -89,7 +89,7 @@
               remote: true,
               data: { confirm: "Êtes-vous sûr de vouloir vous désinscrire?" }
           %>
-      <% elsif slot.is_full? %>
+      <% elsif slot.full? %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'slot_id', slot.id %>
           <%= submit_tag 'Complet', class: "buy-btn", disabled: true %>

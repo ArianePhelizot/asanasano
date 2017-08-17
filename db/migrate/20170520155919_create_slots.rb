@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class CreateSlots < ActiveRecord::Migration[5.0]
   def change
     create_table :slots do |t|
-
       t.date :date
       t.integer :start_time_hour
       t.integer :start_time_minute
@@ -20,4 +21,3 @@ class CreateSlots < ActiveRecord::Migration[5.0]
     end
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SlotPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

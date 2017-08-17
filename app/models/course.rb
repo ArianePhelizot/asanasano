@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: courses
@@ -26,19 +28,19 @@
 #
 
 class Course < ApplicationRecord
-
   belongs_to :group
   belongs_to :coach
   belongs_to :sport
   has_many :slots, dependent: :nullify
 
-  enum status: [ :draft, :active, :archived ]
+  enum status: %i(draft active archived)
 
   validates :name, :address, :capacity_max, :group_id, :sport_id, presence: true
   validates :name, length: { maximum: 20 }
   validates :content, :meeting_point, :details, length: { maximum: 300 }
-  validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500,
-                           message: "Vous devez entrez un nombre entre 1 et 500" }
+  # rubocop:disable LineLength
+  validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500, message: "Vous devez entrez un nombre entre 1 et 500" }
+  # rubocop:enable LineLength
 
   def next_slot
     slots.sort_by(&:date).select { |slot| slot.date >= Time.now }.first
@@ -53,6 +55,6 @@ class Course < ApplicationRecord
   end
 
   def depublishable?
-    active? && !slots.any?
+    active? && slots.none?
   end
 end

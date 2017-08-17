@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -63,10 +65,12 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
   def next_slots
-    sorted_slots = self.slots.sort_by(&:date)
-    sorted_slots.select { |slot| slot.date >= Time.now}
+    sorted_slots = slots.sort_by(&:date)
+    sorted_slots.select { |slot| slot.date >= Time.now }
   end
 
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -81,24 +85,23 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.password = Devise.friendly_token[0, 20] # Fake password for validation
       user.save
     end
 
-    return user
+    user
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def mail_root
-    match_data = self.email.match(/(..*)*@/)
+    match_data = email.match(/(..*)*@/)
     match_data[1]
   end
 
   private
 
   def send_welcome_email
-    unless self.invitation_token?
-      UserMailer.welcome(self).deliver_now
-    end
+    UserMailer.welcome(self).deliver_now unless invitation_token?
   end
-
 end

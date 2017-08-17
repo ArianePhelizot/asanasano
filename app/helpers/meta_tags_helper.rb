@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 # app/helpers/meta_tags_helper.rb
+
+# rubocop:disable Metrics/LineLength
 module MetaTagsHelper
   def meta_title
     content_for?(:meta_title) ? content_for(:meta_title) : DEFAULT_META["meta_title"]
@@ -14,3 +18,4 @@ module MetaTagsHelper
     meta_image.starts_with?("http") ? meta_image : image_url(meta_image)
   end
 end
+# rubocop:enable Metrics/LineLength

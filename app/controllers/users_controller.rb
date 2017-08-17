@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
+  before_action :set_user, only: %i(profile edit update)
 
-before_action :set_user, only: [:profile, :edit, :update]
+  def profile; end
 
-  def profile
-  end
-
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -16,7 +15,7 @@ before_action :set_user, only: [:profile, :edit, :update]
     end
   end
 
-private
+  private
 
   def set_user
     @user = current_user
@@ -25,11 +24,9 @@ private
 
   def user_params
     params.require(:user).permit(:first_name,
-                                   :last_name,
-                                   :email,
-                                   :phone_number,
-                                   :photo
-                                   )
+                                 :last_name,
+                                 :email,
+                                 :phone_number,
+                                 :photo)
   end
-
 end

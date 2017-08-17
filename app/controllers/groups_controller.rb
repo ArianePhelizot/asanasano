@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:edit, :update, :destroy, :group_participants, :remove_current_user_from_group]
+  before_action :find_group,
+                only: %i(edit update destroy group_participants remove_current_user_from_group)
 
   def new
     @group = Group.new
@@ -11,7 +14,7 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     authorize @group # check authorization before save
 
-    @group.users.push(current_user) #populate the groups_users table
+    @group.users.push(current_user) # populate the groups_users table
 
     if @group.save
       redirect_to new_group_course_path(@group)
@@ -40,8 +43,8 @@ class GroupsController < ApplicationController
   end
 
   def group_participants
-     authorize @group
-     @group.users
+    authorize @group
+    @group.users
   end
 
   def remove_current_user_from_group
