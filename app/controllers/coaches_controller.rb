@@ -1,15 +1,14 @@
+# frozen_string_literal: true
+
 class CoachesController < ApplicationController
+  before_action :set_coach
 
-
-before_action :set_coach
-
-  def edit
-  end
+  def edit; end
 
   def update
     # binding.pry
     sports = sports_update
-    sports_instances = Sport.where(:id => sports)
+    sports_instances = Sport.where(id: sports)
     @coach.sports = sports_instances
     @coach.languages = languages_update
     if @coach.update(coach_params)
@@ -19,7 +18,7 @@ before_action :set_coach
     end
   end
 
-private
+  private
 
   def set_coach
     @coach = Coach.find(params[:id])
@@ -27,13 +26,13 @@ private
   end
 
   def coach_params
-      params.require(:coach).permit(:description, :sport_ids, :experience, :languages)
+    params.require(:coach).permit(:description, :sport_ids, :experience, :languages)
   end
 
   def sports_update
     sports = params["coach"]["sport_ids"]
     sports.delete_at(0)
-    sports.map {|id| id.to_i}
+    sports.map(&:to_i)
   end
 
   def languages_update
@@ -41,6 +40,4 @@ private
     languages.delete_at(0)
     languages
   end
-
 end
-

@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class OrderMailerTest < ActionMailer::TestCase
   test "order_confirmation" do
@@ -8,5 +10,4 @@ class OrderMailerTest < ActionMailer::TestCase
     assert_equal ["from@example.com"], mail.from
     assert_match "Hi", mail.body.encoded
   end
-
 end

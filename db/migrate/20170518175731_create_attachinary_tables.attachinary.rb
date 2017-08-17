@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from attachinary (originally 20120612112526)
 class CreateAttachinaryTables < ActiveRecord::Migration
   def change
@@ -13,6 +15,6 @@ class CreateAttachinaryTables < ActiveRecord::Migration
       t.string :resource_type
       t.timestamps
     end
-    add_index :attachinary_files, [:attachinariable_type, :attachinariable_id, :scope], name: 'by_scoped_parent'
+    add_index :attachinary_files, %i(attachinariable_type attachinariable_id scope), name: 'by_scoped_parent'
   end
 end

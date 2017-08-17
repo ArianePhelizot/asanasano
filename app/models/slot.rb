@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: slots
@@ -21,15 +23,14 @@
 #
 
 class Slot < ApplicationRecord
-
   belongs_to :course
   has_and_belongs_to_many :users
 
-  enum status: [ :created, :confirmed, :cancelled, :archived ]
+  enum status: %i(created confirmed cancelled archived)
 
   monetize :price_cents
 
-  validates :date, :start_at, :end_at,  :course_id, :price_cents, presence: true
+  validates :date, :start_at, :end_at, :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
   validates :price, numericality: { allow_nil: true, greater_than_or_equal_to: 0,
                                     message: "Entrez un prix supérieur ou égal à 0€" }
@@ -38,14 +39,16 @@ class Slot < ApplicationRecord
   validate :participants_min_between_one_and_capacity_max
 
   def participants_min_between_one_and_capacity_max
-    if participants_min > course.capacity_max || participants_min < 1
+    if participants_min > course.capacity_max || participants_min.negative?
       errors.add(:participants_min, "Le nombre minimum de participants doit être
-                   compris entre 1 et #{course.capacity_max} (capacité maximale
+                   compris entre 0 et #{course.capacity_max} (capacité maximale
                    du cours).")
+    else
+      true
     end
   end
 
-  def is_full?
+  def full?
     users.count == course.capacity_max
   end
 end

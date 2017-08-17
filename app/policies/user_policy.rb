@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -12,5 +14,4 @@ class UserPolicy < ApplicationPolicy
   def update?
     record == user
   end
-
 end

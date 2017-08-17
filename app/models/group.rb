@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: groups
@@ -14,25 +16,19 @@
 #
 
 class Group < ApplicationRecord
-   has_and_belongs_to_many :users
-   has_and_belongs_to_many :coaches
-   belongs_to :owner, class_name: "User"
-   has_many :courses, dependent: :nullify
+  has_and_belongs_to_many :users
+  has_and_belongs_to_many :coaches
+  belongs_to :owner, class_name: "User"
+  has_many :courses, dependent: :nullify
 
-   validates :name, presence: true, length: { maximum: 100 }
-   validates :owner_id, presence: true
+  validates :name, presence: true, length: { maximum: 100 }
+  validates :owner_id, presence: true
 
   def group_joined_users_only
-    self.users.select do |user|
-      !user.invitation_token?
-    end
+    users.reject(&:invitation_token?)
   end
 
   def pending_invited_users_only
-    self.users.select do |user|
-      user.invitation_token?
-    end
+    users.select(&:invitation_token?)
   end
-
-
 end

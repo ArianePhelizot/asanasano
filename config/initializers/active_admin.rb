@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 # Add this line at the beginning, before `ActiveAdmin.setup do |config|`
 def authenticate_admin!
   redirect_to new_user_session_path unless current_user && current_user.admin
 end
-
-
 
 ActiveAdmin.setup do |config|
   # == Site Title
@@ -11,7 +11,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Asanasano"
+  config.site_title = 'Asanasano'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

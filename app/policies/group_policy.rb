@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -29,5 +31,4 @@ class GroupPolicy < ApplicationPolicy
   def remove_current_user_from_group?
     true
   end
-
- end
+end

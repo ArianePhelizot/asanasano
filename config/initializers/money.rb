@@ -1,7 +1,7 @@
 # encoding : utf-8
+# frozen_string_literal: true
 
 MoneyRails.configure do |config|
-
   # To set the default currency
   config.default_currency = :eur
 
@@ -80,7 +80,7 @@ MoneyRails.configure do |config|
     # :no_cents_if_whole => true
     # :symbol => true, # on veut un symbole €
     # :sign_before_symbol
-    :symbol_position => :after
+    symbol_position: :after
   }
 
   # Set default raise_error_on_money_parsing option

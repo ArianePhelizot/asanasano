@@ -1,5 +1,6 @@
-class UserMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class UserMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,7 +9,7 @@ class UserMailer < ApplicationMailer
   def welcome(user)
     @user = user
 
-    mail to: @user.email, subject: "Bienvenue #{@user.first_name if @user.first_name?} sur Asanasano !"
+    mail to: @user.email,
+         subject: "Bienvenue #{@user.first_name if @user.first_name?} sur Asanasano !"
   end
 end
-

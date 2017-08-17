@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
-  before_action :find_group, only: [:new, :create, :edit, :update]
-  before_action :find_course, only: [:show, :edit, :update, :destroy, :publish, :depublish]
+  before_action :find_group, only: %i(new create edit update)
+  before_action :find_course, only: %i(show edit update destroy publish depublish)
 
   def show
     @group = @course.group
@@ -31,7 +33,7 @@ class CoursesController < ApplicationController
 
   def edit
     # On donne ici le current_user à la vue de #edit pour afficher le bon formulaire...
-    #... en fonction de si le current_user est le owner du group ou le coach du cours
+    # ... en fonction de si le current_user est le owner du group ou le coach du cours
     @user = current_user
   end
 
@@ -46,7 +48,7 @@ class CoursesController < ApplicationController
   def publish
     if @course.publishable?
       @course.active!
-      # TODO envoyer les emails
+      # TODO: envoyer les emails
       flash[:notice] = "Le cours a été publié et les emails envoyés."
     end
     redirect_to dashboard_path
@@ -61,7 +63,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    group = @course.group
+    @course.group
     @course.destroy
     redirect_to dashboard_path
   end
@@ -77,8 +79,7 @@ class CoursesController < ApplicationController
                                    :details,
                                    :coach_id,
                                    :content,
-                                   :status
-                                   )
+                                   :status)
   end
 
   def find_group

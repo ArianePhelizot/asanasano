@@ -3,6 +3,6 @@
   <% if slot.users.include?(current_user) %>
     <div class="inscrit-status">Inscrit</div>
   <!-- Si le cours est complet-->
-  <% elsif slot.is_full? %>
+  <% elsif slot.full? %>
     <div class="complet-status">Complet</div>
   <% end %>

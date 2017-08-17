@@ -1,5 +1,6 @@
-class Users::InvitationsController < Devise::InvitationsController
+# frozen_string_literal: true
 
+class Users::InvitationsController < Devise::InvitationsController
   # def invite_resource
   #   # group tracking
   #   super do |u|
@@ -7,8 +8,9 @@ class Users::InvitationsController < Devise::InvitationsController
   #   end
   # end
 
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def invite_resource(&block)
-
     # je regarde si je connais l'adresse email
     @user = User.find_by(email: invite_params[:email])
 
@@ -22,7 +24,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
     # si le user existe et appartient déjà au groupe
     elsif @user && @user.groups.include?(find_group)
-      # comportement par défaut mais avec une custimization à prévoir du message d'erreur (vs email déjà pris)
+      # comportement par défaut- perso à prévoir du message d'erreur (vs mail déjà pris)
       super
 
     # si le user n'existe pas
@@ -32,14 +34,13 @@ class Users::InvitationsController < Devise::InvitationsController
         u.groups.push(find_group)
       end
     end
-
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
-
-private
+  private
 
   def find_group
     @group = Group.find(params[:user][:group_id])
   end
-
 end

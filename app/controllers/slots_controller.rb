@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class SlotsController < ApplicationController
-  before_action :find_course, only: [:new, :create, :edit, :update]
-  before_action :find_slot, only: [:edit, :update, :destroy, :desinscription, :desinscription_from_dashboard]
+  before_action :find_course, only: %i(new create edit update)
+  before_action :find_slot,
+                only: %i(edit update destroy desinscription desinscription_from_dashboard)
 
   def new
     # récupérer les infos de la dernière séance créée
@@ -10,6 +13,7 @@ class SlotsController < ApplicationController
     authorize @slot
   end
 
+  # rubocop:disable Metrics/MethodLength
   def create
     @slot = Slot.new(slot_params)
     @slot.course = @course
@@ -17,16 +21,17 @@ class SlotsController < ApplicationController
     authorize @slot # check authorization before save
     if @slot.save
       respond_to do |format|
-        format.html { redirect_to course_path(@course) }
+        format.html do redirect_to course_path(@course) end
         format.js  # <-- will render `app/views/slots/create.js.erb`
       end
     else
       respond_to do |format|
-        format.html { render 'courses/show' }
+        format.html do render "courses/show" end
         format.js  # <-- idem
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def edit
     authorize @slot # check authorization before edit
@@ -53,8 +58,8 @@ class SlotsController < ApplicationController
     @slot.users.delete(current_user)
     @course = @slot.course
     respond_to do |format|
-      format.html { redirect_to course_path(@course) }
-      format.js  # <-- will render `app/views/slots/desinscription.js.erb`
+      format.html do redirect_to course_path(@course) end
+      format.js # <-- will render `app/views/slots/desinscription.js.erb`
     end
   end
 
