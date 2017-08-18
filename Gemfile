@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
@@ -26,6 +27,7 @@ gem 'pundit'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'stripe'
+gem 'mangopay', '~> 3.0', '>= 3.0.29'
 gem 'uglifier'
 
 gem 'attachinary', github: 'assembler/attachinary'

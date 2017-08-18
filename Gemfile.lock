@@ -218,6 +218,8 @@ GEM
     lumberjack (1.0.12)
     mail (2.6.5)
       mime-types (>= 1.16, < 4)
+    mangopay (3.0.29)
+      multi_json (>= 1.7.7)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -426,6 +428,7 @@ DEPENDENCIES
   launchy
   letter_opener
   listen (~> 3.0.5)
+  mangopay (~> 3.0, >= 3.0.29)
   minitest-reporters
   money-rails (~> 1)
   omniauth-facebook
