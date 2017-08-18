@@ -54,6 +54,7 @@ class User < ApplicationRecord
   has_many :owned_groups, class_name: "Group", foreign_key: :owner_id, dependent: :nullify
   belongs_to :coach, optional: true
   has_and_belongs_to_many :slots
+  has_one :account_info, dependent: :nullify
 
   has_attachment :photo
 
