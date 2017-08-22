@@ -7,6 +7,12 @@ MangoPay.configure do |c|
   c.http_timeout = 10000
 end
 
+# Set MANGOPAY API base URL and Client ID
+mangoPay.cardRegistration.baseURL = "https://api.sandbox.mangopay.com";
+mangoPay.cardRegistration.clientId = {MANGOPAY_CLIENT_ID};
+
+
+
 # COUNTRY LIST à supprimer une fois que la gem country-Select fonctione
 # COUNTRY_LIST = %w(AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA
 #                   BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV
