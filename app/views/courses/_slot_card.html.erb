@@ -99,8 +99,7 @@
             <%= submit_tag "M'inscrire", class: "buy-btn" %>
           <% end %>
         <% else %>
-            <%= link_to "M'inscrire", "new_user_account_path(@user)",
-                   method: "new",
+            <%= link_to "M'inscrire", new_user_account_path(@current_user.id),
                    data: { confirm: "Vous devez pour votre première commande renseigner au préalable vos données de facturation" },
                    class: "buy-btn" %>
         <% end %>
