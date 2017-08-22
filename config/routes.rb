@@ -60,4 +60,8 @@ Rails.application.routes.draw do
   end
 
   resources :coaches, only: %i(edit update)
+
+  resources :users do
+    resources :accounts, only: [ :new, :create, :edit, :update ]
+  end
 end
