@@ -1,0 +1,62 @@
+<%= simple_form_for [@user, @account] do |f| %>
+
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</p>
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+  <%= f.input :first_name, label: "Prénom", as: :text %>
+  <%= f.input :last_name, label: "Nom", as: :text %>
+  <%= f.input :person_type, label: "Profil", collection: ["NATURAL", "LEGAL"], as: :radio_buttons %>
+  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + "/ Coach_id:" + @user.coach_id.to_s } %>
+
+      <% if @account.person_type.include?('NATURAL') %>
+            <p>NATURAL</p>
+            <% else %>
+            <p>LEGAL</p>
+            <% end %>
+
+<div class="person_type" id="natural">
+  <%= f.input :birthday, label: "Date d'anniversaire",
+              as: :date,
+              start_year: Date.today.year - 90, end_year: Date.today.year - 12,
+              order: [:day, :month, :year] %>
+
+  <%= f.input :address_line1, label: "Adresse, ligne 1" %>
+  <%= f.input :address_line2, label: "Adresse ligne 2" %>
+  <%= f.input :city, label: "Ville" %>
+  <%= f.input :region, label: "Région" %>
+  <%= f.input :postal_code, label: "Code postal" %>
+
+  <%= f.input :country_of_residence, as: :country, label: "Pays de résidence" %>
+  <%= f.input :nationality, as: :country, label: "Nationalité" %>
+
+</div>
+
+<div class="person_type" id="legal">
+  <%= f.input :legal_person_type, label: "Type d'organisation", collection: %w(BUSINESS ORGANIZATION SOLETRADER), as: :radio_buttons %>
+  <%= f.input :legal_name, label: "Nom de l'organisation" %>
+    <%= f.input :legal_representative_first_name, label: "Prénom du représentant légal" %>
+  <%= f.input :legal_representative_last_name, label: "Nom du représentant légal" %>
+  <%= f.input :legal_representative_birthday, label: "Date d'anniversaire du représentant légal",
+              as: :date,
+              start_year: Date.today.year - 90, end_year: Date.today.year - 12,
+              order: [:day, :month, :year] %>
+
+  <%= f.input :headquarters_address, label: "Adresse du siège" %>
+  <%= f.input :legal_representative_country_of_residence, as: :country, label: "Pays de résidence du représentant légal" %>
+  <%= f.input :legal_representative_nationality, as: :country, label: "Nationalité du représentant légal" %>
+
+</div>
+
+   <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
+
+<% end %>
