@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818132356) do
+ActiveRecord::Schema.define(version: 20170821162636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "account_infos", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "person_type"
     t.string   "tag"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "birthday"
-    t.string   "address"
     t.string   "country_of_residence"
     t.string   "nationality"
     t.string   "legal_person_type"
@@ -35,7 +34,13 @@ ActiveRecord::Schema.define(version: 20170818132356) do
     t.string   "legal_representative_nationality"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.index ["user_id"], name: "index_account_infos_on_user_id", using: :btree
+    t.integer  "mangopay_id"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "region"
+    t.string   "postal_code"
+    t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -197,7 +202,7 @@ ActiveRecord::Schema.define(version: 20170818132356) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "account_infos", "users"
+  add_foreign_key "accounts", "users"
   add_foreign_key "courses", "coaches"
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
