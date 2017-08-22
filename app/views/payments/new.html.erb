@@ -4,6 +4,33 @@
       <div class="col-xs-12">
         <h1>Réserver ma séance :  <%= @order.slot.course.name %></h1>
       </div>
+
+      <%= form_tag order_payments_path(@order) do %>
+        <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
+          <div class="wrapper-payment">
+            <article>
+              <label>
+                <span class="amount">Total : <%= humanized_money_with_symbol(@order.amount) %></span>
+              </label>
+            </article>
+            <div class="pay-card">
+              <script type="text/javascript" src="mangopay-kit.js">
+                // Initialize with card register data prepared on the server
+                mangoPay.cardRegistration.init({
+                    cardRegistrationURL: {CardRegistrationURL property},
+                    preregistrationData: {PreregistrationData property},
+                    accessKey: {AccessKey property},
+                    Id: {Id property}
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+      <!-- VUE STRIPE -->
+<!--
       <%= form_tag order_payments_path(@order) do %>
         <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
           <div class="wrapper-payment">
@@ -24,27 +51,27 @@
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-  </div>
-    <div class="row text-center padded">
-    <div class="col-xs-12 col-sm-4">
-      <h3>Sécurisé</h3>
-      <i class="fa fa-lock text-lg" aria-hidden="true"></i>
-      <p>Votre achat est 100% sécurisé</p>
-    </div>
+      <% end %> -->
 
-    <div class="col-xs-12 col-sm-4">
-      <h3>Remboursable</h3>
-      <i class="fa fa-credit-card text-lg" aria-hidden="true"></i>
-      <p>Soyez remboursé si vous ne pouvez pas assister au cours</p>
-    </div>
+<!-- FIN STRIPE -->
 
-    <div class="col-xs-12 col-sm-4">
-      <h3>Sans frais</h3>
-      <i class="fa fa-clock-o text-lg" aria-hidden="true"></i>
-      <p>Payez en plusieurs fois sans frais</p>
-    </div>
+      <div class="row text-center padded">
+        <div class="col-xs-12 col-sm-4">
+          <h3>Sécurisé</h3>
+          <i class="fa fa-lock text-lg" aria-hidden="true"></i>
+          <p>Votre achat est 100% sécurisé</p>
+        </div>
 
-  </div>
+        <div class="col-xs-12 col-sm-4">
+          <h3>Remboursable</h3>
+          <i class="fa fa-credit-card text-lg" aria-hidden="true"></i>
+          <p>Soyez remboursé si vous ne pouvez pas assister au cours</p>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <h3>Sans frais</h3>
+          <i class="fa fa-clock-o text-lg" aria-hidden="true"></i>
+          <p>Payez en plusieurs fois sans frais</p>
+        </div>
+      </div>
 </div>
