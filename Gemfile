@@ -6,6 +6,7 @@ ruby '2.3.3'
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'country_select'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
