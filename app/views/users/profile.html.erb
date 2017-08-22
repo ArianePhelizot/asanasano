@@ -79,6 +79,93 @@
                 <%= link_to "Modifier mon profil coach", edit_coach_path(@user.coach_id) %>
               <% end%>
 
+               <!-- Billing info -->
+            <br>
+            <br>
+
+              <!-- No account info created yet  -->
+              <% if !@user.account %>
+                  <%= link_to "Renseigner mes données de facturation", new_user_account_path(@user) %>
+              <!-- Account info created and if Natural -->
+              <% elsif @user.account && @user.account.person_type == "NATURAL" %>
+
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td class = "cat">PRENOM</td>
+                    <td class = "input"><%= @user.account.first_name %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">NOM</td>
+                    <td class = "input"><%= @user.account.last_name %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">PROFIL</td>
+                    <td class = "input"><%= @user.account.person_type %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">ANNIVERSAIRE</td>
+                    <td class = "input"><%= @user.account.birthday.strftime("%e %m %Y")  %></td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">ADRESSE</td>
+                    <td class = "input"><%= @user.account.address_line1%>
+                      <%= @user.account.address_line2 %> ,  <%= @user.account.postal_code %>
+                      <%= @user.account.city %>   <%=@user.account.region%>,
+                      <%= @user.account.country_name_of_residence %>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">NATIONALITÉ</td>
+                    <td class = "input"><%= @user.account.country_name_of_nationality %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id) %>
+                  <!-- Account created and if Legal -->
+                <% else %>
+
+                  <table class="table">
+                   <tbody>
+                    <tr>
+                      <td class = "cat">PRENOM</td>
+                      <td class = "input"><%= @user.account.first_name %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">NOM</td>
+                      <td class = "input"><%= @user.account.last_name %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">NOM DE L'ORGANISATION'</td>
+                      <td class = "input"><%= @user.account.legal_name %></td>
+                    </tr>
+                      <td class = "cat">TYPE D'ORGANISATION</td>
+                      <td class = "input"><%= @user.account.legal_person_type%></td>
+                    <tr>
+                    <tr>
+                      <td class = "cat">PRENOM DU REPRÉSENTANT LEGAL</td>
+                      <td class = "input"><%= @user.account.legal_representative_first_name %></td>
+                    </tr>
+                     <tr>
+                      <td class = "cat">NOM DU REPRÉSENTANT LEGAL</td>
+                      <td class = "input"><%= @user.account.legal_representative_last_name %></td>
+                    </tr>
+                      <td class = "cat">DATE D'ANNIVERSAIRE DU REPRÉSENTANT LEGAL</td>
+                      <td class = "input"><%= @user.account.legal_representative_birthday.strftime("%e %m %Y") %></td>
+                    </tr>
+                    </tr>
+                      <td class = "cat">PAYS DE RÉSIDENCE DU REPRÉSENTANT LEGAL</td>
+                      <td class = "input"><%= @user.account.country_name_of_legal_representative_residence %></td>
+                    </tr>
+                    </tr>
+                      <td class = "cat">NATIONALITÉ DU REPRÉSENTANT LEGAL</td>
+                      <td class = "input"><%= @user.account.country_name_of_legal_representative_nationality %></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id) %>
+              <% end %>
           </div>
         </div>
       </div>
