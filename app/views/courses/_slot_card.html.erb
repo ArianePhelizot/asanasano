@@ -38,8 +38,6 @@
 
                 <% end %>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -95,9 +93,16 @@
           <%= submit_tag 'Complet', class: "buy-btn", disabled: true %>
         <% end %>
       <% else %>
-        <%= form_tag orders_path do %>
-          <%= hidden_field_tag 'slot_id', slot.id %>
-          <%= submit_tag "M'inscrire", class: "buy-btn" %>
+        <% if current_user.account.present? %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'slot_id', slot.id %>
+            <%= submit_tag "M'inscrire", class: "buy-btn" %>
+          <% end %>
+        <% else %>
+            <%= link_to "M'inscrire", "new_user_account_path(@user)",
+                   method: "new",
+                   data: { confirm: "Vous devez pour votre première commande renseigner au préalable vos données de facturation" },
+                   class: "buy-btn" %>
         <% end %>
       <% end %>
     </div>

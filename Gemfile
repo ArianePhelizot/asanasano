@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
@@ -5,6 +6,7 @@ ruby '2.3.3'
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'country_select'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -26,6 +28,7 @@ gem 'pundit'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'stripe'
+gem 'mangopay', '~> 3.0', '>= 3.0.29'
 gem 'uglifier'
 
 gem 'attachinary', github: 'assembler/attachinary'
