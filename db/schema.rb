@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822163630) do
+ActiveRecord::Schema.define(version: 20170823105818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,19 @@ ActiveRecord::Schema.define(version: 20170822163630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "card_registrations", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "mangopay_id"
+    t.string   "tag"
+    t.string   "access_key"
+    t.string   "preregistration_data"
+    t.string   "card_registration_url"
+    t.string   "registration_data"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["account_id"], name: "index_card_registrations_on_account_id", using: :btree
   end
 
   create_table "coaches", force: :cascade do |t|
@@ -212,6 +225,7 @@ ActiveRecord::Schema.define(version: 20170822163630) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "card_registrations", "accounts"
   add_foreign_key "courses", "coaches"
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
