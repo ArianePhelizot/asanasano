@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
     authorize @account
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @account = Account.new(account_params)
     authorize @account
@@ -20,11 +21,30 @@ class AccountsController < ApplicationController
         mangopay_create_legal_user(@account.id)
       end
 
+      # Local wallet creation
+      @wallet = Wallet.create(account_id: @account.id, tag: @account.tag)
+
+      # Wallet creation by Mangpay
+      mangopay_wallet = MangoPay::Wallet.create(
+        "Tag": @wallet.tag,
+        "Owners": [Account.find(@wallet.account_id).mangopay_id], # mangopay_id de l'account
+        "Description": "ASANASANO Wallet",
+        "Currency": "EUR"
+      )
+
+      # Recuperation of the Mangopay Id created for the wallet
+      @wallet.mangopay_id = mangopay_wallet["Id"]
+      @wallet.save
+
+      # rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
+      # raise
+
       redirect_to profile_path
     else
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def edit
     authorize @account
@@ -55,13 +75,14 @@ class AccountsController < ApplicationController
       "Email": @user.email,
       "FirstName": @account.first_name,
       "LastName": @account.last_name,
-      "Address":
-      { "AddressLine1": @account.address_line1,
-        "AddressLine2": @account.address_line2,
-        "City": @account.city,
-        "Region": @account.region,
-        "PostalCode": @account.postal_code,
-        "Country": @account.country_of_residence },
+      # Pb de format quand champ vide car il me faut a minima un caractère
+      # "Address":
+      # { "AddressLine1": @account.address_line1,
+      #   "AddressLine2": @account.address_line2,
+      #   "City": @account.city,
+      #   "Region": @account.region,
+      #   "PostalCode": @account.postal_code,
+      #   "Country": @account.country_of_residence },
       "Birthday": @account.birthday.to_time.to_i,
       "Nationality": @account.nationality,
       "CountryOfResidence": @account.country_of_residence
