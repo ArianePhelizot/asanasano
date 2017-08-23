@@ -35,8 +35,8 @@
 
 class Account < ApplicationRecord
   belongs_to :user, optional: true
+  has_one :wallet, dependent: :nullify
   after_initialize :default_values
-  # after_initialize :tag_creation
 
   validates :user_id, :person_type, presence: true
   validates :person_type, inclusion: { in: %w(NATURAL LEGAL) }
@@ -47,13 +47,6 @@ class Account < ApplicationRecord
             :legal_representative_birthday, :legal_representative_country_of_residence,
             :legal_representative_nationality,
             presence: true, if: :legal?
-  # validates :country_of_residence,
-  #           :nationality,
-  #           inclusion: { in: :country_code},
-  #           if: :natural?
-  # validates :legal_representative_country_of_residence, :legal_representative_nationality,
-  #           # inclusion: { in: COUNTRY_LIST },
-  #           if: :legal?
   validates :legal_person_type, inclusion: { in: %w(BUSINESS ORGANIZATION SOLETRADER) }, if: :legal?
 
   def natural?
@@ -93,11 +86,4 @@ class Account < ApplicationRecord
     country = ISO3166::Country[legal_representative_nationality]
     country.translations[I18n.locale.to_s] || country.name
   end
-
-  # def tag_creation(user_id)
-  #   self.tag = "User_id:" + self.user_id.to_s
-  #   if User.find(user_id.to_i).coach_id.nil?
-  #     self.tag += "/ Coach_id:" + User.find(self.user_id).coach_id.to_s
-  #   end
-  # end
 end
