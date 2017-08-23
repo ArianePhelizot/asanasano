@@ -14,8 +14,8 @@
               </label>
             </article>
             <div class="pay-card">
-              <a class="btn btn-primary" href="">Paiement par carte bancaire</a>
-              <script type="text/javascript" src="mangopay-kit.js class="stripe-button">
+              <%= link_to "Paiement par carte bancaire", new_order_payment_path, class: "btn btn-primary" %>
+              <!-- <script type="text/javascript" src="mangopay-kit.js class="stripe-button">
                 // Initialize with card register data prepared on the server
                 // mangoPay.cardRegistration.init({
                 //     cardRegistrationURL: {CardRegistrationURL property},
@@ -23,7 +23,7 @@
                 //     accessKey: {AccessKey property},
                 //     Id: {Id property}
                 // });
-              </script>
+              </script> -->
             </div>
           </div>
         </div>
