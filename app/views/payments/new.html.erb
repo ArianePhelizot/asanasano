@@ -14,15 +14,16 @@
               </label>
             </article>
             <div class="pay-card">
-<!--               <script type="text/javascript" src="mangopay-kit.js">
+              <a class="btn btn-primary" href="">Paiement par carte bancaire</a>
+              <script type="text/javascript" src="mangopay-kit.js class="stripe-button">
                 // Initialize with card register data prepared on the server
-                mangoPay.cardRegistration.init({
-                    cardRegistrationURL: {CardRegistrationURL property},
-                    preregistrationData: {PreregistrationData property},
-                    accessKey: {AccessKey property},
-                    Id: {Id property}
-                });
-              </script> -->
+                // mangoPay.cardRegistration.init({
+                //     cardRegistrationURL: {CardRegistrationURL property},
+                //     preregistrationData: {PreregistrationData property},
+                //     accessKey: {AccessKey property},
+                //     Id: {Id property}
+                // });
+              </script>
             </div>
           </div>
         </div>
@@ -30,8 +31,8 @@
     </div>
   </div>
       <!-- VUE STRIPE -->
-<!--
-      <%= form_tag order_payments_path(@order) do %>
+
+     <!--  <%= form_tag order_payments_path(@order) do %>
         <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
           <div class="wrapper-payment">
             <article>
