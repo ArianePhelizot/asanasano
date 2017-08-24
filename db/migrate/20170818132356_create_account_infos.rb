@@ -8,7 +8,6 @@ class CreateAccountInfos < ActiveRecord::Migration[5.0]
     t.string :first_name
     t.string :last_name
     t.timestamp :birthday
-    t.string :address
     t.string :country_of_residence
     t.string :nationality
     # For legal users
