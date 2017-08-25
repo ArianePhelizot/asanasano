@@ -18,4 +18,6 @@
 
 class Iban < ApplicationRecord
   belongs_to :account
+
+  validates_format_of :iban, with: /^[a-zA-Z]{2}\d{2}\s*(\w{4}\s*){2,7}\w{1,4}\s*$/, multiline: true
 end
