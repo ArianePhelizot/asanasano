@@ -37,6 +37,7 @@ class Account < ApplicationRecord
   belongs_to :user, optional: true
   has_one :wallet, dependent: :nullify
   has_many :card_registrations
+  has_one :iban, dependent: :nullify
   after_initialize :default_values
 
   validates :user_id, :person_type, presence: true
