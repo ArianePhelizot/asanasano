@@ -76,13 +76,13 @@ class AccountsController < ApplicationController
       "FirstName": @account.first_name,
       "LastName": @account.last_name,
       # Pb de format quand champ vide car il me faut a minima un caractère
-      # "Address":
-      # { "AddressLine1": @account.address_line1,
-      #   "AddressLine2": @account.address_line2,
-      #   "City": @account.city,
-      #   "Region": @account.region,
-      #   "PostalCode": @account.postal_code,
-      #   "Country": @account.country_of_residence },
+      "Address":
+      { "AddressLine1": @account.address_line1,
+        "AddressLine2": @account.address_line2,
+        "City": @account.city,
+        "Region": @account.region,
+        "PostalCode": @account.postal_code,
+        "Country": @account.country_of_residence },
       "Birthday": @account.birthday.to_time.to_i,
       "Nationality": @account.nationality,
       "CountryOfResidence": @account.country_of_residence

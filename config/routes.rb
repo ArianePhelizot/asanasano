@@ -64,4 +64,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :accounts, only: [ :new, :create, :edit, :update ]
   end
+
+  resources :users do
+    resources :ibans, only: [ :new, :create, :edit, :update ]
+  end
+
 end

@@ -1,0 +1,22 @@
+
+<%= simple_form_for [@user, @iban] do |f| %>
+
+  <% if @iban.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@iban.errors.count, "error") %> prohibited this iban from being saved:</p>
+      <ul>
+      <% @iban.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + "/ Coach_id:" + @user.coach_id.to_s } %>
+  <%= f.input :account_id, :as => :hidden, :input_html => { :value => @user.account.id } %>
+  <%= f.input :iban, label: "IBAN", as: :text %>
+
+
+   <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
+
+<% end %>
