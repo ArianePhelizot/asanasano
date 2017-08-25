@@ -21,5 +21,5 @@ class Order < ApplicationRecord
   monetize :amount_cents
   belongs_to :slot
 
-  enum state: %i(pending paid)
+  enum state: %i(pending created sucess failed)
 end
