@@ -13,10 +13,10 @@
 
 
   <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + "/ Coach_id:" + @user.coach_id.to_s } %>
   <%= f.input :first_name, label: "Prénom", as: :text %>
   <%= f.input :last_name, label: "Nom", as: :text %>
   <%= f.input :person_type, label: "Profil", collection: ["NATURAL", "LEGAL"], as: :radio_buttons %>
-  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + "/ Coach_id:" + @user.coach_id.to_s } %>
 
       <% if @account.person_type.include?('NATURAL') %>
             <p>NATURAL</p>
