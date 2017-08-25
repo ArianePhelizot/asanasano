@@ -6,7 +6,6 @@ class CreateIbans < ActiveRecord::Migration[5.0]
       t.string :tag
       t.string :iban
       t.integer :active
-
       t.timestamps
     end
   end
