@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823105818) do
+ActiveRecord::Schema.define(version: 20170825160258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,17 @@ ActiveRecord::Schema.define(version: 20170823105818) do
     t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
   end
 
+  create_table "ibans", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "mangopay_id"
+    t.string   "tag"
+    t.string   "iban"
+    t.integer  "active"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["account_id"], name: "index_ibans_on_account_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer  "state"
     t.integer  "slot_id"
@@ -146,6 +157,7 @@ ActiveRecord::Schema.define(version: 20170823105818) do
     t.json     "payment"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "mangopay_id"
     t.index ["slot_id"], name: "index_orders_on_slot_id", using: :btree
   end
 
@@ -229,6 +241,7 @@ ActiveRecord::Schema.define(version: 20170823105818) do
   add_foreign_key "courses", "coaches"
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
+  add_foreign_key "ibans", "accounts"
   add_foreign_key "slots", "courses"
   add_foreign_key "wallets", "accounts"
 end
