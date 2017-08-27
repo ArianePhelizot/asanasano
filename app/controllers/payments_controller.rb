@@ -3,6 +3,7 @@
 class PaymentsController < ApplicationController
   before_action :set_order
 
+ASANASANO_FEES_RATE = 0
 
 def new
   # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.
@@ -10,58 +11,114 @@ def new
   authorize @order
   # On créée un card web payin
 
-  uri = URI.parse("http://localhost:3000/orders"+@order.id.to_s+"/payments/new")
-
-.../payins/card/web/
-
-  header = {'Content-Type': "application/json"}
-  mangopay_card_web_pay_in =  {"Tag": current_user.account.tag,
+  mangopay_card_web_pay_in = MangoPay::PayIn::Card::Web.create(
+        "Tag": current_user.account.tag,
         "AuthorId": current_user.account.mangopay_id,
         "CreditedUserId": @order.slot.course.coach.user.account.mangopay_id,
         "DebitedFunds": { "Currency":"EUR", "Amount": @order.amount_cents},
-        "Fees": @order.amount_cents/10,
-        "ReturnUrl": default_url_option[:host] + "/courses/" + @order.slot.course.id.to_s,
+        "Fees": { "Currency":"EUR", "Amount": 0},
+        "ReturnUrl": default_url_options[:host] + "/courses/" + @order.slot.course.id.to_s,
         "CreditedWalletId": @order.slot.course.coach.user.account.wallet.mangopay_id ,
         "CardType": "CB_VISA_MASTERCARD",
         "SecureMode": "DEFAULT",
         "Culture": "FR",
-        "StatementDescription": "ASANASANO"}
-
-  # Create the HTTP objects
-  http = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Post.new(uri.request_uri, header)
-  request.body = mangopay_card_web_pay_in.to_json
-
-  # Send the request
-  response = http.request(request)
-
-  # mangopay_card_web_pay_in = MangoPay::Web.create(
-  #       "Tag": current_user.account.tag,
-  #       "AuthorId": current_user.account.mangopay_id,
-  #       "CreditedUserId": @order.slot.course.coach.user.account.mangopay_id,
-  #       "DebitedFunds": { "Currency":"EUR", "Amount": @order.amount_cents},
-  #       "Fees": @order.amount_cents/10,
-  #       "ReturnUrl": default_url_option[:host] + "/courses/" + @order.slot.course.id.to_s,
-  #       "CreditedWalletId": @order.slot.course.coach.user.account.wallet.mangopay_id ,
-  #       "CardType": "CB_VISA_MASTERCARD",
-  #       "SecureMode": "DEFAULT",
-  #       "Culture": "FR",
-  #       "StatementDescription": "ASANASANO",
-  #     )
+        "StatementDescription": "ASANASANO",
+      )
 
 # j'enregistre le json de réponse dans mon order
-  # @order.update(payment: mangopay_card_web_pay_in)
-  # si statut retour = created => interroger toutes les minutes l'API
+  @order.update(payment: mangopay_card_web_pay_in)
+  @order.state = "pending"
+  @order.mangopay_id = mangopay_card_web_pay_in["Id"]
+  @order.save!
   # si statut retour = success => @order.state = "paid"
   # si statut retour = success => @order.state = "failed"
 
+  payment_succeeded_hook = MangoPay::Hook.create(
+    "EventType": "PAYIN_NORMAL_SUCCEEDED",
+    "Url": "htpp://" + default_url_options[:host] + "/payments/payment_succeeded/" + @order.mangopay_id.to_s + "/"
+    )
+
+  payment_failed_hook = MangoPay::Hook.create(
+    "EventType": "PAYIN_NORMAL_FAILED",
+    "Url": "htpp://" + default_url_options[:host] + "/payments/payment_failed/" + @order.mangopay_id.to_s + "/"
+    )
+
+ # @order.update(payment: charge.to_json, status: "paid")
+#     @order.slot.users.push(current_user)
+#     flash[:notice] = "Vous êtes bien inscrit à la séance #{l(@order.slot.date, format: :long)}."
+
+#     # Rajouter ici le mail de confirmation à envoyer
+#     OrderMailer.order_confirmation(current_user, @order).deliver_now
+
+  redirect_to mangopay_card_web_pay_in["RedirectURL"]
+
 end
 
-  private
+# code Collin======================================
+# payment controller
+# def hook_succeeded
+#   order = Order.find_by_payment_id!(params[:RessourceId])
 
-  def set_order
-    @order = Order.where(state: "pending").find(params[:order_id])
-  end
+#   # order.status = :paid
+#   # order.save!
+
+#   order.paid!
+
+#   render nothing: true, status: 204
+# rescue => ex
+#   text = "Erreur dans une réception de ACK MangoPay: *#{ex.message}*"
+
+#   raise ex
+# end
+
+
+# def hook_failed
+#   order = Order.find_by_payment_id!(params[:RessourceId])
+
+#   # order.status = :payment_failed
+#   # order.save!
+#   order.payment_failed!
+
+#   render nothing: true, status: 204
+# rescue => ex
+#   text = "Erreur dans une réception de ACK MangoPay: *#{ex.message}*"
+
+#   raise ex
+# end
+# ======================================================
+
+def payment_succeeded
+  order = Order.find_by_payment_mangopay_id!(params[:mangopay_id])
+
+  order.state = "paid"
+  order.save!
+
+  render nothing: true, status: 204
+rescue => ex
+  text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
+
+  raise ex
+end
+
+
+def payment_failed
+  order = Order.find_by_payment_id!(params[:RessourceId])
+
+  order.state = "failed"
+  order.save!
+
+  render nothing: true, status: 204
+rescue => ex
+  text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
+
+  raise ex
+end
+
+private
+
+def set_order
+  @order = Order.where(state: "pending").find(params[:order_id])
+end
 
 end
 
@@ -106,7 +163,7 @@ end
 #   end
 # end
 
-# ANCIEN CODE AVEC STRIPE
+# ANCIEN CODE AVEC STRIPE=========================================================
 #   def new
 #     # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.
 #     # la méthode authorize s'exécute dans le fichier (payment_policy.rb)
