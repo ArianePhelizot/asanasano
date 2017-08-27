@@ -30,11 +30,4 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def default_url_option
-    if Rails.env.production?
-      {:host => "asanasano.com/"}
-    else
-      {:host => "http://localhost:3000/"}
-    end
-  end
 end
