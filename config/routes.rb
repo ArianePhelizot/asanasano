@@ -64,4 +64,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :accounts, only: [ :new, :create, :edit, :update ]
   end
+
+  # Hook routes for MangoPay
+  get "payments/payment_succeeded/:id",      to: "payments#payment_succeeded"
+  get "payments/payment_failed/:id",      to: "payments#payment_failed"
+
 end
