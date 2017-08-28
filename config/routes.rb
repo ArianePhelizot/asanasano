@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   end
 
   # Hook routes for MangoPay
-  get "payments/payment_succeeded/:id",      to: "payments#payment_succeeded"
-  get "payments/payment_failed/:id",      to: "payments#payment_failed"
+  get "orders/payment_succeeded/:id", to: "orders#payment_succeeded", as: :hook_payment_succeeded
+  get "orders/payment_failed/:id", to: "orders#payment_failed", as: :hook_payment_failed
 
 end
