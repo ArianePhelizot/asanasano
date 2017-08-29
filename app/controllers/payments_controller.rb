@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PaymentsController < ApplicationController
-  before_action :set_order
+  before_action :set_order, only: :new
 
 ASANASANO_FEES_RATE = 0
 
@@ -17,7 +17,7 @@ def new
         "CreditedUserId": @order.slot.course.coach.user.account.mangopay_id,
         "DebitedFunds": { "Currency":"EUR", "Amount": @order.amount_cents},
         "Fees": { "Currency":"EUR", "Amount": 0},
-        "ReturnUrl": default_url_options[:host] + "/courses/" + @order.slot.course.id.to_s,
+        "ReturnUrl": default_url_options_for_mangopay[:host]+ "/courses/" + @order.slot.course.id.to_s,
         "CreditedWalletId": @order.slot.course.coach.user.account.wallet.mangopay_id ,
         "CardType": "CB_VISA_MASTERCARD",
         "SecureMode": "DEFAULT",
@@ -33,15 +33,31 @@ def new
   # si statut retour = success => @order.state = "paid"
   # si statut retour = success => @order.state = "failed"
 
-  payment_succeeded_hook = MangoPay::Hook.create(
-    "EventType": "PAYIN_NORMAL_SUCCEEDED",
-    "Url": "htpp://" + default_url_options[:host] + "/payments/payment_succeeded/" + @order.mangopay_id.to_s + "/"
-    )
+# =========================A voir où mettre????--======================
+  # Petit audit des hooks créés
+  # Liste des hooks existants
+  mangopayhooks = MangoPay::Hook.fetch({'page' => 1, 'per_page' => 1})
 
-  payment_failed_hook = MangoPay::Hook.create(
-    "EventType": "PAYIN_NORMAL_FAILED",
-    "Url": "htpp://" + default_url_options[:host] + "/payments/payment_failed/" + @order.mangopay_id.to_s + "/"
+  # Check si hook créé pour l'événement "PAYIN_NORMAL_SUCCEEDED"
+  # Si le nb de hook pour "PAYIN_NORMAL_SUCCEEDED" < 1
+ if mangopayhooks.select {|hash| hash.has_value?("PAYIN_NORMAL_SUCCEEDED")}.length < 1
+  # Alors il faut crée un hook
+    payment_succeeded_hook = MangoPay::Hook.create(
+    "EventType": "PAYIN_NORMAL_SUCCEEDED",
+    "Url": default_url_options_for_mangopay[:host] + "/orders/payment_succeeded/"
     )
+  end
+
+  # Check si hook créé pour l'événement "PAYIN_NORMAL_FAILED"
+  # Si le nb de hook pour "PAYIN_NORMAL_FAILED" < 1
+  if mangopayhooks.select {|hash| hash.has_value?("PAYIN_NORMAL_SUCCEEDED")}.length < 1
+    payment_failed_hook = MangoPay::Hook.create(
+    "EventType": "PAYIN_NORMAL_FAILED",
+    "Url": default_url_options_for_mangopay[:host] + "/orders/payment_failed/"
+    )
+  end
+
+# =========================FIN DE A voir où mettre????--======================
 
  # @order.update(payment: charge.to_json, status: "paid")
 #     @order.slot.users.push(current_user)
@@ -50,7 +66,7 @@ def new
 #     # Rajouter ici le mail de confirmation à envoyer
 #     OrderMailer.order_confirmation(current_user, @order).deliver_now
 
-  redirect_to mangopay_card_web_pay_in["RedirectURL"]
+  redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
 
 end
 
@@ -87,32 +103,6 @@ end
 # end
 # ======================================================
 
-def payment_succeeded
-  order = Order.find_by_payment_mangopay_id!(params[:mangopay_id])
-
-  order.state = "paid"
-  order.save!
-
-  render nothing: true, status: 204
-rescue => ex
-  text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
-
-  raise ex
-end
-
-
-def payment_failed
-  order = Order.find_by_payment_id!(params[:RessourceId])
-
-  order.state = "failed"
-  order.save!
-
-  render nothing: true, status: 204
-rescue => ex
-  text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
-
-  raise ex
-end
 
 private
 

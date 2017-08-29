@@ -56,6 +56,11 @@ Rails.application.routes.draw do
   # get 'profile/edit', to: 'pages#edit_profile'
 
   resources :orders, only: %i(show create) do
+    collection do
+      # Hook routes for MangoPay
+      get '/payment_succeeded', to: 'orders#payment_succeeded'
+      get '/payment_failed', to: 'orders#payment_failed'
+    end
     resources :payments, only: %i(new create)
   end
 
@@ -64,9 +69,4 @@ Rails.application.routes.draw do
   resources :users do
     resources :accounts, only: [ :new, :create, :edit, :update ]
   end
-
-  # Hook routes for MangoPay
-  get "orders/payment_succeeded/:id", to: "orders#payment_succeeded", as: :hook_payment_succeeded
-  get "orders/payment_failed/:id", to: "orders#payment_failed", as: :hook_payment_failed
-
 end
