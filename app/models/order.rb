@@ -11,6 +11,7 @@
 #  payment      :json
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  mangopay_id  :integer
 #
 # Indexes
 #
@@ -21,5 +22,5 @@ class Order < ApplicationRecord
   monetize :amount_cents
   belongs_to :slot
 
-  enum state: %i(pending paid)
+  enum state: %i(pending paid failed)
 end

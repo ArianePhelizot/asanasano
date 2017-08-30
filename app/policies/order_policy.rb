@@ -10,4 +10,12 @@ class OrderPolicy < ApplicationPolicy
   def create?
     record.slot.course.group.users.include?(user)
   end
+
+  def payment_succeeded?
+    true
+  end
+
+  def payment_failed?
+    payment_succeeded?
+  end
 end

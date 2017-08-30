@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     { host: ENV["HOST"] || "localhost:3000" }
   end
 
+  def default_url_options_for_mangopay
+    { host: ENV["HOST"] || "https://ca216436.ngrok.io" }
+  end
+
   private
 
   def skip_pundit?
