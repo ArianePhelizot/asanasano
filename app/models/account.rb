@@ -37,6 +37,7 @@ class Account < ApplicationRecord
   belongs_to :user, optional: true
   has_one :wallet, dependent: :nullify
   has_many :card_registrations
+  has_one :iban, dependent: :nullify
   after_initialize :default_values
 
   validates :user_id, :person_type, presence: true
@@ -87,4 +88,20 @@ class Account < ApplicationRecord
     country = ISO3166::Country[legal_representative_nationality]
     country.translations[I18n.locale.to_s] || country.name
   end
+
+  # rubocop:disable Metrics/MethodLength
+  def address
+    if natural?
+      { "AddressLine1": address_line1,
+        "AddressLine2": address_line2,
+        "City": city,
+        "Region": region,
+        "PostalCode": postal_code,
+        "Country": self.country_of_residence }
+    else
+      [headquarters_address,
+       country_name_of_legal_representative_residence].join(" ")
+    end
+  end
+  # rubocop:enable Metrics/MethodLength
 end
