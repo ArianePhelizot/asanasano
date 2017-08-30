@@ -16,6 +16,12 @@ class SlotsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def create
     @slot = Slot.new(slot_params)
+    @slot.start_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
+                                  @slot.date.mday, @slot.start_at.hour,
+                                  @slot.start_at.min)
+   @slot.end_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
+                                @slot.date.mday, @slot.end_at.hour,
+                                @slot.end_at.min)
     @slot.course = @course
     @group = @course.group
     authorize @slot # check authorization before save
@@ -57,6 +63,17 @@ class SlotsController < ApplicationController
     authorize @slot
     @slot.users.delete(current_user)
     @course = @slot.course
+
+    # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
+    if desinscription_with_refund?
+      # a/ nous sommes 24h avant le début du cours
+        # Payin Refund
+        # Mail ad'hoc
+    else
+      # b/ nous sommes au delà de cette limite
+        # Mail ad'hoc de confirmation
+    end
+
     respond_to do |format|
       format.html do redirect_to course_path(@course) end
       format.js # <-- will render `app/views/slots/desinscription.js.erb`
@@ -85,5 +102,9 @@ class SlotsController < ApplicationController
 
   def find_slot
     @slot = Slot.find(params[:id])
+  end
+
+  def desinscription_with_refund?
+
   end
 end
