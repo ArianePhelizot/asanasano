@@ -1,0 +1,7 @@
+<h1>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>, </h1>
+
+<p>C'est noté! Nous avons bien pris en compte l'annulation de votre séance de <%= @order.slot.course.name %> du <%= @order.slot.date %>.</p>
+
+<p>Votre compte bancaire sera recrédité de <%=@order.amount %> euros.</p>
+
+<p>A très vite sur asanasano!</p>
