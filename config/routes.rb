@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :slots do
     member do
-      patch 'desinscription', to: 'slots#desinscription'
+      patch 'desinscription_from_course_page', to: 'slots#desinscription_from_course_page'
       patch 'desinscription_from_dashboard', to: 'slots#desinscription_from_dashboard'
     end
   end

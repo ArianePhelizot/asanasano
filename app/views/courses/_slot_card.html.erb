@@ -74,14 +74,14 @@
       <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
     </div>
     <div class="text-center">
-        <% if policy(slot).desinscription? %>
+        <% if policy(slot).desinscription_from_course_page? %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'slot_id', slot.id %>
             <%= button_tag type: "submit", class: "registered-btn", disabled: true do %>
               <i class="fa fa-check-circle-o"></i> Inscrit
             <% end %>
           <% end %>
-          <%= link_to "Me désinscrire", desinscription_slot_path(slot),
+          <%= link_to "Me désinscrire", desinscription_from_course_page_slot_path(slot),
               method: 'patch',
               class:"desincription-link",
               remote: true,

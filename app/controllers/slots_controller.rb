@@ -3,7 +3,9 @@
 class SlotsController < ApplicationController
   before_action :find_course, only: %i(new create edit update)
   before_action :find_slot,
-                only: %i(edit update destroy desinscription desinscription_from_dashboard)
+                only: %i(edit update destroy desinscription
+                         desinscription_from_course_page desinscription_from_dashboard
+                         cancellation_with_refund?)
 
   def new
     # récupérer les infos de la dernière séance créée
@@ -14,14 +16,15 @@ class SlotsController < ApplicationController
   end
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def create
     @slot = Slot.new(slot_params)
     @slot.start_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
                                   @slot.date.mday, @slot.start_at.hour,
                                   @slot.start_at.min)
-   @slot.end_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
-                                @slot.date.mday, @slot.end_at.hour,
-                                @slot.end_at.min)
+    @slot.end_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
+                                 @slot.date.mday, @slot.end_at.hour,
+                                 @slot.end_at.min)
     @slot.course = @course
     @group = @course.group
     authorize @slot # check authorization before save
@@ -37,6 +40,7 @@ class SlotsController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
   def edit
@@ -59,20 +63,10 @@ class SlotsController < ApplicationController
     redirect_to course_path(@course)
   end
 
-  def desinscription
-    authorize @slot
-    @slot.users.delete(current_user)
-    @course = @slot.course
+  def desinscription_from_course_page
+    desinscription
 
-    # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
-    if desinscription_with_refund?
-      # a/ nous sommes 24h avant le début du cours
-        # Payin Refund
-        # Mail ad'hoc
-    else
-      # b/ nous sommes au delà de cette limite
-        # Mail ad'hoc de confirmation
-    end
+    @course = @slot.course
 
     respond_to do |format|
       format.html do redirect_to course_path(@course) end
@@ -81,8 +75,8 @@ class SlotsController < ApplicationController
   end
 
   def desinscription_from_dashboard
-    authorize @slot
-    @slot.users.delete(current_user)
+    desinscription
+
     redirect_to dashboard_path
   end
 
@@ -104,7 +98,42 @@ class SlotsController < ApplicationController
     @slot = Slot.find(params[:id])
   end
 
-  def desinscription_with_refund?
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
+  def desinscription
+    authorize @slot
+    @slot.users.delete(current_user)
+    @order = Order.find_by user: current_user, slot: @slot
+    # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
+    if cancellation_with_refund?
+      # a/ nous sommes 24h avant le début du cours
 
+      MangoPay::PayIn.refund(@order.mangopay_id, "Tag": current_user.account.tag,
+                                                 "AuthorId": current_user.account.mangopay_id,
+                                                 "DebitedFunds": { "Currency": "EUR",
+                                                                   "Amount": @order.amount_cents },
+                                                 "Fees": { "Currency": "EUR", "Amount": 0 })
+
+      # Alert message ad'hoc
+      flash[:notice] = "Votre annulation pour la séance
+      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
+      Le paiement par carte a été annulé. "
+      # Mail ad'hoc
+      OrderMailer.slot_cancellation_with_refund_confirmation(current_user, @order).deliver_now
+    else
+      # b/ nous sommes au delà de cette limite
+      # Alert message ad'hoc
+      flash[:notice] = "Votre annulation pour la séance
+      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
+      Le paiement par carte a été annulé. "
+      # Mail ad'hoc de confirmation
+      OrderMailer.slot_cancellation_confirmation(current_user, @order).deliver_now
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+
+  def cancellation_with_refund?
+    (DateTime.now.to_i - @slot.start_at.to_i) / 60 * 60 > 24
   end
 end
