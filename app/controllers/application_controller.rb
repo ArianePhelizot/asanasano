@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options_for_mangopay
     if Rails.env.production?
-      {:host => "https://www.asanasano.com"}
+      { host: "https://www.asanasano.com" }
     elsif Rails.env.development?
-      {:host => "https://ca216436.ngrok.io"}
+      { host: "https://9f0d0093.ngrok.io" }
     end
   end
 

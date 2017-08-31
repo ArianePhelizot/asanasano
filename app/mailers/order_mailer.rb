@@ -17,4 +17,26 @@ class OrderMailer < ApplicationMailer
                   est bien réservée !"
     )
   end
+
+  def slot_cancellation_with_refund_confirmation(current_user, order)
+    @user = current_user
+    @order = order
+
+    mail(
+      to:         @user.email,
+      subject:    "Message de confirmation: annulation de votre séance de
+                  #{@order.slot.course.name} du #{@order.slot.date}."
+    )
+  end
+
+  def slot_cancellation_confirmation(current_user, order)
+    @user = current_user
+    @order = order
+
+    mail(
+      to:         @user.email,
+      subject:    "Message de confirmation: annulation de votre séance de
+                  #{@order.slot.course.name} du #{@order.slot.date}."
+    )
+  end
 end

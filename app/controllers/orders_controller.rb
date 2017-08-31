@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 
   def create
     @slot = Slot.find(params[:slot_id])
-    order = Order.new(slot: @slot, amount: @slot.price, state: :pending)
+    order = Order.new(user: current_user, slot: @slot, amount: @slot.price, state: :pending)
     authorize order
     if order.save
       redirect_to new_order_payment_path(order)
@@ -73,6 +73,6 @@ class OrdersController < ApplicationController
   end
 
   def set_user
-    @user = Account.find_by(mangopay_id: @order.payment["AuthorId"]).user
+    @user = @order.user
   end
 end

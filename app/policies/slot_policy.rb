@@ -15,12 +15,12 @@ class SlotPolicy < ApplicationPolicy
     user_is_group_owner_or_coach?
   end
 
-  def desinscription?
+  def desinscription_from_course_page?
     record.users.include?(user)
   end
 
   def desinscription_from_dashboard?
-    desinscription?
+    desinscription_from_course_page?
   end
 
   def destroy?
