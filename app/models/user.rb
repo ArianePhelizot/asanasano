@@ -55,6 +55,7 @@ class User < ApplicationRecord
   belongs_to :coach, optional: true
   has_and_belongs_to_many :slots
   has_one :account, dependent: :nullify
+  has_many :orders, dependent: :nullify
 
   has_attachment :photo
 
