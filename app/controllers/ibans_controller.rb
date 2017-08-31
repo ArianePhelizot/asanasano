@@ -29,6 +29,7 @@ class IbansController < ApplicationController
       render :new
     end
   end
+
   # rubocop:enable Metrics/MethodLength
   def edit
     authorize @iban
