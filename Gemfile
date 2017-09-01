@@ -44,6 +44,9 @@ gem 'coffee-rails'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 group :development do
   gem 'binding_of_caller'
   gem 'guard'

@@ -74,4 +74,10 @@ Rails.application.routes.draw do
     resources :ibans, only: [ :new, :create, :edit, :update ]
   end
 
+# Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 end
