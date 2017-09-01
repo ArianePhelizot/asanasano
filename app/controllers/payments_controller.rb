@@ -3,8 +3,6 @@
 class PaymentsController < ApplicationController
   before_action :set_order, only: :new
 
-  ASANASANO_FEES_RATE = 0
-
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable UselessAssignment
@@ -17,12 +15,12 @@ class PaymentsController < ApplicationController
     mangopay_card_web_pay_in = MangoPay::PayIn::Card::Web.create(
       "Tag": current_user.account.tag,
       "AuthorId": current_user.account.mangopay_id,
-      "CreditedUserId": @order.slot.course.coach.user.account.mangopay_id,
+      "CreditedUserId": current_user.account.mangopay_id,
       "DebitedFunds": { "Currency": "EUR", "Amount": @order.amount_cents },
       "Fees": { "Currency": "EUR", "Amount": 0 },
       "ReturnUrl": default_url_options_for_mangopay[:host] + "/courses/" +
                     @order.slot.course.id.to_s,
-      "CreditedWalletId": @order.slot.course.coach.user.account.wallet.mangopay_id,
+      "CreditedWalletId": current_user.account.wallet.mangopay_id,
       "CardType": "CB_VISA_MASTERCARD",
       "SecureMode": "DEFAULT",
       "Culture": "FR",
