@@ -1,6 +1,12 @@
 
 # frozen_string_literal: true
 
+git_source(:github) do |asanasano|
+  asanasano = "#{asanasano}/#{asanasano}" unless asanasano.include?("/")
+  "https://github.com/#{asanasano}.git"
+end
+
+
 source 'https://rubygems.org'
 ruby '2.3.3'
 
