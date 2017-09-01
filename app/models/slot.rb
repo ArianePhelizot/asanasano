@@ -26,7 +26,7 @@ class Slot < ApplicationRecord
   belongs_to :course
   has_and_belongs_to_many :users
 
-  enum status: %i(created confirmed cancelled archived)
+  enum status: %i(created confirmed cancelled passed) # from 0 to 3
 
   monetize :price_cents
 
