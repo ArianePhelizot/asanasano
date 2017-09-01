@@ -19,18 +19,17 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {
+one:
   account: account#amelie
   mangopay_id: 123456
   tag: ""
   iban: "FR7630001007941234567890185"
   active: true
-}
 
-two: {
+two:
   account: account#eliott
   mangopay_id: 123457
   tag: ""
   iban: "FR7630004000031234567890143"
   active: true
-}
+

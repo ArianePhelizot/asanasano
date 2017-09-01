@@ -15,14 +15,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-coach_amelie: {
-   description: "Super coach!!!!!!!!!"
-   experience: 5
-   languages: "FR"
-}
+coach_amelie:
+  description: "Super coach!!!!!!!!!"
+  experience: 5
+  languages: "FR"
 
-coach_eliott: {
-   description: "Prof incroyable; Sait voler"
-   experience: 10
-   languages: ["FR", "DL"]
-}
+coach_eliott:
+  description: "Prof incroyable; Sait voler"
+  experience: 10
+  languages:
+    -"FR"
+    -"DL"
+
