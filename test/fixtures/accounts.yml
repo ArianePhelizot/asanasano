@@ -1,0 +1,80 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id                                        :integer          not null, primary key
+#  user_id                                   :integer
+#  person_type                               :string
+#  tag                                       :string
+#  first_name                                :string
+#  last_name                                 :string
+#  birthday                                  :datetime
+#  country_of_residence                      :string
+#  nationality                               :string
+#  legal_person_type                         :string
+#  legal_name                                :string
+#  legal_representative_first_name           :string
+#  legal_representative_last_name            :string
+#  legal_representative_birthday             :datetime
+#  headquarters_address                      :string
+#  legal_representative_country_of_residence :string
+#  legal_representative_nationality          :string
+#  created_at                                :datetime         not null
+#  updated_at                                :datetime         not null
+#  mangopay_id                               :integer
+#  address_line1                             :string
+#  address_line2                             :string
+#  city                                      :string
+#  region                                    :string
+#  postal_code                               :string
+#
+# Indexes
+#
+#  index_accounts_on_user_id  (user_id)
+#
+
+account#amelie: {
+ user: amelie
+ person_type: "NATURAL"
+ tag: ""
+ first_name: "Amelie"
+ last_name: "Poulain"
+ birthday: DateTime.new(1990,6,21)
+ country_of_residence: "FR"
+ nationality: "FR"
+ mangopay_id: "765361"
+ address_line1: "4 rue Lepic"
+ city: "Paris"
+ postal_code: "75018"
+}
+
+account#eliott: {
+ user: eliott
+ person_type: "NATURAL"
+ tag: ""
+ first_name: "Eliott"
+ last_name: "Le Dragon"
+ birthday: DateTime.new(1982,11,4)
+ country_of_residence: "FR"
+ nationality: "FR"
+ mangopay_id: "765362"
+ address_line1: "15 quai des Célestins"
+ city: "Paris"
+ postal_code: "75004"
+}
+
+account#georges: {
+ user: georges
+ person_type: "NATURAL"
+ tag: ""
+ first_name: "Georges"
+ last_name: "Abitbol"
+ birthday: DateTime.new(1972,9,15)
+ country_of_residence: "FR"
+ nationality: "FR"
+ mangopay_id: "765363"
+ address_line1: "19 rue Jean Baptiste Pigalle"
+ city: "Paris"
+ postal_code: "75009"
+}
+

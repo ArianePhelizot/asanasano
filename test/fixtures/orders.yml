@@ -23,8 +23,181 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+ordergeorgesslot1: {
+   state: 1 #paid
+   slot: slot1
+   amount_cents: 1500
+   payment: {
+              "Id": "32571511",
+              "Tag": "custom meta",
+              "CreationDate": "1504280906",
+              "AuthorId": "8494514",
+              "CreditedUserId": "8494514",
+              "DebitedFunds": {
+              "Currency": "EUR",
+              "Amount": "12"
+              },
+              "CreditedFunds": {
+              "Currency": "EUR",
+              "Amount": "9"
+              },
+              "Fees": {
+              "Currency": "EUR",
+              "Amount": "3"
+              },
+              "Status": "CREATED",
+              "ResultCode": "",
+              "ResultMessage": "",
+              "ExecutionDate": "",
+              "Type": "PAYIN",
+              "Nature": "REGULAR",
+              "CreditedWalletId": "8494559",
+              "DebitedWalletId": "",
+              "PaymentType": "CARD",
+              "ExecutionType": "WEB",
+              "RedirectURL": "https://homologation-secure-p.payline.com/webpayment/step2.do?reqCode=prepareStep2&token=15Edi35mteqz5cMkk3141504280906899",
+              "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=32571511",
+              "TemplateURL": "https://www.mysite.com/template/?transactionId=32571511",
+              "CardType": "CB_VISA_MASTERCARD",
+              "Culture": "EN",
+              "SecureMode": "DEFAULT",
+              "StatementDescriptor": "Mar2016"
+              }
+   mangopay_id: 32571511
+   user: georges
+}
+
+ordergeorgesslot2: {
+   state: 1 #paid
+   slot: slot2
+   amount_cents: 1500
+   payment: {
+              "Id": "32571512",
+              "Tag": "custom meta",
+              "CreationDate": "1504280906",
+              "AuthorId": "8494514",
+              "CreditedUserId": "8494514",
+              "DebitedFunds": {
+              "Currency": "EUR",
+              "Amount": "12"
+              },
+              "CreditedFunds": {
+              "Currency": "EUR",
+              "Amount": "9"
+              },
+              "Fees": {
+              "Currency": "EUR",
+              "Amount": "3"
+              },
+              "Status": "CREATED",
+              "ResultCode": "",
+              "ResultMessage": "",
+              "ExecutionDate": "",
+              "Type": "PAYIN",
+              "Nature": "REGULAR",
+              "CreditedWalletId": "8494559",
+              "DebitedWalletId": "",
+              "PaymentType": "CARD",
+              "ExecutionType": "WEB",
+              "RedirectURL": "https://homologation-secure-p.payline.com/webpayment/step2.do?reqCode=prepareStep2&token=15Edi35mteqz5cMkk3141504280906899",
+              "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=32571511",
+              "TemplateURL": "https://www.mysite.com/template/?transactionId=32571511",
+              "CardType": "CB_VISA_MASTERCARD",
+              "Culture": "EN",
+              "SecureMode": "DEFAULT",
+              "StatementDescriptor": "Mar2016"
+              }
+   mangopay_id: 32571512
+   user: georges
+}
+
+ordergeorgesslot3: {
+   state: 1 #paid
+   slot: slot3
+   amount_cents: 1500
+   payment: {
+              "Id": "32571513",
+              "Tag": "custom meta",
+              "CreationDate": "1504280906",
+              "AuthorId": "8494514",
+              "CreditedUserId": "8494514",
+              "DebitedFunds": {
+              "Currency": "EUR",
+              "Amount": "12"
+              },
+              "CreditedFunds": {
+              "Currency": "EUR",
+              "Amount": "9"
+              },
+              "Fees": {
+              "Currency": "EUR",
+              "Amount": "3"
+              },
+              "Status": "CREATED",
+              "ResultCode": "",
+              "ResultMessage": "",
+              "ExecutionDate": "",
+              "Type": "PAYIN",
+              "Nature": "REGULAR",
+              "CreditedWalletId": "8494559",
+              "DebitedWalletId": "",
+              "PaymentType": "CARD",
+              "ExecutionType": "WEB",
+              "RedirectURL": "https://homologation-secure-p.payline.com/webpayment/step2.do?reqCode=prepareStep2&token=15Edi35mteqz5cMkk3141504280906899",
+              "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=32571511",
+              "TemplateURL": "https://www.mysite.com/template/?transactionId=32571511",
+              "CardType": "CB_VISA_MASTERCARD",
+              "Culture": "EN",
+              "SecureMode": "DEFAULT",
+              "StatementDescriptor": "Mar2016"
+              }
+   mangopay_id: 32571513
+   user: georges
+}
+
+ordergeorgesslot4: {
+   state: 1 #paid
+   slot: slot4
+   amount_cents: 1500
+   payment: {
+              "Id": "32571514",
+              "Tag": "custom meta",
+              "CreationDate": "1504280906",
+              "AuthorId": "8494514",
+              "CreditedUserId": "8494514",
+              "DebitedFunds": {
+              "Currency": "EUR",
+              "Amount": "12"
+              },
+              "CreditedFunds": {
+              "Currency": "EUR",
+              "Amount": "9"
+              },
+              "Fees": {
+              "Currency": "EUR",
+              "Amount": "3"
+              },
+              "Status": "CREATED",
+              "ResultCode": "",
+              "ResultMessage": "",
+              "ExecutionDate": "",
+              "Type": "PAYIN",
+              "Nature": "REGULAR",
+              "CreditedWalletId": "8494559",
+              "DebitedWalletId": "",
+              "PaymentType": "CARD",
+              "ExecutionType": "WEB",
+              "RedirectURL": "https://homologation-secure-p.payline.com/webpayment/step2.do?reqCode=prepareStep2&token=15Edi35mteqz5cMkk3141504280906899",
+              "ReturnURL": "http://www.my-site.com/returnURL/?transactionId=32571511",
+              "TemplateURL": "https://www.mysite.com/template/?transactionId=32571511",
+              "CardType": "CB_VISA_MASTERCARD",
+              "Culture": "EN",
+              "SecureMode": "DEFAULT",
+              "StatementDescriptor": "Mar2016"
+              }
+   mangopay_id: 32571514
+   user: georges
+  }
+
+
+

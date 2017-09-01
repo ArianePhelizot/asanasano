@@ -32,8 +32,41 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+paddle#1: {
+   name: "Paddle Niveau 1"
+   content: "Un cours indispensable pour appprendre à tenir sur la planche et à tourner"
+   address: "16 avenue Jules Moulet, Sausset Les Pins"
+   meeting_point: "Anse du grand Rouveau"
+   capacity_max: 6
+   details: "Prenez vos planches sous le bras"
+   group: fraises
+   coach: coach_eliott
+   sport: paddle
+   status: 1
+}
+
+paddle#2: {
+   name: "Paddle Surf - Niveau 10"
+   content: "Il est temps de passer au niveau Paddle surf"
+   address: "16 avenue Jules Moulet, Sausset Les Pins"
+   meeting_point: "Anse du grand Rouveau"
+   capacity_max: 10
+   details: "Prenez vos planches sous le bras"
+   group: fraises
+   coach: coach_eliott
+   sport: paddle
+   status: 1
+}
+
+patin_beginners: {
+   name: "Patin"
+   content: "Piquer, glisser...."
+   address: "Espace sportif Pailleron - 32, rue Edouard Pailleron 75019 Paris"
+   meeting_point: "Sur la glace"
+   capacity_max: 15
+   details: "Prenez vos gants en laine"
+   group: fraises
+   coach: coach_amelie
+   sport: patin
+   status: 1
+}

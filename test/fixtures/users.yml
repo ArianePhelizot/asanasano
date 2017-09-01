@@ -49,10 +49,33 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+mary: {
+  email: "mary.poppins@gmail.com"
+  groups: fraises, pommes
+}
+
+amelie: {
+  email: "amelie.poulain@gmail.com"
+  first_name: "Amélie"
+  last_name: "Poulain"
+  coach: coach_amelie
+  groups: fraises
+}
+
+georges: {
+  email: "george@abitbol.com"
+  first_name: "George"
+  last_name: "Abitbol"
+  groups: fraises, pommes
+}
+
+eliott: {
+  email: "eliott@ledragon.com"
+  first_name: "Eliott"
+  last_name: "Le Dragon"
+  coach: coach_eliott
+  groups: pommes
+}
 
 

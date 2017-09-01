@@ -19,8 +19,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+wallet#amelie: {
+ account: account#amelie
+ tag: ""
+ mangopay_id: 987654
+}
+
+wallet#georges: {
+ account: account#georges
+ tag: ""
+ mangopay_id: 987655
+}
+
+wallet#eliott: {
+ account: account#eliott
+ tag: ""
+ mangopay_id: 987656
+}
