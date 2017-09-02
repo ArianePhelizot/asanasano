@@ -26,7 +26,7 @@
 # below each fixture, per the syntax in the comments below
 #
 slot1:
- date: Date.new(2017,9,5)
+ date: 2017-09-05
  participants_min: 1
  price_cents: 1500
  price_currency: "EUR"
@@ -39,7 +39,7 @@ slot1:
   -georges
 
 slot2:
- date: Date.new(2017,9,6)
+ date: 2017-09-06
  participants_min: 1
  price_cents: 1500
  price_currency: "EUR"
@@ -52,7 +52,7 @@ slot2:
   -georges
 
 slot3:
- date: Date.new(2017,9,7)
+ date: 2017-09-07
  participants_min: 1
  price_cents: 1500
  price_currency: "EUR"
@@ -65,7 +65,7 @@ slot3:
   -georges
 
 slot4:
- date: Date.new(2017,9,8)
+ date: 2017-09-08
  participants_min: 1
  price_cents: 1500
  price_currency: "EUR"
