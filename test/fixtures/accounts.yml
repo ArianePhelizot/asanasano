@@ -39,7 +39,7 @@ account_amelie:
  tag: ""
  first_name: "Amelie"
  last_name: "Poulain"
- birthday: DateTime.new(1990,6,21)
+ birthday: 1990-06-21 13:00:00 UTC
  country_of_residence: "FR"
  nationality: "FR"
  mangopay_id: "765361"
@@ -54,7 +54,7 @@ account_eliott:
  tag: ""
  first_name: "Eliott"
  last_name: "Le Dragon"
- birthday: DateTime.new(1982,11,4)
+ birthday: 1983-07-11 13:00:00 UTC
  country_of_residence: "FR"
  nationality: "FR"
  mangopay_id: "765362"
@@ -69,7 +69,7 @@ account_georges:
  tag: ""
  first_name: "Georges"
  last_name: "Abitbol"
- birthday: DateTime.new(1972,9,15)
+ birthday: 1972-09-15 13:00:00 UTC
  country_of_residence: "FR"
  nationality: "FR"
  mangopay_id: "765363"

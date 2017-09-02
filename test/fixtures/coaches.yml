@@ -16,14 +16,12 @@
 # below each fixture, per the syntax in the comments below
 #
 coach_amelie:
-  description: "Super coach!!!!!!!!!"
-  experience: 5
-  languages: "FR"
+ description: "Super coach!!!!!!!!!"
+ experience: 5
+ # languages: "-\"FR\""
 
 coach_eliott:
-  description: "Prof incroyable; Sait voler"
-  experience: 10
-  languages:
-    -"FR"
-    -"DL"
+ description: "Incroyable coach, sait voler"
+ experience: 10
+ # languages: "-\"DL\" -\"FR\""
 
