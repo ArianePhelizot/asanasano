@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class SlotsController < ApplicationController
   before_action :find_course, only: %i(new create edit update)
   before_action :find_slot,
@@ -114,10 +115,16 @@ class SlotsController < ApplicationController
                                                                    "Amount": @order.amount_cents },
                                                  "Fees": { "Currency": "EUR", "Amount": 0 })
 
+      # Mark order as "refunded" in data base
+      @order.state = "refunded"
+      @order.settled = true
+      @order.save
+
       # Alert message ad'hoc
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte.
       Le paiement par carte a été annulé. "
+
       # Mail ad'hoc
       OrderMailer.slot_cancellation_with_refund_confirmation(current_user, @order).deliver_now
     else
@@ -137,3 +144,4 @@ class SlotsController < ApplicationController
     (DateTime.now.to_i - @slot.start_at.to_i) / 60 * 60 > 24
   end
 end
+# rubocop:enable Metrics/ClassLength
