@@ -25,6 +25,7 @@
 class Slot < ApplicationRecord
   belongs_to :course
   has_and_belongs_to_many :users
+  has_many :orders
 
   enum status: %i(created confirmed cancelled passed) # from 0 to 3
 

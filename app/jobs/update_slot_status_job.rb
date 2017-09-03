@@ -2,16 +2,20 @@ class UpdateSlotStatusJob < ApplicationJob
   queue_as :default
 
   def perform
-      #  je prends tous les slots en base dont la date était hier
-      # Slot.all.select {|slot| slot.date < (DateTime.now - 2.days)}
-      # si le status est "created" ou "confirmed", je le passe à "passed"
-      # rappels status "created confirmed cancelled passed"
-      yesterday_slots = Slot.all.select {|slot| (slot.date + 1.days).past?}
-      if yesterday_passed_slots = yesterday_slots.select {|slot| slot.status == "created"||"confirmed" }
-        yesterday_passed_slots.each do |slot|
-          slot.status = "passed"
-          slot.save
-        end
-      end
+    # Selection of all slots with both a due slot date
+    # and a "created" or "confirmed status", i.e not "cancelled"
+    passed_slots = Slot.all.select { |slot|
+      slot.date.past?
+    }
+
+    passed_and_not_cancelled_slots = passed_slots.select { |slot|
+      slot.status == "created" || "confirmed"
+    }
+
+    # We the change the status of those slots to "passed"
+    passed_and_not_cancelled_slots.each do |slot|
+      slot.status = "passed"
+      slot.save
+    end
   end
 end
