@@ -13,6 +13,7 @@
 #  updated_at   :datetime         not null
 #  mangopay_id  :integer
 #  user_id      :integer
+#  settled      :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -25,5 +26,5 @@ class Order < ApplicationRecord
   belongs_to :slot
   belongs_to :user
 
-  enum state: %i(pending paid failed)
+  enum state: %i(pending paid failed refunded)
 end

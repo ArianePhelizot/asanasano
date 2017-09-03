@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'http://www.asanasano.com' }
+  config.action_mailer.default_url_options = { host: 'https://www.asanasano.com' }
   config.action_mailer.delivery_method = :smtp
   # Settings specified here will take precedence over those in config/application.rb.
 

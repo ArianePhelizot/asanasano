@@ -1,0 +1,70 @@
+# frozen_string_literal: true
+# == Schema Information
+#
+# Table name: courses
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  content       :string
+#  address       :string
+#  lat           :float
+#  lng           :float
+#  meeting_point :string
+#  capacity_max  :integer
+#  details       :string
+#  group_id      :integer
+#  coach_id      :integer
+#  sport_id      :integer
+#  status        :integer          default("draft")
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_courses_on_coach_id  (coach_id)
+#  index_courses_on_group_id  (group_id)
+#  index_courses_on_sport_id  (sport_id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+paddle_1:
+   name: "Paddle Niveau 1"
+   content: "Un cours indispensable pour appprendre à tenir sur la planche et à tourner"
+   address: "16 avenue Jules Moulet, Sausset Les Pins"
+   meeting_point: "Anse du grand Rouveau"
+   capacity_max: 6
+   details: "Prenez vos planches sous le bras"
+   group: fraises
+   coach: coach_eliott
+   sport: paddle
+   status: 1
+
+
+paddle_2:
+   name: "Paddle Surf - Niveau 10"
+   content: "Il est temps de passer au niveau Paddle surf"
+   address: "16 avenue Jules Moulet, Sausset Les Pins"
+   meeting_point: "Anse du grand Rouveau"
+   capacity_max: 10
+   details: "Prenez vos planches sous le bras"
+   group: fraises
+   coach: coach_eliott
+   sport: paddle
+   status: 1
+
+
+patin_beginners:
+   name: "Patin"
+   content: "Piquer, glisser...."
+   address: "Espace sportif Pailleron - 32, rue Edouard Pailleron 75019 Paris"
+   meeting_point: "Sur la glace"
+   capacity_max: 15
+   details: "Prenez vos gants en laine"
+   group: fraises
+   coach: coach_amelie
+   sport: patin
+   status: 1
+
