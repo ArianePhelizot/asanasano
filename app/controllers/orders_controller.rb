@@ -31,7 +31,6 @@ class OrdersController < ApplicationController
     order_state_changed_to_paid
 
     render nothing: true, status: 204 # answer to API
-
   rescue => ex
     text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
     raise ex
