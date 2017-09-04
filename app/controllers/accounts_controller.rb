@@ -68,6 +68,8 @@ class AccountsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def mangopay_create_natural_user(account_id)
+
+    log_error = nil
     @account = Account.find(account_id)
 
     mangopay_user = MangoPay::NaturalUser.create(
@@ -91,7 +93,15 @@ class AccountsController < ApplicationController
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
   rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    raise
+    # regarder la doc pour voir qu'est-ce qui est couvert
+    log_error = ex.message
+  rescue Exception => ex # rubocop:disable UselessAssignment
+    # voir ce que j'en fais
+    log_error = ex.message
+  ensure
+    # sera exécuté quoiqu'il arrive
+    # logguer les infos
+
   end
 
   def mangopay_create_legal_user(account_id)
