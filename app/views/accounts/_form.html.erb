@@ -18,7 +18,6 @@
 <!--   shown form  -->
   <%= f.input :first_name, label: "Prénom", as: :text %>
   <%= f.input :last_name, label: "Nom", as: :text %>
-
   <%= f.input :person_type, label: "Profil", collection: ["NATURAL", "LEGAL"], as: :radio_buttons %>
 
 <div class="person_type" id="natural-info">
@@ -27,11 +26,11 @@
               start_year: Date.today.year - 90, end_year: Date.today.year - 12,
               order: [:day, :month, :year] %>
 
-  <%= f.input :address_line1, label: "Adresse, ligne 1" %>
-  <%= f.input :address_line2, label: "Adresse ligne 2" %>
-  <%= f.input :city, label: "Ville" %>
-  <%= f.input :region, label: "Région" %>
-  <%= f.input :postal_code, label: "Code postal" %>
+  <%= f.input :address_line1, label: "Adresse, ligne 1", as: :text %>
+  <%= f.input :address_line2, label: "Adresse ligne 2", as: :text %>
+  <%= f.input :city, label: "Ville", as: :text %>
+  <%= f.input :region, label: "Région", as: :text %>
+  <%= f.input :postal_code, label: "Code postal", as: :text %>
 
   <%= f.input :country_of_residence, as: :country, label: "Pays de résidence" %>
   <%= f.input :nationality, as: :country, label: "Nationalité" %>

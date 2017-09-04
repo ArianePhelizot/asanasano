@@ -68,6 +68,8 @@ class AccountsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def mangopay_create_natural_user(account_id)
+
+    log_error = nil
     @account = Account.find(account_id)
 
     mangopay_user = MangoPay::NaturalUser.create(
@@ -76,13 +78,13 @@ class AccountsController < ApplicationController
       "FirstName": @account.first_name,
       "LastName": @account.last_name,
       # Pb de format quand champ vide car il me faut a minima un caractère
-      # "Address":
-      # { "AddressLine1": @account.address_line1,
-      #   "AddressLine2": @account.address_line2,
-      #   "City": @account.city,
-      #   "Region": @account.region,
-      #   "PostalCode": @account.postal_code,
-      #   "Country": @account.country_of_residence },
+      "Address":
+      { "AddressLine1": @account.address_line1,
+        "AddressLine2": @account.address_line2,
+        "City": @account.city,
+        "Region": @account.region,
+        "PostalCode": @account.postal_code,
+        "Country": @account.country_of_residence },
       "Birthday": @account.birthday.to_time.to_i,
       "Nationality": @account.nationality,
       "CountryOfResidence": @account.country_of_residence
@@ -91,7 +93,15 @@ class AccountsController < ApplicationController
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
   rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    raise
+    # regarder la doc pour voir qu'est-ce qui est couvert
+    log_error = ex.message
+  rescue Exception => ex # rubocop:disable UselessAssignment
+    # voir ce que j'en fais
+    log_error = ex.message
+  ensure
+    # sera exécuté quoiqu'il arrive
+    # logguer les infos
+
   end
 
   def mangopay_create_legal_user(account_id)

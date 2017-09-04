@@ -109,11 +109,12 @@
                   </tr>
                   <tr>
                     <td class = "cat">ADRESSE</td>
-                    <td class = "input"><%= @user.account.address_line1%>
-                      <%= @user.account.address_line2 %> ,  <%= @user.account.postal_code %>
-                      <%= @user.account.city %>   <%=@user.account.region%>,
-                      <%= @user.account.country_name_of_residence %>
-
+                    <td class = "input"><%= [@user.account.address_line1, @user.account.address_line2].join(" ") %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class = "cat">       </td>
+                    <td class = "input"><%= [@user.account.postal_code + " "+ @user.account.city + " "+ @user.account.region, @user.account.country_of_residence].join(",") %>
                     </td>
                   </tr>
                   <tr>
@@ -166,6 +167,30 @@
                 </table>
                 <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id) %>
               <% end %>
+
+            <!-- Banking account details - IBAN - For coaches only -->
+            <br>
+            <br>
+            <% if current_user.coach_id? %>
+
+            <!-- As Iban is attached tu account, iban creation and update only enabled if account created -->
+              <% if current_user.account %>
+                <% if !@user.account.iban %>
+                  <%= link_to "Renseigner mes coordonnées bancaires", new_user_iban_path(@user) %>
+                <% else %>
+                  <table class="table">
+                     <tbody>
+                      <tr>
+                        <td class = "cat">IBAN</td>
+                        <td class = "input"><%= @user.account.iban.iban %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <%= link_to "Modifier mes coordonnées bancaires", edit_user_iban_path(@user, @user.account.iban.id) %>
+                <%end%>
+              <%end%>
+            <% end %>
+
           </div>
         </div>
       </div>

@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     { host: ENV["HOST"] || "localhost:3000" }
   end
 
+  def default_url_options_for_mangopay
+    if Rails.env.production?
+      { host: "https://www.asanasano.com" }
+    elsif Rails.env.development?
+      { host: "https://666c27d8.ngrok.io" }
+    end
+  end
+
   private
 
   def skip_pundit?

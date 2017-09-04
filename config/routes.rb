@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :slots do
     member do
-      patch 'desinscription', to: 'slots#desinscription'
+      patch 'desinscription_from_course_page', to: 'slots#desinscription_from_course_page'
       patch 'desinscription_from_dashboard', to: 'slots#desinscription_from_dashboard'
     end
   end
@@ -56,6 +56,11 @@ Rails.application.routes.draw do
   # get 'profile/edit', to: 'pages#edit_profile'
 
   resources :orders, only: %i(show create) do
+    collection do
+      # Hook routes for MangoPay
+      get '/payment_succeeded', to: 'orders#payment_succeeded'
+      get '/payment_failed', to: 'orders#payment_failed'
+    end
     resources :payments, only: %i(new create)
   end
 
@@ -64,4 +69,15 @@ Rails.application.routes.draw do
   resources :users do
     resources :accounts, only: [ :new, :create, :edit, :update ]
   end
+
+  resources :users do
+    resources :ibans, only: [ :new, :create, :edit, :update ]
+  end
+
+# Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 end

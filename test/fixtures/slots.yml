@@ -1,0 +1,77 @@
+# == Schema Information
+#
+# Table name: slots
+#
+#  id               :integer          not null, primary key
+#  date             :date
+#  participants_min :integer
+#  price_cents      :integer          default(0), not null
+#  price_currency   :string           default("EUR"), not null
+#  specificities    :string
+#  status           :integer          default("created")
+#  course_id        :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  start_at         :datetime
+#  end_at           :datetime
+#
+# Indexes
+#
+#  index_slots_on_course_id  (course_id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+slot1:
+ date: 2017-09-05
+ participants_min: 1
+ price_cents: 1500
+ price_currency: "EUR"
+ specificities: "Nothing special"
+ status: 0
+ course: patin_beginners
+ start_at: 2017-09-05 13:00:00 UTC
+ end_at: 2017-09-05 14:30:00 UTC
+ users:
+  -georges
+
+slot2:
+ date: 2017-09-06
+ participants_min: 1
+ price_cents: 1500
+ price_currency: "EUR"
+ specificities: "Nothing special"
+ status: 0
+ course: patin_beginners
+ start_at: 2017-09-06 13:00:00 UTC
+ end_at: 2017-09-06 14:30:00 UTC
+ users:
+  -georges
+
+slot3:
+ date: 2017-09-07
+ participants_min: 1
+ price_cents: 1500
+ price_currency: "EUR"
+ specificities: "Nothing special"
+ status: 0
+ course: patin_beginners
+ start_at: 2017-09-07 13:00:00 UTC
+ end_at: 2017-09-07 14:30:00 UTC
+ users:
+  -georges
+
+slot4:
+ date: 2017-09-08
+ participants_min: 1
+ price_cents: 1500
+ price_currency: "EUR"
+ specificities: "Nothing special"
+ status: 0
+ course: patin_beginners
+ start_at: 2017-09-08 13:00:00 UTC
+ end_at: 2017-09-08 14:30:00 UTC
+ users:
+  -georges

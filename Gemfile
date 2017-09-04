@@ -1,6 +1,12 @@
 
 # frozen_string_literal: true
 
+git_source(:github) do |asanasano|
+  asanasano = "#{asanasano}/#{asanasano}" unless asanasano.include?("/")
+  "https://github.com/#{asanasano}.git"
+end
+
+
 source 'https://rubygems.org'
 ruby '2.3.3'
 
@@ -38,6 +44,9 @@ gem 'coffee-rails'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 group :development do
   gem 'binding_of_caller'
   gem 'guard'
@@ -55,9 +64,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
+group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'minitest-reporters'
   gem 'poltergeist'
+  gem 'faker'
 end
+
