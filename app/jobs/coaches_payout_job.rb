@@ -6,6 +6,9 @@ COACH_PAYOUT_PERIOD = 3 #days
 
 ASANASANO_FEES_RATE_ON_PAYOUTS = 0.1
 
+# Je pense que je suis obligée de le gérer avec un mock-up de réponse d'API
+# et également d'intégrer dans mes fixtures des fake données d'API
+
   def perform
     # Je veux virer l'argent du wallet des profs sur leur compte en banque pour
     # les cours qui ont eu lieu, il y a 3 jours
@@ -26,7 +29,7 @@ ASANASANO_FEES_RATE_ON_PAYOUTS = 0.1
 
         # et je fais le virement correspondant au prof
 
-        mangopay_payout = MangoPay::PayOut.create(
+        mangopay_payout = MangoPay::PayOut::BankWire.create(
         "Tag": "Payout",
         "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
         "DebitedFunds": {
