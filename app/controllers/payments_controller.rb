@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
     # si statut retour = success => @order.state = "paid"
     # si statut retour = success => @order.state = "failed"
 
-    # =========================A voir où mettre????--======================
+    # # =========================A voir où mettre????--======================
     # Petit audit des hooks créés
     # Liste des hooks existants
     mangopayhooks = MangoPay::Hook.fetch("page" => 1, "per_page" => 1)
@@ -52,7 +52,7 @@ class PaymentsController < ApplicationController
 
     # Check si hook créé pour l'événement "PAYIN_NORMAL_FAILED"
     # Si le nb de hook pour "PAYIN_NORMAL_FAILED" < 1
-    if mangopayhooks.select { |hash| hash.value?("PAYIN_NORMAL_SUCCEEDED") }.empty?
+    if mangopayhooks.select { |hash| hash.value?("PAYIN_NORMAL_FAILED") }.empty?
       payment_failed_hook = MangoPay::Hook.create(
         "EventType": "PAYIN_NORMAL_FAILED",
         "Url": default_url_options_for_mangopay[:host] + "/orders/payment_failed/"
