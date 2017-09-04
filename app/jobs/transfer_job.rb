@@ -1,7 +1,7 @@
 class TransferJob < ApplicationJob
   queue_as :default
 
-  ASANASANO_FEES_RATE = 0.1
+  ASANASANO_FEES_RATE_ON_WALLET_TRANSFER = 0
   # où et quand définit-on quand on souhaite que l'opération soit effectuée ?
   # BEWARE: Arguments will be serialized to json, so pass id, string, not full objects.
 
@@ -35,9 +35,9 @@ class TransferJob < ApplicationJob
         "AuthorId": user.account.mangopay_id,
         "CreditedUserId": user.account.mangopay_id,
         "DebitedFunds": { "Currency": "EUR",
-                          "Amount": order.amount_cents * (1 - ASANASANO_FEES_RATE) },
+                          "Amount": order.amount_cents * (1 - ASANASANO_FEES_RATE_ON_WALLET_TRANSFER) },
         "Fees": { "Currency": "EUR",
-                  "Amount": order.amount_cents * ASANASANO_FEES_RATE },
+                  "Amount": order.amount_cents * ASANASANO_FEES_RATE_ON_WALLET_TRANSFER },
         "DebitedWalletId": user.account.wallet.mangopay_id,
         "CreditedWalletId": coach_user.account.wallet.mangopay_id
       )
