@@ -21,16 +21,6 @@
 
   <%= f.input :person_type, label: "Profil", collection: ["NATURAL", "LEGAL"], as: :radio_buttons %>
 
-
-<script src="account_form.js"></script>
-
-<script>
-$( "input" ).on( "click", function() {
-  $( "#log" ).html( $( "input:checked" ).val() + " is checked!" );
-});
-</script>
-
-
 <div class="person_type" id="natural-info">
   <%= f.input :birthday, label: "Date d'anniversaire",
               as: :date,
@@ -65,3 +55,5 @@ $( "input" ).on( "click", function() {
    <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
 
 <% end %>
+
+
