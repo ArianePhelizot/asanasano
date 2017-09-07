@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903080220) do
+ActiveRecord::Schema.define(version: 20170907080439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,16 @@ ActiveRecord::Schema.define(version: 20170903080220) do
     t.index ["account_id"], name: "index_ibans_on_account_id", using: :btree
   end
 
+  create_table "mangopay_logs", force: :cascade do |t|
+    t.string   "event"
+    t.integer  "user_id"
+    t.string   "mangopay_answer"
+    t.string   "error_logs"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_mangopay_logs_on_user_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer  "state"
     t.integer  "slot_id"
@@ -245,6 +255,7 @@ ActiveRecord::Schema.define(version: 20170903080220) do
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
   add_foreign_key "ibans", "accounts"
+  add_foreign_key "mangopay_logs", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "slots", "courses"
   add_foreign_key "wallets", "accounts"

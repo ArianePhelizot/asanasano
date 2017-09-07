@@ -26,14 +26,19 @@ class OrdersController < ApplicationController
     end
   end
 
-  # rubocop:disable UselessAssignment
   def payment_succeeded
     order_state_changed_to_paid
 
     render nothing: true, status: 204 # answer to API
-  rescue => ex
-    text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
-    raise ex
+
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "payment_succeeded",
+                         user_id: @user.id.to_i,
+                         error_logs: log_error)
   end
 
   def order_state_changed_to_paid
@@ -59,12 +64,16 @@ class OrdersController < ApplicationController
     @order.save!
 
     render nothing: true, status: 204
-  rescue => ex
-    text = "Erreur dans une réception du paiement MangoPay: *#{ex.message}*"
 
-    raise ex
+    rescue MangoPay::ResponseError => ex
+        log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "payment_failed",
+                         user_id: @user.id.to_i,
+                         error_logs: log_error)
   end
-  # rubocop:enable UselessAssignment
 
   private
 

@@ -56,6 +56,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :slots
   has_one :account, dependent: :nullify
   has_many :orders, dependent: :nullify
+  has_many :mangopay_logs, dependent: :nullify
 
   has_attachment :photo
 
