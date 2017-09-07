@@ -27,7 +27,7 @@ class Slot < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :orders
 
-  enum status: %i(created confirmed cancelled passed) # from 0 to 3
+  enum status: %i(created confirmed cancelled passed archived) # from 0 to 4
 
   monetize :price_cents
 
