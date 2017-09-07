@@ -12,28 +12,40 @@ class PaymentsController < ApplicationController
     authorize @order
     # On créée un card web payin
 
-    mangopay_card_web_pay_in = MangoPay::PayIn::Card::Web.create(
-      "Tag": current_user.account.tag,
-      "AuthorId": current_user.account.mangopay_id,
-      "CreditedUserId": current_user.account.mangopay_id,
-      "DebitedFunds": { "Currency": "EUR", "Amount": @order.amount_cents },
-      "Fees": { "Currency": "EUR", "Amount": 0 },
-      "ReturnUrl": default_url_options_for_mangopay[:host] + "/courses/" +
-                    @order.slot.course.id.to_s,
-      "CreditedWalletId": current_user.account.wallet.mangopay_id,
-      "CardType": "CB_VISA_MASTERCARD",
-      "SecureMode": "DEFAULT",
-      "Culture": "FR",
-      "StatementDescription": "ASANASANO"
-    )
+    begin
+      mangopay_card_web_pay_in = MangoPay::PayIn::Card::Web.create(
+        "Tag": current_user.account.tag,
+        "AuthorId": current_user.account.mangopay_id,
+        "CreditedUserId": current_user.account.mangopay_id,
+        "DebitedFunds": { "Currency": "EUR", "Amount": @order.amount_cents },
+        "Fees": { "Currency": "EUR", "Amount": 0 },
+        "ReturnUrl": default_url_options_for_mangopay[:host] + "/courses/" +
+                      @order.slot.course.id.to_s,
+        "CreditedWalletId": current_user.account.wallet.mangopay_id,
+        "CardType": "CB_VISA_MASTERCARD",
+        "SecureMode": "DEFAULT",
+        "Culture": "FR",
+        "StatementDescription": "ASANASANO"
+      )
 
-    # j'enregistre le json de réponse dans mon order
-    @order.update(payment: mangopay_card_web_pay_in)
-    @order.state = "pending"
-    @order.mangopay_id = mangopay_card_web_pay_in["Id"]
-    @order.save!
-    # si statut retour = success => @order.state = "paid"
-    # si statut retour = success => @order.state = "failed"
+      # j'enregistre le json de réponse dans mon order
+      @order.update(payment: mangopay_card_web_pay_in)
+      @order.state = "pending"
+      @order.mangopay_id = mangopay_card_web_pay_in["Id"]
+      @order.save!
+      # si statut retour = success => @order.state = "paid"
+      # si statut retour = success => @order.state = "failed"
+
+      rescue MangoPay::ResponseError => ex
+          log_error = ex.message
+      rescue => ex
+          log_error = ex.message
+      ensure
+           MangopayLog.create(event: "card_web_pay_in_creation",
+                          mangopay_answer: mangopay_card_web_pay_in,
+                          user_id: current_user.id.to_i,
+                          error_logs: log_error)
+    end
 
     # # =========================A voir où mettre????--======================
     # Petit audit des hooks créés

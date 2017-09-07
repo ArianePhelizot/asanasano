@@ -109,16 +109,30 @@ class SlotsController < ApplicationController
     if cancellation_with_refund?
       # a/ nous sommes 24h avant le début du cours
 
-      MangoPay::PayIn.refund(@order.mangopay_id, "Tag": current_user.account.tag,
-                                                 "AuthorId": current_user.account.mangopay_id,
-                                                 "DebitedFunds": { "Currency": "EUR",
-                                                                   "Amount": @order.amount_cents },
-                                                 "Fees": { "Currency": "EUR", "Amount": 0 })
+      begin
 
-      # Mark order as "refunded" in data base
-      @order.state = "refunded"
-      @order.settled = true
-      @order.save
+        mangopay_refund = MangoPay::PayIn.refund(@order.mangopay_id, "Tag": current_user.account.tag,
+                                                   "AuthorId": current_user.account.mangopay_id,
+                                                   "DebitedFunds": { "Currency": "EUR",
+                                                                     "Amount": @order.amount_cents },
+                                                   "Fees": { "Currency": "EUR", "Amount": 0 })
+
+        # Mark order as "refunded" in data base
+        @order.state = "refunded"
+        @order.settled = true
+        @order.save
+
+      rescue MangoPay::ResponseError => ex
+          log_error = ex.message
+      rescue => ex
+          log_error = ex.message
+      ensure
+           MangopayLog.create(event: "refund_creation",
+                          mangopay_answer: mangopay_refund,
+                          user_id: current_user.id.to_i,
+                          error_logs: log_error)
+
+      end
 
       # Alert message ad'hoc
       flash[:notice] = "Votre annulation pour la séance

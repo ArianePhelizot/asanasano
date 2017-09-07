@@ -29,21 +29,34 @@ ASANASANO_FEES_RATE_ON_PAYOUTS = 0.1
 
         # et je fais le virement correspondant au prof
 
-        mangopay_payout = MangoPay::PayOut::BankWire.create(
-        "Tag": "Payout",
-        "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
-        "DebitedFunds": {
-          "Currency": "EUR",
-          "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
-          },
-        "Fees": {
-          "Currency": "EUR",
-          "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
-          },
-        "BankAccountId": coach_user.account.iban.mangopay_id,
-        "DebitedWalletId": coach_user.account.mangopay_id,
-        "BankWireRef": "Séance #{slot.course.name} du #{slot.date.strftime('%v')}"
-        )
+        begin
+
+          mangopay_payout = MangoPay::PayOut::BankWire.create(
+          "Tag": "Payout",
+          "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
+          "DebitedFunds": {
+            "Currency": "EUR",
+            "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+            },
+          "Fees": {
+            "Currency": "EUR",
+            "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+            },
+          "BankAccountId": coach_user.account.iban.mangopay_id,
+          "DebitedWalletId": coach_user.account.mangopay_id,
+          "BankWireRef": "Séance #{slot.course.name} du #{slot.date.strftime('%v')}"
+          )
+
+        rescue MangoPay::ResponseError => ex
+          log_error = ex.message
+        rescue => ex
+            log_error = ex.message
+        ensure
+             MangopayLog.create(event: "payout_creation",
+                            mangopay_answer: mangopay_payout,
+                            user_id: coach_user.id.to_i,
+                            error_logs: log_error)
+        end
       end
     end
   end

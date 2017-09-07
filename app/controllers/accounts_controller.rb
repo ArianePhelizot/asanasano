@@ -3,6 +3,11 @@ class AccountsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   before_action :set_user
   before_action :find_account, only: [:edit, :update]
+  before_action :set_log_error, only: [:create,
+                                       :mangopay_create_natural_user,
+                                       :mangopay_create_legal_user,
+                                       :mangopay_update_natural_user,
+                                       :mangopay_update_legal_user]
 
   def new
     @account = Account.new(user_id: @user.id)
@@ -21,23 +26,32 @@ class AccountsController < ApplicationController
         mangopay_create_legal_user(@account.id)
       end
 
-      # Local wallet creation
-      @wallet = Wallet.create(account_id: @account.id, tag: @account.tag)
+      begin
+        # Local wallet creation
+        @wallet = Wallet.create(account_id: @account.id, tag: @account.tag)
 
-      # Wallet creation by Mangpay
-      mangopay_wallet = MangoPay::Wallet.create(
-        "Tag": @wallet.tag,
-        "Owners": [Account.find(@wallet.account_id).mangopay_id], # mangopay_id de l'account
-        "Description": "ASANASANO Wallet",
-        "Currency": "EUR"
-      )
+        # Wallet creation by Mangpay
+        mangopay_wallet = MangoPay::Wallet.create(
+          "Tag": @wallet.tag,
+          "Owners": [Account.find(@wallet.account_id).mangopay_id], # mangopay_id de l'account
+          "Description": "ASANASANO Wallet",
+          "Currency": "EUR"
+        )
 
-      # Recuperation of the Mangopay Id created for the wallet
-      @wallet.mangopay_id = mangopay_wallet["Id"]
-      @wallet.save
+        # Recuperation of the Mangopay Id created for the wallet
+        @wallet.mangopay_id = mangopay_wallet["Id"]
+        @wallet.save
 
-      # rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-      # raise
+        rescue MangoPay::ResponseError => ex
+          log_error = ex.message
+        rescue => ex
+          log_error = ex.message
+        ensure
+           MangopayLog.create(event: "wallet_creation",
+                          mangopay_answer: mangopay_wallet,
+                          user_id: @user.id.to_i,
+                          error_logs: log_error)
+      end
 
       redirect_to profile_path
     else
@@ -69,7 +83,6 @@ class AccountsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def mangopay_create_natural_user(account_id)
 
-    log_error = nil
     @account = Account.find(account_id)
 
     mangopay_user = MangoPay::NaturalUser.create(
@@ -92,16 +105,14 @@ class AccountsController < ApplicationController
 
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
-  rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    # regarder la doc pour voir qu'est-ce qui est couvert
+
+  rescue MangoPay::ResponseError => ex
     log_error = ex.message
-  rescue Exception => ex # rubocop:disable UselessAssignment
-    # voir ce que j'en fais
+  rescue => ex
     log_error = ex.message
   ensure
-    # sera exécuté quoiqu'il arrive
-    # logguer les infos
-
+     MangopayLog.create(event: "natural_account_creation", mangopay_answer: mangopay_user, user_id: @user.id.to_i,
+      error_logs: log_error)
   end
 
   def mangopay_create_legal_user(account_id)
@@ -122,14 +133,20 @@ class AccountsController < ApplicationController
 
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
-  rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    raise
+
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+       MangopayLog.create(event: "legal_account_creation", mangopay_answer: mangopay_user, user_id: @user.id.to_i,
+        error_logs: log_error)
   end
 
   def mangopay_update_natural_user(account_id)
     @account = Account.find(account_id)
 
-    MangoPay::NaturalUser.update(
+    mangopay_natural_user_update = MangoPay::NaturalUser.update(
       @account.mangopay_id,
       Tag: @account.tag,
       Email: @user.email,
@@ -145,14 +162,21 @@ class AccountsController < ApplicationController
                  Country: @account.country_of_residence },
       CountryOfResidence: @account.country_of_residence
     )
-  rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    raise
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+       MangopayLog.create(event: "natural_account_update",
+                      mangopay_answer: mangopay_natural_user_update,
+                      user_id: @user.id.to_i,
+                      error_logs: log_error)
   end
 
   def mangopay_update_legal_user(account_id)
     @account = Account.find(account_id)
 
-    MangoPay::LegalUser.update(
+    mangopay_legal_user_update = MangoPay::LegalUser.update(
       @account.mangopay_id,
       Tag: @account.tag,
       Email: @user.email,
@@ -164,8 +188,16 @@ class AccountsController < ApplicationController
       LegalRepresentativeNationality: @account.legal_representative_country_of_residence,
       LegalRepresentativeCountryOfResidence: @account.legal_representative_country_of_residence
     )
-  rescue MangoPay::ResponseError => ex # rubocop:disable UselessAssignment
-    raise
+
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+       MangopayLog.create(event: "legal_account_update",
+                      mangopay_answer: mangopay_legal_user_update,
+                      user_id: @user.id.to_i,
+                      error_logs: log_error)
   end
   # rubocop:enable Metrics/AbcSize
 
@@ -190,6 +222,10 @@ class AccountsController < ApplicationController
                                     :headquarters_address,
                                     :legal_representative_country_of_residence,
                                     :legal_representative_nationality)
+  end
+
+  def set_log_error
+    log_error = nil
   end
 end
 
