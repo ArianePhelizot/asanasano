@@ -18,4 +18,22 @@ class OrderPolicy < ApplicationPolicy
   def payment_failed?
     payment_succeeded?
   end
+
+  def payin_refund_succeeded?
+    payment_succeeded?
+  end
+
+  def payin_refund_failed?
+    payment_succeeded?
+  end
+
+  def transfer_normal_succeded?
+    payment_succeeded?
+  end
+
+  def transfer_normal_failes?
+        payment_succeeded?
+  end
+
+
 end
