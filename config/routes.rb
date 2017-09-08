@@ -56,11 +56,12 @@ Rails.application.routes.draw do
   # get 'profile/edit', to: 'pages#edit_profile'
 
   resources :orders, only: %i(show create) do
-    collection do
-      # Hook routes for MangoPay
-      get '/payment_succeeded', to: 'orders#payment_succeeded'
-      get '/payment_failed', to: 'orders#payment_failed'
-    end
+# check avant de supprimer
+    # collection do
+    #   # Hook routes for MangoPay
+    #   get '/payment_succeeded', to: 'orders#payment_succeeded'
+    #   get '/payment_failed', to: 'orders#payment_failed'
+    # end
     resources :payments, only: %i(new create)
   end
 
@@ -73,6 +74,16 @@ Rails.application.routes.draw do
   resources :users do
     resources :ibans, only: [ :new, :create, :edit, :update ]
   end
+
+  #Hooks routes
+    get '/hooks/payment_succeeded', to: 'hooks#payment_succeeded'
+    get '/hooks/payment_failed', to: 'hooks#payment_failed'
+    get '/hooks/payin_refund_succeeded', to: 'hooks#payin_refund_succeeded'
+    get '/hooks/payin_refund_failed', to: 'hooks#payin_refund_failed'
+    get '/hooks/transfer_normal_succeded', to: 'hooks#transfer_normal_succeded'
+    get '/hooks/transfer_normal_failed', to: 'hooks#transfer_normal_failed'
+    get '/hooks/payout_normal_succeded', to: 'hooks#payout_normal_succeded'
+    get '/hooks/payout_normal_failed', to: 'hooks#payout_normal_failed'
 
 # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
