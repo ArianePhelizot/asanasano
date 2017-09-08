@@ -3,16 +3,18 @@
 #
 # Table name: orders
 #
-#  id           :integer          not null, primary key
-#  state        :integer
-#  slot_id      :integer
-#  amount_cents :integer          default(0), not null
-#  payment      :json
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  mangopay_id  :integer
-#  user_id      :integer
-#  settled      :boolean          default(FALSE), not null
+#  id                   :integer          not null, primary key
+#  state                :integer
+#  slot_id              :integer
+#  amount_cents         :integer          default(0), not null
+#  payment              :json
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  mangopay_id          :integer
+#  user_id              :integer
+#  settled              :boolean          default(FALSE), not null
+#  refund_mangopay_id   :integer
+#  transfer_mangopay_id :integer
 #
 # Indexes
 #
@@ -25,5 +27,5 @@ class Order < ApplicationRecord
   belongs_to :slot
   belongs_to :user
 
-  enum state: %i(pending paid failed refunded)
+  enum state: %i(pending paid failed ask_for_refund failed_refund refunded)
 end
