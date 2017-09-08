@@ -107,19 +107,20 @@ class SlotsController < ApplicationController
     @order = Order.find_by user: current_user, slot: @slot
     # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
     if cancellation_with_refund?
-      # a/ nous sommes 24h avant le début du cours
+      # a/ nous sommes à plus de 24h avant le début du cours
+      log_error = nil
 
       begin
-
-        mangopay_refund = MangoPay::PayIn.refund(@order.mangopay_id, "Tag": current_user.account.tag,
-                                                   "AuthorId": current_user.account.mangopay_id,
-                                                   "DebitedFunds": { "Currency": "EUR",
-                                                                     "Amount": @order.amount_cents },
-                                                   "Fees": { "Currency": "EUR", "Amount": 0 })
+        mangopay_refund = MangoPay::PayIn.refund(@order.mangopay_id,
+                                                "Tag": current_user.account.tag,
+                                                "AuthorId": current_user.account.mangopay_id,
+                                                "DebitedFunds": { "Currency": "EUR",
+                                                                "Amount": @order.amount_cents },
+                                                "Fees": { "Currency": "EUR", "Amount": 0 })
 
         # Mark order as "refunded" in data base
-        @order.state = "refunded"
-        @order.settled = true
+        @order.state = "ask_for_refund"
+        @order.refund_mangopay_id = mangopay_refund["Id"]
         @order.save
 
       rescue MangoPay::ResponseError => ex
@@ -137,16 +138,13 @@ class SlotsController < ApplicationController
       # Alert message ad'hoc
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte.
-      Le paiement par carte a été annulé. "
+      Le paiement par carte correspondant vous sera remboursé. "
 
-      # Mail ad'hoc
-      OrderMailer.slot_cancellation_with_refund_confirmation(current_user, @order).deliver_now
     else
-      # b/ nous sommes au delà de cette limite
+      # b/ nous sommes en deça de cette limite
       # Alert message ad'hoc
       flash[:notice] = "Votre annulation pour la séance
-      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
-      Le paiement par carte a été annulé. "
+      #{l(@order.slot.date, format: :long)} a bien été prise en compte. "
       # Mail ad'hoc de confirmation
       OrderMailer.slot_cancellation_confirmation(current_user, @order).deliver_now
     end
@@ -155,7 +153,7 @@ class SlotsController < ApplicationController
   # rubocop:enable Metrics/MethodLength
 
   def cancellation_with_refund?
-    (DateTime.now.to_i - @slot.start_at.to_i) / 60 * 60 > 24
+    (@slot.start_at.to_i - DateTime.now.to_i) / 60 * 60 > 24
   end
 end
 # rubocop:enable Metrics/ClassLength
