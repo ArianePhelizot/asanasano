@@ -5,6 +5,15 @@ MangoPay.configure do |c|
   c.client_passphrase = ENV['MANGOPAY_PASSPHRASE']
   # c.log_file = File.join('../../log', 'mangopay.log')
   c.http_timeout = 10000
+
+  def default_url_options_for_mangopay
+    if Rails.env.production?
+      { host: "https://www.asanasano.com" }
+    elsif Rails.env.development?
+      { host: "https://cfe52f2b.ngrok.io" }
+    end
+  end
+
 end
 
 # Set MANGOPAY API base URL and Client ID
