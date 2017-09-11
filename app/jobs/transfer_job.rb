@@ -26,7 +26,7 @@ class TransferJob < ApplicationJob
       # check first that customer did not cancel his attendance to slot
       if slot.users.include?(user)
       # if yes ask for transferring money from customer wallet to coach wallet
-
+      # it should be ok since now when somebody cancel a slot, the order is settled wether there has been a refund or not
 
         begin
           mangopay_transfer = MangoPay::Transfer.create(
