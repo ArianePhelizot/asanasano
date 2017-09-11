@@ -11,23 +11,28 @@ before_action :set_mangopay_order, only: [:payment_succeeded,
 before_action :set_mangopay_order_to_refund, only: [:payin_refund_succeeded,
                                                     :payin_refund_failed]
 
-before_action :set_mangopay_order_to_transfer, only: [:transfer_normal_succeded,
+before_action :set_mangopay_order_to_transfer, only: [:transfer_normal_succeeded,
                                                     :transfer_normal_failed]
+
+before_action :set_mangopay_slot_to_payout, only: [:payout_normal_succeeded,
+                                                    :payout_normal_failed]
 
 before_action :set_user, only: [:payment_succeeded, :order_state_changed_to_paid,
                                 :user_feedback_on_booking_and_payment,
                                 :payment_failed,
                                 :payin_refund_succeeded,
                                 :payin_refund_failed,
-                                :transfer_normal_succeded,
+                                :transfer_normal_succeeded,
                                 :transfer_normal_failed]
 
 before_action :set_log_error, only: [:payment_succeeded,
                                      :payment_failed,
                                      :payin_refund_succeeded,
                                      :payin_refund_failed,
-                                     :transfer_normal_succeded,
-                                     :transfer_normal_failed]
+                                     :transfer_normal_succeeded,
+                                     :transfer_normal_failed,
+                                     :payout_normal_succeeded,
+                                     :payout_normal_failed]
 
   def payment_succeeded
     # log_hook_notification
@@ -135,7 +140,7 @@ before_action :set_log_error, only: [:payment_succeeded,
                          error_logs: log_error)
   end
 
-  def transfer_normal_succeded
+  def transfer_normal_succeeded
     # Need to identify order first
     # Need to pass order.settled to true
     authorize @order
@@ -175,14 +180,43 @@ before_action :set_log_error, only: [:payment_succeeded,
                          error_logs: log_error)
   end
 
-  def payout_normal_succeded
+  def payout_normal_succeeded
     # Need to identify payout first
     # Identify the slot and pass its status to "archived"
+    @slot.status = "archived"
+    @slot.save
     # Beware of slot policy!
+    render nothing: true, status: 204 # answer to API
+
     # Log info in mangopay log
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "payout_succeeded",
+                         mangopay_answer: "Mangopay HOOK - EventType: #{params["EventType"]},
+                                          RessourceId: #{params["RessourceId"]},
+                                          Date: #{params["Date"]}",
+                         user_id: @slot.course.coach.user.to_i,
+                         error_logs: log_error)
   end
 
   def payout_normal_failed
+    render nothing: true, status: 204 # answer to API
+
+    # Log info in mangopay log
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "payout_failed",
+                         mangopay_answer: "Mangopay HOOK - EventType: #{params["EventType"]},
+                                          RessourceId: #{params["RessourceId"]},
+                                          Date: #{params["Date"]}",
+                         user_id: @slot.course.coach.user.to_i,
+                         error_logs: log_error)
   end
 
   def set_mangopay_order
@@ -195,6 +229,10 @@ before_action :set_log_error, only: [:payment_succeeded,
 
   def set_mangopay_order_to_transfer
     @order = Order.find_by(transfer_mangopay_id: params["RessourceId"])
+  end
+
+  def set_mangopay_slot_to_payout
+    @slot = Slot.find_by(payout_mangopay_id: params["RessourceId"])
   end
 
   def set_user

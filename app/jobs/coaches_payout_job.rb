@@ -47,6 +47,9 @@ ASANASANO_FEES_RATE_ON_PAYOUTS = 0.1
           "BankWireRef": "Séance #{slot.course.name} du #{slot.date.strftime('%v')}"
           )
 
+          slot.payout_mangopay_id = mangopay_payout["Id"]
+          slot.save
+
         rescue MangoPay::ResponseError => ex
           log_error = ex.message
         rescue => ex
