@@ -23,7 +23,7 @@ class TransferJob < ApplicationJob
       slot = order.slot
       user = order.user
       coach_user = slot.course.coach.user
-      # check first that customer did not cancell his attendance to slot
+      # check first that customer did not cancel his attendance to slot
       if slot.users.include?(user)
       # if yes ask for transferring money from customer wallet to coach wallet
 
@@ -58,7 +58,9 @@ class TransferJob < ApplicationJob
                             error_logs: log_error)
         end
       end
-  end
+    end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
+  end
 end
+
