@@ -63,6 +63,7 @@ ordergeorgesslot1:
     "StatementDescriptor": "Mar2016"
    mangopay_id: 32571511
    user: georges
+   settled: false
 
 
 ordergeorgesslot2:
@@ -103,6 +104,7 @@ ordergeorgesslot2:
       "StatementDescriptor": "Mar2016"
    mangopay_id: 32571512
    user: georges
+   settled: false
 
 
 ordergeorgesslot3:
@@ -143,6 +145,7 @@ ordergeorgesslot3:
     "StatementDescriptor": "Mar2016"
    mangopay_id: 32571513
    user: georges
+   settled: false
 
 
 ordergeorgesslot4:
@@ -183,6 +186,7 @@ ordergeorgesslot4:
     "StatementDescriptor": "Mar2016"
    mangopay_id: 32571514
    user: georges
+   settled: false
 
 
 
