@@ -143,6 +143,8 @@ class SlotsController < ApplicationController
     else
       # b/ nous sommes en deça de cette limite
       # Alert message ad'hoc
+      @order.settled = true
+      @order.save!
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte. "
       # Mail ad'hoc de confirmation
