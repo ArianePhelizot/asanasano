@@ -1,8 +1,9 @@
 class MangopayHookJob < ApplicationJob
   queue_as :default
 
-  def perform
+  # rubocop:disable UselessAssignment
 
+  def perform
     # Petit audit des hooks créés
     # Liste des hooks existants
     mangopayhooks = MangoPay::Hook.fetch("page" => 1, "per_page" => 1)
@@ -26,7 +27,6 @@ class MangopayHookJob < ApplicationJob
       )
     end
 
-
     # Check si hook créé pour l'événement "PAYIN_REFUND_SUCCEEDED"
     # Si le nb de hook pour "PAYIN_REFUND_SUCCEEDED" < 1
     if mangopayhooks.select { |hash| hash.value?("PAYIN_REFUND_SUCCEEDED") }.empty?
@@ -46,7 +46,6 @@ class MangopayHookJob < ApplicationJob
         "Url": default_url_options_for_mangopay[:host] + "/hooks/payin_refund_failed/"
       )
     end
-
 
     # Check si hook créé pour l'événement "TRANSFER_NORMAL_SUCCEEDED"
     # Si le nb de hook pour "TRANSFER_NORMAL_SUCCEEDED" < 1
@@ -68,7 +67,6 @@ class MangopayHookJob < ApplicationJob
       )
     end
 
-
     # Check si hook créé pour l'événement "PAYOUT_NORMAL_SUCCEEDED"
     # Si le nb de hook pour "PAYOUT_NORMAL_SUCCEEDED" < 1
     if mangopayhooks.select { |hash| hash.value?("PAYOUT_NORMAL_SUCCEEDED") }.empty?
@@ -89,4 +87,5 @@ class MangopayHookJob < ApplicationJob
       )
     end
   end
+  # rubocop:enable UselessAssignment
 end

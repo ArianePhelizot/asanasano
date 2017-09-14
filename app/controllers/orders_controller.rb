@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-
   # before_action :set_mangopay_order, only: [:payment_succeeded,
   #                                           :payment_failed,
   #                                           :set_user,

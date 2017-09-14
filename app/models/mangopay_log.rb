@@ -16,25 +16,22 @@
 #
 
 class MangopayLog < ApplicationRecord
-
-validates :event, inclusion: { in: %w(natural_account_creation
-                                      legal_account_creation
-                                      wallet_creation
-                                      iban_creation
-                                      natural_account_update
-                                      legal_account_update
-                                      card_web_pay_in_creation
-                                      payment_succeeded
-                                      payment_failed
-                                      refund_creation
-                                      payin_refund_succeeded
-                                      payin_refund_failed
-                                      transfer_creation
-                                      transfer_succeeded
-                                      transfer_failed
-                                      payout_creation
-                                      payout_succeeded
-                                      payout_failed
-                                                       ) }
-
+  validates :event, inclusion: { in: %w(natural_account_creation
+                                        legal_account_creation
+                                        wallet_creation
+                                        iban_creation
+                                        natural_account_update
+                                        legal_account_update
+                                        card_web_pay_in_creation
+                                        payment_succeeded
+                                        payment_failed
+                                        refund_creation
+                                        payin_refund_succeeded
+                                        payin_refund_failed
+                                        transfer_creation
+                                        transfer_succeeded
+                                        transfer_failed
+                                        payout_creation
+                                        payout_succeeded
+                                        payout_failed) }
 end

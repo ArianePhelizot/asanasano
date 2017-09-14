@@ -38,6 +38,4 @@ class OrderPolicy < ApplicationPolicy
   def transfer_normal_failes?
     payment_succeeded?
   end
-
-
 end
