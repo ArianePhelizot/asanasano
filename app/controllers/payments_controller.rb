@@ -6,6 +6,9 @@ class PaymentsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def new
+
+    # Launch mangopayhooks creation if no hooks created yet
+    MangopayHookJob.perform_now
     # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.
     # la méthode authorize s'exécute dans le fichier (payment_policy.rb)
     authorize @order
@@ -47,7 +50,6 @@ class PaymentsController < ApplicationController
                          error_logs: log_error)
     end
 
-    MangopayHookJob.perform_now
     # # =========================A voir où mettre => MangopayHookJob--======================
     # # Petit audit des hooks créés
     # # Liste des hooks existants
