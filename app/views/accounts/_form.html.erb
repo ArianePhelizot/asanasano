@@ -12,7 +12,7 @@
   <% end %>
 
 <!-- hidden data -->
-  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + "/ Coach_id:" + @user.coach_id.to_s } %>
+  <%= f.input :tag, :as => :hidden, :input_html => { :value => "User_id:" + @user.id.to_s + " & Coach_id:" + @user.coach_id.to_s } %>
   <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
 
 <!--   shown form  -->

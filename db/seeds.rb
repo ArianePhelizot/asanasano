@@ -253,7 +253,7 @@ account4 = Account.create!(user_id: user4.id,
 
 
 account5 = Account.create!(user_id: user5.id,
-                          tag: "User_id: " + user5.id.to_s + "/Coach_id: " + coach1.id.to_s,
+                          tag: "User_id: " + user5.id.to_s + " & Coach_id: " + coach1.id.to_s,
                           person_type: "NATURAL",
                           birthday: Date.new(1971, 11, 30),
                           address_line1: "2 rue Eugène Carrière",
@@ -264,7 +264,7 @@ account5 = Account.create!(user_id: user5.id,
                           nationality: "FR")
 
 account6 = Account.create!(user_id: user6.id,
-                          tag: "User_id: " + user6.id.to_s + "/Coach_id: " + coach2.id.to_s,
+                          tag: "User_id: " + user6.id.to_s + " & Coach_id: " + coach2.id.to_s,
                           person_type: "NATURAL",
                           birthday: Date.new(1993, 5, 8),
                           address_line1: "15 boulevard de Grenelle",
@@ -275,7 +275,7 @@ account6 = Account.create!(user_id: user6.id,
                           nationality: "FR")
 
 account7 = Account.create!(user_id: user7.id,
-                          tag: "User_id: " + user7.id.to_s + "/Coach_id: " + coach3.id.to_s,
+                          tag: "User_id: " + user7.id.to_s + " & Coach_id: " + coach3.id.to_s,
                           person_type: "NATURAL",
                           birthday: Date.new(1995, 7, 11),
                           address_line1: "165 rue de Paradis",
