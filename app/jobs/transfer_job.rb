@@ -28,11 +28,12 @@ class TransferJob < ApplicationJob
       user = order.user
       coach_user = slot.course.coach.user
       # check first that customer did not cancel his attendance to slot
-      next unless slot.users.include?(user)
-      # if yes ask for transferring money from customer wallet to coach wallet
-      # it should be ok since now when somebody cancel a slot, the order is
-      # settled wether there has been a refund or not
-      call_mangopay_api_for_transfer_creation(order, slot, user, coach_user)
+      if slot.users.include?(user)
+        # if yes ask for transferring money from customer wallet to coach wallet
+        # it should be ok since now when somebody cancel a slot, the order is
+        # settled wether there has been a refund or not
+        call_mangopay_api_for_transfer_creation(order, slot, user, coach_user)
+       end
     end
   end
 
@@ -68,9 +69,10 @@ class TransferJob < ApplicationJob
                          error_logs: log_error)
     end
 
-    next if mangopay_transfer["Status"] == "SUCCEEDED"
-    order.settled = true
-    order.save
+    if mangopay_transfer["Status"] == "SUCCEEDED"
+      order.settled = true
+      order.save
+    end
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
