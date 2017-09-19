@@ -88,7 +88,7 @@ class SlotsController < ApplicationController
                                  :date,
                                  :start_at,
                                  :end_at,
-                                 :price)
+                                 :price_cents)
   end
 
   def find_course
