@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
         # Wallet creation by Mangpay
         mangopay_wallet = MangoPay::Wallet.create(
           "Tag": @wallet.tag,
-          "Owners": [Account.find(@wallet.account_id).mangopay_id], # mangopay_id de l'account
+          "Owners": [Account.find(@wallet.account_id).mangopay_id],
           "Description": "ASANASANO Wallet",
           "Currency": "EUR"
         )
@@ -41,16 +41,15 @@ class AccountsController < ApplicationController
         # Recuperation of the Mangopay Id created for the wallet
         @wallet.mangopay_id = mangopay_wallet["Id"]
         @wallet.save
-
-        rescue MangoPay::ResponseError => ex
-          log_error = ex.message
-        rescue => ex
-          log_error = ex.message
-        ensure
-           MangopayLog.create(event: "wallet_creation",
-                          mangopay_answer: mangopay_wallet,
-                          user_id: @user.id.to_i,
-                          error_logs: log_error)
+      rescue MangoPay::ResponseError => ex
+        log_error = ex.message
+      rescue => ex
+        log_error = ex.message
+      ensure
+        MangopayLog.create(event: "wallet_creation",
+                           mangopay_answer: mangopay_wallet,
+                           user_id: @user.id.to_i,
+                           error_logs: log_error)
       end
 
       redirect_to profile_path
@@ -82,7 +81,6 @@ class AccountsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def mangopay_create_natural_user(account_id)
-
     @account = Account.find(account_id)
 
     mangopay_user = MangoPay::NaturalUser.create(
@@ -105,14 +103,15 @@ class AccountsController < ApplicationController
 
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
-
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
     log_error = ex.message
   ensure
-     MangopayLog.create(event: "natural_account_creation", mangopay_answer: mangopay_user, user_id: @user.id.to_i,
-      error_logs: log_error)
+    MangopayLog.create(event: "natural_account_creation",
+                       mangopay_answer: mangopay_user,
+                       user_id: @user.id.to_i,
+                       error_logs: log_error)
   end
 
   def mangopay_create_legal_user(account_id)
@@ -133,14 +132,15 @@ class AccountsController < ApplicationController
 
     @account.mangopay_id = mangopay_user["Id"]
     @account.save
-
-    rescue MangoPay::ResponseError => ex
-      log_error = ex.message
-    rescue => ex
-      log_error = ex.message
-    ensure
-       MangopayLog.create(event: "legal_account_creation", mangopay_answer: mangopay_user, user_id: @user.id.to_i,
-        error_logs: log_error)
+  rescue MangoPay::ResponseError => ex
+    log_error = ex.message
+  rescue => ex
+    log_error = ex.message
+  ensure
+    MangopayLog.create(event: "legal_account_creation",
+                       mangopay_answer: mangopay_user,
+                       user_id: @user.id.to_i,
+                       error_logs: log_error)
   end
 
   def mangopay_update_natural_user(account_id)
@@ -162,15 +162,15 @@ class AccountsController < ApplicationController
                  Country: @account.country_of_residence },
       CountryOfResidence: @account.country_of_residence
     )
-    rescue MangoPay::ResponseError => ex
-      log_error = ex.message
-    rescue => ex
-      log_error = ex.message
-    ensure
-       MangopayLog.create(event: "natural_account_update",
-                      mangopay_answer: mangopay_natural_user_update,
-                      user_id: @user.id.to_i,
-                      error_logs: log_error)
+  rescue MangoPay::ResponseError => ex
+    log_error = ex.message
+  rescue => ex
+    log_error = ex.message
+  ensure
+    MangopayLog.create(event: "natural_account_update",
+                       mangopay_answer: mangopay_natural_user_update,
+                       user_id: @user.id.to_i,
+                       error_logs: log_error)
   end
 
   def mangopay_update_legal_user(account_id)
@@ -188,16 +188,15 @@ class AccountsController < ApplicationController
       LegalRepresentativeNationality: @account.legal_representative_country_of_residence,
       LegalRepresentativeCountryOfResidence: @account.legal_representative_country_of_residence
     )
-
-    rescue MangoPay::ResponseError => ex
-      log_error = ex.message
-    rescue => ex
-      log_error = ex.message
-    ensure
-       MangopayLog.create(event: "legal_account_update",
-                      mangopay_answer: mangopay_legal_user_update,
-                      user_id: @user.id.to_i,
-                      error_logs: log_error)
+  rescue MangoPay::ResponseError => ex
+    log_error = ex.message
+  rescue => ex
+    log_error = ex.message
+  ensure
+    MangopayLog.create(event: "legal_account_update",
+                       mangopay_answer: mangopay_legal_user_update,
+                       user_id: @user.id.to_i,
+                       error_logs: log_error)
   end
   # rubocop:enable Metrics/AbcSize
 
@@ -212,10 +211,13 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:user_id, :first_name, :last_name, :person_type, :tag,
+    params.require(:account).permit(:user_id, :first_name, :last_name,
+                                    :person_type, :tag,
                                     :birthday, :address_line1, :address_line2,
-                                    :city, :region, :postal_code, :country_of_residence,
-                                    :nationality, :legal_person_type, :legal_name,
+                                    :city, :region, :postal_code,
+                                    :country_of_residence,
+                                    :nationality, :legal_person_type,
+                                    :legal_name,
                                     :legal_representative_first_name,
                                     :legal_representative_last_name,
                                     :legal_representative_birthday,
@@ -225,7 +227,9 @@ class AccountsController < ApplicationController
   end
 
   def set_log_error
+    # rubocop:disable UselessAssignment
     log_error = nil
+    # rubocop:enable UselessAssignment
   end
 end
 

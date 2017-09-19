@@ -5,8 +5,9 @@ class PaymentsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
-  # rubocop:disable UselessAssignment
   def new
+    # Launch mangopayhooks creation if no hooks created yet
+    MangopayHookJob.perform_now
     # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.
     # la méthode authorize s'exécute dans le fichier (payment_policy.rb)
     authorize @order
@@ -37,19 +38,17 @@ class PaymentsController < ApplicationController
       @order.save!
       # si statut retour = success => @order.state = "paid"
       # si statut retour = success => @order.state = "failed"
-
-      rescue MangoPay::ResponseError => ex
-          log_error = ex.message
-      rescue => ex
-          log_error = ex.message
-      ensure
-           MangopayLog.create(event: "card_web_pay_in_creation",
-                          mangopay_answer: mangopay_card_web_pay_in,
-                          user_id: current_user.id.to_i,
-                          error_logs: log_error)
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "card_web_pay_in_creation",
+                         mangopay_answer: mangopay_card_web_pay_in,
+                         user_id: current_user.id.to_i,
+                         error_logs: log_error)
     end
 
-    MangopayHookJob.perform_now
     # # =========================A voir où mettre => MangopayHookJob--======================
     # # Petit audit des hooks créés
     # # Liste des hooks existants
@@ -84,7 +83,6 @@ class PaymentsController < ApplicationController
     #   )
     # end
 
-
     # # Check si hook créé pour l'événement "PAYIN_REFUND_FAILED"
     # # Si le nb de hook pour "PAYIN_REFUND_FAILED" < 1
     # if mangopayhooks.select { |hash| hash.value?("PAYIN_REFUND_FAILED") }.empty?
@@ -94,7 +92,6 @@ class PaymentsController < ApplicationController
     #     "Url": default_url_options_for_mangopay[:host] + "/hooks/payin_refund_failed/"
     #   )
     # end
-
 
     # # Check si hook créé pour l'événement "TRANSFER_NORMAL_SUCCEEDED"
     # # Si le nb de hook pour "TRANSFER_NORMAL_SUCCEEDED" < 1
@@ -106,7 +103,6 @@ class PaymentsController < ApplicationController
     #   )
     # end
 
-
     # # Check si hook créé pour l'événement "TRANSFER_NORMAL_FAILED"
     # # Si le nb de hook pour "TRANSFER_NORMAL_FAILED" < 1
     # if mangopayhooks.select { |hash| hash.value?("TRANSFER_NORMAL_FAILED") }.empty?
@@ -116,7 +112,6 @@ class PaymentsController < ApplicationController
     #     "Url": default_url_options_for_mangopay[:host] + "/hooks/transfer_normal_failed/"
     #   )
     # end
-
 
     # # Check si hook créé pour l'événement "PAYOUT_NORMAL_SUCCEEDED"
     # # Si le nb de hook pour "PAYOUT_NORMAL_SUCCEEDED" < 1
@@ -128,7 +123,6 @@ class PaymentsController < ApplicationController
     #   )
     # end
 
-
     # # Check si hook créé pour l'événement "PAYOUT_NORMAL_FAILED"
     # # Si le nb de hook pour "PAYOUT_NORMAL_FAILED" < 1
     # if mangopayhooks.select { |hash| hash.value?("PAYOUT_NORMAL_FAILED") }.empty?
@@ -138,7 +132,6 @@ class PaymentsController < ApplicationController
     #     "Url": default_url_options_for_mangopay[:host] + "/hooks/payout_normal_failed/"
     #   )
     # end
-
 
     # =========================FIN DE A voir où mettre????--======================
 

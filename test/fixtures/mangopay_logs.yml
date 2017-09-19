@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: mangopay_logs
+#
+#  id              :integer          not null, primary key
+#  event           :string
+#  user_id         :integer
+#  mangopay_answer :string
+#  error_logs      :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_mangopay_logs_on_user_id  (user_id)
+#

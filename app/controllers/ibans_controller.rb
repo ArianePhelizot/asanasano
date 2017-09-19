@@ -8,8 +8,9 @@ class IbansController < ApplicationController
   end
 
   # rubocop:disable Metrics/MethodLength
-  def create
+  # rubocop:disable Metrics/AbcSize
 
+  def create
     log_error = nil
 
     @iban = Iban.new(iban_params)
@@ -26,31 +27,31 @@ class IbansController < ApplicationController
         @iban.mangopay_id = mangopay_iban_bankaccount["Id"]
         @iban.active = mangopay_iban_bankaccount["Active"]
         @iban.save
-
       rescue MangoPay::ResponseError => ex
         log_error = ex.message
       rescue => ex
         log_error = ex.message
       ensure
-         MangopayLog.create(event: "iban_creation",
-                            mangopay_answer: mangopay_iban_bankaccount,
-                            user_id: @user.id.to_i,
-                            error_logs: log_error)
+        MangopayLog.create(event: "iban_creation",
+                           mangopay_answer: mangopay_iban_bankaccount,
+                           user_id: @user.id.to_i,
+                           error_logs: log_error)
       end
-        redirect_to profile_path
+      redirect_to profile_path
     else
       render :new
     end
   end
 
+  # rubocop:enale Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
+
   def edit
     authorize @iban
   end
 
   # rubocop:disable Metrics/MethodLength
   def update
-
     log_error = nil
 
     authorize @iban
@@ -63,22 +64,22 @@ class IbansController < ApplicationController
         )
         @iban.active = mangopay_iban_bankaccount["Active"]
         @iban.save
-
       rescue MangoPay::ResponseError => ex
-          log_error = ex.message
+        log_error = ex.message
       rescue => ex
-          log_error = ex.message
+        log_error = ex.message
       ensure
         MangopayLog.create(event: "iban_creation",
-                              mangopay_answer: mangopay_iban_bankaccount,
-                              user_id: @user.id.to_i,
-                              error_logs: log_error)
+                           mangopay_answer: mangopay_iban_bankaccount,
+                           user_id: @user.id.to_i,
+                           error_logs: log_error)
         redirect_to profile_path
       end
     else
       render :edit
     end
   end
+  # rubocop:enale Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
   private

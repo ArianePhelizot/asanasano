@@ -27,13 +27,7 @@ class OrderPolicy < ApplicationPolicy
     payment_succeeded?
   end
 
-  def transfer_normal_succeded?
+  def desinscription?
     payment_succeeded?
   end
-
-  def transfer_normal_failes?
-        payment_succeeded?
-  end
-
-
 end

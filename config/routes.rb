@@ -80,9 +80,7 @@ Rails.application.routes.draw do
     get '/hooks/payment_failed', to: 'hooks#payment_failed'
     get '/hooks/payin_refund_succeeded', to: 'hooks#payin_refund_succeeded'
     get '/hooks/payin_refund_failed', to: 'hooks#payin_refund_failed'
-    get '/hooks/transfer_normal_succeded', to: 'hooks#transfer_normal_succeded'
-    get '/hooks/transfer_normal_failed', to: 'hooks#transfer_normal_failed'
-    get '/hooks/payout_normal_succeded', to: 'hooks#payout_normal_succeded'
+    get '/hooks/payout_normal_succeeded', to: 'hooks#payout_normal_succeeded'
     get '/hooks/payout_normal_failed', to: 'hooks#payout_normal_failed'
 
 # Sidekiq Web UI, only for admins.

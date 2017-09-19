@@ -88,7 +88,7 @@ class SlotsController < ApplicationController
                                  :date,
                                  :start_at,
                                  :end_at,
-                                 :price)
+                                 :price_cents)
   end
 
   def find_course
@@ -115,24 +115,22 @@ class SlotsController < ApplicationController
                                                 "Tag": current_user.account.tag,
                                                 "AuthorId": current_user.account.mangopay_id,
                                                 "DebitedFunds": { "Currency": "EUR",
-                                                                "Amount": @order.amount_cents },
+                                                                  "Amount": @order.amount_cents },
                                                 "Fees": { "Currency": "EUR", "Amount": 0 })
 
         # Mark order as "refunded" in data base
         @order.state = "ask_for_refund"
         @order.refund_mangopay_id = mangopay_refund["Id"]
         @order.save
-
       rescue MangoPay::ResponseError => ex
-          log_error = ex.message
+        log_error = ex.message
       rescue => ex
-          log_error = ex.message
+        log_error = ex.message
       ensure
-           MangopayLog.create(event: "refund_creation",
-                          mangopay_answer: mangopay_refund,
-                          user_id: current_user.id.to_i,
-                          error_logs: log_error)
-
+        MangopayLog.create(event: "refund_creation",
+                           mangopay_answer: mangopay_refund,
+                           user_id: current_user.id.to_i,
+                           error_logs: log_error)
       end
 
       # Alert message ad'hoc
@@ -143,6 +141,8 @@ class SlotsController < ApplicationController
     else
       # b/ nous sommes en deça de cette limite
       # Alert message ad'hoc
+      @order.settled = true
+      @order.save!
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte. "
       # Mail ad'hoc de confirmation
