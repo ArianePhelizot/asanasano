@@ -33,7 +33,6 @@ gem 'money-rails', '~>1'
 gem 'pundit'
 gem 'sass-rails'
 gem 'simple_form'
-gem 'stripe'
 gem 'mangopay', '~> 3.0', '>= 3.0.29'
 gem 'uglifier'
 
