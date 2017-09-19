@@ -15,46 +15,13 @@
             </article>
             <div class="pay-card">
               <%= link_to "Paiement par carte bancaire", new_order_payment_path, class: "btn btn-primary" %>
-              <!-- <script type="text/javascript" src="mangopay-kit.js class="stripe-button">
-                // Initialize with card register data prepared on the server
-                // mangoPay.cardRegistration.init({
-                //     cardRegistrationURL: {CardRegistrationURL property},
-                //     preregistrationData: {PreregistrationData property},
-                //     accessKey: {AccessKey property},
-                //     Id: {Id property}
-                // });
-              </script> -->
             </div>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-      <!-- VUE STRIPE -->
-<!--
-      <%= form_tag order_payments_path(@order) do %>
-        <div class="col-xs-8 col-xs-offset-2 col-md-4  col-md-offset-4 ">
-          <div class="wrapper-payment">
-            <article>
-              <label>
-                <span class="amount">Total : <%= humanized_money_with_symbol(@order.amount) %></span>
-              </label>
-            </article>
-            <div class="pay-card">
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-name="Ma séance"
-                data-email="<%= current_user.email %>"
-                data-description="Séance <%= @order.slot.course.name %>"
-                data-amount="<%= @order.amount_cents %>"
-                data-currency="<%= @order.amount.currency %>">
-              </script>
-            </div>
-          </div>
-        </div>
-      <% end %> -->
 
-<!-- FIN STRIPE -->
 
       <div class="row text-center padded">
         <div class="col-xs-12 col-sm-4">
