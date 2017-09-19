@@ -49,9 +49,9 @@ class PaymentsController < ApplicationController
                          error_logs: log_error)
     end
 
-    sleep(15.0)
+    sleep(20.0)
     redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
-    flash[:notice] = "Votre commande est en cours de traitement, format: :long)}."
+    flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!)}."
   end
 
   private
