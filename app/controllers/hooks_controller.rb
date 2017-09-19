@@ -34,7 +34,7 @@ class HooksController < ApplicationController
     # log_hook_notification
     order_state_changed_to_paid
 
-    render nothing: true, status: 204 # answer to API
+    render nothing: true, status: 200 # answer to API
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -72,7 +72,7 @@ class HooksController < ApplicationController
     @order.state = "failed"
     @order.save!
 
-    render nothing: true, status: 204
+    render nothing: true, status: 200
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -93,7 +93,7 @@ class HooksController < ApplicationController
        @order.settled = true
        @order.save!
 
-       render nothing: true, status: 204 # answer to API
+       render nothing: true, status: 200 # answer to API
      rescue MangoPay::ResponseError => ex
        log_error = ex.message
      rescue => ex
@@ -115,7 +115,7 @@ class HooksController < ApplicationController
     @order.state = "failed_refund"
     @order.save!
 
-    render nothing: true, status: 204 # answer to API
+    render nothing: true, status: 200 # answer to API
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
