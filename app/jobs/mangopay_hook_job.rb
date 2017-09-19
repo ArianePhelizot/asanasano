@@ -1,6 +1,7 @@
 class MangopayHookJob < ApplicationJob
   queue_as :default
 
+# rubocop:disable all
   def perform
     # Petit audit des hooks créés
     # Liste des hooks existants
@@ -65,4 +66,5 @@ class MangopayHookJob < ApplicationJob
       )
     end
   end
+  # rubocop:enable all
 end

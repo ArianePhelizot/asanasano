@@ -22,6 +22,7 @@ class TransferJob < ApplicationJob
     orders_to_settle
   end
 
+# rubocop:disable all
   def create_mangopay_transfers(orders_to_settle)
     orders_to_settle.each do |order|
       slot = order.slot
@@ -33,12 +34,10 @@ class TransferJob < ApplicationJob
         # it should be ok since now when somebody cancel a slot, the order is
         # settled wether there has been a refund or not
         call_mangopay_api_for_transfer_creation(order, slot, user, coach_user)
-       end
+      end
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def call_mangopay_api_for_transfer_creation(order, _slot, user, coach_user)
     begin
       mangopay_transfer = MangoPay::Transfer.create(
@@ -74,6 +73,5 @@ class TransferJob < ApplicationJob
       order.save
     end
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable all
 end

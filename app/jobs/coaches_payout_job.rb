@@ -23,8 +23,7 @@ class CoachesPayoutJob < ApplicationJob
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
+# rubocop:disable all
   def coach_payout(slot)
     coach_user = slot.course.coach.user
     if coach_user.account.present? && coach_user.account.iban.present?
@@ -72,6 +71,5 @@ class CoachesPayoutJob < ApplicationJob
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
+# rubocop:enable all
 end
