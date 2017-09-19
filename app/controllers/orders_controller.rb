@@ -17,4 +17,5 @@ class OrdersController < ApplicationController
       render courses / show
     end
   end
+
 end
