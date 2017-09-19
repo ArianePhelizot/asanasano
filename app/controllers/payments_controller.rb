@@ -6,7 +6,6 @@ class PaymentsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def new
-
     # Launch mangopayhooks creation if no hooks created yet
     MangopayHookJob.perform_now
     # On passe @order en argument de la méthode authorize car on n'a pas de modèle payment.

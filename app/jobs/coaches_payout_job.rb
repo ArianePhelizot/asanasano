@@ -19,53 +19,57 @@ class CoachesPayoutJob < ApplicationJob
 
     # Je regarde pour chacune de ces séances, quel était le coach
     slots.each do |slot|
-      coach_user = slot.course.coach.user
-      if coach_user.account.present? && coach_user.account.iban.present?
-        # je regarde quelle est la somme associée aux orders paid & settled du slots
-        # rubocop:disable UselessAssignment
-        paid_orders = slot.orders.select { |order| order.state == "paid" }
-        # rubocop:enable UselessAssignment
-        paid_and_settled_orders = paid_orders.select { |order| order.settled = true }
-
-        unless paid_and_settled_orders.empty?
-          billed_amounts_array = paid_and_settled_orders.map(&:amount_cents)
-          billed_sum_cents = billed_amounts_array.reduce(:+)
-
-          # et je fais le virement correspondant au prof
-          if  billed_sum_cents > 0
-
-            begin
-              mangopay_payout = MangoPay::PayOut::BankWire.create(
-                "Tag": "Payout",
-                "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
-                "DebitedFunds": {
-                  "Currency": "EUR",
-                  "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
-                },
-                "Fees": {
-                  "Currency": "EUR",
-                  "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
-                },
-                "BankAccountId": coach_user.account.iban.mangopay_id,
-                "DebitedWalletId": coach_user.account.wallet.mangopay_id,
-                "BankWireRef": "Séance #{slot.course.name} du #{slot.date.strftime('%v')}"
-              )
-
-              slot.payout_mangopay_id = mangopay_payout["Id"]
-              slot.save
-            rescue MangoPay::ResponseError => ex
-              log_error = ex.message
-            rescue => ex
-              log_error = ex.message
-            ensure
-              MangopayLog.create(event: "payout_creation",
-                                 mangopay_answer: mangopay_payout,
-                                 user_id: coach_user.id.to_i,
-                                 error_logs: log_error)
-            end
-          end
-        end
-      end
+      coach_payout(slot)
     end
   end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def coach_payout(slot)
+    coach_user = slot.course.coach.user
+    next unless coach_user.account.present? && coach_user.account.iban.present?
+    # je regarde quelle est la somme associée aux orders paid & settled du slots
+    paid_orders = slot.orders.select { |order| order.state == "paid" }
+    # rubocop:enable UselessAssignment
+    paid_and_settled_orders = paid_orders.select { |order| order.settled = true }
+
+    next if paid_and_settled_orders.empty?
+    billed_amounts_array = paid_and_settled_orders.map(&:amount_cents)
+    billed_sum_cents = billed_amounts_array.reduce(:+)
+
+    # et je fais le virement correspondant au prof
+    next unless billed_sum_cents.positive?
+
+    begin
+      mangopay_payout = MangoPay::PayOut::BankWire.create(
+        "Tag": "Payout",
+        "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
+        "DebitedFunds": {
+          "Currency": "EUR",
+          "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+        },
+        "Fees": {
+          "Currency": "EUR",
+          "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+        },
+        "BankAccountId": coach_user.account.iban.mangopay_id,
+        "DebitedWalletId": coach_user.account.wallet.mangopay_id,
+        "BankWireRef": "Séance #{slot.course.name} du #{slot.date.strftime('%v')}"
+      )
+
+      slot.payout_mangopay_id = mangopay_payout["Id"]
+      slot.save
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "payout_creation",
+                         mangopay_answer: mangopay_payout,
+                         user_id: coach_user.id.to_i,
+                         error_logs: log_error)
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end

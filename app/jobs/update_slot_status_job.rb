@@ -1,6 +1,7 @@
 class UpdateSlotStatusJob < ApplicationJob
   queue_as :default
 
+  # rubocop:disable Metrics/MethodLength
   def perform
     # Selection of all slots with both a due slot date
     # and a "created" or "confirmed status", i.e not "cancelled", nor "archived"
@@ -21,4 +22,5 @@ class UpdateSlotStatusJob < ApplicationJob
       slot.save
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end
