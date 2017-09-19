@@ -148,12 +148,12 @@ class HooksController < ApplicationController
                        mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
                                         RessourceId: #{params['RessourceId']},
                                         Date: #{params['Date']}",
-                       user_id: @slot.course.coach.user.to_i,
+                       user_id: @slot.course.coach.user.id.to_i,
                        error_logs: log_error)
   end
 
   def payout_normal_failed
-    render nothing: true, status: 204 # answer to API
+    render nothing: true, status: 200 # answer to API
 
     # Log info in mangopay log
   rescue MangoPay::ResponseError => ex
@@ -165,7 +165,7 @@ class HooksController < ApplicationController
                        mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
                                         RessourceId: #{params['RessourceId']},
                                         Date: #{params['Date']}",
-                       user_id: @slot.course.coach.user.to_i,
+                       user_id: @slot.course.coach.user.id.to_i,
                        error_logs: log_error)
   end
 
