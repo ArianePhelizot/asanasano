@@ -47,33 +47,13 @@ class MangopayHookJob < ApplicationJob
       )
     end
 
-    # Check si hook créé pour l'événement "TRANSFER_NORMAL_SUCCEEDED"
-    # Si le nb de hook pour "TRANSFER_NORMAL_SUCCEEDED" < 1
-    if mangopayhooks.select { |hash| hash.value?("TRANSFER_NORMAL_SUCCEEDED") }.empty?
-      # Alors il faut crée un hook
-      payment_succeeded_hook = MangoPay::Hook.create(
-        "EventType": "TRANSFER_NORMAL_SUCCEEDED",
-        "Url": default_url_options_for_mangopay[:host] + "/hooks/transfer_normal_succeded/"
-      )
-    end
-
-    # Check si hook créé pour l'événement "TRANSFER_NORMAL_FAILED"
-    # Si le nb de hook pour "TRANSFER_NORMAL_FAILED" < 1
-    if mangopayhooks.select { |hash| hash.value?("TRANSFER_NORMAL_FAILED") }.empty?
-      # Alors il faut crée un hook
-      payment_succeeded_hook = MangoPay::Hook.create(
-        "EventType": "TRANSFER_NORMAL_FAILED",
-        "Url": default_url_options_for_mangopay[:host] + "/hooks/transfer_normal_failed/"
-      )
-    end
-
     # Check si hook créé pour l'événement "PAYOUT_NORMAL_SUCCEEDED"
     # Si le nb de hook pour "PAYOUT_NORMAL_SUCCEEDED" < 1
     if mangopayhooks.select { |hash| hash.value?("PAYOUT_NORMAL_SUCCEEDED") }.empty?
       # Alors il faut crée un hook
       payment_succeeded_hook = MangoPay::Hook.create(
         "EventType": "PAYOUT_NORMAL_SUCCEEDED",
-        "Url": default_url_options_for_mangopay[:host] + "/hooks/payout_normal_succeded/"
+        "Url": default_url_options_for_mangopay[:host] + "/hooks/payout_normal_succeeded/"
       )
     end
 
