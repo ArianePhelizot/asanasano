@@ -11,9 +11,6 @@ class HooksController < ApplicationController
   before_action :set_mangopay_order_to_refund, only: [:payin_refund_succeeded,
                                                       :payin_refund_failed]
 
-  before_action :set_mangopay_order_to_transfer, only: [:transfer_normal_succeeded,
-                                                        :transfer_normal_failed]
-
   before_action :set_mangopay_slot_to_payout, only: [:payout_normal_succeeded,
                                                      :payout_normal_failed]
 
@@ -21,16 +18,12 @@ class HooksController < ApplicationController
                                   :user_feedback_on_booking_and_payment,
                                   :payment_failed,
                                   :payin_refund_succeeded,
-                                  :payin_refund_failed,
-                                  :transfer_normal_succeeded,
-                                  :transfer_normal_failed]
+                                  :payin_refund_failed]
 
   before_action :set_log_error, only: [:payment_succeeded,
                                        :payment_failed,
                                        :payin_refund_succeeded,
                                        :payin_refund_failed,
-                                       :transfer_normal_succeeded,
-                                       :transfer_normal_failed,
                                        :payout_normal_succeeded,
                                        :payout_normal_failed]
 
@@ -136,49 +129,14 @@ class HooksController < ApplicationController
                        error_logs: log_error)
   end
 
-  def transfer_normal_succeeded
-    # Need to identify order first
-    # Need to pass order.settled to true
-    authorize @order
-    @order.settled = true
-    @order.save
-    # Need to log the info in MangopayLog table
-    render nothing: true, status: 204 # answer to API
-  rescue MangoPay::ResponseError => ex
-    log_error = ex.message
-  rescue => ex
-    log_error = ex.message
-  ensure
-    MangopayLog.create(event: "transfer_succeeded",
-                       mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
-                                        RessourceId: #{params['RessourceId']},
-                                        Date: #{params['Date']}",
-                       user_id: @user.id.to_i,
-                       error_logs: log_error)
-  end
-
-  def transfer_normal_failed
-    render nothing: true, status: 204 # answer to API
-  rescue MangoPay::ResponseError => ex
-    log_error = ex.message
-  rescue => ex
-    log_error = ex.message
-  ensure
-    MangopayLog.create(event: "transfer_failed",
-                       mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
-                                        RessourceId: #{params['RessourceId']},
-                                        Date: #{params['Date']}",
-                       user_id: @user.id.to_i,
-                       error_logs: log_error)
-  end
-
   def payout_normal_succeeded
     # Need to identify payout first
     # Identify the slot and pass its status to "archived"
+    authorize @slot
     @slot.status = "archived"
     @slot.save
     # Beware of slot policy!
-    render nothing: true, status: 204 # answer to API
+    render nothing: true, status: 200 # answer to API
 
     # Log info in mangopay log
   rescue MangoPay::ResponseError => ex
@@ -217,10 +175,6 @@ class HooksController < ApplicationController
 
   def set_mangopay_order_to_refund
     @order = Order.find_by(refund_mangopay_id: params["RessourceId"])
-  end
-
-  def set_mangopay_order_to_transfer
-    @order = Order.find_by(transfer_mangopay_id: params["RessourceId"])
   end
 
   def set_mangopay_slot_to_payout
