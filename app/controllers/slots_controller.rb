@@ -153,7 +153,8 @@ class SlotsController < ApplicationController
   # rubocop:enable Metrics/MethodLength
 
   def cancellation_with_refund?
-    (@slot.start_at.to_i - DateTime.now.to_i) / 60 * 60 > 24
+    free_refund_policy = @slot.course.coach.params_set.free_refund_policy_in_hours
+    (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy
   end
 end
 # rubocop:enable Metrics/ClassLength

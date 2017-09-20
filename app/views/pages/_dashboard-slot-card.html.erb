@@ -4,7 +4,7 @@
   <div id="se-desinscrire">
     <%= link_to "Se désinscrire", desinscription_from_dashboard_slot_path(slot),
     method: 'patch', id:"desinscription-text",
-    data: { confirm: "Êtes-vous sûr de vouloir vous désinscrire?" } %>
+    data: { confirm: "Vous pouvez annuler votre inscription à une séance, sans aucun frais, jusqu'à #{slot.course.coach.params_set.free_refund_policy_in_hours} heures avant le début du cours. En deça de cette limite, le cours est du. Êtes-vous sûr de vouloir vous désinscrire?" } %>
   </div>
  </div>
 
