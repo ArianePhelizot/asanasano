@@ -1,8 +1,8 @@
 class CoachesPayoutJob < ApplicationJob
   queue_as :default
 
+# rubocop:disable all
   def perform
-
     # Je regarde une fois par jour, pour chaque coach, l'ensemble des séances ayant eu
     # ... lieu il y a x jours où x = payout_delay_in_days
 
@@ -19,17 +19,17 @@ class CoachesPayoutJob < ApplicationJob
       # les cours qui ont eu lieu, il y a X jours, x = payout_delay_in_days
 
       # Liste de toutes les séances d'il y a 3 jours
-      coach_slots_to_payout = coach_slots.select { |slot| slot.date == Date.today - (coach_payout_period).days }
-      coach_slots_to_payout = coach_slots_to_payout.select { |slot| slot.status == "passed" } # neither cancelled, nor archived!
+      # only passed since we want to exclude cancelled and archived ones!
+      coach_slots_to_payout = coach_slots.select { |slot| slot.date == Date.today - coach_payout_period.days }
+      coach_slots_to_payout = coach_slots_to_payout.select { |slot| slot.status == "passed" }
 
       # Je regarde pour chacune de ces séances, quel était le coach
       coach_slots_to_payout.each do |slot|
         coach_payout(slot)
-       end
+      end
     end
   end
 
-# rubocop:disable all
   def coach_payout(slot)
     coach_user = slot.course.coach.user
     fees = slot.course.coach.params_set.fees_on_payout

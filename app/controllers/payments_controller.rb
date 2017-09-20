@@ -37,7 +37,6 @@ class PaymentsController < ApplicationController
       @order.state = "pending"
       @order.mangopay_id = mangopay_card_web_pay_in["Id"]
       @order.save!
-
     rescue MangoPay::ResponseError => ex
       log_error = ex.message
     rescue => ex

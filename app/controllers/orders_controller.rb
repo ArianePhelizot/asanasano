@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-
   def show
     @order = Order.where(state: "paid").find(params[:id])
     authorize @order
@@ -17,5 +16,4 @@ class OrdersController < ApplicationController
       render courses / show
     end
   end
-
 end
