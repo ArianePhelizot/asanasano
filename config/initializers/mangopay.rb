@@ -16,10 +16,6 @@ MangoPay.configure do |c|
 
 end
 
-# Set MANGOPAY API base URL and Client ID
-# mangoPay.cardRegistration.baseURL = "https://api.sandbox.mangopay.com";
-# mangoPay.cardRegistration.clientId = ENV['MANGOPAY_CLIENT_ID'];
-
 
 # # get some user by id
 # john = MangoPay::User.fetch(john_id) # => {FirstName"=>"John", "LastName"=>"Doe", ...}

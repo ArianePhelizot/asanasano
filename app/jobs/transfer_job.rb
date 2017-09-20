@@ -1,9 +1,6 @@
 class TransferJob < ApplicationJob
   queue_as :default
 
-  ASANASANO_FEES_RATE_ON_WALLET_TRANSFER = 0
-  # BEWARE: Arguments will be serialized to json, so pass id, string, not full objects.
-
   def perform
     # Once a day, I want to transfer money from customers wallets to coaches wallets
 
@@ -49,9 +46,9 @@ class TransferJob < ApplicationJob
         "CreditedUserId": user.account.mangopay_id,
         "DebitedFunds":
             { "Currency": "EUR",
-              "Amount": order.amount_cents * (1 - ASANASANO_FEES_RATE_ON_WALLET_TRANSFER) },
+              "Amount": order.amount_cents},
         "Fees": { "Currency": "EUR",
-                  "Amount": order.amount_cents * ASANASANO_FEES_RATE_ON_WALLET_TRANSFER },
+                  "Amount": 0},
         "DebitedWalletId": user.account.wallet.mangopay_id,
         "CreditedWalletId": coach_user.account.wallet.mangopay_id
       )

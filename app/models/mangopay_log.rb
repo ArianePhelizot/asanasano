@@ -29,8 +29,6 @@ class MangopayLog < ApplicationRecord
                                         payin_refund_succeeded
                                         payin_refund_failed
                                         transfer_creation
-                                        transfer_succeeded
-                                        transfer_failed
                                         payout_creation
                                         payout_succeeded
                                         payout_failed) }

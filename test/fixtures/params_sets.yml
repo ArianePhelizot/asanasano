@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: params_sets
+#
+#  id                          :integer          not null, primary key
+#  name                        :string
+#  description                 :string
+#  fees_on_payout              :float
+#  payout_delay_in_days        :integer
+#  free_refund_policy_in_hours :integer
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

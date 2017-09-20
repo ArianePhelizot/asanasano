@@ -18,8 +18,21 @@ Account.destroy_all
 Wallet.destroy_all
 Iban.destroy_all
 Order.destroy_all
+ParamsSet.destroy_all
 
-puts 'Creating users, groups, coaches, courses and sports, and accounts, wallets, ibans, slots...'
+puts 'Creating app params_sets, users, groups, coaches, courses and sports, and accounts, wallets, ibans, slots...'
+
+# APP PARAMS SET SEEDS
+
+params_set1 = ParamsSet.create!(name: "Conditions génrales de test du #{Date.today}",
+                  description:"- 10% de fees pour ASANASANO,
+                              - 72h de délai de paiement des coach à l'issue de la séance,
+                              - Possibilité d'annuler sans frais avec un préavis de min 24h",
+                  fees_on_payout: 0.1,
+                  payout_delay_in_days: 3,
+                  free_refund_policy_in_hours: 24)
+
+puts "#{ParamsSet.count} params_set(s) created"
 
 # SPORT SEEDS
 
@@ -47,9 +60,9 @@ puts "#{Sport.count} sports created"
 
 # COACH SEEDS
 
-coach1 = Coach.create!(description: 'Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion', experience: 5)
-coach2 = Coach.create!(description: 'Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés', experience: 6)
-coach3 = Coach.create!(description: 'Couteau suisse, fan de sport', experience: 3)
+coach1 = Coach.create!(description: 'Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion', experience: 5, params_set_id: params_set1.id)
+coach2 = Coach.create!(description: 'Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés', experience: 6, params_set_id: params_set1.id)
+coach3 = Coach.create!(description: 'Couteau suisse, fan de sport', experience: 3, params_set_id: params_set1.id)
 
 puts "#{Coach.count} coaches created"
 
@@ -398,9 +411,10 @@ end
 
 
 for i in -4..4
-  Slot.create!(date: date_of_next("Tuesday") + 7*i,
-              start_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 18, 00),
-              end_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 19, 15),
+  date = date_of_next("Tuesday") + 7*i
+  Slot.create!(date: date,
+              start_at: DateTime.new(date.year, date.month, date.day, 18, 00),
+              end_at: DateTime.new(date.year, date.month, date.day, 19, 15),
               specificities: "Prévoyez juste de bonnes baskets!",
               participants_min: 3,
               price_cents: 500,
@@ -412,9 +426,10 @@ end
 
 
 for i in -4..4
-  Slot.create!(date: date_of_next("Thursday") + 7*i,
-              start_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 13, 00),
-              end_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 14, 00),
+  date = date_of_next("Thursday") + 7*i
+  Slot.create!(date: date,
+              start_at: DateTime.new(date.year, date.month, date.day, 13, 00),
+              end_at: DateTime.new(date.year, date.month, date.day, 14, 00),
               specificities: "Prévoyez juste de bonnes baskets!",
               participants_min: 3,
               price_cents: 500,
@@ -425,9 +440,10 @@ end
 
 
 for i in -4..4
-  Slot.create!(date: date_of_next("Wednesday") + 7*i,
-              start_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 13, 00),
-              end_at: DateTime.new(date_of_next("Tuesday").year, date_of_next("Tuesday").month, date_of_next("Tuesday").day, 14, 00),
+  date = date_of_next("Wednesday") + 7*i
+  Slot.create!(date: date,
+              start_at: DateTime.new(date.year, date.month, date.day, 13, 00),
+              end_at: DateTime.new(date.year, date.month, date.day, 13, 45),
               specificities: "Merci de venir 5 minutes avant le début de la séance pour que nous puissions commencer à l'heure",
               participants_min: 6,
               price_cents: 1500,
@@ -435,58 +451,5 @@ for i in -4..4
               course_id: course4.id
               )
 end
-
-
-
-
-# slot1 = Slot.create!(date: Date.today + 1,
-#                     start_at: DateTime.new((Date.today+1).year, (Date.today+1).month, (Date.today+1).day, 12, 00),
-#                     end_at: DateTime.new((Date.today+1).year, (Date.today+1).month, (Date.today+1).day, 13, 00),
-#                     specificities: "Des matelas seront sur place! Pensez juste à prendre des tenues confortables",
-#                     participants_min: 5,
-#                     price_cents: 10,
-#                     status: 0,
-#                     course_id: course1.id
-#                     )
-
-# slot2 = Slot.create!(date: Date.today + 2,
-#                     start_at: DateTime.new((Date.today+2).year, (Date.today+2).month, (Date.today+2).day, 12, 00),
-#                     end_at: DateTime.new((Date.today+2).year, (Date.today+2).month, (Date.today+2).day, 13, 00),
-#                     specificities: "Des matelas seront sur place! Pensez juste à prendre des tenues confortables",
-#                     participants_min: 5,
-#                     price_cents: 10,
-#                     status: 0,
-#                     course_id: course1.id
-#                     )
-
-# slot3 = Slot.create!(date: Date.today + 3,
-#                     start_at: DateTime.new((Date.today+3).year, (Date.today+3).month, (Date.today+3).day, 12, 00),
-#                     end_at: DateTime.new((Date.today+3).year, (Date.today+3).month, (Date.today+3).day, 13, 00),
-#                     specificities: "Des matelas seront sur place! Pensez juste à prendre des tenues confortables",
-#                     participants_min: 5,
-#                     price_cents: 10,
-#                     status: 0,
-#                     course_id: course1.id
-#                     )
-
-# slot4 = Slot.create!(date: Date.today + 4,
-#                     start_at: DateTime.new((Date.today+4).year, (Date.today+4).month, (Date.today+4).day, 12, 00),
-#                     end_at: DateTime.new((Date.today+4).year, (Date.today+4).month, (Date.today+4).day, 13, 00),
-#                     specificities: "Des matelas seront sur place! Pensez juste à prendre des tenues confortables",
-#                     participants_min: 5,
-#                     price_cents: 10,
-#                     status: 0,
-#                     course_id: course1.id
-#                     )
-
-# slot5 = Slot.create!(date: Date.today + 5,
-#                     start_at: DateTime.new((Date.today+5).year, (Date.today+5).month, (Date.today+5).day, 12, 00),
-#                     end_at: DateTime.new((Date.today+5).year, (Date.today+5).month, (Date.today+5).day, 13, 00),
-#                     specificities: "Des matelas seront sur place! Pensez juste à prendre des tenues confortables",
-#                     participants_min: 5,
-#                     price_cents: 10,
-#                     status: 0,
-#                     course_id: course1.id
-#                     )
 
 puts "#{Slot.count} slots created"

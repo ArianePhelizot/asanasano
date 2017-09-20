@@ -1,4 +1,4 @@
-class AddAdressInfostoAccounts < ActiveRecord::Migration[5.0]
+class AddAddressInfostoAccounts < ActiveRecord::Migration[5.0]
   def change
     add_column :accounts, :address_line1, :string
     add_column :accounts, :address_line2, :string

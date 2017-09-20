@@ -1,31 +1,39 @@
 class CoachesPayoutJob < ApplicationJob
   queue_as :default
 
-  # Parametring the payment period from slot date to coach payout date
-  COACH_PAYOUT_PERIOD = 3 # days
-
-  ASANASANO_FEES_RATE_ON_PAYOUTS = 0.1
-
-  # Je pense que je suis obligée de le gérer avec un mock-up de réponse d'API
-  # et également d'intégrer dans mes fixtures des fake données d'API
-
+# rubocop:disable all
   def perform
-    # Je veux virer l'argent du wallet des profs sur leur compte en banque pour
-    # les cours qui ont eu lieu, il y a 3 jours
+    # Je regarde une fois par jour, pour chaque coach, l'ensemble des séances ayant eu
+    # ... lieu il y a x jours où x = payout_delay_in_days
 
-    # Liste de toutes les séances d'il y a 3 jours
-    slots = Slot.all.select { |slot| slot.date == Date.today - COACH_PAYOUT_PERIOD.days }
-    slots = slots.select { |slot| slot.status == "passed" } # neither cancelled, nor archived!
+    Coach.all.each do |coach|
+      coach_payout_period = coach.params_set.payout_delay_in_days
 
-    # Je regarde pour chacune de ces séances, quel était le coach
-    slots.each do |slot|
-      coach_payout(slot)
+      # Je prends tous les slots d'un coach
+      coach_slots = []
+      coach.courses.each do |course|
+        coach_slots << course.slots.to_a
+      end
+      coach_slots = coach_slots.flatten
+      # Je veux virer l'argent du wallet des profs sur leur compte en banque pour
+      # les cours qui ont eu lieu, il y a X jours, x = payout_delay_in_days
+
+      # Liste de toutes les séances d'il y a 3 jours
+      # only passed since we want to exclude cancelled and archived ones!
+      coach_slots_to_payout = coach_slots.select { |slot| slot.date == Date.today - coach_payout_period.days }
+      coach_slots_to_payout = coach_slots_to_payout.select { |slot| slot.status == "passed" }
+
+      # Je regarde pour chacune de ces séances, quel était le coach
+      coach_slots_to_payout.each do |slot|
+        coach_payout(slot)
+      end
     end
   end
 
-# rubocop:disable all
   def coach_payout(slot)
     coach_user = slot.course.coach.user
+    fees = slot.course.coach.params_set.fees_on_payout
+
     if coach_user.account.present? && coach_user.account.iban.present?
       # je regarde quelle est la somme associée aux orders paid & settled du slots
       paid_orders = slot.orders.select { |order| order.state == "paid" }
@@ -44,11 +52,11 @@ class CoachesPayoutJob < ApplicationJob
               "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
               "DebitedFunds": {
                 "Currency": "EUR",
-                "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+                "Amount": billed_sum_cents * (1 - fees)
               },
               "Fees": {
                 "Currency": "EUR",
-                "Amount": billed_sum_cents * (1 - ASANASANO_FEES_RATE_ON_PAYOUTS)
+                "Amount": billed_sum_cents * fees
               },
               "BankAccountId": coach_user.account.iban.mangopay_id,
               "DebitedWalletId": coach_user.account.wallet.mangopay_id,

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register Coach do
+ActiveAdmin.register Course do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :description, :experience, :languages, :params_set_id
+  permit_params :name, :description, :fees_on_payout, :payout_delay_in_days , :free_refund_policy_in_hours
   #
   # or
   #
