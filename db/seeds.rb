@@ -24,7 +24,7 @@ puts 'Creating app params_sets, users, groups, coaches, courses and sports, and 
 
 # APP PARAMS SET SEEDS
 
-params_set1 = ParamsSet.create!(name: "Conditions génrales de test du #{Date.today}",
+params_set1 = ParamsSet.create!(name: "Conditions générales de test du #{Date.today}",
                   description:"- 10% de fees pour ASANASANO,
                               - 72h de délai de paiement des coach à l'issue de la séance,
                               - Possibilité d'annuler sans frais avec un préavis de min 24h",
