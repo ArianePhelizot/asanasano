@@ -2,12 +2,17 @@
 #
 # Table name: coaches
 #
-#  id          :integer          not null, primary key
-#  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  experience  :integer
-#  languages   :text             default([]), is an Array
+#  id            :integer          not null, primary key
+#  description   :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  experience    :integer
+#  languages     :text             default([]), is an Array
+#  params_set_id :integer
+#
+# Indexes
+#
+#  index_coaches_on_params_set_id  (params_set_id)
 #
 
 # This model initially had no columns defined. If you add columns to the

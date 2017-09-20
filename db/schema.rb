@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911093840) do
+ActiveRecord::Schema.define(version: 20170920124057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,25 +72,14 @@ ActiveRecord::Schema.define(version: 20170911093840) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
-  create_table "card_registrations", force: :cascade do |t|
-    t.integer  "account_id"
-    t.integer  "mangopay_id"
-    t.string   "tag"
-    t.string   "access_key"
-    t.string   "preregistration_data"
-    t.string   "card_registration_url"
-    t.string   "registration_data"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["account_id"], name: "index_card_registrations_on_account_id", using: :btree
-  end
-
   create_table "coaches", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "experience"
-    t.text     "languages",   default: [],              array: true
+    t.text     "languages",     default: [],              array: true
+    t.integer  "params_set_id"
+    t.index ["params_set_id"], name: "index_coaches_on_params_set_id", using: :btree
   end
 
   create_table "coaches_groups", id: false, force: :cascade do |t|
@@ -176,6 +165,16 @@ ActiveRecord::Schema.define(version: 20170911093840) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
+  create_table "params_sets", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "fees_on_payout"
+    t.integer  "payout_delay_in_days"
+    t.integer  "free_refund_policy_in_hours"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "slots", force: :cascade do |t|
     t.date     "date"
     t.integer  "participants_min"
@@ -253,7 +252,7 @@ ActiveRecord::Schema.define(version: 20170911093840) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "card_registrations", "accounts"
+  add_foreign_key "coaches", "params_sets"
   add_foreign_key "courses", "coaches"
   add_foreign_key "courses", "groups"
   add_foreign_key "courses", "sports"
