@@ -14,6 +14,27 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
+
+  index do
+    selectable_column
+    column :id
+    column :coach_id
+    column :email
+    column :last_name
+    column :first_name
+    column :admin
+    column :phone_number
+    column :created_at
+    actions
+    column :sign_in_count
+    column :current_sign_in_at
+    column :last_sign_in_at
+    column :invited_by_id
+    column :invitations_count
+    column :facebook_picture_url
+  end
+
+
   show do
     panel 'Groups' do
       table_for user.groups do
@@ -23,4 +44,3 @@ ActiveAdmin.register User do
     end
   end
 end
-
