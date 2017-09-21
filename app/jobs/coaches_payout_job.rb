@@ -48,7 +48,7 @@ class CoachesPayoutJob < ApplicationJob
         if billed_sum_cents.positive?
           begin
             mangopay_payout = MangoPay::PayOut::BankWire.create(
-              "Tag": "Payout",
+              "Tag": slot.mangopay_payout_tag,
               "AuthorId": ENV["MANGOPAY_CLIENT_ID"],
               "DebitedFunds": {
                 "Currency": "EUR",

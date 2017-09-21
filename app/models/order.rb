@@ -28,5 +28,10 @@ class Order < ApplicationRecord
   belongs_to :slot
   belongs_to :user
 
-  enum state: %i(pending paid failed ask_for_refund failed_refund refunded)
+  enum state: %i(pending paid failed ask_for_refund refund_for_slot_cancellation failed_refund refunded)
+
+  def mangopay_order_tag
+    " - Order: #{self.id} - User: #{self.user.id}, #{self.user.first_name.first}.#{self.user.last_name} -Slot: #{self.slot.id} du #{slot.date.strftime("%d/%m/%y")} - Course: #{self.slot.course.id}, #{self.slot.course.name} - Coach: #{self.slot.course.coach_id}/User_id: #{self.slot.course.coach.user.id}, #{self.slot.course.coach.user.first_name.first}.#{self.slot.course.coach.user.last_name} "
+  end
+
 end

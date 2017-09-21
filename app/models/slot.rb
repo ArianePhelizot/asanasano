@@ -41,6 +41,7 @@ class Slot < ApplicationRecord
   validate :participants_min_between_one_and_capacity_max
 
   def participants_min_between_one_and_capacity_max
+    course = self.course
     if participants_min > course.capacity_max || participants_min.negative?
       errors.add(:participants_min, "Le nombre minimum de participants doit être
                    compris entre 0 et #{course.capacity_max} (capacité maximale
@@ -52,5 +53,9 @@ class Slot < ApplicationRecord
 
   def full?
     users.count == course.capacity_max
+  end
+
+  def mangopay_payout_tag
+    "Slot: #{self.id} du #{self.date.strftime("%d/%m/%y")} - Course: #{self.course.id}, #{self.course.name} - Coach: #{self.course.coach_id}/User_id: #{self.course.coach.user.id}, #{self.course.coach.user.first_name.first}.#{self.course.coach.user.last_name} - #{self.users.count} participants "
   end
 end

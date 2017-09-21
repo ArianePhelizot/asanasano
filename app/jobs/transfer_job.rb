@@ -38,7 +38,7 @@ class TransferJob < ApplicationJob
   def call_mangopay_api_for_transfer_creation(order, _slot, user, coach_user)
     begin
       mangopay_transfer = MangoPay::Transfer.create(
-        "Tag": "Money transfer",
+        "Tag": order.mangopay_order_tag,
         # "Tag": "Money transfer from user_id:#{user.id}
         # to coach user_id:#{coach_user.id}, slot_id: #{slot.id}",
         # "AuthorId": ENV["MANGOPAY_CLIENT_ID"], author has to be the wallet owner!!!
