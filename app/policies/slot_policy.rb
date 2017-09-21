@@ -23,7 +23,7 @@ class SlotPolicy < ApplicationPolicy
     desinscription_from_course_page?
   end
 
-  def destroy?
+  def cancel?
     user_is_group_owner_or_coach?
   end
 

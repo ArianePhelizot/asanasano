@@ -28,5 +28,14 @@ class Order < ApplicationRecord
   belongs_to :slot
   belongs_to :user
 
-  enum state: %i(pending paid failed ask_for_refund failed_refund refunded)
+  enum state: %i(pending paid failed ask_for_refund refund_for_slot_cancellation
+                 failed_refund refunded)
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable LineLength
+  def mangopay_order_tag
+    " - Order: #{id} - User: #{user.id}, #{user.first_name.first}.#{user.last_name} -Slot: #{slot.id} du #{slot.date.strftime('%d/%m/%y')} - Course: #{slot.course.id}, #{slot.course.name} - Coach: #{slot.course.coach_id}/User_id: #{slot.course.coach.user.id}, #{slot.course.coach.user.first_name.first}.#{slot.course.coach.user.last_name} "
+  end
+  # rubocop:enable LineLength
+  # rubocop:enable Metrics/AbcSize
 end

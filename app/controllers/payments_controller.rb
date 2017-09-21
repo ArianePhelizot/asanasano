@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
       log_error = nil
 
       mangopay_card_web_pay_in = MangoPay::PayIn::Card::Web.create(
-        "Tag": current_user.account.tag,
+        "Tag": @order.mangopay_order_tag,
         "AuthorId": current_user.account.mangopay_id,
         "CreditedUserId": current_user.account.mangopay_id,
         "DebitedFunds": { "Currency": "EUR", "Amount": @order.amount_cents },
@@ -48,8 +48,8 @@ class PaymentsController < ApplicationController
                          error_logs: log_error)
     end
 
-    sleep(20.0)
     redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
+    sleep(5.0)
     flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!."
   end
 

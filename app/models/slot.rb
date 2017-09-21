@@ -41,6 +41,7 @@ class Slot < ApplicationRecord
   validate :participants_min_between_one_and_capacity_max
 
   def participants_min_between_one_and_capacity_max
+    course = self.course
     if participants_min > course.capacity_max || participants_min.negative?
       errors.add(:participants_min, "Le nombre minimum de participants doit être
                    compris entre 0 et #{course.capacity_max} (capacité maximale
@@ -53,4 +54,12 @@ class Slot < ApplicationRecord
   def full?
     users.count == course.capacity_max
   end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable LineLength
+  def mangopay_payout_tag
+    "Slot: #{id} du #{date.strftime('%d/%m/%y')} - Course: #{course.id}, #{course.name} - Coach: #{course.coach_id}/User_id: #{course.coach.user.id}, #{course.coach.user.first_name.first}.#{course.coach.user.last_name} - #{users.count} participants "
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable LineLength
 end
