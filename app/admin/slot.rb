@@ -4,7 +4,7 @@ ActiveAdmin.register Slot do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
-  permit_params :participants_min, :date, :start_at, :end_at, :price_cents, :specificities
+  permit_params :participants_min, :date, :start_at, :end_at, :price_cents, :specificities, :status, :course_id
   #
   # or
   #
