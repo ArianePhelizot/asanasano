@@ -41,8 +41,6 @@ class SlotsController < ApplicationController
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 
   def edit
     authorize @slot # check authorization before edit
@@ -69,18 +67,18 @@ class SlotsController < ApplicationController
       # rembourser les participants
 
       # identifier les orders correspondants
-      order_to_refund = @slot.orders.select { |order| (order.state== "paid" && order. settled == false)}
+      order_to_refund = @slot.orders.select { |order|
+        order.state == "paid" && order. settled == false
+      }
       # faire un refund pour chaque order
       order_to_refund.each do |order|
         refund_order(order, "refund_for_slot_cancellation")
-      # prévenir les participants après remboursement
-      # mais j'ai envie de leur envoyer le mail que quand j'ai confirmation du refund
-      # ce mail doit être différent de celui que recevrait le client si l'annulation était de son fait
+        # prévenir les participants après remboursement
+        # avec un mail ad'hoc
       end
     end
 
     redirect_to course_path(@course)
-
   end
 
   def desinscription_from_course_page
@@ -146,7 +144,6 @@ class SlotsController < ApplicationController
   end
 
   def refund_order(order, order_state)
-
     log_error = nil
 
     begin
@@ -172,6 +169,8 @@ class SlotsController < ApplicationController
                          error_logs: log_error)
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   def desinscription_with_refund?
     free_refund_policy = @slot.course.coach.params_set.free_refund_policy_in_hours

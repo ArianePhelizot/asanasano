@@ -55,7 +55,11 @@ class Slot < ApplicationRecord
     users.count == course.capacity_max
   end
 
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable LineLength
   def mangopay_payout_tag
-    "Slot: #{self.id} du #{self.date.strftime("%d/%m/%y")} - Course: #{self.course.id}, #{self.course.name} - Coach: #{self.course.coach_id}/User_id: #{self.course.coach.user.id}, #{self.course.coach.user.first_name.first}.#{self.course.coach.user.last_name} - #{self.users.count} participants "
+    "Slot: #{id} du #{date.strftime('%d/%m/%y')} - Course: #{course.id}, #{course.name} - Coach: #{course.coach_id}/User_id: #{course.coach.user.id}, #{course.coach.user.first_name.first}.#{course.coach.user.last_name} - #{users.count} participants "
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable LineLength
 end

@@ -10,7 +10,7 @@ class OrderMailer < ApplicationMailer
     @order = order
     @user = order.user
 
-      mail(
+    mail(
       to:         @user.email,
       subject:    "Votre séance de #{@order.slot.course.name}
                   du #{@order.slot.date}
@@ -22,7 +22,7 @@ class OrderMailer < ApplicationMailer
     @order = order
     @user = order.user
 
-     mail(
+    mail(
       to:         @user.email,
       subject:    "Message de confirmation: annulation de votre séance de
                   #{@order.slot.course.name} du #{@order.slot.date}."
@@ -50,5 +50,4 @@ class OrderMailer < ApplicationMailer
                   #{@order.slot.course.name} du #{@order.slot.date} est annulée."
     )
   end
-
 end

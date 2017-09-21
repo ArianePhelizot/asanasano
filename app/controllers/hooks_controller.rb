@@ -87,7 +87,6 @@ class HooksController < ApplicationController
   end
 
   def payin_refund_succeeded
-
     login_refund_success_in_mangopay_logs
     # Log feedback API in MangopayLogs
 
@@ -96,31 +95,31 @@ class HooksController < ApplicationController
 
     if @order.state == "ask_for_refund"
       OrderMailer.slot_cancellation_with_refund_confirmation(@order).deliver_now
-      elsif @order.state =="refund_for_slot_cancellation"
-        OrderMailer.slot_cancellation_by_orga_information(@order).deliver_now
-      else
-        raise
+    elsif @order.state == "refund_for_slot_cancellation"
+      OrderMailer.slot_cancellation_by_orga_information(@order).deliver_now
+    else
+      fail
     end
 
     # Change order.state
-       @order.state = "refunded"
-       @order.settled = true
-       @order.save!
+    @order.state = "refunded"
+    @order.settled = true
+    @order.save!
   end
 
   def login_refund_success_in_mangopay_logs
-       render nothing: true, status: 200 # answer to API
-     rescue MangoPay::ResponseError => ex
-       log_error = ex.message
-     rescue => ex
-       log_error = ex.message
-     ensure
-       MangopayLog.create(event: "payin_refund_succeeded",
-                          mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
-                                           RessourceId: #{params['RessourceId']},
-                                           Date: #{params['Date']}",
-                          user_id: @order.user.id.to_i,
-                          error_logs: log_error)
+    render nothing: true, status: 200 # answer to API
+  rescue MangoPay::ResponseError => ex
+    log_error = ex.message
+  rescue => ex
+    log_error = ex.message
+  ensure
+    MangopayLog.create(event: "payin_refund_succeeded",
+                       mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
+                                        RessourceId: #{params['RessourceId']},
+                                        Date: #{params['Date']}",
+                       user_id: @order.user.id.to_i,
+                       error_logs: log_error)
   end
 
   def payin_refund_failed

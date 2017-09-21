@@ -68,7 +68,7 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
   def next_slots
-    active_slots = slots.select { |slot| slot.status == "created" ||  slot.status== "confirmed"}
+    active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
     sorted_slots = active_slots.sort_by(&:date)
     sorted_slots.select { |slot| slot.date >= Time.now }
   end
