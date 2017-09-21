@@ -4,7 +4,7 @@
 class SlotsController < ApplicationController
   before_action :find_course, only: %i(new create edit update)
   before_action :find_slot,
-                only: %i(edit update destroy desinscription
+                only: %i(edit update cancel desinscription
                          desinscription_from_course_page desinscription_from_dashboard
                          cancellation_with_refund?)
 
@@ -57,11 +57,30 @@ class SlotsController < ApplicationController
     end
   end
 
-  def destroy
+  def cancel
     authorize @slot
     @course = @slot.course
-    @slot.destroy
+
+    if @slot.users.empty?
+      @slot.destroy
+    else
+      @slot.status = "cancelled"
+      @slot.save
+      # rembourser les participants
+
+      # identifier les orders correspondants
+      order_to_refund = @slot.orders.select { |order| (order.state== "paid" && order. settled == false)}
+      # faire un refund pour chaque order
+      order_to_refund.each do |order|
+        refund_order(order, "refund_for_slot_cancellation")
+      # prévenir les participants après remboursement
+      # mais j'ai envie de leur envoyer le mail que quand j'ai confirmation du refund
+      # ce mail doit être différent de celui que recevrait le client si l'annulation était de son fait
+      end
+    end
+
     redirect_to course_path(@course)
+
   end
 
   def desinscription_from_course_page
@@ -99,39 +118,15 @@ class SlotsController < ApplicationController
     @slot = Slot.find(params[:id])
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def desinscription
     authorize @slot
     @slot.users.delete(current_user)
     @order = Order.find_by user: current_user, slot: @slot
     # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
-    if cancellation_with_refund?
+    if desinscription_with_refund?
       # a/ nous sommes à plus de 24h avant le début du cours
-      log_error = nil
 
-      begin
-        mangopay_refund = MangoPay::PayIn.refund(@order.mangopay_id,
-                                                "Tag": current_user.account.tag,
-                                                "AuthorId": current_user.account.mangopay_id,
-                                                "DebitedFunds": { "Currency": "EUR",
-                                                                  "Amount": @order.amount_cents },
-                                                "Fees": { "Currency": "EUR", "Amount": 0 })
-
-        # Mark order as "refunded" in data base
-        @order.state = "ask_for_refund"
-        @order.refund_mangopay_id = mangopay_refund["Id"]
-        @order.save
-      rescue MangoPay::ResponseError => ex
-        log_error = ex.message
-      rescue => ex
-        log_error = ex.message
-      ensure
-        MangopayLog.create(event: "refund_creation",
-                           mangopay_answer: mangopay_refund,
-                           user_id: current_user.id.to_i,
-                           error_logs: log_error)
-      end
+      refund_order(@order, "ask_for_refund")
 
       # Alert message ad'hoc
       flash[:notice] = "Votre annulation pour la séance
@@ -146,13 +141,39 @@ class SlotsController < ApplicationController
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte. "
       # Mail ad'hoc de confirmation
-      OrderMailer.slot_cancellation_confirmation(current_user, @order).deliver_now
+      OrderMailer.slot_cancellation_confirmation(@order).deliver_now
     end
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 
-  def cancellation_with_refund?
+  def refund_order(order, order_state)
+
+    log_error = nil
+
+    begin
+      mangopay_refund = MangoPay::PayIn.refund(order.mangopay_id,
+                                              "Tag": order_state + order.mangopay_order_tag,
+                                              "AuthorId": order.user.account.mangopay_id,
+                                              "DebitedFunds": { "Currency": "EUR",
+                                                                "Amount": order.amount_cents },
+                                              "Fees": { "Currency": "EUR", "Amount": 0 })
+
+      # Mark order as "refunded" in data base
+      order.state = order_state
+      order.refund_mangopay_id = mangopay_refund["Id"]
+      order.save
+    rescue MangoPay::ResponseError => ex
+      log_error = ex.message
+    rescue => ex
+      log_error = ex.message
+    ensure
+      MangopayLog.create(event: "refund_creation",
+                         mangopay_answer: mangopay_refund,
+                         user_id: order.user.id.to_i,
+                         error_logs: log_error)
+    end
+  end
+
+  def desinscription_with_refund?
     free_refund_policy = @slot.course.coach.params_set.free_refund_policy_in_hours
     (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy
   end

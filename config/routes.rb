@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     member do
       patch 'desinscription_from_course_page', to: 'slots#desinscription_from_course_page'
       patch 'desinscription_from_dashboard', to: 'slots#desinscription_from_dashboard'
+      patch 'cancel', to: 'slots#cancel'
     end
   end
 

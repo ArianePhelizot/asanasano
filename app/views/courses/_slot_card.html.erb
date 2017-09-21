@@ -57,10 +57,10 @@
           <i class="fa fa-pencil slot-icons"></i>
         <% end %>
       <% end %>
-      <% if policy(slot).destroy? %>
-        <%= link_to slot_path(slot),
-             method: "delete",
-             data: { confirm: "Êtes-vous sûr de vouloir supprimer cette séance?" } do %>
+      <% if policy(slot).cancel? %>
+        <%= link_to cancel_slot_path(slot),
+             method: "patch",
+             data: { confirm: "Êtes-vous sûr de vouloir supprimer cette séance? S'il y a des inscrits, ils seront informés par mail de l'annulation de la séance et automatiquement remboursés." } do %>
              <i class="fa fa-trash-o slot-icons"></i>
         <% end %>
       <% end %>

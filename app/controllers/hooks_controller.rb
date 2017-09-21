@@ -9,7 +9,8 @@ class HooksController < ApplicationController
                                             :user_feedback_on_booking_and_payment]
 
   before_action :set_mangopay_order_to_refund, only: [:payin_refund_succeeded,
-                                                      :payin_refund_failed]
+                                                      :payin_refund_failed,
+                                                      :login_refund_success_in_mangopay_logs]
 
   before_action :set_mangopay_slot_to_payout, only: [:payout_normal_succeeded,
                                                      :payout_normal_failed]
@@ -17,7 +18,6 @@ class HooksController < ApplicationController
   before_action :set_user, only: [:payment_succeeded, :order_state_changed_to_paid,
                                   :user_feedback_on_booking_and_payment,
                                   :payment_failed,
-                                  :payin_refund_succeeded,
                                   :payin_refund_failed]
 
   before_action :set_log_error, only: [:payment_succeeded,
@@ -62,7 +62,7 @@ class HooksController < ApplicationController
     flash[:notice] = "Vous êtes bien inscrit à la séance #{l(@order.slot.date, format: :long)}."
 
     # Mail de confirmation à envoyer
-    OrderMailer.order_confirmation(@user, @order).deliver_now
+    OrderMailer.order_confirmation(@order).deliver_now
   end
 
   def payment_failed
@@ -87,12 +87,28 @@ class HooksController < ApplicationController
   end
 
   def payin_refund_succeeded
-    begin
-       authorize @order
+
+    login_refund_success_in_mangopay_logs
+    # Log feedback API in MangopayLogs
+
+    # Mail ad'hoc différent si annulation à l'initiative du prof/group owner ou du client final
+    authorize @order
+
+    if @order.state == "ask_for_refund"
+      OrderMailer.slot_cancellation_with_refund_confirmation(@order).deliver_now
+      elsif @order.state =="refund_for_slot_cancellation"
+        OrderMailer.slot_cancellation_by_orga_information(@order).deliver_now
+      else
+        raise
+    end
+
+    # Change order.state
        @order.state = "refunded"
        @order.settled = true
        @order.save!
+  end
 
+  def login_refund_success_in_mangopay_logs
        render nothing: true, status: 200 # answer to API
      rescue MangoPay::ResponseError => ex
        log_error = ex.message
@@ -103,11 +119,8 @@ class HooksController < ApplicationController
                           mangopay_answer: "Mangopay HOOK - EventType: #{params['EventType']},
                                            RessourceId: #{params['RessourceId']},
                                            Date: #{params['Date']}",
-                          user_id: @user.id.to_i,
+                          user_id: @order.user.id.to_i,
                           error_logs: log_error)
-     end
-    # Mail ad'hoc
-    OrderMailer.slot_cancellation_with_refund_confirmation(@user, @order).deliver_now
   end
 
   def payin_refund_failed
