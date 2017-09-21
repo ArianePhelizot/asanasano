@@ -43,11 +43,13 @@ class Course < ApplicationRecord
   # rubocop:enable LineLength
 
   def next_slot
-    slots.sort_by(&:date).select { |slot| slot.date >= Time.now }.first
+    active_slots = slots.select { |slot| slot.status == "created" ||  slot.status== "confirmed"}
+    active_slots.sort_by(&:date).select { |slot| slot.date >= Time.now }.first
   end
 
   def next_slots
-    slots.sort_by(&:date).select { |slot| slot.date >= Time.now }
+    active_slots = slots.select { |slot| slot.status == "created" ||  slot.status== "confirmed"}
+    return active_slots.sort_by(&:date).select { |slot| slot.date >= Time.now }
   end
 
   def publishable?
