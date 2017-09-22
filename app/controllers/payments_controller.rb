@@ -48,15 +48,22 @@ class PaymentsController < ApplicationController
                          error_logs: log_error)
     end
 
-    redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
-    sleep(5.0)
-    flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!."
+    if mangopay_card_web_pay_in["ResultMessage"].nil?
+      redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
+      sleep(5.0)
+      flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!."
+    else
+      redirect_to course_path(@order.slot.course)
+      flash[:alert] = "Arghhh, nous avons eu un problème sur le traitement de votre commande."
+      IssueMailer.payin_failure(@order, mangopay_card_web_pay_in["ResultMessage"]).deliver_now
+    end
   end
 
   private
 
   def set_order
-    @order = Order.where(state: "pending").find(params[:order_id])
+    @order = Order.find(params[:order_id])
+    # @order = Order.where(state: "pending").find(params[:order_id])
   end
 end
 
