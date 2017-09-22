@@ -1,0 +1,13 @@
+<h1>ALERTE ROUGE: ECHEC PAIEMENT </h1>
+
+<p> User_id = <%=@user.id%> - <%= @user.first_name %> <%= @user.last_name %>,</p>
+<p> Email: <%=@user.email%> </p>
+<p> Tel: <%=@user.phone_number%> </p>
+
+<p>Problème de paiement sur la séance de
+  "<%= @order.slot.course.name %>" proposée par <%= @order.slot.course.coach.user.first_name%> <%= @order.slot.course.coach.user.last_name%>  prévue le <%= @order.slot.date.strftime('%A %D') %>.
+</p>
+
+<p> Retour API Mangopay: <%= @result_message%> </p>
+
+<p> Qui s'en occupe tout de suite? </p>
