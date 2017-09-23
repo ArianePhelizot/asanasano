@@ -26,4 +26,16 @@ class IssueMailer < ApplicationMailer
                   du #{@order.slot.date}!"
     )
   end
+
+  def transfer_failed(order, result_message)
+    @order = order
+    @user = order.user
+    @result_message = result_message
+
+    mail(
+      to:         ASANASANO_SUPPORT_TEAM_EMAIL,
+      subject:    "Echec Transfert - User: #{@user.id} - séance de #{@order.slot.course.name}
+                  du #{@order.slot.date}!"
+    )
+  end
 end

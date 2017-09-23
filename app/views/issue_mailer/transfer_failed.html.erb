@@ -1,0 +1,15 @@
+<h1>ALERTE ROUGE: ECHEC TRANSFERT </h1>
+
+<p> User_id = <%=@user.id%> - <%= @user.first_name %> <%= @user.last_name %>,</p>
+<p> Email: <%=@user.email%> </p>
+<p> Tel: <%=@user.phone_number%> </p>
+
+<p>Problème de transfert sur la séance <%= @order.slot.id %> de
+  "<%= @order.slot.course.name %>" proposée par <%= @order.slot.course.coach.user.first_name%> <%= @order.slot.course.coach.user.last_name%>  prévue le <%= @order.slot.date.strftime('%A %D') %>.
+</p>
+
+<p>Coach_id = <%= @order.slot.course.coach.id%>, User_id: <%= @order.slot.course.coach.user.id%></p>
+
+<p> Retour API Mangopay: <%= @result_message%> </p>
+
+<p> Qui s'en occupe tout de suite? </p>
