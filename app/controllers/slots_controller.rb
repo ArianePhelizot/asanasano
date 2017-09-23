@@ -123,13 +123,7 @@ class SlotsController < ApplicationController
     # 2 cas de figure => faire une méthode pour savoir dans quel cas on est
     if desinscription_with_refund?
       # a/ nous sommes à plus de 24h avant le début du cours
-
       refund_order(@order, "ask_for_refund")
-
-      # Alert message ad'hoc
-      flash[:notice] = "Votre annulation pour la séance
-      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
-      Le paiement par carte correspondant vous sera remboursé. "
 
     else
       # b/ nous sommes en deça de cette limite
@@ -167,6 +161,18 @@ class SlotsController < ApplicationController
                          mangopay_answer: mangopay_refund,
                          user_id: order.user.id.to_i,
                          error_logs: log_error)
+    end
+
+    if mangopay_refund["ResultMessage"].nil?
+      flash[:notice] = "Votre annulation pour la séance
+      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
+      Le paiement par carte correspondant vous sera remboursé. "
+    else
+      IssueMailer.payin_refund_failed(@order, mangopay_refund["ResultMessage"]).deliver_now
+      flash[:alert] = "Damned! Nous avons bien pris en compte l'annulation de votre séance
+      #{l(@order.slot.date, format: :long)},
+      mais il y a visiblement eu un problème sur son remboursement.
+      Nous allons étudier et régler le problème au plus vite. "
     end
   end
   # rubocop:enable Metrics/AbcSize
