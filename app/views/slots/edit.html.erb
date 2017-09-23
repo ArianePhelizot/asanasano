@@ -3,7 +3,28 @@
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded">
           <div class="wrapper-login">
              <h1>Editer une séance</h1>
-                <%= render 'form' %>
+
+<!-- WARNING
+this --> <!-- is a duplication of _form content => We needed to get rid of the remote:true to get it work -->
+              <%= simple_form_for([@course, @slot]) do |f| %>
+                <%= f.input :date,
+                            start_year: Date.today.year,
+                            end_year: Date.today.year + 10,
+                            discard_day: false,
+                            label: 'Jour de la séance' %> <!-- pour ne pouvoir sélectionner que les années de l'année en cours à +10 ans -->
+
+                <div class="form-group">
+                  <label for="slot_start_at_4i">Heure de début</label>
+                  <%= f.time_select :start_at, class: "form-control", minute_step: 15 %> <!-- value: @slot.start_at.to_time -->
+                </div>
+                <div class="form-group">
+                  <label for="slot_end_at_4i">Heure de fin</label>
+                  <%= f.time_select :end_at, class: "form-control", minute_step: 15 %> <!-- value: @slot.start_at.to_time -->
+                </div>
+                <%= f.input :participants_min, label: 'Nombre minimum de participants', collection: 1..@course.capacity_max, default: 1 %>
+                <%= f.input :price, label: 'Prix(€) de la séance' %>
+                <%= f.button :submit, "Ajouter", id:"slot-submit-btn", class:"btn-add" %>
+              <% end %>
           </div>
       </div>
     </div>
