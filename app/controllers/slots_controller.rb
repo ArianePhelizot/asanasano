@@ -48,6 +48,7 @@ class SlotsController < ApplicationController
 
   def update
     authorize @slot # check authorization before update
+
     if @slot.update(slot_params)
       redirect_to course_path(@course)
     else
@@ -105,6 +106,7 @@ class SlotsController < ApplicationController
                                  :date,
                                  :start_at,
                                  :end_at,
+                                 :price,
                                  :price_cents)
   end
 
