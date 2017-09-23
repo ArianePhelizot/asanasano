@@ -84,6 +84,10 @@ class HooksController < ApplicationController
                                         Date: #{params['Date']}",
                        user_id: @user.id.to_i,
                        error_logs: log_error)
+  flash[:alert] = "Damned! Il y a eu un souci avec votre paiement.
+                  Contactez-nous à #{ASANASANO_SUPPORT_TEAM_EMAIL}}
+                  pour que nous trouvions ensemble une solution."
+
   end
 
   def payin_refund_succeeded
