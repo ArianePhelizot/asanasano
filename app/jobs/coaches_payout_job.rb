@@ -65,6 +65,7 @@ class CoachesPayoutJob < ApplicationJob
 
             slot.payout_mangopay_id = mangopay_payout["Id"]
             slot.save
+
           rescue MangoPay::ResponseError => ex
             log_error = ex.message
           rescue => ex
@@ -74,6 +75,10 @@ class CoachesPayoutJob < ApplicationJob
                                mangopay_answer: mangopay_payout,
                                user_id: coach_user.id.to_i,
                                error_logs: log_error)
+          end
+
+          unless mangopay_payout["ResultMessage"].nil?
+            IssueMailer.payout_failure(slot, mangopay_payout["ResultMessage"]).deliver_now
           end
         end
       end

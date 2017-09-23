@@ -1,0 +1,17 @@
+<h1>ALERTE ROUGE: ECHEC PAYOUT </h1>
+
+
+<p>Problème de payout sur la séance <%= @slot.id %> de
+  "<%= @slot.course.name %>" proposée par <%= @coach_user.first_name%> <%= @coach_user.last_name%>  prévue le <%= @slot.date.strftime('%A %D') %>.
+</p>
+
+<p>Coach_id = <%= @slot.course.coach.id%>, User_id: <%= @coach_user.id%></p>
+
+<p> Coordonnées coach</p>
+<p> Email: <%=@coach_user.email%> </p>
+<p> Tel: <%=@coach_user.phone_number%> </p>
+
+
+<p> Retour API Mangopay: <%= @result_message%> </p>
+
+<p> Qui s'en occupe tout de suite? </p>

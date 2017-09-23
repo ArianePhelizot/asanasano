@@ -68,6 +68,8 @@ class TransferJob < ApplicationJob
     if mangopay_transfer["Status"] == "SUCCEEDED"
       order.settled = true
       order.save
+    else
+      IssueMailer.transfer_failed(order, mangopay_transfer["ResultMessage"]).deliver_now
     end
   end
   # rubocop:enable all
