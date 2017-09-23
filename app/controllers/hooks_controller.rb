@@ -85,7 +85,7 @@ class HooksController < ApplicationController
                        user_id: @user.id.to_i,
                        error_logs: log_error)
     flash[:alert] = "Damned! Il y a eu un souci avec votre paiement.
-                    Contactez-nous à #{ASANASANO_SUPPORT_TEAM_EMAIL}}
+                    Contactez-nous
                     pour que nous trouvions ensemble une solution."
   end
 

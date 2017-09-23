@@ -1,5 +1,7 @@
 <%= simple_form_for([@course, @slot], remote: true) do |f| %>
-  <%= f.input :date,
+<!-- WARNING: code duplicated in edit.html.erb
+ -->
+ <%= f.input :date,
               start_year: Date.today.year,
               end_year: Date.today.year + 10,
               discard_day: false,
