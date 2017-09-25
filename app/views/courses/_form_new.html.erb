@@ -1,5 +1,5 @@
 <%= simple_form_for [@group, @course] do |f| %>
-  <%= f.input :name, label: "Nom de l'activité", placeholder: "Yoga nidra niveau 1, Préparation du prochain Marseille Cassis ?" %>
+  <%= f.input :name, label: "Nom de l'activité", placeholder: "Yoga nidra niveau 1, Pilates tout niveau, Prép semi-marathon ?" %>
   <%= f.association :coach, collection: Coach.all, label: "Coach" %>
   <%= f.input :content, as: :text, label: "Description", placeholder: "Quelques infos sur le type de cours proposé et l'approche..." %>
   <%= f.input :address, label: "Adresse" %>
