@@ -3,7 +3,7 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: %i(new create edit update)
-  before_action :find_course, only: %i(show edit update destroy publish depublish)
+  before_action :find_course, only: %i(show edit update destroy publish depublish send_email_to_group_users)
 
   def show
     @group = @course.group
@@ -49,6 +49,7 @@ class CoursesController < ApplicationController
     if @course.publishable?
       @course.active!
       # TODO: envoyer les emails
+      send_email_to_group_users
       flash[:notice] = "Le cours a été publié et les emails envoyés."
     end
     redirect_to dashboard_path
@@ -90,4 +91,11 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     authorize @course
   end
+
+  def send_email_to_group_users
+    @course.group.users.each do |user|
+      CourseMailer.new_published_course(user, @course).deliver_now
+    end
+  end
+
 end
