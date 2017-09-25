@@ -38,19 +38,6 @@ class Slot < ApplicationRecord
                                     message: "Entrez un prix supérieur ou égal à 0€" }
   validates :participants_min, numericality: { only_integer: true }
 
-  validate :participants_min_between_one_and_capacity_max
-
-  def participants_min_between_one_and_capacity_max
-    course = self.course
-    if participants_min > course.capacity_max || participants_min.negative?
-      errors.add(:participants_min, "Le nombre minimum de participants doit être
-                   compris entre 0 et #{course.capacity_max} (capacité maximale
-                   du cours).")
-    else
-      true
-    end
-  end
-
   def full?
     users.count == course.capacity_max
   end
