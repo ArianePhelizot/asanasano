@@ -3,7 +3,8 @@
 class CoursesController < ApplicationController
   # on a besoin de group pour créer un course
   before_action :find_group, only: %i(new create edit update)
-  before_action :find_course, only: %i(show edit update destroy publish depublish send_email_to_group_users)
+  before_action :find_course, only: %i(show edit update destroy publish
+                                       depublish send_email_to_group_users)
 
   def show
     @group = @course.group
@@ -97,5 +98,4 @@ class CoursesController < ApplicationController
       CourseMailer.new_published_course(user, @course).deliver_now
     end
   end
-
 end

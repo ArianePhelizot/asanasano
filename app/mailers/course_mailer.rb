@@ -13,7 +13,5 @@ class CourseMailer < ApplicationMailer
       to:         @user.email,
       subject:    "Yippee: Un nouveau cours de #{@course.name} vous est proposé!"
     )
-
   end
-
 end
