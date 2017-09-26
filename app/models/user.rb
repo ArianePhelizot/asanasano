@@ -65,6 +65,9 @@ class User < ApplicationRecord
 
   devise :invitable, :omniauthable, omniauth_providers: [:facebook]
 
+  validates_acceptance_of :agreed_to_terms, allow_nil: false,
+                          message: :terms_not_accepted, on: :create
+
   after_create :send_welcome_email
 
   def next_slots
