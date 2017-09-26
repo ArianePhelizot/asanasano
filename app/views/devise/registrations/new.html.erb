@@ -7,7 +7,17 @@
             <h2>Inscription</h2>
 
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.error_notification %>
+
+              <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <p><%= pluralize(@user.errors.count, "error") %> prohibited this user from being created:</p>
+                  <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
               <div class="form-inputs">
                 <%= f.input :email, required: true, autofocus: true %>
@@ -15,9 +25,14 @@
                 <%= f.input :password_confirmation, required: true %>
               </div>
 
-              <div class="form-actions">
+              <div class="terms">
+                 <%= f.check_box :agreed_to_terms %> <strong> I agree to the <a href="#">Terms and conditions of service</a></strong>
+              </div>
+
+              <div class="form-actions padded-sm">
                 <%= f.button :submit, "Inscription", class: "btn btn-success" %>
               </div>
+
             <% end %>
 
             <%= render "devise/shared/links" %>
@@ -27,3 +42,4 @@
     </div>
   </div>
 </div>
+
