@@ -1,0 +1,14 @@
+<h1>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>, </h1>
+
+<p> <%=@coach_user.first_name%> <%=@coach_user.last_name%> vous propose une nouvelle activité de "<%= @course.name %>".
+</p>
+
+<p>
+  La prochaine séance est <%= @course.next_slot.date.strftime("%A %e %B %Y" )%> à <%= @course.next_slot.start_at.strftime("%H")%>H<%= @course.next_slot.start_at.strftime("%M")%>.
+</p>
+
+<p>Pour en savoir plus, découvrir toutes les séances ou vous inscrire, c'est par <a href=<%=course_url(@course)%> >ici</a>.
+</p>
+
+<p>A très vite,
+</p>

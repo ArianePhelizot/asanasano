@@ -3,3 +3,10 @@ $(document).ready(function() {
       $(this).alert('close');
   });
 });
+
+
+$(document).ready(function() {
+  $(".alertdismissible").delay(10000).slideUp(200, function() {
+      $(this).alert('close');
+  });
+});
