@@ -26,7 +26,23 @@
               </div>
 
               <div class="terms">
-                 <%= f.check_box :agreed_to_terms %> <strong> I agree to the <a href="#">Terms and conditions of service</a></strong>
+                 <%= f.check_box :agreed_to_terms %> <strong> I agree to the <a href="#" data-toggle="modal" data-target="#TermsModal">Terms and conditions of service</a></strong>
+
+ <!-- Modal TERMS AND CONDITIONS-->
+                <div class="modal fade" id="TermsModal" tabindex="-1" role="dialog" aria-labelledby="ServiceTermsAndConditions">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Service Terms and Conditions</h4>
+                      </div>
+                      <div class="modal-body">
+                          <%= render 'terms' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  <!-- MODAL END               -->
               </div>
 
               <div class="form-actions padded-sm">
@@ -42,4 +58,3 @@
     </div>
   </div>
 </div>
-
