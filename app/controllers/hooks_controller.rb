@@ -34,7 +34,8 @@ class HooksController < ApplicationController
     # log_hook_notification
     order_state_changed_to_paid
 
-    render nothing: true, status: 200 # answer to API
+    # render nothing: true, status: 200 # answer to API
+    head :ok
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -72,7 +73,9 @@ class HooksController < ApplicationController
     @order.state = "failed"
     @order.save!
 
-    render nothing: true, status: 200
+    # render nothing: true, status: 200
+    head :ok
+
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -111,7 +114,8 @@ class HooksController < ApplicationController
   end
 
   def login_refund_success_in_mangopay_logs
-    render nothing: true, status: 200 # answer to API
+    # render nothing: true, status: 200 # answer to API
+    head :ok
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -130,7 +134,8 @@ class HooksController < ApplicationController
     @order.state = "failed_refund"
     @order.save!
 
-    render nothing: true, status: 200 # answer to API
+    # render nothing: true, status: 200 # answer to API
+    head :ok
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
@@ -151,7 +156,8 @@ class HooksController < ApplicationController
     @slot.status = "archived"
     @slot.save
     # Beware of slot policy!
-    render nothing: true, status: 200 # answer to API
+    # render nothing: true, status: 200 # answer to API
+    head :ok
 
     # Log info in mangopay log
   rescue MangoPay::ResponseError => ex
@@ -168,7 +174,8 @@ class HooksController < ApplicationController
   end
 
   def payout_normal_failed
-    render nothing: true, status: 200 # answer to API
+    # render nothing: true, status: 200 # answer to API
+    head :ok
 
     # Log info in mangopay log
   rescue MangoPay::ResponseError => ex

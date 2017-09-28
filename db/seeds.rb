@@ -85,28 +85,32 @@ user1 = User.create!(first_name: 'Ariane',
                      password: 'azerty',
                      phone_number: '0613990061',
                      photo: open_photo('ariane_photo.png'),
-                     admin: true)
+                     admin: true,
+                     agreed_to_terms: true)
 
 user2 = User.create!(first_name: 'Cherine',
                      last_name: 'ELFADEL',
                      email: 'cherineelf@gmail.com',
                      password: 'azerty',
                      photo: open_photo('cherine_photo.png'),
-                     phone_number: '0671991204')
+                     phone_number: '0671991204',
+                     agreed_to_terms: true)
 
 user3 = User.create!(first_name: 'Faustin',
                      last_name: 'VEYSSIERE',
                      email: 'faustin.veyssiere@gmail.com',
                      password: 'azerty',
                      photo: open_photo('faustin_photo.png'),
-                     phone_number: '0782095662')
+                     phone_number: '0782095662',
+                     agreed_to_terms: true)
 
 user4 = User.create!(first_name: 'Guillaume',
                      last_name: 'JAUFFRET',
                      email: 'guillaume.jauffret@gmail.com',
                      password: 'azerty',
                      photo: open_photo('guillaume_photo.png'),
-                     phone_number: '0665647375')
+                     phone_number: '0665647375',
+                     agreed_to_terms: true)
 
 user5 = User.create!(first_name: 'Isabelle',
                      last_name: 'YVAS',
@@ -114,7 +118,8 @@ user5 = User.create!(first_name: 'Isabelle',
                      photo: open_photo('isabelle_photo.jpeg'),
                      password: 'azerty',
                      phone_number: '0601020304',
-                     coach: coach1)
+                     coach: coach1,
+                     agreed_to_terms: true)
 
 user6 = User.create!(first_name: 'Veronica',
                      last_name: 'OBAMA',
@@ -122,7 +127,8 @@ user6 = User.create!(first_name: 'Veronica',
                      password: 'azerty',
                      phone_number: '0613990061',
                      photo: open_photo('veronica_photo.jpg'),
-                     coach: coach2)
+                     coach: coach2,
+                     agreed_to_terms: true)
 
 user7 = User.create!(first_name: 'Mathieu',
                      last_name: 'BONFILS',
@@ -130,7 +136,8 @@ user7 = User.create!(first_name: 'Mathieu',
                      password: 'azerty',
                      phone_number: '0616741821',
                      photo: open_photo('mathieu_photo.png'),
-                     coach: coach3)
+                     coach: coach3,
+                     agreed_to_terms: true)
 
 puts "#{User.count} users created"
 

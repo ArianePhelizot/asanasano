@@ -1,6 +1,6 @@
 <h1>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>, </h1>
 
-<p>C'est noté! Vous êtes bien inscrit à la séance de
+<p>C'est noté! Vous êtes bien inscrit(e) à la séance de
   <%= @order.slot.course.name %> prévue le <%= @order.slot.date %> de <%= @order.slot.start_at %> à <%= @order.slot.end_at %>.
 </p>
 
