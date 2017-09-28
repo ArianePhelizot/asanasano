@@ -70,6 +70,14 @@
   }
 }
 
+// MAIN-CARD
+.main-card {
+  color: #64676C;
+}
+.coach-name {
+  color: black;
+}
+
 // MES PROCHAINES SEANCES //
 .mes-prochaines-seances-container {
   background-color: white;
@@ -354,6 +362,7 @@ height: 41px;
 .next_slot {
   position: absolute;
   top: 148px;
+  color: #64676C;
 }
 
 #calendar-icon {
