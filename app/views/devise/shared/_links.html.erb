@@ -1,3 +1,12 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+      <%= image_tag "facebook connect.png", class: "padded-sm"%>
+      <br />
+    <% end -%>
+  <% end -%>
+<% end -%>
+
 <%- if controller_name != 'sessions' %>
   <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
 <% end -%>
@@ -17,11 +26,3 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %><br />
 <% end -%>
-
-<%- if devise_mapping.omniauthable? %>
-<!--   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to t('.sign_in_with_provider', provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%> -->
-  <div class="fb-login-button padded-sm" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-<% end -%>
-
