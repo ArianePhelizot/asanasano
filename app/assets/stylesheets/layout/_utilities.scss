@@ -5,7 +5,12 @@
  * ------------------------------------- */
 
 a {
-color: $link-blue;
+color: $dark-grey;
+}
+
+a:hover {
+  color: $dark-grey;
+  text-decoration: underline;
 }
 
 .white-shadow-text {
@@ -32,6 +37,18 @@ color: $link-blue;
 .padded-sm {
   padding-top: 2em;
   padding-bottom: 2em;
+}
+
+.padded-top-sm {
+  padding-top: 2em;
+}
+
+.padded-bot-sm {
+  padding-bottom: 2em;
+}
+
+.padded-bot-m {
+  padding-bottom: 3em;
 }
 
 .no-left-pd{

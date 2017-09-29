@@ -11,15 +11,29 @@
 }
 // formulaire content
 
+.btn-facebook-connect {
+  border: solid $dark-grey 2px;
+  color: white;
+  background-color: $dark-grey;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  opacity: 0.6;
+  font-family: sans-serif;
+}
+
 .wrapper-devise-form {
   background: #F3F3F3;
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 30px;
+  color: $dark-grey;
 
   h2 {
-    margin-bottom: 30px;
-    font-size: 25px;
+    margin-bottom: 49px;
+    font-size: 35px;
   }
 
   h1 {
@@ -48,11 +62,19 @@
   }
 
   a {
-    // color: black;
-    text-decoration: none;
+    color: $dark-grey;
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   .boolean {
-    color: black;
+    color: $dark-grey;
   }
+}
+
+.label {
+  display: none;
 }
 
