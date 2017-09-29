@@ -1,10 +1,20 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10&appId=469035540111405";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div class="wrapper-devise-form">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded">
         <div class="wrapper-login">
           <div class="text-center">
-            <h2>Inscription</h2>
+            <h2>Tout commence ici...</h2>
 
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
@@ -20,13 +30,13 @@
               <% end %>
 
               <div class="form-inputs">
-                <%= f.input :email, required: true, autofocus: true %>
-                <%= f.input :password, required: true, hint: ("min. #{@minimum_password_length} caractères" if @minimum_password_length) %>
-                <%= f.input :password_confirmation, required: true %>
+                <%= f.input :email, required: true, autofocus: true, label: "Une adresse email" %>
+                <%= f.input :password, required: true, hint: ("min. #{@minimum_password_length} caractères" if @minimum_password_length), label: "Un mot de passe" %>
+                <%= f.input :password_confirmation, required: true, label: "La confirmation du mot de passe"%>
               </div>
 
               <div class="terms">
-                 <%= f.check_box :agreed_to_terms %> <strong> I agree to the <a href="#" data-toggle="modal" data-target="#TermsModal">Terms and conditions of service</a></strong>
+                 <%= f.check_box :agreed_to_terms %> <strong> Je dis "OUI" <a href="#" data-toggle="modal" data-target="#TermsModal">aux conditions générales du service</a></strong>
 
  <!-- Modal TERMS AND CONDITIONS-->
                 <div class="modal fade" id="TermsModal" tabindex="-1" role="dialog" aria-labelledby="ServiceTermsAndConditions">
@@ -46,7 +56,7 @@
               </div>
 
               <div class="form-actions padded-sm">
-                <%= f.button :submit, "Inscription", class: "btn btn-success" %>
+                <%= f.button :submit, "Et hop, je m'inscris", class: "btn btn-success" %>
               </div>
 
             <% end %>
