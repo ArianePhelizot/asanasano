@@ -72,7 +72,7 @@
 
 // MAIN-CARD
 .main-card {
-  color: #64676C;
+  color: $dark-grey;
 }
 .coach-name {
   color: black;
@@ -362,7 +362,7 @@ height: 41px;
 .next_slot {
   position: absolute;
   top: 148px;
-  color: #64676C;
+  color: $dark-grey;
 }
 
 #calendar-icon {
