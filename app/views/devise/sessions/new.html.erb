@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10&appId=469035540111405";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="wrapper-devise-form">
   <div class="container">
     <div class="row">
@@ -7,8 +16,8 @@
             <h2>Connexion</h2>
               <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-inputs">
-              <%= f.input :email, required: false, autofocus: true %>
-              <%= f.input :password, required: false %>
+              <%= f.input :email, required: false, autofocus: true, label: "Mon adresse email" %>
+              <%= f.input :password, required: false, autofocus: true, label: "Mon adresse email" %>
               <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
             </div>
 
