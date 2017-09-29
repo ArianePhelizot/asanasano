@@ -8,11 +8,11 @@
 <% end -%>
 
 <%- if controller_name != 'sessions' %>
-  <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
+  <%= link_to "Déjà inscrit ? Se connecter par ici", new_session_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to t(".sign_up"), new_registration_path(resource_name) %><br />
+  <%= link_to "Pour s'inscrire au service, c'est par ici", new_registration_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
