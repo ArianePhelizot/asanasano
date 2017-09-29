@@ -3,8 +3,8 @@
   <div class="text-center white-shadow-text margin-30">
     <p>Il n'y a pas de séance programmée pour ce cours.</p>
     <br>
-    <p>
-      Contacter <%= course.group.owner.first_name %> <%= course.group.owner.last_name %> pour en savoir plus: <strong><%= course.group.owner.email %></strong>.
+    <p class="course-owner-mail">
+      Contacter <%= course.group.owner.first_name %> <%= course.group.owner.last_name %> pour en savoir plus: <strong><%= mail_to course.group.owner.email %></strong>.
     </p>
   </div>
 <!-- CASE: FUTURE SLOTS ARE SCHEDULED-->

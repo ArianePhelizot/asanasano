@@ -98,18 +98,19 @@
                 <!-- Button trigger modal PRESENTATION DU COACH-->
                   <i class="fa fa-external-link" data-toggle="modal" data-target="#CoachModal"></i> </p>
 
-                <!-- Modal PRESENTATION DU COACH-->
+                <!-- MODAL PRESENTATION DU COACH-->
                 <div class="modal fade" id="CoachModal" tabindex="-1" role="dialog" aria-labelledby="CoachInfo">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
+
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel"><%= @course.coach.name %></h4>
                       </div>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-md-4">
 
+                      <div class="modal-body"> <!-- MODAL BODY -->
+                        <div class="row">
+                          <div class="col-md-4"> <!-- LEFT PART OF MODAL -->
                             <!-- Picture -->
                             <div class="text-center padded-sm">
                               <% if @course.coach&.user&.photo? %>
@@ -122,27 +123,22 @@
                                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic"%>
                               <% end %>
                             </div>
-
-
                             <!-- Mail -->
                             <div class="list-inline text-justify">
                               <li><i class="fa fa-envelope-o" aria-hidden="true"></i></li>
                               <li><%= @course.coach.user.email %></li>
                             </div>
-
                             <!-- Tel -->
                             <div class="list-inline text-justify">
                               <li><i class="fa fa-phone" aria-hidden="true"></i></li>
                               <li><%= @course.coach.user.phone_number %></li>
                             </div>
-
                           </div>
-                          <div class="col-md-8">
-
+                          <div class="col-md-8"> <!-- RIGHT PART OF MODAL -->
                             <div class="mg-btm-1em">
-                              <h5>DESCRIPTION</h5>
+                              <h5>PRÉSENTATION</h5>
                               <p><%= @course.coach.description%></p>
-                              </div>
+                            </div>
                             <div class="mg-btm-1em">
                               <h5>EXPÉRIENCE</h5>
                               <p><%= @course.coach.experience%> années</p>
@@ -150,14 +146,15 @@
                             <div class="mg-btm-1em">
                               <h5>SPORTS ENSEIGNÉS</h5>
                               <p><%= @course.coach.sports.map {|s| s.name.capitalize}.join(", ") %></p>
-                              </div>
+                            </div>
                             <div class="mg-btm-1em">
                               <h5>LANGUES PARLÉES</h5>
                               <p><%= @course.coach.languages.map {|language| language}.join(", ") %></p>
-                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
