@@ -1,12 +1,27 @@
-<h1>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>, </h1>
+<div style="color: #64676C";font: sans-serif";margin-left: 10px" >
 
-<p>Et bienvenue sur le service!</p>
+  <div class="hello", style="padding-bottom: 4px">
+    <p>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>,</p>
+  </div>
 
-<p>Asanasano blabla, voilà tout ce que cela peut faire</p>
-<p>Pour vous connecter, blaba</p>
 
-<p>A très vite,</p>
+  <div class="body", style="padding-bottom: 4px">
+    <p>Et bienvenue sur Asanasano.</p>
 
-<p>
-  <%= "Paramétrer ici plus tard quand j'ai le temps: liens sociaux, signature"%>
-</p>
+    <p>Créez un groupe, montez une activité, invitez vos amis, voisins, collègues...et c'est parti!</p>
+
+    <p>Nous nous plions en quatre pour vous simplifier la vie et restons à votre disposition si vous avez la moindre petite interrogation. Alors n'hésitez pas à nous écrire, nous aurons plaisir à vous lire.</p>
+
+    <p>A très vite,</p>
+
+  </div>
+
+  <div class="signature", style="line-height: 0.4em">
+    <p>Ariane</p>
+    <p>Co-fondateur Asanasano</p>
+    <p><strong><a href="mailto:ariane@asanasano.com", style="color: #64676C";font-family:sans-serif">ariane@asanasano.com</a></strong></p>
+    <div style="text-align: center">
+      <a href="www.asanasano.com"><img src="https://www.asanasano.com/assets/ASANASANO-e81a1dd672b0542eb090bb433b0c2b5aa54e456b8dd03cdc3be40b41f341978b.png" alt="Logo Asanasano", style="width:215px;height:60.2;border:0;margin:0 auto"></a>
+    </div>
+  </div>
+</div>
