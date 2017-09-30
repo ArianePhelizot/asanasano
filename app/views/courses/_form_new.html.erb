@@ -7,5 +7,5 @@
   <%= f.input :details, as: :text, label: "Détails", placeholder: "C'est ici qu'il faut préciser tous les aspects pratiques: code d'accès, tenue, matériel, installations... " %>
   <%= f.input :capacity_max, label: "Nombre de participants maximum", collection: 1..500, default: 1 %>
   <%= f.association :sport, label: "Sport", collection: Sport.all %>
-  <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
+  <%= f.button :submit, "Enregistrer", class: "btn" %>
 <% end %>
