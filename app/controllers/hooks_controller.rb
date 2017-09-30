@@ -75,7 +75,6 @@ class HooksController < ApplicationController
 
     # render nothing: true, status: 200
     head :ok
-
   rescue MangoPay::ResponseError => ex
     log_error = ex.message
   rescue => ex
