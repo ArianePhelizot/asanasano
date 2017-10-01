@@ -38,6 +38,10 @@ class Users::InvitationsController < Devise::InvitationsController
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
+  def after_invite_path_for(resource)
+    group_participants_path(find_group)
+  end
+
   private
 
   def find_group
