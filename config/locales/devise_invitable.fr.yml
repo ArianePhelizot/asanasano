@@ -11,7 +11,7 @@ fr:
         submit_button: "Envoyer une invitation"
       edit:
         header: "Définir votre mot de passe"
-        submit_button: "Définir mon mot de passe"
+        submit_button: "Et hop, je m'inscris!"
     mailer:
       invitation_instructions:
         subject: 'Vous êtes invité(e) sur ASANASANO...'
