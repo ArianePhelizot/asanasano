@@ -11,7 +11,7 @@
               <%= devise_error_messages! %>
 
             <% resource.class.invite_key_fields.each do |field| -%>
-              <%= f.input field %>
+              <%= f.input field, label: "Adresse email de l'heureux(-se) élu(e)"%>
             <% end -%>
 
             <!--  in order to track the group to which new user is invited -->
