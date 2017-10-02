@@ -35,12 +35,12 @@ ActiveAdmin.register User do
   end
 
 
-  show do
-    panel 'Groups' do
-      table_for user.groups do
-        column 'name', &:name
-        column 'owner', &:owner
-      end
-    end
-  end
+  # show do
+  #   panel 'Groups' do
+  #     table_for user.groups do
+  #       column 'name', &:name
+  #       column 'owner', &:owner
+  #     end
+  #   end
+  # end
 end
