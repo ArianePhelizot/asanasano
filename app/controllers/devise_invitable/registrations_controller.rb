@@ -1,5 +1,5 @@
 class DeviseInvitable::RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters
+  before_action :configure_permitted_parameters
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
