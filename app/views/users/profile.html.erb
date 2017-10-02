@@ -8,81 +8,87 @@
             <h1>Mon profil</h1>
 
             <!-- Picture -->
-            <% if @user.photo %>
-              <%= cl_image_tag(@user.photo.path, gravity: :face,
-                                                 width: 100,
-                                                 height: 100,
-                                                 crop: "fill",
-                                                 radius: :max,
-                                                 class: "avatar-profile") %>
+            <div class="profile-photo profile-module">
+              <% if @user.photo %>
+                <%= cl_image_tag(@user.photo.path, gravity: :face,
+                                                   width: 100,
+                                                   height: 100,
+                                                   crop: "fill",
+                                                   radius: :max,
+                                                   class: "avatar-profile") %>
 
-            <% elsif current_user.facebook_picture_url? %>
-              <%= image_tag current_user.facebook_picture_url, class: "avatar-profile" %>
+              <% elsif current_user.facebook_picture_url? %>
+                <%= image_tag current_user.facebook_picture_url, class: "avatar-profile" %>
 
-            <% else %>
-              <%= image_tag "man.png", class: "avatar-profile" %>
-            <% end %>
+              <% else %>
+                <%= image_tag "man.png", class: "avatar-profile" %>
+              <% end %>
+            </div>
 
             <!-- DETAILS -->
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td class = "cat">PRENOM</td>
-                  <td class = "input"><%= @user.first_name %></td>
-                </tr>
-                 <tr>
-                  <td class = "cat">NOM</td>
-                  <td class = "input"><%= @user.last_name %></td>
-                </tr>
-                  <td class = "cat">EMAIL</td>
-                  <td class = "input"><%= @user.email %></td>
-                <tr>
-                  <td class = "cat">TELEPHONE</td>
-                  <td class = "input"><%= @user.phone_number %></td>
-                </tr>
-                <tr>
-                  <td class = "cat">MES GROUPES</td>
-                  <td class = "input"><%=  raw @user.groups.uniq.map { |group| link_to group.name, group_participants_path(group) }.join(", ") %></td>
-                </tr>
-
-              </tbody>
-            </table>
-
-            <br>
-            <%= link_to "Modifier mon profil utilisateur", edit_user_path(@user) %>
-
-            <!-- For coaches only -->
-            <br>
-            <br>
-            <% if current_user.coach_id? %>
+            <div class="profile-details profile-module">
               <table class="table">
                 <tbody>
                   <tr>
-                    <td class = "cat">DESCRIPTION</td>
-                    <td class = "input"><%= @user.coach.description %></td>
+                    <td class = "cat">PRENOM</td>
+                    <td class = "input"><%= @user.first_name %></td>
+                  </tr>
+                   <tr>
+                    <td class = "cat">NOM</td>
+                    <td class = "input"><%= @user.last_name %></td>
+                  </tr>
+                    <td class = "cat">EMAIL</td>
+                    <td class = "input"><%= @user.email %></td>
+                  <tr>
+                    <td class = "cat">TELEPHONE</td>
+                    <td class = "input"><%= @user.phone_number %></td>
                   </tr>
                   <tr>
-                    <td class = "cat">SPORTS</td>
-                    <td class = "input"><%= @user.coach.sports.map {|s| s.name.capitalize}.join(", ") %></td>
+                    <td class = "cat">MES GROUPES</td>
+                    <td class = "input"><%=  raw @user.groups.uniq.map { |group| link_to group.name, group_participants_path(group) }.join(", ") %></td>
                   </tr>
-                  <tr>
-                    <td class = "cat">EXPERIENCE</td>
-                    <td class = "input"><%= @user.coach.experience %> années </td>
-                  </tr>
-                  <tr>
-                    <td class = "cat">LANGUES</td>
-                    <td class = "input"><%= @user.coach.languages.map {|language| language}.join(", ") %> </td>
-                  </tr>
-                  <br>
-                 </tbody>
-                </table>
-                <%= link_to "Modifier mon profil coach", edit_coach_path(@user.coach_id) %>
-              <% end%>
+                </tbody>
+              </table>
+              <div class="bloc-profile">
+                <%= link_to "Modifier mon profil utilisateur", edit_user_path(@user), class: "btn-profile" %>
+              </div>
+
+            </div>
+
+            <!-- For coaches only -->
+
+            <div class="profile-coach-details profile-module">
+              <% if current_user.coach_id? %>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td class = "cat">DESCRIPTION</td>
+                      <td class = "input"><%= @user.coach.description %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">SPORTS</td>
+                      <td class = "input"><%= @user.coach.sports.map {|s| s.name.capitalize}.join(", ") %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">EXPERIENCE</td>
+                      <td class = "input"><%= @user.coach.experience %> années </td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">LANGUES</td>
+                      <td class = "input"><%= @user.coach.languages.map {|language| language}.join(", ") %> </td>
+                    </tr>
+                    <br>
+                   </tbody>
+                  </table>
+                  <div class="bloc-profile">
+                  <%= link_to "Modifier mon profil coach", edit_coach_path(@user.coach_id), class: "btn-profile"  %>
+                  </div>
+                <% end%>
+              </div>
 
                <!-- Billing info -->
-            <br>
-            <br>
 
+            <div class="profile-account profile-module">
               <!-- No account info created yet  -->
               <% if !@user.account %>
                   <%= link_to "Renseigner mes données de facturation", new_user_account_path(@user) %>
@@ -123,7 +129,9 @@
                   </tr>
                 </tbody>
               </table>
-              <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id) %>
+              <div class="bloc-profile">
+              <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id), class: "btn-profile" %>
+              </div>
                   <!-- Account created and if Legal -->
                 <% else %>
 
@@ -165,32 +173,36 @@
                     </tr>
                   </tbody>
                 </table>
-                <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id) %>
+                <div class="bloc-profile">
+                  <%= link_to "Modifier mes données de facturation", edit_user_account_path(@user, @user.account.id), class: "btn-profile" %>
+                 </div>
               <% end %>
+            </div>
 
             <!-- Banking account details - IBAN - For coaches only -->
-            <br>
-            <br>
-            <% if current_user.coach_id? %>
+            <div class="profile-iban profile-module">
+              <% if current_user.coach_id? %>
 
-            <!-- As Iban is attached tu account, iban creation and update only enabled if account created -->
-              <% if current_user.account %>
-                <% if !@user.account.iban %>
-                  <%= link_to "Renseigner mes coordonnées bancaires", new_user_iban_path(@user) %>
-                <% else %>
-                  <table class="table">
-                     <tbody>
-                      <tr>
-                        <td class = "cat">IBAN</td>
-                        <td class = "input"><%= @user.account.iban.iban %></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <%= link_to "Modifier mes coordonnées bancaires", edit_user_iban_path(@user, @user.account.iban.id) %>
+              <!-- As Iban is attached tu account, iban creation and update only enabled if account created -->
+                <% if current_user.account %>
+                  <% if !@user.account.iban %>
+                    <%= link_to "Renseigner mes coordonnées bancaires", new_user_iban_path(@user) %>
+                  <% else %>
+                    <table class="table">
+                       <tbody>
+                        <tr>
+                          <td class = "cat">IBAN</td>
+                          <td class = "input"><%= @user.account.iban.iban %></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="bloc-profile">
+                      <%= link_to "Modifier mes coordonnées bancaires", edit_user_iban_path(@user, @user.account.iban.id), class: "btn-profile" %>
+                    </div>
+                  <%end%>
                 <%end%>
-              <%end%>
-            <% end %>
-
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
