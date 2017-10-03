@@ -52,11 +52,12 @@ fr:
       unlocked: "Votre compte a été déverrouillé avec succès, vous êtes maintenant connecté."
   errors:
     messages:
+      terms_not_accepted: ": Merci de lire et accepter les conditions générales du service pour finaliser votre inscription."
       already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"
       confirmation_period_expired: "à confirmer dans les %{period}, merci de faire une nouvelle demande"
       expired: "a expiré, merci d'en faire une nouvelle demande"
       not_found: "n'a pas été trouvé(e)"
       not_locked: "n'était pas verrouillé(e)"
       not_saved:
-        one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
-        other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+        one: "Damned! Une petite erreur traîne encore dans le formulaire:"
+        other: "Damned! %{count} petits problèmes traînent encore dans le formulaire:"
