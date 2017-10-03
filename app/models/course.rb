@@ -44,7 +44,7 @@ class Course < ApplicationRecord
 
   def next_slot
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
-    active_slots.sort_by(&:date).select { |slot| slot.date >= Time.now }.first
+    active_slots.sort_by(&:start_at).select { |slot| slot.start_at >= Time.now }.first
   end
 
   def next_slots

@@ -35,8 +35,7 @@ slot1:
  course: patin_beginners
  start_at: 2017-09-05 13:00:00 UTC
  end_at: 2017-09-05 14:30:00 UTC
- users:
-  -georges
+
 
 slot2:
  date: 2017-09-06
@@ -48,8 +47,7 @@ slot2:
  course: patin_beginners
  start_at: 2017-09-06 13:00:00 UTC
  end_at: 2017-09-06 14:30:00 UTC
- users:
-  -georges
+
 
 slot3:
  date: 2017-09-07
@@ -61,8 +59,7 @@ slot3:
  course: patin_beginners
  start_at: 2017-09-07 13:00:00 UTC
  end_at: 2017-09-07 14:30:00 UTC
- users:
-  -georges
+
 
 slot4:
  date: 2017-09-08
@@ -74,5 +71,3 @@ slot4:
  course: patin_beginners
  start_at: 2017-09-08 13:00:00 UTC
  end_at: 2017-09-08 14:30:00 UTC
- users:
-  -georges
