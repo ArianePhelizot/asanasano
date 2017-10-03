@@ -47,13 +47,11 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-
   # Je prends un user qui a un seul slot à venir, dans la même journée
   # Je vérifie que user.next_slots intègre bien ce slot
 
-
   test "next slot is today" do
-    travel_to DateTime.new(2017,9,5,11,0) do
+    travel_to DateTime.new(2017, 9, 5, 11, 0) do
       # verify
       assert_equal 3, User.find_by(email: "george@abitbol.com").next_slots.count
     end
