@@ -8,35 +8,36 @@
 
             <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
               <%= devise_error_messages! %>
-              <%= f.hidden_field :invitation_token %>
 
+              <%= f.hidden_field :invitation_token %>
+              <%= f.input :email, label: "Je valide mon adresse email" %>
               <%= f.input :password, label: "Je définis mon mot de passe" %>
               <%= f.input :password_confirmation, label: "Je le confirme" %>
 
-                            <div class="terms">
+              <div class="terms">
                  <%= f.check_box :agreed_to_terms %> <strong> Je dis "OUI" <a href="#" data-toggle="modal" data-target="#TermsModal">aux conditions générales du service</a></strong>
+              </div>
 
  <!-- Modal TERMS AND CONDITIONS // ATTENTION!!! REPEATED ON INVITATION ACCEPTATION VIEW-->
-                <div class="modal fade" id="TermsModal" tabindex="-1" role="dialog" aria-labelledby="ServiceTermsAndConditions">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Service Terms and Conditions</h4>
-                      </div>
-                      <div class="modal-body">
-                          <%= render 'devise/shared/terms' %>
-                      </div>
+              <div class="modal fade" id="TermsModal" tabindex="-1" role="dialog" aria-labelledby="ServiceTermsAndConditions">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Service Terms and Conditions</h4>
+                    </div>
+                    <div class="modal-body">
+                        <%= render 'devise/shared/terms' %>
                     </div>
                   </div>
                 </div>
+              </div>
   <!-- MODAL END               -->
 
-                <div class="form-actions padded-sm">
+              <div class="form-actions padded-sm">
                   <%= f.button :submit, value:"Et hop, je m'inscris", class: "btn" %>
-                </div>
+              </div>
             <% end %>
-
           </div>
         </div>
       </div>

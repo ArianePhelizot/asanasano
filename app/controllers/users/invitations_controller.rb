@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
 class Users::InvitationsController < Devise::InvitationsController
-  # def invite_resource
-  #   # group tracking
-  #   super do |u|
-  #     u.groups.push(find_group)
-  #   end
-  # end
+  before_action :update_sanitized_params, only: :update
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
@@ -38,7 +33,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
 
-  def after_invite_path_for(resource)
+  def after_invite_path_for(_resource)
     group_participants_path(find_group)
   end
 
@@ -46,5 +41,11 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def find_group
     @group = Group.find(params[:user][:group_id])
+  end
+
+  def update_sanitized_params
+    devise_parameter_sanitizer.permit(:accept_invitation,
+                                      keys: [:email, :password, :password_confirmation,
+                                             :invitation_token, :agreed_to_terms])
   end
 end
