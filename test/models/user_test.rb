@@ -42,47 +42,18 @@
 #  index_users_on_invitations_count     (invitations_count)
 #  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
 #
 
-mary:
-  email: "mary.poppins@gmail.com"
-  groups:
-    - fraises
-    - pommes
-  slots:
+require "test_helper"
 
-amelie:
-  email: "amelie.poulain@gmail.com"
-  first_name: "Amélie"
-  last_name: "Poulain"
-  coach: coach_amelie
-  groups:
-    - fraises
-  slots:
+class UserTest < ActiveSupport::TestCase
+  # Je prends un user qui a un seul slot à venir, dans la même journée
+  # Je vérifie que user.next_slots intègre bien ce slot
 
-georges:
-  email: "george@abitbol.com"
-  first_name: "George"
-  last_name: "Abitbol"
-  groups:
-    - fraises
-    - pommes
-  slots: slot1, slot2, slot3, slot4
-
-
-eliott:
-  email: "eliott@ledragon.com"
-  first_name: "Eliott"
-  last_name: "Le Dragon"
-  coach: coach_eliott
-  groups:
-    - pommes
-  slots:
-
-
+  test "next slot is today" do
+    travel_to DateTime.new(2017, 9, 5, 11, 0) do
+      # verify
+      assert_equal 3, User.find_by(email: "george@abitbol.com").next_slots.count
+    end
+  end
+end

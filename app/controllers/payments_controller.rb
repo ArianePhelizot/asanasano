@@ -51,7 +51,7 @@ class PaymentsController < ApplicationController
     if mangopay_card_web_pay_in["ResultMessage"].nil?
       redirect_to mangopay_card_web_pay_in["RedirectURL"] # ouvre la page pour saisie CB
       sleep(5.0)
-      flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!."
+      flash[:notice] = "Bien reçu. Votre commande est en cours de traitement!"
     else
       redirect_to course_path(@order.slot.course)
       flash[:alert] = "Arghhh, nous avons eu un problème sur le traitement de votre commande."

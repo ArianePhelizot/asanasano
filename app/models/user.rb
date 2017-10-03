@@ -72,8 +72,8 @@ class User < ApplicationRecord
 
   def next_slots
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
-    sorted_slots = active_slots.sort_by(&:date)
-    sorted_slots.select { |slot| slot.date >= Time.now }
+    sorted_slots = active_slots.sort_by(&:start_at)
+    sorted_slots.select { |slot| slot.start_at >= Time.now }
   end
 
   # rubocop:disable Metrics/AbcSize
