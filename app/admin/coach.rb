@@ -1,17 +1,22 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Coach do
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  permit_params :description, :experience, :languages, :params_set_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  permit_params :description, :experience, :params_set_id, languages: []
+
+  index do
+    column :user_id, sortable: :user_id do |coach|
+      coach
+    end
+    column :coach_id, sortable: :coach_id do |coach|
+      coach.id
+    end
+    column :description
+    column :experience
+    column :languages
+    column :params_set
+    actions
+  end
+
 end
 
