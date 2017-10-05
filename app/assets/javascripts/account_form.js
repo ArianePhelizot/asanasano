@@ -14,4 +14,12 @@ $(document).ready(function() {
 });
 
 
-
+$(document).ready(function() {
+    if ( $('input:radio[name="account[person_type]"]:checked').val() == "NATURAL" ) {
+       $('#natural-info').show();
+       $('#legal-info').hide();
+     } else {
+       $('#legal-info').show();
+       $('#natural-info').hide();
+     };
+});
