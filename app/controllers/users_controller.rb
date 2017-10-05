@@ -27,6 +27,7 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :email,
                                  :phone_number,
-                                 :photo)
+                                 :photo,
+                                 :agreed_to_terms)
   end
 end

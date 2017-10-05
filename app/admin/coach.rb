@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Coach do
 
-  permit_params :description, :experience, :params_set_id, languages: []
+  permit_params :description, :experience, :params_set_id, languages: [], sports: []
 
   index do
     column :user_id, sortable: :user_id do |coach|
@@ -14,6 +14,9 @@ ActiveAdmin.register Coach do
     column :description
     column :experience
     column :languages
+    column :sports do
+    raw coach.sports
+  end
     column :params_set
     actions
   end

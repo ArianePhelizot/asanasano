@@ -6,6 +6,18 @@ fr:
       home: "Accueil"
       sign_out: "Se déconnecter"
 
+  simple_form:
+    options:
+      account:
+        legal_person_type:
+          business: SOCIÉTÉ
+          organization: ASSOCIATION
+          soletrader: INDÉPENDANT
+        person_type:
+          legal: PERSONNE MORALE
+          natural: PERSONNE PHYSIQUE
+
+
   activerecord:
     errors:
       messages:

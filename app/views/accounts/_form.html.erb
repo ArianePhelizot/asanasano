@@ -18,7 +18,7 @@
 <!--   shown form  -->
   <%= f.input :first_name, label: "Prénom", as: :text %>
   <%= f.input :last_name, label: "Nom", as: :text %>
-  <%= f.input :person_type, label: "Profil", collection: ["NATURAL", "LEGAL"], as: :radio_buttons %>
+  <%= f.input :person_type, label: "Profil", collection: [:natural, :legal], as: :radio_buttons %>
 
 <div class="person_type" id="natural-info">
   <%= f.input :birthday, label: "Date d'anniversaire",
@@ -28,16 +28,16 @@
 
   <%= f.input :address_line1, label: "Adresse, ligne 1", as: :text %>
   <%= f.input :address_line2, label: "Adresse ligne 2", as: :text %>
-  <%= f.input :city, label: "Ville", as: :text %>
-  <%= f.input :region, label: "Région", as: :text %>
   <%= f.input :postal_code, label: "Code postal", as: :text %>
+  <%= f.input :city, label: "Ville", as: :text %>
+<!--   <%= f.input :region, label: "Région", as: :text %> -->
 
   <%= f.input :country_of_residence, as: :country, label: "Pays de résidence" %>
   <%= f.input :nationality, as: :country, label: "Nationalité" %>
 </div>
 
 <div class="person_type" id="legal-info">
-  <%= f.input :legal_person_type, label: "Type d'organisation", collection: %w(BUSINESS ORGANIZATION SOLETRADER), as: :radio_buttons %>
+  <%= f.input :legal_person_type, label: "Type d'organisation", collection: [:business, :organization, :soletrader], as: :radio_buttons %>
   <%= f.input :legal_name, label: "Nom de l'organisation" %>
     <%= f.input :legal_representative_first_name, label: "Prénom du représentant légal" %>
   <%= f.input :legal_representative_last_name, label: "Nom du représentant légal" %>
