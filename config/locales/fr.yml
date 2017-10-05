@@ -9,14 +9,13 @@ fr:
   simple_form:
     options:
       account:
+        legal_person_type:
+          business: SOCIÉTÉ
+          organization: ASSOCIATION
+          soletrader: INDÉPENDANT
         person_type:
-          natural: PERSONNE PHYSIQUE
           legal: PERSONNE MORALE
-        # legal_person_type: type d'organisation
-        #   business: SOCIÉTÉ
-        #   organization: ASSOCIATION
-        #   soletrader:  INDÉPENDANT
-
+          natural: PERSONNE PHYSIQUE
 
 
   activerecord:

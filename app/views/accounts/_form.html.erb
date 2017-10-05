@@ -37,7 +37,7 @@
 </div>
 
 <div class="person_type" id="legal-info">
-  <%= f.input :legal_person_type, label: "Type d'organisation", collection: %w(BUSINESS ORGANIZATION SOLETRADER), as: :radio_buttons %>
+  <%= f.input :legal_person_type, label: "Type d'organisation", collection: [:business, :organization, :soletrader], as: :radio_buttons %>
   <%= f.input :legal_name, label: "Nom de l'organisation" %>
     <%= f.input :legal_representative_first_name, label: "Prénom du représentant légal" %>
   <%= f.input :legal_representative_last_name, label: "Nom du représentant légal" %>
