@@ -3,7 +3,7 @@ $(document).ready(function() {
   $('input:radio[name="account[person_type]"]').change(function () {
     // alert ("in!");
 
-    if ( $('input:radio[name="account[person_type]"]:checked').val() == "NATURAL" ) {
+    if ( $('input:radio[name="account[person_type]"]:checked').val() == "natural" ) {
        $('#natural-info').show();
        $('#legal-info').hide();
      } else {
@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    if ( $('input:radio[name="account[person_type]"]:checked').val() == "NATURAL" ) {
+    if ( $('input:radio[name="account[person_type]"]:checked').val() == "natural" ) {
        $('#natural-info').show();
        $('#legal-info').hide();
      } else {

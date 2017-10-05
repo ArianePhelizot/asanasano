@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+
+  simple_form:
+    options:
+      account:
+        person_type:
+          natural: NATURAL
+          legal: LEGAL
+        # legal_person_type: Legal person type
+        #   business: BUSINESS
+        #   organization: ORGANIZATION
+        #   soletrader:  SOLETRADER
+
