@@ -1,0 +1,32 @@
+<div style="color: #64676C";font: sans-serif";margin-left: 10px" >
+
+  <div class="hello", style="padding-bottom: 4px">
+    <p>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>,</p>
+  </div>
+
+  <div class="body", style="padding-bottom: 4px">
+    <p>Petit rappel sur une bonne nouvelle: votre séance de <strong><%= @slot.course.name %></strong>, avec <%= @slot.course.coach.first_name %>, prévue <strong>demain  <%= l(@slot.start_at, format:"%A %e %B %Y")%>, de <%= l(@slot.start_at, format:"%Hh%M")%>  à <%= l(@slot.end_at, format:"%Hh%M") %></strong> est bien confirmée.
+    </p>
+
+    <p>Alors rendez-vous demain: <%= @slot.course.address %>.
+      <% if @slot.specificities.present?%>
+        <%= @slot.course.meeting_point%>.
+      <% end %>
+    </p>
+
+    <% if @slot.specificities.present?%>
+     <p>NB: <%= @slot.specificities %></p>
+    <% end %>
+
+    <p>Portez-vous bien,</p>
+  </div>
+
+  <div class="signature", style="line-height: 0.4em">
+    <p>Asanasano</p>
+    <p><strong><a href="mailto:hello@asanasano.com", style="color: #64676C";font-family:sans-serif">hello@asanasano.com</a></strong></p>
+    <div style="text-align: center">
+      <a href="www.asanasano.com"><img src="https://www.asanasano.com/assets/ASANASANO-e81a1dd672b0542eb090bb433b0c2b5aa54e456b8dd03cdc3be40b41f341978b.png" alt="Logo Asanasano", style="width:215px;height:60.2;border:0;margin:0 auto"></a>
+    </div>
+  </div>
+
+</div>

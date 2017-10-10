@@ -18,6 +18,18 @@ class OrderMailer < ApplicationMailer
     )
   end
 
+
+  def slot_reminder(slot, user)
+    @slot = slot
+    @user = user
+
+    mail(
+      to:         @user.email,
+      subject:    "Petit rappel pour votre séance de #{@slot.course.name}
+                  de demain #{@slot.date} à #{@slot.start_at}"
+    )
+  end
+
   def slot_cancellation_with_refund_confirmation(order)
     @order = order
     @user = order.user
