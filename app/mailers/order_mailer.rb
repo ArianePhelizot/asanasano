@@ -13,7 +13,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Votre séance de #{@order.slot.course.name}
-                  du #{@order.slot.date}
+                  du #{l(@order.slot.start_at, format:"%A %e %B")}
                   est bien réservée !"
     )
   end
@@ -26,7 +26,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Petit rappel pour votre séance de #{@slot.course.name}
-                  de demain #{@slot.date} à #{@slot.start_at}"
+                  de demain #{l(@order.slot.start_at, format:"%A %e %B")} à #{l(@order.slot.start_at, format:"%Hh%M")}."
     )
   end
 
@@ -37,7 +37,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Message de confirmation: annulation de votre séance de
-                  #{@order.slot.course.name} du #{@order.slot.date}."
+                  #{@order.slot.course.name} du #{l(@order.slot.start_at, format:"%A %e %B")}."
     )
   end
 
@@ -48,7 +48,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Message de confirmation: annulation de votre séance de
-                  #{@order.slot.course.name} du #{@order.slot.date}."
+                  #{@order.slot.course.name} du #{l(@order.slot.start_at, format:"%A %e %B")}."
     )
   end
 
@@ -59,7 +59,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Tristess...votre séance de
-                  #{@order.slot.course.name} du #{@order.slot.date} est annulée."
+                  #{@order.slot.course.name} du #{l(@order.slot.start_at, format:"%A %e %B")} est annulée."
     )
   end
 end
