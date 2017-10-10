@@ -11,7 +11,7 @@ class IssueMailer < ApplicationMailer
     mail(
       to:         ASANASANO_SUPPORT_TEAM_EMAIL,
       subject:    "Echec paiement - User: #{@user.id} - séance de #{@order.slot.course.name}
-                  du #{@order.slot.date}!"
+                  du #{l(@slot.start_at, format:"%A %e %B")}!"
     )
   end
 
@@ -35,7 +35,7 @@ class IssueMailer < ApplicationMailer
     mail(
       to:         ASANASANO_SUPPORT_TEAM_EMAIL,
       subject:    "Echec Transfert - User: #{@user.id} - séance de #{@order.slot.course.name}
-                  du #{@order.slot.date}!"
+                  du #{l(@slot.start_at, format:"%A %e %B")}!"
     )
   end
 
@@ -49,7 +49,7 @@ class IssueMailer < ApplicationMailer
       subject:    "Echec Payout - Coach_user_id: #{@coach_user.id},
                   #{@coach_user.first_name.first}.#{@coach_user.last_name} -
                   séance de #{@slot.course.name}
-                  du #{@slot.date}!"
+                  du #{l(@slot.start_at, format:"%A %e %B")}!"
     )
   end
 end

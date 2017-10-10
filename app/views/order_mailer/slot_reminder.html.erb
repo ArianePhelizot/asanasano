@@ -5,11 +5,20 @@
   </div>
 
   <div class="body", style="padding-bottom: 4px">
-    <p>C'est noté! Vous êtes bien inscrit(e) à la séance de
-      <%= @order.slot.course.name %> prévue <%= l(@order.slot.start_at, format:"%A %e %B %Y")%> de <%= l(@course.next_slot.start_at, format:"%Hh%M")%> à <%= l(@course.next_slot.end_at, format:"%Hh%M")%>.
+    <p>Petit rappel sur une bonne nouvelle: votre séance de <strong><%= @slot.course.name %></strong>, avec <%= @slot.course.coach.first_name %>, prévue <strong>demain  <%= l(@slot.start_at, format:"%A %e %B %Y")%>, de <%= l(@slot.start_at, format:"%Hh%M")%>  à <%= l(@slot.end_at, format:"%Hh%M") %></strong> est bien confirmée.
     </p>
 
-    <p>A très vite,</p>
+    <p>Alors rendez-vous demain: <%= @slot.course.address %>.
+      <% if @slot.specificities.present?%>
+        <%= @slot.course.meeting_point%>.
+      <% end %>
+    </p>
+
+    <% if @slot.specificities.present?%>
+     <p>NB: <%= @slot.specificities %></p>
+    <% end %>
+
+    <p>Portez-vous bien,</p>
   </div>
 
   <div class="signature", style="line-height: 0.4em">
@@ -21,4 +30,3 @@
   </div>
 
 </div>
-
