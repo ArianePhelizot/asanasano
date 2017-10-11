@@ -1,7 +1,7 @@
 <div style="color: #64676C";font: sans-serif";margin-left: 10px" >
 
   <div class="hello", style="padding-bottom: 4px">
-    <p>Bonjour <%= @user.first_name? ? @user.first_name : @user.email %>, </p>
+    <p>Bonjour<%=" "+@user.first_name.capitalize if @user.first_name? %>,</p>
   </div>
 
     <div class="body", style="padding-bottom: 4px">

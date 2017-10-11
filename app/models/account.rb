@@ -40,7 +40,7 @@ class Account < ApplicationRecord
   after_initialize :default_values
 
   validates :user_id, :person_type, presence: true
-  validates :person_type, inclusion: [:natural, :legal] #{ in: %w(NATURAL LEGAL) }
+  validates :person_type, inclusion: [:natural, :legal]
   validates :first_name, :last_name, :birthday, :country_of_residence,
             :nationality, presence: true, if: :natural?
   validates :legal_person_type, :legal_name,
@@ -48,8 +48,8 @@ class Account < ApplicationRecord
             :legal_representative_birthday, :legal_representative_country_of_residence,
             :legal_representative_nationality,
             presence: true, if: :legal?
-  # validates :legal_person_type, inclusion: { in: %w(BUSINESS ORGANIZATION SOLETRADER) }, if: :legal?
-  validates :legal_person_type, inclusion: [:business, :organization, :soletrader], if: :legal?
+  validates :legal_person_type, inclusion: [:business, :organization, :soletrader],
+                                if: :legal?
 
   def natural?
     person_type == "NATURAL"

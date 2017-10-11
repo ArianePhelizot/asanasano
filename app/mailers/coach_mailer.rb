@@ -13,8 +13,8 @@ class CoachMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Petit rappel pour votre séance de #{@slot.course.name}
-                  de après-demain, #{l(@slot.start_at, format:"%A %e %B")}, à #{l(@slot.start_at, format:"%Hh%M")}"
+                  de après-demain, #{l(@slot.start_at, format: '%A %e %B')},
+                  à #{l(@slot.start_at, format: '%Hh%M')}."
     )
   end
-
 end
