@@ -52,6 +52,7 @@
 
 mary:
   email: "mary.poppins@gmail.com"
+  first_name: "mary"
   groups:
     - fraises
     - pommes

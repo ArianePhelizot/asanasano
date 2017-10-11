@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
     @user = user
 
     mail to: @user.email,
-         subject: "Bienvenue #{@user.first_name if @user.first_name?} sur Asanasano !"
+         subject: "Bienvenue #{@user.first_name.capitalize if @user.first_name?} sur Asanasano !"
   end
 end
