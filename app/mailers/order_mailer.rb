@@ -26,7 +26,7 @@ class OrderMailer < ApplicationMailer
     mail(
       to:         @user.email,
       subject:    "Petit rappel pour votre séance de #{@slot.course.name}
-                  de demain #{l(@order.slot.start_at, format:"%A %e %B")} à #{l(@order.slot.start_at, format:"%Hh%M")}."
+                  de demain #{l(@slot.start_at, format:"%A %e %B")} à #{l(@slot.start_at, format:"%Hh%M")}."
     )
   end
 
@@ -58,7 +58,7 @@ class OrderMailer < ApplicationMailer
 
     mail(
       to:         @user.email,
-      subject:    "Tristess...votre séance de
+      subject:    "Tristesse...votre séance de
                   #{@order.slot.course.name} du #{l(@order.slot.start_at, format:"%A %e %B")} est annulée."
     )
   end

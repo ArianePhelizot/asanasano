@@ -5,8 +5,8 @@
   </div>
 
   <div class="body", style="padding-bottom: 4px">
-    <p>C'est noté! Vous êtes bien inscrit(e) à la séance de
-      <%= @order.slot.course.name %> prévue <%= l(@order.slot.start_at, format:"%A %e %B %Y")%> de <%= l(@course.next_slot.start_at, format:"%Hh%M")%> à <%= l(@course.next_slot.end_at, format:"%Hh%M")%>.
+    <p>C'est noté! Vous êtes bien inscrit(e) à la séance de <strong>
+      <%= @order.slot.course.name %> </strong> prévue <strong><%= l(@order.slot.start_at, format:"%A %e %B %Y")%></strong> de <strong><%= l(@order.slot.start_at, format:"%Hh%M")%></strong> à <%= l(@order.slot.end_at, format:"%Hh%M")%>.
     </p>
 
     <p>A très vite,</p>
