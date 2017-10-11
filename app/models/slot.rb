@@ -22,6 +22,7 @@
 #
 #  index_slots_on_course_id  (course_id)
 #
+require 'icalendar'
 
 class Slot < ApplicationRecord
   belongs_to :course
@@ -48,6 +49,20 @@ class Slot < ApplicationRecord
   def mangopay_payout_tag
     "Slot: #{id} du #{date.strftime('%d/%m/%y')} - Course: #{course.id}, #{course.name} - Coach: #{course.coach_id}/User_id: #{course.coach.user.id}, #{course.coach.user.first_name.first}.#{course.coach.user.last_name} - #{users.count} participants "
   end
-  # rubocop:enable Metrics/AbcSize
   # rubocop:enable LineLength
+
+  def ical
+    # Create a calendar with an event (standard method)
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = Icalendar::Values::DateTime.new(self.start_at)
+      e.dtend       = Icalendar::Values::DateTime.new(self.end_at)
+      e.summary     = "#{self.course.name.capitalize} avec #{self.course.coach.user.first_name.capitalize}"
+      e.description = " #{self.specificities} \n #{self.course.content} \n #{self.course.details}. "
+      e.ip_class    = "PRIVATE"
+      e.location = "Rdv: #{self.course.meeting_point} - #{self.course.address}"
+      e.organizer = self.course.coach.user.email
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
 end
