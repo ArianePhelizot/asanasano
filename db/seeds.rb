@@ -19,6 +19,7 @@ Wallet.destroy_all
 Iban.destroy_all
 Order.destroy_all
 ParamsSet.destroy_all
+MangopayLog.destroy_all
 
 puts 'Creating app params_sets, users, groups, coaches, courses and sports, and accounts, wallets, ibans, slots...'
 
@@ -229,7 +230,7 @@ group3.coaches = [coach1, coach3]
 
 account1 = Account.create!(user_id: user1.id,
                           tag: "User_id: " + user1.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1975, 12, 26),
                           address_line1: "10 rue Oberkampf",
                           postal_code: "75011",
@@ -240,7 +241,7 @@ account1 = Account.create!(user_id: user1.id,
 
 account2 = Account.create!(user_id: user2.id,
                           tag: "User_id: " + user2.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1998, 9, 5),
                           address_line1: "4 rue de la Cannebière",
                           postal_code: "13002",
@@ -251,7 +252,7 @@ account2 = Account.create!(user_id: user2.id,
 
 account3 = Account.create!(user_id: user3.id,
                           tag: "User_id: " + user3.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1997, 2, 27),
                           address_line1: "6 avenue Mac Mahon",
                           postal_code: "75008",
@@ -262,7 +263,7 @@ account3 = Account.create!(user_id: user3.id,
 
 account4 = Account.create!(user_id: user4.id,
                           tag: "User_id: " + user4.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1987, 6, 15),
                           address_line1: "66 rue de Longchamp",
                           postal_code: "75016",
@@ -274,7 +275,7 @@ account4 = Account.create!(user_id: user4.id,
 
 account5 = Account.create!(user_id: user5.id,
                           tag: "User_id: " + user5.id.to_s + " & Coach_id: " + coach1.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1971, 11, 30),
                           address_line1: "2 rue Eugène Carrière",
                           postal_code: "75018",
@@ -285,7 +286,7 @@ account5 = Account.create!(user_id: user5.id,
 
 account6 = Account.create!(user_id: user6.id,
                           tag: "User_id: " + user6.id.to_s + " & Coach_id: " + coach2.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1993, 5, 8),
                           address_line1: "15 boulevard de Grenelle",
                           postal_code: "75015",
@@ -296,7 +297,7 @@ account6 = Account.create!(user_id: user6.id,
 
 account7 = Account.create!(user_id: user7.id,
                           tag: "User_id: " + user7.id.to_s + " & Coach_id: " + coach3.id.to_s,
-                          person_type: "NATURAL",
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1995, 7, 11),
                           address_line1: "165 rue de Paradis",
                           postal_code: "75002",
@@ -391,11 +392,6 @@ iban3 = Iban.create(account_id: user7.account.id, iban: "FR763000600001123456789
 puts "#{Iban.count} ibans created"
 
 # SLOT SEEDS
-
-# for index in 0...(musicians.size)
-#   musician = musicians[index]
-#   puts "#{index + 1} - #{musician}"
-# end
 
 for i in -7..7
   Slot.create!(date: Date.today + i,
