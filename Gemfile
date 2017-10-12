@@ -36,6 +36,8 @@ gem 'simple_form'
 gem 'mangopay', '~> 3.0', '>= 3.0.29'
 gem 'uglifier'
 
+gem 'icalendar'
+
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'cloudinary'
 gem 'coffee-rails'

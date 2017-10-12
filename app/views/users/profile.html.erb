@@ -93,7 +93,7 @@
               <% if !@user.account %>
                   <%= link_to "Renseigner mes données de facturation", new_user_account_path(@user) %>
               <!-- Account info created and if Natural -->
-              <% elsif @user.account && @user.account.person_type == "NATURAL" %>
+              <% elsif @user.account && @user.account.person_type == "PERSONNE PHYSIQUE" %>
 
               <table class="table">
                 <tbody>
@@ -120,7 +120,7 @@
                   </tr>
                   <tr>
                     <td class = "cat">       </td>
-                    <td class = "input"><%= [@user.account.postal_code + " "+ @user.account.city + " "+ @user.account.region, @user.account.country_of_residence].join(",") %>
+                    <td class = "input"><%= [@user.account.postal_code + " "+ @user.account.city, @user.account.country_of_residence].join(", ") %>
                     </td>
                   </tr>
                   <tr>

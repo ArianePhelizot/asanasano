@@ -35,7 +35,7 @@
 
 account_amelie:
  user: amelie
- person_type: "NATURAL"
+ person_type: "PERSONNE PHYSIQUE"
  tag: ""
  first_name: "Amelie"
  last_name: "Poulain"
@@ -50,7 +50,7 @@ account_amelie:
 
 account_eliott:
  user: eliott
- person_type: "NATURAL"
+ person_type: "PERSONNE PHYSIQUE"
  tag: ""
  first_name: "Eliott"
  last_name: "Le Dragon"
@@ -65,7 +65,7 @@ account_eliott:
 
 account_georges:
  user: georges
- person_type: "NATURAL"
+ person_type: "PERSONNE PHYSIQUE"
  tag: ""
  first_name: "Georges"
  last_name: "Abitbol"

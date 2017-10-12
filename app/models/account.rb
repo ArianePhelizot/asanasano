@@ -40,7 +40,7 @@ class Account < ApplicationRecord
   after_initialize :default_values
 
   validates :user_id, :person_type, presence: true
-  validates :person_type, inclusion: [:natural, :legal]
+  validates :person_type, inclusion: ["PERSONNE PHYSIQUE", "PERSONNE MORALE"]
   validates :first_name, :last_name, :birthday, :country_of_residence,
             :nationality, presence: true, if: :natural?
   validates :legal_person_type, :legal_name,
@@ -52,17 +52,17 @@ class Account < ApplicationRecord
                                 if: :legal?
 
   def natural?
-    person_type == "NATURAL"
+    person_type == "PERSONNE PHYSIQUE"
   end
 
   def legal?
-    person_type == "LEGAL"
+    person_type == "PERSONNE MORALE"
   end
 
   def default_values
     self.first_name ||= User.find(user_id).first_name
     self.last_name ||= User.find(user_id).last_name
-    self.person_type ||= "NATURAL"
+    self.person_type ||= "PERSONNE PHYSIQUE"
     self.country_of_residence ||= "FR"
     self.nationality ||= "FR"
     self.legal_representative_country_of_residence ||= "FR"
@@ -91,7 +91,7 @@ class Account < ApplicationRecord
 
   # rubocop:disable Metrics/MethodLength
   def address
-    if natural?
+    if self.person_type == "PERSONNE PHYSIQUE"
       { "AddressLine1": address_line1,
         "AddressLine2": address_line2,
         "City": city,

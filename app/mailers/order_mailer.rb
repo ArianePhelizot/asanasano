@@ -10,6 +10,8 @@ class OrderMailer < ApplicationMailer
     @order = order
     @user = order.user
 
+    attachments["meeting-with-me.ics"] = { mime_type: "text/calendar", content: @order.slot.ical.to_ical }
+
     mail(
       to:         @user.email,
       subject:    "Votre séance de #{@order.slot.course.name}
