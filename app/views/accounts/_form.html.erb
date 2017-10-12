@@ -18,7 +18,8 @@
 <!--   shown form  -->
   <%= f.input :first_name, label: "Prénom", as: :text %>
   <%= f.input :last_name, label: "Nom", as: :text %>
-  <%= f.input :person_type, label: "Profil", collection: [:natural, :legal], as: :radio_buttons %>
+
+  <%= f.input :person_type, label: "Profil", collection: ["PERSONNE PHYSIQUE", "PERSONNE MORALE"], as: :radio_buttons %>
 
 <div class="person_type" id="natural-info">
   <%= f.input :birthday, label: "Date d'anniversaire",

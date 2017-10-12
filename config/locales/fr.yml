@@ -13,9 +13,9 @@ fr:
           business: SOCIÉTÉ
           organization: ASSOCIATION
           soletrader: INDÉPENDANT
-        person_type:
-          legal: PERSONNE MORALE
-          natural: PERSONNE PHYSIQUE
+        # person_type:
+        #   legal: "PERSONNE MORALE"
+        #   natural: "PERSONNE PHYSIQUE"
 
 
   activerecord:

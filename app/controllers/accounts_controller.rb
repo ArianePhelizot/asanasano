@@ -16,11 +16,12 @@ class AccountsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
+
     @account = Account.new(account_params)
     authorize @account
 
     if @account.save
-      if @account.person_type == "NATURAL"
+      if @account.person_type == "PERSONNE PHYSIQUE"
         mangopay_create_natural_user(@account.id)
       else
         mangopay_create_legal_user(@account.id)
@@ -68,7 +69,7 @@ class AccountsController < ApplicationController
     # Il faut récupérer l'ID du compte
     if @account.update(account_params)
 
-      if @account.person_type == "NATURAL"
+      if @account.person_type == "PERSONNE PHYSIQUE"
         mangopay_update_natural_user(@account.id)
       else
         mangopay_update_legal_user(@account.id)
