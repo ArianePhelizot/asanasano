@@ -1,23 +1,22 @@
-<!--
+
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to omniauth_authorize_path(resource_name, provider) do %>
       <%= image_tag "facebook connect.png", class: "padded-bot-m"%>
       <br />
-    <% end -%>
-  <% end -%>
-<% end -%> -->
-
+    <% end %>
+  <% end %>
+<% end %>
+<!--
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to omniauth_authorize_path(resource_name, provider) do %>
     <div class="btn-facebook-connect btn-lg">
       <i class="fa fa-facebook-square" aria-hidden="true">  Continuer avec facebook</i>
     </div>
-
     <% end -%>
   <% end -%>
-<% end -%>
+<% end -%> -->
 
 <%- if controller_name != 'sessions' %>
   <%= link_to "Déjà inscrit ? Se connecter par ici", new_session_path(resource_name) %><br />

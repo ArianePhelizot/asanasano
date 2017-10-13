@@ -165,16 +165,24 @@ class SlotsController < ApplicationController
                          error_logs: log_error)
     end
 
-    if mangopay_refund["ResultMessage"].nil?
-      flash[:notice] = "Votre annulation pour la séance
-      #{l(@order.slot.date, format: :long)} a bien été prise en compte.
-      Le paiement par carte correspondant vous sera remboursé. "
-    else
-      IssueMailer.payin_refund_failed(@order, mangopay_refund["ResultMessage"]).deliver_now
-      flash[:alert] = "Damned! Nous avons bien pris en compte l'annulation de votre séance
-      #{l(@order.slot.date, format: :long)},
-      mais il y a visiblement eu un problème sur son remboursement.
-      Nous allons étudier et régler le problème au plus vite. "
+    case order_state
+
+    when "ask_for_refund"
+      if mangopay_refund["ResultMessage"] == "Success"
+        flash[:notice] = "Votre annulation pour la séance
+        #{l(order.slot.date, format: :long)} a bien été prise en compte.
+        Le paiement par carte correspondant vous sera remboursé. "
+      else
+        IssueMailer.payin_refund_failed(@order, mangopay_refund["ResultMessage"]).deliver_now
+        flash[:alert] = "Damned! Nous avons bien pris en compte l'annulation de votre séance
+        #{l(order.slot.date, format: :long)},
+        mais il y a visiblement eu un problème sur son remboursement.
+        Nous allons étudier et régler le problème au plus vite. "
+      end
+    when "refund_for_slot_cancellation"
+      if !mangopay_refund["ResultMessage"] == "Success"
+        IssueMailer.payin_refund_failed(@order, mangopay_refund["ResultMessage"]).deliver_now
+      end
     end
   end
   # rubocop:enable Metrics/AbcSize
