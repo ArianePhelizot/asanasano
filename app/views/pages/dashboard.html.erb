@@ -6,12 +6,14 @@
   </div>
   <div class="mes-prochaines-seances-container">
     <div class="row">
-
+      <% if @user.next_slots.empty? %>
+        <div class = text-center><p>Vous n'avez pas encore réservé de séances à venir</p></div>
+      <% else %>
         <% @user.next_slots.each do |slot| %>
           <div class="col-sm-6 col-md-4 col-lg-3">
-        <%= render 'dashboard-slot-card', slot: slot %>
-
-      </div>
+            <%= render 'dashboard-slot-card', slot: slot %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
