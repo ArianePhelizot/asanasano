@@ -16,7 +16,6 @@ class AccountsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
-
     @account = Account.new(account_params)
     authorize @account
 
