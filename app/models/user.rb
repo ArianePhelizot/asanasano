@@ -106,6 +106,17 @@ class User < ApplicationRecord
     match_data[1]
   end
 
+  def dashboard_coach_next_slots
+    # Je prends un user-coach
+    # Je regarde tous ces cours
+    dashboard_coach_next_slots = []
+    coach = Coach.find(coach_id)
+    coach.courses.each do |course|
+      dashboard_coach_next_slots << course.next_slots
+    end
+    dashboard_coach_next_slots.flatten.sort_by(&:start_at)
+  end
+
   private
 
   def send_welcome_email

@@ -5,9 +5,25 @@
     <h2>Mes prochaines séances</h2>
   </div>
   <div class="mes-prochaines-seances-container">
+    <% if @user.coach_id.present? %>
+      <div id="coach-next-slots">
+        <% slots_dates(@user.dashboard_coach_next_slots).each do |date| %>
+          <div class="db-slot-list-by-date">
+            <strong><%= l(date, format:"%A %e %B %Y").capitalize %></strong>
+              <div class="db-coach-slot-details">
+                <% select_by_date(@user.dashboard_coach_next_slots, date).each do |slot| %>
+                <li> <i class="fa fa-clock-o" aria-hidden="true"></i> <%= l(slot.start_at, format:"%Hh%M")%>-<%= l(slot.end_at, format:"%Hh%M") %>,    <i class="fa fa-users" aria-hidden="true"></i> <%= slot.users.count %> / <%= slot.course.capacity_max %>,   <%= slot.course.group.name %>,   <i class="fa fa-map-marker" aria-hidden="true"></i>  <%= slot.course.address %> </li>
+                <% end %>
+              </div>
+          </div>
+        <%end%>
+
+      </div>
+    <% end %>
+
     <div class="row">
       <% if @user.next_slots.empty? %>
-        <div class = text-center><p>Vous n'avez pas encore réservé de séances à venir</p></div>
+        <div class=text-center><p>Vous n'avez pas encore réservé de séances à venir</p></div>
       <% else %>
         <% @user.next_slots.each do |slot| %>
           <div class="col-sm-6 col-md-4 col-lg-3">
