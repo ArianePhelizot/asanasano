@@ -165,7 +165,7 @@ class SlotsController < ApplicationController
                          error_logs: log_error)
     end
 
-    if mangopay_refund["ResultMessage"].nil?
+    if mangopay_refund["ResultMessage"] == "Success"
       flash[:notice] = "Votre annulation pour la séance
       #{l(@order.slot.date, format: :long)} a bien été prise en compte.
       Le paiement par carte correspondant vous sera remboursé. "
