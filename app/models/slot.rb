@@ -22,7 +22,7 @@
 #
 #  index_slots_on_course_id  (course_id)
 #
-require 'icalendar'
+require "icalendar"
 
 class Slot < ApplicationRecord
   belongs_to :course
@@ -51,18 +51,21 @@ class Slot < ApplicationRecord
   end
   # rubocop:enable LineLength
 
+  # rubocop:disable Metrics/MethodLength
   def ical
     # Create a calendar with an event (standard method)
     cal = Icalendar::Calendar.new
     cal.event do |e|
-      e.dtstart     = Icalendar::Values::DateTime.new(self.start_at)
-      e.dtend       = Icalendar::Values::DateTime.new(self.end_at)
-      e.summary     = "#{self.course.name.capitalize} avec #{self.course.coach.user.first_name.capitalize}"
-      e.description = " #{self.specificities} \n #{self.course.content} \n #{self.course.details}. "
+      e.dtstart     = Icalendar::Values::DateTime.new(start_at)
+      e.dtend       = Icalendar::Values::DateTime.new(end_at)
+      e.summary     = "#{course.name.capitalize} avec #{course.coach.user.first_name.capitalize}"
+      e.description = " #{specificities} \n #{course.content} \n #{course.details}. "
       e.ip_class    = "PRIVATE"
-      e.location = "Rdv: #{self.course.meeting_point} - #{self.course.address}"
-      e.organizer = self.course.coach.user.email
+      e.location = "Rdv: #{course.meeting_point} - #{course.address}"
+      e.organizer = course.coach.user.email
     end
+    cal
   end
+  # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 end
