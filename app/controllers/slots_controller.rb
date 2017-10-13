@@ -165,7 +165,6 @@ class SlotsController < ApplicationController
                          error_logs: log_error)
     end
 
-
     case order_state
 
     when "ask_for_refund"
@@ -181,11 +180,10 @@ class SlotsController < ApplicationController
         Nous allons étudier et régler le problème au plus vite. "
       end
     when "refund_for_slot_cancellation"
-      if ! mangopay_refund["ResultMessage"] == "Success"
+      if !mangopay_refund["ResultMessage"] == "Success"
         IssueMailer.payin_refund_failed(@order, mangopay_refund["ResultMessage"]).deliver_now
       end
     end
-
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
