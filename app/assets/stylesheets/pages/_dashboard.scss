@@ -86,12 +86,38 @@
    @include box-shadow(#494444 2px 1px 5px);
   background-color: rgba(255, 255, 255, 0.7);
   }
+
+#coach-next-slots {
+  border-bottom: solid $blue-text 1px;
+  margin-bottom: 35px;
+}
+
 .db-slot-list-by-date {
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.blue-text {
+  color: $blue-text;
 }
 
 .db-coach-slot-details {
   margin-left: 20px;
+}
+.db-coach-slot-details, a {
+  color: $blue-text;
+}
+
+.db-coach-slot-details, a:hover {
+  color: $blue-text;
+}
+
+
+#no_activity.a {
+  color: $blue-text;
+}
+
+#no_activity.a:hover {
+  color: $blue-text;
 }
 
 // PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES //
@@ -142,27 +168,26 @@
   position: absolute;
   top: 10px;
   right: 45px;
-  color:black;
+  color: $blue-text;
   margin-top: 7px;
 }
 #edit-button {
   position: absolute;
   top: 10px;
   right: 80px;
-  color:black;
+  color: $blue-text;
   margin-top: 7px;
 }
 #participants-button {
   position: absolute;
   top: 10px;
   right: 15px;
-  color:black;
+  color: $blue-text;
   margin-top: 7px;
 }
 #create-a-new-course-button {
   margin-top: 25px;
   margin-bottom: 80px;
-
 }
 
 // CARD-CONTAINER-COURS //

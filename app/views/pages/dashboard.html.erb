@@ -5,25 +5,45 @@
     <h2>Mes prochaines séances</h2>
   </div>
   <div class="mes-prochaines-seances-container">
-    <% if @user.coach_id.present? %>
-      <div id="coach-next-slots">
+  <!--     MES PROCHAINES SEANCES > FOR COACHES ONLY -->
+
+    <% if @user.coach? %>
+      <div id="coach-next-slots" class= "blue-text">
+
+      <!-- if no future slots scheduled -->
+        <% if @user.dashboard_coach_next_slots.empty? %>
+          <div class="text-center blue-text">
+            <p>Vous n'avez pas de séance à venir programmée en tant que coach.</p>
+          </div>
+        <% end %>
+      <!-- otherwise, display slots -->
         <% slots_dates(@user.dashboard_coach_next_slots).each do |date| %>
           <div class="db-slot-list-by-date">
-            <strong><%= l(date, format:"%A %e %B %Y").capitalize %></strong>
+            <strong><%= date_with_mention_if_today_tomorrow(date) %></strong>
               <div class="db-coach-slot-details">
                 <% select_by_date(@user.dashboard_coach_next_slots, date).each do |slot| %>
-                <li> <i class="fa fa-clock-o" aria-hidden="true"></i> <%= l(slot.start_at, format:"%Hh%M")%>-<%= l(slot.end_at, format:"%Hh%M") %>,    <i class="fa fa-users" aria-hidden="true"></i> <%= slot.users.count %> / <%= slot.course.capacity_max %>,   <%= slot.course.group.name %>,   <i class="fa fa-map-marker" aria-hidden="true"></i>  <%= slot.course.address %> </li>
+                  <%= link_to course_path(slot.course) do %>
+                   <li> <i class="fa fa-clock-o" aria-hidden="true"></i> <%= l(slot.start_at, format:"%Hh%M")%>-<%= l(slot.end_at, format:"%Hh%M") %> &nbsp; &nbsp; <i class="fa fa-users" aria-hidden="true"></i> <%= slot.users.count %> / <%= slot.course.capacity_max %> &nbsp; &nbsp;  <%= slot.course.group.name %>: <i class="fa fa-map-marker" aria-hidden="true"></i>  <%= slot.course.address %> </li>
+                  <% end %>
                 <% end %>
               </div>
           </div>
         <%end%>
-
       </div>
     <% end %>
 
+<!-- MES PROCHAINES SEANCES > FOR EVERYBODY -->
     <div class="row">
       <% if @user.next_slots.empty? %>
-        <div class=text-center><p>Vous n'avez pas encore réservé de séances à venir</p></div>
+
+        <div class="text-center blue-text">
+          <% if @user.coach? %>
+            <p>Vous n'avez pas réservé de séances à venir, en tant que simple partticipant</p>
+          <% else %>
+            <p>Vous n'avez pas encore réservé de séances à venir</p>
+          <% end %>
+        </div>
+
       <% else %>
         <% @user.next_slots.each do |slot| %>
           <div class="col-sm-6 col-md-4 col-lg-3">
@@ -33,16 +53,18 @@
       <% end %>
     </div>
   </div>
+
   <!-- TOUS MES COURS -->
   <div class="toutes-mes-activites-title">
     <h2>Mes activités</h2>
   </div>
+
   <!-- PRESENTATION DE TOUS MES GROUPES AVEC LES COURS ASSOCIES -->
 
-  <% @user.groups.uniq.sort.each do |group| %>
+  <% @user.group_list.sort.each do |group| %>
     <!-- GROUP-CONTAINER -->
     <div class="group-container">
-          <div >
+          <div>
             <% if policy(group).edit? %>
               <%= link_to "", edit_group_path(group), class:"fa fa-pencil edit-delete-icons-color", id:"edit-button"%>
             <% end %>
@@ -59,6 +81,16 @@
 
           <div class="group-title blue-shadow-text">
             <%= group.name%>
+          </div>
+
+          <!-- if no activity proposed -->
+          <div id="no_activity">
+            <% if group.courses.empty? %>
+              <div class="text-center blue-text">
+                <p>Damned, il n'y pas d'activité proposée...<a href=<%= "mailto:" + group.owner.email%>>
+                <i class="fa fa-envelope-o"> Contacter le responsable du groupe </i> </a></p>
+              </div>
+            <% end %>
           </div>
 
           <div class="row">

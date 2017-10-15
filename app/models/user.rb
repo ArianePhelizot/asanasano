@@ -70,6 +70,21 @@ class User < ApplicationRecord
 
   after_create :send_welcome_email
 
+  def coach?
+    coach_id.present?
+  end
+
+  def group_list
+    group_list = groups
+    if coach?
+      coach = Coach.find(coach_id)
+      coach.courses.each do |course|
+        group_list << course.group
+      end
+    end
+    group_list.uniq
+  end
+
   def next_slots
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
     sorted_slots = active_slots.sort_by(&:start_at)
