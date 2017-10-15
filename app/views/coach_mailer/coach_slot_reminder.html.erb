@@ -10,28 +10,31 @@
         <%= @slot.course.meeting_point%>.
       <% end %>
     </p>
-    <!--
-    si pas d'inscrit -->
+    <!--si pas d'inscrit -->
     <% if @slot.users.length == 0 %>
-      <p>Il n'y a encore aucun inscrit à cette séance. Vous pouvez l'annuler. Si vous le souhaitez, nous vous invitons à le faire avant demain 17h.</p>
-    <!--
-    si nb min non atteint   -->
+      <p>Il n'y a encore aucun inscrit à cette séance. Si vous souhaitez l'annuler, vous pouvez le faire avant demain 17h.</p>
+    <!--si nb min non atteint   -->
     <% elsif @slot.users.length > 0 && @slot.users.length < @slot.participants_min %>
-     <p>A date, il y a <%= @slot.users.length %> personne(s) inscrite(s): </p>
+     <p>À date, il y a <%= @slot.users.length %> personne(s) inscrite(s): </p>
+     <ul>
       <% @slot.users.each do |user|%>
-        <ul><%= user.first_name %> <%= user.last_name %></ul>
+        <li><%= user.first_name %> <%= user.last_name %></li>
       <% end %>
+     </ul>
       <p>Le nombre minimum de paticipants minimum n'est pas encore atteint. Si vous souhaitez ne pas donner cours dans ces conditions, vous avez jusqu'à la veille 17h pour l'annuler, il sera sinon automatiquement confirmé par mail à l'ensemble des inscrits demain à 18h.</p>
-    <!--
-    si nb d'inscrits > nb mini    -->
+    <!--si nb d'inscrits > nb mini    -->
     <% else %>
-      p>A date, il y a <%= @slot.users.length %> personne(s) inscrite(s): </p>
+      <p>A date, il y a <%= @slot.users.length %> personne(s) inscrite(s): </p>
       <% @slot.users.each do |user|%>
-        <ul><%= user.first_name %> <%= user.last_name %></ul>
+      <ul>
+        <li><%= user.first_name %> <%= user.last_name %></li>
+      </ul>
       <% end %>
       <p>Le nombre minimum de participants est atteint: le cours est confirmé.</p>
-      <p>Chaque participant recevra un mail automatique de rappel demain à 18h.</p>
+      <p>Chaque participant recevra un mail automatique de rappel, demain à 18h.</p>
     <% end %>
+
+    <p>Pour accéder directement au cours, c'est <a href=<%=course_url(@slot.course)%>>par ici</a>.</p>
 
     <p>Bonne journée,</p>
   </div>
