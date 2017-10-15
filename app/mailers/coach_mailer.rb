@@ -10,6 +10,9 @@ class CoachMailer < ApplicationMailer
     @slot = slot
     @user = user
 
+    attachments["asanasano.ics"] = { mime_type: "application/ics",
+                                     content: @slot.ical.to_ical }
+
     mail(
       to:         @user.email,
       subject:    "Petit rappel pour votre séance de #{@slot.course.name}

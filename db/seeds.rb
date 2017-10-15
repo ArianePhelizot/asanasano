@@ -115,7 +115,7 @@ user4 = User.create!(first_name: 'Guillaume',
 
 user5 = User.create!(first_name: 'Isabelle',
                      last_name: 'YVAS',
-                     email: 'isabelle.ivas@gmail.com',
+                     email: 'isabelle.yvas@gmail.com',
                      photo: open_photo('isabelle_photo.jpeg'),
                      password: 'azerty',
                      phone_number: '0601020304',
