@@ -4,14 +4,13 @@ require "test_helper"
 
 class ProfileTest < ActionDispatch::IntegrationTest
   test "loads correctly" do
-    #set up
+    # set up
     login_as users(:georges)
-    #exercice
+    # exercice
     visit profile_path
-    #verify
+    # verify
     assert_equal 200, page.status_code
     assert page.has_content?("Georges")
     assert page.has_content?("Abitbol")
   end
-
 end
