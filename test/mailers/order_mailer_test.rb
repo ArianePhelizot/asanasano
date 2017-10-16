@@ -19,7 +19,7 @@ class OrderMailerTest < ActionMailer::TestCase
     end
     # Test the body of the sent email contains what we expect it to
     assert_equal "Votre séance de Patin du mardi 5 septembre est bien réservée !", mail.subject
-    assert_equal ["george@abitbol.com"], mail.to
+    assert_equal ["georges@abitbol.com"], mail.to
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end
@@ -37,7 +37,7 @@ class OrderMailerTest < ActionMailer::TestCase
     # rubocop:disable LineLength
     assert_equal "Petit rappel pour votre séance de Patin de demain mardi 5 septembre à 13h00.", mail.subject
     # rubocop:enable LineLength
-    assert_equal ["george@abitbol.com"], mail.to
+    assert_equal ["georges@abitbol.com"], mail.to
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end
@@ -55,7 +55,7 @@ class OrderMailerTest < ActionMailer::TestCase
     # rubocop:disable LineLength
     assert_equal "Message de confirmation: annulation de votre séance de Patin du mardi 5 septembre.", mail.subject
     # rubocop:enable LineLength
-    assert_equal ["george@abitbol.com"], mail.to
+    assert_equal ["georges@abitbol.com"], mail.to
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end
@@ -73,7 +73,7 @@ class OrderMailerTest < ActionMailer::TestCase
     # rubocop:disable LineLength
     assert_equal "Message de confirmation: annulation de votre séance de Patin du mardi 5 septembre.", mail.subject
     # rubocop:enable LineLength
-    assert_equal ["george@abitbol.com"], mail.to
+    assert_equal ["georges@abitbol.com"], mail.to
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end
@@ -89,7 +89,7 @@ class OrderMailerTest < ActionMailer::TestCase
     end
     # Test the body of the sent email contains what we expect it to
     assert_equal "Tristesse...votre séance de Patin du mardi 5 septembre est annulée.", mail.subject
-    assert_equal ["george@abitbol.com"], mail.to
+    assert_equal ["georges@abitbol.com"], mail.to
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end

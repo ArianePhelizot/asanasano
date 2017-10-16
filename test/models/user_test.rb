@@ -53,7 +53,7 @@ class UserTest < ActiveSupport::TestCase
   test "next slot is today" do
     travel_to DateTime.new(2017, 9, 5, 11, 0) do
       # verify
-      assert_equal 3, User.find_by(email: "george@abitbol.com").next_slots.count
+      assert_equal 3, User.find_by(email: "georges@abitbol.com").next_slots.count
     end
   end
 end

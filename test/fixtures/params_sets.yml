@@ -18,8 +18,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+params_set_A:
+  name: "Conditions générales de blabla"
+  fees_on_payout: 0.1
+  payout_delay_in_days: 3
+  free_refund_policy_in_hours: 24

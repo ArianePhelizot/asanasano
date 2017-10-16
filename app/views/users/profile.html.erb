@@ -31,11 +31,11 @@
                 <tbody>
                   <tr>
                     <td class = "cat">PRENOM</td>
-                    <td class = "input"><%= @user.first_name %></td>
+                    <td class = "input"><%= @user.first_name.capitalize %></td>
                   </tr>
                    <tr>
                     <td class = "cat">NOM</td>
-                    <td class = "input"><%= @user.last_name %></td>
+                    <td class = "input"><%= @user.last_name.capitalize %></td>
                   </tr>
                     <td class = "cat">EMAIL</td>
                     <td class = "input"><%= @user.email %></td>
@@ -99,11 +99,11 @@
                 <tbody>
                   <tr>
                     <td class = "cat">PRENOM</td>
-                    <td class = "input"><%= @user.account.first_name %></td>
+                    <td class = "input"><%= @user.account.first_name.capitalize %></td>
                   </tr>
                   <tr>
                     <td class = "cat">NOM</td>
-                    <td class = "input"><%= @user.account.last_name %></td>
+                    <td class = "input"><%= @user.account.last_name.capitalize %></td>
                   </tr>
                   <tr>
                     <td class = "cat">PROFIL</td>
@@ -120,7 +120,7 @@
                   </tr>
                   <tr>
                     <td class = "cat">       </td>
-                    <td class = "input"><%= [@user.account.postal_code + " "+ @user.account.city, @user.account.country_of_residence].join(", ") %>
+                    <td class = "input"><%= [@user.account.postal_code + " "+ @user.account.city.capitalize, @user.account.country_of_residence].join(", ") %>
                     </td>
                   </tr>
                   <tr>
@@ -139,26 +139,26 @@
                    <tbody>
                     <tr>
                       <td class = "cat">PRENOM</td>
-                      <td class = "input"><%= @user.account.first_name %></td>
+                      <td class = "input"><%= @user.account.first_name.capitalize %></td>
                     </tr>
                     <tr>
                       <td class = "cat">NOM</td>
-                      <td class = "input"><%= @user.account.last_name %></td>
+                      <td class = "input"><%= @user.account.last_name.capitalize %></td>
                     </tr>
                     <tr>
                       <td class = "cat">NOM DE L'ORGANISATION'</td>
-                      <td class = "input"><%= @user.account.legal_name %></td>
+                      <td class = "input"><%= @user.account.legal_name.capitalize %></td>
                     </tr>
                       <td class = "cat">TYPE D'ORGANISATION</td>
                       <td class = "input"><%= @user.account.legal_person_type%></td>
                     <tr>
                     <tr>
                       <td class = "cat">PRENOM DU REPRÉSENTANT LEGAL</td>
-                      <td class = "input"><%= @user.account.legal_representative_first_name %></td>
+                      <td class = "input"><%= @user.account.legal_representative_first_name.capitalize %></td>
                     </tr>
                      <tr>
                       <td class = "cat">NOM DU REPRÉSENTANT LEGAL</td>
-                      <td class = "input"><%= @user.account.legal_representative_last_name %></td>
+                      <td class = "input"><%= @user.account.legal_representative_last_name.capitalize %></td>
                     </tr>
                       <td class = "cat">DATE D'ANNIVERSAIRE DU REPRÉSENTANT LEGAL</td>
                       <td class = "input"><%= @user.account.legal_representative_birthday.strftime("%e %m %Y") %></td>

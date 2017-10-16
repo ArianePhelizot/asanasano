@@ -60,7 +60,7 @@ mary:
 
 amelie:
   email: "amelie.poulain@gmail.com"
-  first_name: "Amélie"
+  first_name: "amélie"
   last_name: "Poulain"
   coach: coach_amelie
   groups:
@@ -68,9 +68,9 @@ amelie:
   slots:
 
 georges:
-  email: "george@abitbol.com"
-  first_name: "George"
-  last_name: "Abitbol"
+  email: "georges@abitbol.com"
+  first_name: "georges"
+  last_name: "abitbol"
   groups:
     - fraises
     - pommes
