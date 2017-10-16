@@ -60,7 +60,7 @@ mary:
 
 amelie:
   email: "amelie.poulain@gmail.com"
-  first_name: "Amélie"
+  first_name: "amélie"
   last_name: "Poulain"
   coach: coach_amelie
   groups:

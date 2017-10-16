@@ -22,10 +22,12 @@
 coach_amelie:
  description: "Super coach!!!!!!!!!"
  experience: 5
+ params_set: params_set_A
  # languages: "-\"FR\""
 
 coach_eliott:
  description: "Incroyable coach, sait voler"
  experience: 10
+ params_set: params_set_A
  # languages: "-\"DL\" -\"FR\""
 
