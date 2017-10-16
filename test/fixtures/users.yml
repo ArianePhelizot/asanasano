@@ -68,9 +68,9 @@ amelie:
   slots:
 
 georges:
-  email: "george@abitbol.com"
-  first_name: "George"
-  last_name: "Abitbol"
+  email: "georges@abitbol.com"
+  first_name: "georges"
+  last_name: "abitbol"
   groups:
     - fraises
     - pommes
