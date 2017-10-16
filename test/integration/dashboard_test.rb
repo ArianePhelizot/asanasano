@@ -9,7 +9,6 @@ class DashboardTest < ActionDispatch::IntegrationTest
       login_as users(:georges)
       #exercice
       visit "/dashboard"
-      save_and_open_screenshot
       #verify
       assert_equal 200, page.status_code
       assert page.has_content?("fraises")
