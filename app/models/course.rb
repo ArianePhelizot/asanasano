@@ -49,7 +49,7 @@ class Course < ApplicationRecord
 
   def next_slots
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
-    active_slots.sort_by(&:start_at).select { |slot| slot.start_at >= Time.now }
+    active_slots.sort_by(&:start_at).select { |slot| slot.end_at >= Time.now + 1.hour }
   end
 
   def publishable?
