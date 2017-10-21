@@ -91,6 +91,22 @@ class User < ApplicationRecord
     sorted_slots.select { |slot| slot.start_at >= Time.now }
   end
 
+  def available_courses
+    user_courses = []
+    groups.each do |group|
+      user_courses << group.courses
+    end
+    user_courses.flatten
+  end
+
+  def next_available_slots
+    next_available_slots = []
+    available_courses.each do |course|
+      next_available_slots << course.next_slots
+    end
+    next_available_slots.flatten.sort_by(&:start_at)
+  end
+
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def self.find_for_facebook_oauth(auth)
@@ -131,6 +147,13 @@ class User < ApplicationRecord
     end
     dashboard_coach_next_slots.flatten.sort_by(&:start_at)
   end
+
+  # def live_groups
+  #   live_groups = user.groups.select do |group|
+  #     group.courses.next_slots.positive?
+  #   end
+  #   return live_groups
+  # end
 
   private
 
