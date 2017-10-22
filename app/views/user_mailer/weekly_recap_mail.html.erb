@@ -1,0 +1,63 @@
+<div style="color: #64676C";font: sans-serif";margin-left: 10px" >
+
+  <div class="hello", style="padding-bottom: 4px">
+    <p>Bonjour<%=" "+@user.first_name.capitalize if @user.first_name? %>,</p>
+  </div>
+
+  <div class="body", style="padding-bottom: 4px">
+
+  <!--   Si le user est coach  -->
+  <% if @user.coach? && !@user.dashboard_coach_next_slots.empty? %>
+
+    <p>Voilà, vos prochains rendez-vous en tant que coach:</p>
+    <div style="padding-left: 25px; margin-bottom: 20px;">
+      <% slots_dates(@user.dashboard_coach_next_slots).each do |date| %>
+        <strong><%= date_with_mention_if_today_tomorrow(date) %></strong>
+        <ul>
+          <% select_by_date(@user.dashboard_coach_next_slots, date).uniq.each do |slot| %>
+          <li><%= l(slot.start_at, format:"%Hh%M")%>-<%= l(slot.end_at, format:"%Hh%M") %>
+            : <%= slot.course.name %>,
+            pour '<%= slot.course.group.name %>',
+            à <%= slot.course.address %> >>
+            <a href=<%=course_url(slot.course)%>, style="color: #64676C"><%= slot.users.count %> inscrits / <%= slot.course.capacity_max %></a>
+          <%end%>
+        </p></li>
+        </ul>
+
+      <% end %>
+    <br>
+    </div>
+  <% end %>
+
+  <!-- otherwise, for all users -->
+    <p>Voilà, toutes les prochaines séances à venir programmées spécialement pour vous: </p>
+    <div style="padding-left: 25px; margin-bottom: 20px;">
+      <% @user.next_available_slots.map(&:date).uniq.each do |date| %>
+        <strong><%= date_with_mention_if_today_tomorrow(date) %></strong>
+        <ul>
+          <% select_by_date(@user.next_available_slots, date).uniq.each do |slot| %>
+            <li><p><span style="color:#f2887c; font-weight:bold"><%= "NOUVEAU!!" if slot.new_slot? %></span>
+              <%= l(slot.start_at, format:"%Hh%M")%>-<%= l(slot.end_at, format:"%Hh%M") %>
+              : <%= slot.course.name %>,
+              avec <%= slot.course.coach.user.first_name.capitalize %>
+              pour '<%= slot.course.group.name %>' &nbsp; >> &nbsp;
+              <a href=<%=course_url(slot.course)%>, style="color: #64676C"><%= slot.registered?(@user)%></a>
+          <% end %>
+          </p></li>
+        </ul>
+      <% end %>
+    </div>
+    <br>
+
+    <p>A très vite,</p>
+
+  </div>
+
+  <div class="signature", style="line-height: 0.4em">
+    <p>Asanasano</p>
+    <p><strong><a href="mailto:hello@asanasano.com", style="color: #64676C";font-family:sans-serif">hello@asanasano.com</a></strong></p>
+    <div style="text-align: center">
+      <a href="www.asanasano.com"><img src="https://www.asanasano.com/assets/ASANASANO-e81a1dd672b0542eb090bb433b0c2b5aa54e456b8dd03cdc3be40b41f341978b.png" alt="Logo Asanasano", style="width:215px;height:60.2;border:0;margin:0 auto"></a>
+    </div>
+  </div>
+</div>

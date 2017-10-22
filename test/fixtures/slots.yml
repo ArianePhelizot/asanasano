@@ -71,3 +71,14 @@ slot4:
  course: patin_beginners
  start_at: 2017-09-08 13:00:00 UTC
  end_at: 2017-09-08 14:30:00 UTC
+
+slot5:
+ date: 2017-09-09
+ participants_min: 1
+ price_cents: 1500
+ price_currency: "EUR"
+ specificities: "Nothing special"
+ status: 0
+ course: patin_beginners
+ start_at: 2017-09-08 13:00:00 UTC
+ end_at: 2017-09-08 14:30:00 UTC

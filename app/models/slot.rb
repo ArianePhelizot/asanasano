@@ -68,4 +68,16 @@ class Slot < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
+
+  def registered?(user)
+    if users.include?(user)
+      "Inscrit"
+    else
+      "S'inscrire"
+    end
+  end
+
+  def new_slot?
+    created_at + 7.days > Date.today
+  end
 end
