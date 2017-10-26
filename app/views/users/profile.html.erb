@@ -31,11 +31,11 @@
                 <tbody>
                   <tr>
                     <td class = "cat">PRENOM</td>
-                    <td class = "input"><%= @user.first_name.capitalize %></td>
+                    <td class = "input"><%= @user.first_name ? @user.first_name.capitalize : ""%></td>
                   </tr>
                    <tr>
                     <td class = "cat">NOM</td>
-                    <td class = "input"><%= @user.last_name.capitalize %></td>
+                    <td class = "input"><%= @user.last_name ? @user.last_name.capitalize : "" %></td>
                   </tr>
                     <td class = "cat">EMAIL</td>
                     <td class = "input"><%= @user.email %></td>
