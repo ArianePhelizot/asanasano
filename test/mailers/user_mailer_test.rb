@@ -6,7 +6,7 @@ class UserMailerTest < ActionMailer::TestCase
   # called before every single test
   setup do
     @user = users(:mary)
-    @user_bis= users(:georges)
+    @user_bis = users(:georges)
   end
 
   test "welcome" do
@@ -37,7 +37,6 @@ class UserMailerTest < ActionMailer::TestCase
         mail.deliver_now
       end
       # Test the body of the sent email contains what we expect it to
-      # rubocop:disable LineLength
       assert_equal "Et voilà le programme!", mail.subject
       # rubocop:enable LineLength
       assert_equal ["georges@abitbol.com"], mail.to

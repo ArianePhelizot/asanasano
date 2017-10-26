@@ -14,9 +14,8 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     authorize @group # check authorization before save
 
-    @group.users.push(current_user) # populate the groups_users table
-
     if @group.save
+      @group.users.push(current_user) # populate the groups_users table
       redirect_to new_group_course_path(@group)
     else
       render :new
