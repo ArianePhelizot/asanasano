@@ -1,0 +1,62 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(232, 106, 103, 0.05) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("pro.jpg") %> );">
+  <div class="banner-content">
+    <h1 class="titles-home">Encore plus PRO avec ASANASANO</h1>
+    <p class="titles-home">La solution clé en main pour simplifier le quotidien des profs indépendants!</p>
+     <!-- if current user not connected => sign-up: new_user_registration_path -->
+    <% if !user_signed_in? %>
+      <%= link_to "Créez votre espace pro", new_user_registration_path, class: "btn btn-default btn-lg" %>
+    <!-- if current user's signed in => dashboard: dashboard_path -->
+    <% else %>
+      <%= link_to "Créez votre espace pro", dashboard_path, class: "btn btn-default btn-lg" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Container advantages   -->
+<br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-md-6">
+      <div class="pro-benefice avantages-border-left shadow text-center">
+        <h2>Réservation en ligne</h2>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Planning en ligne toujours à jour</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Inscription rapide</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Gestion des files d'attente</p>
+        <p class="padded-top-sm">Le remplissage de vos cours optimisé, sans avoir à vous en soucier</p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="pro-benefice avantages-border-left shadow text-center">
+        <h2>Paiement en ligne</h2>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Vous fixez vos tarifs</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Le paiement en ligne est sécurisé</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  L'argent encaissé est versé sur votre compte en moins de 3 jours</p>
+        <p class="padded-top-sm">Plus de no-show, gagnez en sérénité</p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="pro-benefice avantages-border-left shadow text-center">
+        <h2>Communication fluide</h2>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Envoi du planning des nouvelles sessions</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Envoi automatique de confirmation</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Automatisation des rappels</p>
+        <p class="padded-top-sm">Fini les tâches répétitives, concentrez-vous sur vos cours</p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="pro-benefice avantages-border-left shadow text-center">
+        <h2>Des cours supplémentaires réguliers</h2>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Un espace personnalisé dédié pour vous raconter et présenter vos cours</p>
+          <p class="text-justify"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Trouvez et donnez de nouveaux cours réguliers tout au long de l'année en entreprise grâce à ASANASANO</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <br>
+  <hr>
+

@@ -27,8 +27,8 @@ padding-top: 50px;
 }
 
 .style-circle {
-  border-left: 3px solid #e86a67;
-  border-bottom: 2px solid #e89567;
+  border-left: 3px solid $salmon;
+  border-bottom: 2px solid $pale-salmon;
   border-radius: 50%;
   padding: 21px 37px;
 }
@@ -136,6 +136,20 @@ font-size: 18px;
 }
 .titles-home {
   text-shadow: #494444 2px 2px 5px;
+}
+
+
+#banner-pro-content {
+  height: 40px;
+  margin-top: 75px;
+}
+
+#banner-pro-content h1{
+  margin-bottom: 35px;
+}
+
+#banner-pro-content p{
+  margin-bottom: 25px;
 }
 
 #keep-in-touch {
