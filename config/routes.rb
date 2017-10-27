@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Setting Home
   root to: 'pages#home'
 
+  # Page pro
+  get 'pro', to:'pages#pro', as: :pro
+
   # Routes related to Devise and Devise invitable
   devise_for :users,
              controllers: {
