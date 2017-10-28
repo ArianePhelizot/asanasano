@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  owner_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_groups_on_owner_id  (owner_id)
+#
+
 require "test_helper"
 
 class GroupsControllerTest < ActionDispatch::IntegrationTest
