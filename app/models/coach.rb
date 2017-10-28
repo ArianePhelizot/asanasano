@@ -36,7 +36,7 @@ class Coach < ApplicationRecord
 
   validates :experience, numericality: { allow_nil: true }, inclusion: { in: 0..50 }
   validates :description, :training, :params_set_id, presence: true
-  validates: description, length: { minimum: 10 }
+  validates :description, length: { minimum: 10 }
 
   def name
     "#{user&.first_name} #{user&.last_name} "
