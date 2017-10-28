@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920124057) do
+ActiveRecord::Schema.define(version: 20171028100620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,11 +74,16 @@ ActiveRecord::Schema.define(version: 20170920124057) do
 
   create_table "coaches", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "experience"
-    t.text     "languages",     default: [],              array: true
+    t.text     "languages",      default: [],                 array: true
     t.integer  "params_set_id"
+    t.text     "training"
+    t.boolean  "validated",      default: false, null: false
+    t.boolean  "public",         default: false, null: false
+    t.text     "availabilities"
+    t.text     "where"
     t.index ["params_set_id"], name: "index_coaches_on_params_set_id", using: :btree
   end
 

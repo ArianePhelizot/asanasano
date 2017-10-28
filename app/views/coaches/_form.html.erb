@@ -1,11 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
       <div class="text-center">
         <%= simple_form_for(@coach) do |f| %>
-        <%= f.input :description %>
-        <%= f.association :sports, collection: Sport.all, as: :check_boxes %>
-        <%= f.input :experience, label: "Nombre d'années d'expérience", collection: 1..50 %>
+
+        <% if @coach.errors.any? %>
+          <div id="error_explanation">
+            <p><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</p>
+            <ul>
+            <% @coach.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.input :description, :input_html => {:style => 'width: 100%', :rows => 8},
+                    placeholder:
+                    "Attention, ce petit texte est à soigner. Car il s'agit de VOUS. C'est ici que vous êtes invité(e) à vous présenter et tout nous dire sur votre histoire, votre approche...et plus concrètement sur la ou les expérience(s) que vous souhaitez transmettre et partager. Alors exprimez-vous!" %>
+        <%= f.association :sports, collection: Sport.all.sort_by {|sport| sport.name} , as: :check_boxes %>
+        <%= f.input :training, label:"Formation", :input_html => {:style => 'width: 100%', :rows => 3}, placeholder: "Un diplôme, une certification...obtenu ou et quand? Nous voulons tout savoir" %>
+        <%= f.input :experience, label: "Nombre d'années d'expérience", collection: 0..50 %>
+        <%= f.label :languages, label:"Langues parlées" %>
         <%= f.input_field :languages,
             collection: ["Allemand",
                          "Anglais",
@@ -18,8 +34,9 @@
                           "Russe"],
             multiple: true,
             as: :check_boxes,
-            default: 1  %>
-        <%= f.submit "Mettre à jour mon profil", class: "btn" %>
+            default: 1 %>
+        <%= f.input :insurance, as: :attachinary, label: 'Responsabilité civile professionnelle' %>
+        <%= f.submit "Mettre à jour mon profil", class: "btn btn-profile btn-salmon" %>
         <% end %>
       </div>
     </div>
