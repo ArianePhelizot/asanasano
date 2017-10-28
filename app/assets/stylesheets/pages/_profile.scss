@@ -1,4 +1,5 @@
 .btn-profile {
+  color: $dark-grey;
   border: 2px solid $dark-grey;
   border-radius: 25px;
   width: 75px;
@@ -8,6 +9,7 @@
 }
 
 .btn-profile:hover {
+  color: $dark-grey;
   border: 3px solid $dark-grey;
   font-weight: bolder;
 }
@@ -25,5 +27,47 @@
 
 
 .bloc-profile a:hover{
+  text-decoration: none;
+}
+
+#getting-pro{
+  border: 2px solid $pale-salmon;
+  color: $pale-salmon;
+  border-radius: 25px;
+  width: 75px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 13px;
+}
+
+#getting-pro:hover {
+  border: 3px solid $pale-salmon;
+  color: $pale-salmon;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#pro-link {
+  color: $pale-salmon;
+  font-size: 12px;
+}
+
+#pro-link:hover {
+  color: $pale-salmon;
+  font-size: bolder;
+  text-decoration: present;
+}
+
+.btn-salmon {
+  border: 2px solid $pale-salmon;
+  color: $pale-salmon;
+  background-color: $background-pale-grey;
+}
+
+.btn-salmon:hover {
+  border: 3px solid $pale-salmon;
+  color: $pale-salmon;
+  background-color: $background-pale-grey;
+  font-weight: bolder;
   text-decoration: none;
 }
