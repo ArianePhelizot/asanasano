@@ -115,7 +115,7 @@
                   </tr>
                   <tr>
                     <td class = "cat">ANNIVERSAIRE</td>
-                    <td class = "input"><%= @user.account.birthday.strftime("%e %m %Y")  %></td>
+                    <td class = "input"><%= l(@user.account.birthday, format:"%e %B %Y")  %></td>
                   </tr>
                   <tr>
                     <td class = "cat">ADRESSE</td>
@@ -165,7 +165,7 @@
                       <td class = "input"><%= @user.account.legal_representative_last_name.capitalize %></td>
                     </tr>
                       <td class = "cat">DATE D'ANNIVERSAIRE DU REPRÉSENTANT LEGAL</td>
-                      <td class = "input"><%= @user.account.legal_representative_birthday.strftime("%e %m %Y") %></td>
+                      <td class = "input"><%= l(@user.account.legal_representative_birthday, format:"%e %B %Y") %></td>
                     </tr>
                     </tr>
                       <td class = "cat">PAYS DE RÉSIDENCE DU REPRÉSENTANT LEGAL</td>
