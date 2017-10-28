@@ -148,12 +148,9 @@ class User < ApplicationRecord
     dashboard_coach_next_slots.flatten.sort_by(&:start_at)
   end
 
-  # def live_groups
-  #   live_groups = user.groups.select do |group|
-  #     group.courses.next_slots.positive?
-  #   end
-  #   return live_groups
-  # end
+  def user_profile_complete?
+    self.first_name && self.last_name && self.phone_number && self.photo
+  end
 
   private
 
