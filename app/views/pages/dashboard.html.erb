@@ -13,7 +13,7 @@
       <!-- if no future slots scheduled -->
         <% if @user.dashboard_coach_next_slots.empty? %>
           <div class="text-center blue-text">
-            <p>Vous n'avez pas de séance à venir programmée en tant que coach.</p>
+            <p>Vous n'avez pas de séance à venir programmée en tant que pro.</p>
           </div>
         <% end %>
       <!-- otherwise, display slots -->
@@ -38,7 +38,7 @@
 
         <div class="text-center blue-text">
           <% if @user.coach? %>
-            <p>Vous n'avez pas réservé de séances à venir, en tant que simple partticipant</p>
+            <p>Vous n'avez pas réservé de séances à venir, en tant que simple participant</p>
           <% else %>
             <p>Vous n'avez pas encore réservé de séances à venir</p>
           <% end %>

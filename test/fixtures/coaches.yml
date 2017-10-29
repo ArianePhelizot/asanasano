@@ -2,13 +2,20 @@
 #
 # Table name: coaches
 #
-#  id            :integer          not null, primary key
-#  description   :text
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  experience    :integer
-#  languages     :text             default([]), is an Array
-#  params_set_id :integer
+#  id             :integer          not null, primary key
+#  description    :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  experience     :integer
+#  languages      :text             default([]), is an Array
+#  params_set_id  :integer
+#  training       :text
+#  validated      :boolean          default(FALSE), not null
+#  public         :boolean          default(FALSE), not null
+#  availabilities :text
+#  locations      :text
+#  price          :text
+#  comments       :text
 #
 # Indexes
 #

@@ -14,7 +14,7 @@ class ProfileTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Abitbol")
   end
 
-    test "loads correctly when scarcely known Rocky" do
+  test "loads correctly when scarcely known Rocky" do
     # set up
     login_as users(:rocky)
     # exercice
@@ -22,6 +22,5 @@ class ProfileTest < ActionDispatch::IntegrationTest
     # verify
     assert_equal 200, page.status_code
     assert page.has_content?("rocky@balboa.com")
-
   end
 end

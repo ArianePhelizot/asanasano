@@ -69,7 +69,7 @@ Rails.application.routes.draw do
     resources :payments, only: %i(new create)
   end
 
-  resources :coaches, only: %i(edit update)
+  resources :coaches, only: %i(new create edit update)
 
   resources :users do
     resources :accounts, only: [ :new, :create, :edit, :update ]

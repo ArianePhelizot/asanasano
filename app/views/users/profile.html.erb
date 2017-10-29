@@ -70,12 +70,33 @@
                       <td class = "input"><%= @user.coach.sports.map {|s| s.name.capitalize}.join(", ") %></td>
                     </tr>
                     <tr>
+                      <td class = "cat">FORMATION</td>
+                      <td class = "input"><%= @user.coach.training ? @user.coach.training.capitalize : ""%></td>
+                    </tr>
+                    <tr>
                       <td class = "cat">EXPERIENCE</td>
                       <td class = "input"><%= @user.coach.experience %> années </td>
                     </tr>
                     <tr>
                       <td class = "cat">LANGUES</td>
                       <td class = "input"><%= @user.coach.languages.map {|language| language}.join(", ") %> </td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">TARIFS</td>
+                      <td class = "input"><%= @user.coach.price ? @user.coach.price : "" %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">DISPONIBILITÉS</td>
+                      <td class = "input"><%= @user.coach.availabilities ? @user.coach.availabilities : ""  %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">RAYON D'ACTION</td>
+                      <td class = "input"><%= @user.coach.locations ? @user.coach.locations : ""  %>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">WHAT ELSE</td>
+                      <td class = "input"><%= @user.coach.comments ? @user.coach.comments : ""  %></td>
                     </tr>
                     <br>
                    </tbody>
@@ -111,7 +132,7 @@
                   </tr>
                   <tr>
                     <td class = "cat">ANNIVERSAIRE</td>
-                    <td class = "input"><%= @user.account.birthday.strftime("%e %m %Y")  %></td>
+                    <td class = "input"><%= l(@user.account.birthday, format:"%e %B %Y")  %></td>
                   </tr>
                   <tr>
                     <td class = "cat">ADRESSE</td>
@@ -161,7 +182,7 @@
                       <td class = "input"><%= @user.account.legal_representative_last_name.capitalize %></td>
                     </tr>
                       <td class = "cat">DATE D'ANNIVERSAIRE DU REPRÉSENTANT LEGAL</td>
-                      <td class = "input"><%= @user.account.legal_representative_birthday.strftime("%e %m %Y") %></td>
+                      <td class = "input"><%= l(@user.account.legal_representative_birthday, format:"%e %B %Y") %></td>
                     </tr>
                     </tr>
                       <td class = "cat">PAYS DE RÉSIDENCE DU REPRÉSENTANT LEGAL</td>
@@ -203,6 +224,45 @@
                 <%end%>
               <% end %>
             </div>
+
+            <!-- Coach account creation -->
+
+
+            <% if !@user.coach_id? %>
+
+              <% if @user.user_profile_complete? %>
+
+                <div>
+                    <div class="padded-bot-xs">
+                      <%= link_to "Créez un compte pro", new_coach_path, class: "btn-profile", id: "getting-pro" %>
+                    </div>
+                      <%= link_to "En savoir plus sur le compte pro", pro_path, id: "pro-link" %>
+                </div>
+
+              <% else %>
+
+                <div>
+                    <div class="padded-bot-xs">
+                      <%= link_to "Créez un compte pro", edit_user_path(@user), class: "btn-profile",
+                      id: "getting-pro",
+                      data: { confirm: "Vous devez au préalable compléter votre profil utilisateur...allez encore un petit effort!" } %>
+                    </div>
+                      <%= link_to "En savoir plus sur le compte pro", pro_path, id: "pro-link" %>
+                </div>
+              <%end%>
+
+            <% end %>
+
+
+            <!-- Ask for pro account validation -->
+            <div class="padded">
+              <% if current_user.coach_id? && !current_user.coach.validated%>
+                <div class="padded-bot-xs">
+                  <a href="mailto:hello@asanasano.com?subject=Oui, je veux activer mon compte PRO sur ASANASANO&body=Merci de le valider. Et que ça saute! A bientôt." class="share-link bg-email btn-profile", id="getting-pro"> Valider mon compte PRO</a>
+                </div>
+              <%end%>
+            </div>
+
           </div>
         </div>
       </div>
