@@ -4,7 +4,7 @@
     <p class="titles-home">La solution clé en main pour simplifier le quotidien des profs indépendants qui souhaitent le rester !</p>
      <!-- if current user not connected => sign-up: new_user_registration_path -->
     <% if !user_signed_in? %>
-      <%= link_to "Créez votre espace pro", new_user_registration_path, class: "btn btn-default btn-lg" %>
+      <%= link_to "Créez votre espace pro", new_pro_user_registration_path, class: "btn btn-default btn-lg" %>
     <!-- if current user's signed in => dashboard: dashboard_path -->
     <% else %>
       <%= link_to "Créez votre espace pro", dashboard_path, class: "btn btn-default btn-lg" %>

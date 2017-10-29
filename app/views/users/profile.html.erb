@@ -112,7 +112,9 @@
             <div class="profile-account profile-module">
               <!-- No account info created yet  -->
               <% if !@user.account %>
+                <div class="mg-btm-50">
                   <%= link_to "Renseigner mes données de facturation", new_user_account_path(@user) %>
+                </div>
               <!-- Account info created and if Natural -->
               <% elsif @user.account && @user.account.person_type == "PERSONNE PHYSIQUE" %>
 
@@ -234,7 +236,7 @@
 
                 <div>
                     <div class="padded-bot-xs">
-                      <%= link_to "Créez un compte pro", new_coach_path, class: "btn-profile", id: "getting-pro" %>
+                      <%= link_to "Créez mon compte pro", new_coach_path, class: "btn-profile", id: "getting-pro" %>
                     </div>
                       <%= link_to "En savoir plus sur le compte pro", pro_path, id: "pro-link" %>
                 </div>
@@ -243,7 +245,7 @@
 
                 <div>
                     <div class="padded-bot-xs">
-                      <%= link_to "Créez un compte pro", edit_user_path(@user), class: "btn-profile",
+                      <%= link_to "Créez mon compte pro", edit_user_path(@user), class: "btn-profile",
                       id: "getting-pro",
                       data: { confirm: "Vous devez au préalable compléter votre profil utilisateur...allez encore un petit effort!" } %>
                     </div>
