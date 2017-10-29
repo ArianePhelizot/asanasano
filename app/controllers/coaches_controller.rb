@@ -58,7 +58,9 @@ class CoachesController < ApplicationController
   end
 
   def coach_params
-    params.require(:coach).permit(:description, :sport_ids, :experience, :languages, :training)
+    params.require(:coach).permit(:description, :sport_ids, :experience,
+                                  :languages, :training, :price, :locations,
+                                  :comments, :availabilities)
   end
 
   def sports_update

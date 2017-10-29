@@ -81,6 +81,23 @@
                       <td class = "cat">LANGUES</td>
                       <td class = "input"><%= @user.coach.languages.map {|language| language}.join(", ") %> </td>
                     </tr>
+                    <tr>
+                      <td class = "cat">TARIFS</td>
+                      <td class = "input"><%= @user.coach.price ? @user.coach.price : "" %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">DISPONIBILITÉS</td>
+                      <td class = "input"><%= @user.coach.availabilities ? @user.coach.availabilities : ""  %></td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">RAYON D'ACTION</td>
+                      <td class = "input"><%= @user.coach.locations ? @user.coach.locations : ""  %>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td class = "cat">WHAT ELSE</td>
+                      <td class = "input"><%= @user.coach.comments ? @user.coach.comments : ""  %></td>
+                    </tr>
                     <br>
                    </tbody>
                   </table>

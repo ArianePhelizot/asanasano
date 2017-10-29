@@ -35,7 +35,40 @@
             multiple: true,
             as: :check_boxes,
             default: 1 %>
+        <%= f.input :price, :input_html => {:style => 'width: 100%', :rows => 7},
+                    placeholder:
+                    "Ici, on parle ouvertement d'argent...mais cela reste entre nous.
+                    Quels sont vos tarifs habituels en entreprise, pour des particuliers ?
+                    1er cours, cours vendu à l'unité, par 10, par 20 cours ? Pour combien d'élèves au minimum et au maximum ?
+                    Et si c'était pour donner deux cours d'affilée au même endroit, ça change quelque chose ou pas ? ",
+                    label:"Quelques infos sur vos tarifs" %>
+        <%= f.input :availabilities, :input_html => {:style => 'width: 100%', :rows => 7},
+                    placeholder:
+                    "Entre nous, encore...
+                    Quand auriez-vous des disponibilités pour donner quelques cours supplémentaires?
+                    Quels jours ? Quels horaires ?
+                    Promis, si nous entendons parler d'un plan, nous le partagerons." ,
+                    label:"A la recherche de nouveaux cours" %>
+        <%= f.input :locations, :input_html => {:style => 'width: 100%', :rows => 7},
+                    placeholder:
+                    "Entre nous, toujours...
+                    Jusqu'où seriez-vous prêt à aller...Telle est la question.
+                    A vous d'écrire la réponse:
+                    - Paris et petite couronne ?
+                    - A 5 minutes à pied de la Gare Saint Charles peut-être pour les marseillais ?
+                    - A 20 minutes en vélo de chez vous ?
+                    - Uniquement sur les lignes 8 et 9 ?
+                    - Pas plus de 30 minutes de transport en commun?
+                    - ...." ,
+                    label:"Jusqu'où iriez-vous?" %>
+        <%= f.input :comments, :input_html => {:style => 'width: 100%', :rows => 7},
+                    placeholder:
+                    "Quelque chose à ajouter ?
+                    Vous cherchez de temps en temps à vous faire remplacer ? Au contraire, vous êtes preneurs de remplacement ?
+                    Anything...vous pouvez tout nous dire ou nous demander ici.",
+                    label:"What else ?" %>
         <%= f.input :insurance, as: :attachinary, label: 'Responsabilité civile professionnelle' %>
+
         <%= f.submit "Mettre à jour mon profil", class: "btn btn-profile btn-salmon" %>
         <% end %>
       </div>
