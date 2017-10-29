@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: coaches
@@ -15,7 +14,9 @@
 #  validated      :boolean          default(FALSE), not null
 #  public         :boolean          default(FALSE), not null
 #  availabilities :text
-#  where          :text
+#  locations      :text
+#  price          :text
+#  comments       :text
 #
 # Indexes
 #

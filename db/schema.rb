@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028100620) do
+ActiveRecord::Schema.define(version: 20171029120338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +83,9 @@ ActiveRecord::Schema.define(version: 20171028100620) do
     t.boolean  "validated",      default: false, null: false
     t.boolean  "public",         default: false, null: false
     t.text     "availabilities"
-    t.text     "where"
+    t.text     "locations"
+    t.text     "price"
+    t.text     "comments"
     t.index ["params_set_id"], name: "index_coaches_on_params_set_id", using: :btree
   end
 
