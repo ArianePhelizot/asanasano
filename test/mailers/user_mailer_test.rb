@@ -7,6 +7,7 @@ class UserMailerTest < ActionMailer::TestCase
   setup do
     @user = users(:mary)
     @user_bis = users(:georges)
+    @user_ter = users(:amelie)
   end
 
   test "welcome" do
@@ -25,6 +26,24 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal ["hello@asanasano.com"], mail.from
     assert_match "Bonjour", mail.body.encoded
   end
+
+  test "welcome_pro" do
+    # Create the email and store it for further assertions
+    mail = UserMailer.welcome_pro(@user_ter)
+    mail.deliver_now
+
+    # Send the email, then test that it got queued
+    assert_emails 1 do
+      mail.deliver_now
+    end
+
+    # Test the body of the sent email contains what we expect it to
+    assert_equal "Bienvenue Amélie sur Asanasano !", mail.subject
+    assert_equal ["amelie.poulain@gmail.com"], mail.to
+    assert_equal ["hello@asanasano.com"], mail.from
+    assert_match "Bonjour", mail.body.encoded
+  end
+
 
   test "weekly_recap_mail" do
     travel_to Date.new(2017, 9, 2) do

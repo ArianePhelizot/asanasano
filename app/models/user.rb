@@ -149,7 +149,11 @@ class User < ApplicationRecord
   end
 
   def user_profile_complete?
-    self.first_name && self.last_name && self.phone_number && self.photo
+    first_name && last_name && phone_number && photo
+  end
+
+  def send_welcome_pro_email
+    UserMailer.welcome_pro(self).deliver_now
   end
 
   private
@@ -157,4 +161,5 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome(self).deliver_now unless invitation_token?
   end
+
 end

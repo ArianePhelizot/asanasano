@@ -20,6 +20,7 @@ class CoachesController < ApplicationController
       @user.coach_id = @coach.id
       @user.agreed_to_terms = true
       @user.save
+      @user.send_welcome_pro_email
       if @user.account
         redirect_to edit_user_account_path(@user, @user.account.id)
       else

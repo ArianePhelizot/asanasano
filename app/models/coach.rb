@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: coaches
@@ -42,4 +43,5 @@ class Coach < ApplicationRecord
   def name
     "#{user&.first_name} #{user&.last_name} "
   end
+
 end

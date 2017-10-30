@@ -14,6 +14,13 @@ class UserMailer < ApplicationMailer
          subject: "Bienvenue #{@user.first_name.capitalize if @user.first_name?} sur Asanasano !"
   end
 
+  def welcome_pro(user)
+    @user = user
+
+    mail to: @user.email,
+         subject: "Bienvenue #{@user.first_name.capitalize if @user.first_name?} sur Asanasano !"
+  end
+
   def weekly_recap_mail(user)
     @user = user
 
