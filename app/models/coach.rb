@@ -37,7 +37,7 @@ class Coach < ApplicationRecord
   delegate :photo, to: :course, prefix: true
 
   validates :experience, numericality: { allow_nil: true }, inclusion: { in: 0..50 }
-  validates :description, :training, :params_set_id, presence: true
+  validates :description, :params_set_id, presence: true
   validates :description, length: { minimum: 10 }
 
   def name
