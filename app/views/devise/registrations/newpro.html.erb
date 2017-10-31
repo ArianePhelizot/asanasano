@@ -52,6 +52,14 @@
 
             <% end %>
 
+            <%- if devise_mapping.omniauthable? %>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                  <%= image_tag "facebook connect.png", class: "padded-bot-m", id:"fb-sign-up"%>
+                  <br />
+                <% end %>
+              <% end %>
+            <% end %>
             <%= render "devise/shared/links" %>
             <%= link_to "Je ne suis ni coach, ni prof, ni instructeur, je veux juste m'inscrire au service", new_user_registration_path %><br />
           </div>
