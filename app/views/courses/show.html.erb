@@ -93,7 +93,7 @@
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic", width: 50%>
               <% end %>
               <% if @course.coach&.first_name.present?  %>
-                <p>Coach: <%= @course.coach.first_name.capitalize %> &nbsp
+                <p><%= @course.coach.first_name.capitalize %> &nbsp
 
                 <!-- Button trigger modal PRESENTATION DU COACH-->
                   <i class="fa fa-external-link" data-toggle="modal" data-target="#CoachModal"></i> </p>
