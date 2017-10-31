@@ -5,6 +5,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
+
   def invite_resource(&block)
     # je regarde si je connais l'adresse email
     @user = User.find_by(email: invite_params[:email])

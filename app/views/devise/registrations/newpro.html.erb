@@ -1,3 +1,4 @@
+
 <div class="wrapper-devise-form">
   <div class="container">
     <div class="row">
@@ -6,7 +7,7 @@
           <div class="text-center">
             <h2>Tout commence ici...</h2>
 
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= simple_form_for(resource, as: resource_name, url: user_pro_registration_path(resource_name)) do |f| %>
 
               <% if @user.errors.any? %>
                 <div id="error_explanation">
@@ -46,10 +47,11 @@
               </div>
 
               <div class="form-actions padded-sm">
-                <%= f.button :submit, value: "Et hop, je m'inscris", class: "btn" %>
+                <%= f.button :submit, value: "Je m'inscris en tant que PRO", class: "btn" %>
               </div>
 
             <% end %>
+
             <%- if devise_mapping.omniauthable? %>
               <%- resource_class.omniauth_providers.each do |provider| %>
                 <%= link_to omniauth_authorize_path(resource_name, provider) do %>
@@ -59,11 +61,11 @@
               <% end %>
             <% end %>
             <%= render "devise/shared/links" %>
-            <%= link_to "Oui, mais moi je suis coach/prof/instructeur et veux avoir un compte PRO", new_pro_user_registration_path %><br />
-
+            <%= link_to "Je ne suis ni coach, ni prof, ni instructeur, je veux juste m'inscrire au service", new_user_registration_path %><br />
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

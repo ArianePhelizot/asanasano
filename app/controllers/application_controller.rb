@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(_resource)
-    dashboard_path
+    if request.referer.split("/").last == "sign_up_pro"
+      profile_path
+    else
+      dashboard_path
+    end
   end
 
   def default_url_options

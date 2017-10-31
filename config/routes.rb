@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     match '/groups/:group_id/invitations/new', to: 'users/invitations#new', via: 'get', as: 'new_group_invitation'
     match '/groups/:group_id/users/invitations', to: 'users/invitations#create', via: 'post'
+    get   "users/sign_up_pro" , to:  "devise_invitable/registrations#newpro", :as => :new_pro_user_registration
+    post "users_pro", to:  "devise_invitable/registrations#createpro", :as => :user_pro_registration
   end
+
 
   # Dashboard
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
