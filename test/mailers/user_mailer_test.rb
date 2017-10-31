@@ -44,7 +44,6 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match "Bonjour", mail.body.encoded
   end
 
-
   test "weekly_recap_mail" do
     travel_to Date.new(2017, 9, 2) do
       # Create the email and store it for further assertions
