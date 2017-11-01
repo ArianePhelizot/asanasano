@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: coaches
@@ -18,6 +17,13 @@
 #  locations      :text
 #  price          :text
 #  comments       :text
+#  website        :string
+#  facebook       :string
+#  instagram      :string
+#  youtube        :string
+#  twitter        :string
+#  linkedin       :string
+#  pinterest      :string
 #
 # Indexes
 #
