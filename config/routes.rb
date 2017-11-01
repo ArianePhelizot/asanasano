@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # Page pro
   get 'pro', to:'pages#pro', as: :pro
 
+  # Page corp
+  get 'corporate', to:'pages#corporate', as: :corporate
+
   # Routes related to Devise and Devise invitable
   devise_for :users,
              controllers: {
