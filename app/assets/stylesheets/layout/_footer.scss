@@ -2,7 +2,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
   background: white;
   text-align: center;
   padding-top: 20px;
@@ -11,3 +10,31 @@
   color: $dark-grey;
 }
 
+.footer-bloc {
+  text-align: left;
+}
+
+.footer-bloc a{
+  font-size: 14px;
+  color: $dark-grey;
+  text-decoration: none;
+}
+
+.footer-bloc a:hover{
+  font-size: 14px;
+  color: $dark-grey;
+  text-decoration: none;
+}
+
+
+@media (max-width: 991px) {
+  .footer {
+  height: 400px;
+  }
+}
+
+@media (min-width: 992px){
+  .footer {
+  height: 240px;
+  }
+}
