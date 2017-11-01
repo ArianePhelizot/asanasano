@@ -84,19 +84,35 @@
           <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
 
             <div class="mg-btm-20 text-center-xs text-center-sm margin-top-20" id="course-coach">
-              <!--  Coach photo ou not  -->
-              <% if @course.coach&.user&.photo? %>
-                <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
-                                                           width: 50,
-                                                           crop: :fill,
-                                                           radius: :max,
-                                                           id:"coach-avatar-course" %>
-              <% else %>
-                <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic", width: 50%>
-              <% end %>
               <!-- Coach name or not -->
               <% if @course.coach&.first_name.present?  %>
                 <div data-toggle="modal" data-target="#CoachModal" >
+                  <!--  Coach photo ou not  -->
+                  <% if @course.coach&.user&.photo? %>
+                    <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
+                                                               width: 50,
+                                                               crop: :fill,
+                                                               radius: :max,
+                                                               id:"coach-avatar-course" %>
+                  <% else %>
+                    <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic", width: 50%>
+                  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   <p><%= @course.coach.first_name.capitalize %> &nbsp
                   <!-- Button trigger modal PRESENTATION DU COACH-->
                   <i class="fa fa-external-link"></i> </p>
