@@ -60,7 +60,10 @@ class CoachesController < ApplicationController
 
   def coach_params
     params.require(:coach).permit(:description, :sport_ids, :experience,
-                                  :languages, :training, :price, :locations,
+                                  :languages, :training, :website, :facebook,
+                                  :twitter, :instagram, :linkedin,
+                                  :pinterest, :youtube,
+                                  :price, :locations,
                                   :comments, :availabilities)
   end
 

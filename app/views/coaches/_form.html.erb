@@ -35,6 +35,11 @@
             multiple: true,
             as: :check_boxes,
             default: 1 %>
+        <%= f.input :website, label: "Site Internet", placeholder:"Si vous en avez un" %>
+        <%= f.input :facebook, label: "Compte facebook", placeholder:"Si vous en avez un pour échanger avec vos élèves"  %>
+        <%= f.input :instagram, label: "Compte Instagram", placeholder:"Si vous en avez un, pour partager vos images pro"  %>
+        <%= f.input :twitter, label: "Compte Twitter", placeholder:"Si vous en avez un susceptible d'intéresser vos élèves"  %>
+        <%= f.input :linkedin, label: "Compte linkedin", placeholder:"Si vous en avez un"  %>
         <%= f.input :price, :input_html => {:style => 'width: 100%', :rows => 7},
                     placeholder:
                     "Ici, on parle ouvertement d'argent...mais cela reste entre nous.
