@@ -72,8 +72,14 @@
   text-decoration: none;
 }
 
-.social-links {
+.profile-social-links {
   font-size: 1.5em;
   padding-left: 2px;
   padding-right: 2px;
+}
+
+.profile-social-links:hover {
+  text-decoration: none;
+    font-size: 2em;
+    color: $dark-grey;
 }

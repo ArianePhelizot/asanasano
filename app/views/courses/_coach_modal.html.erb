@@ -33,6 +33,34 @@
               <li><i class="fa fa-phone" aria-hidden="true"></i></li>
               <li><%= @course.coach.user.phone_number %></li>
             </div>
+            <div>
+              <% if @course.coach.website.present?  %>
+                <%= link_to @course.coach.website, target: :_blank do %>
+                  <i class="fa fa-globe modal-social-links" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+              <% if @course.coach.facebook.present?  %>
+                <%= link_to @course.coach.facebook, target: :_blank do %>
+                  <i class="fa fa-facebook modal-social-links" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+              <% if @course.coach.instagram.present?  %>
+                <%= link_to @course.coach.instagram, target: :_blank do %>
+                  <i class="fa fa-instagram modal-social-links" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+              <% if @course.coach.twitter.present?  %>
+                <%= link_to @course.coach.twitter, target: :_blank do %>
+                  <i class="fa fa-twitter modal-social-links" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+              <% if @course.coach.linkedin.present?  %>
+                <%= link_to @course.coach.linkedin, target: :_blank do %>
+                  <i class="fa fa-linkedin modal-social-links" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+
+            </div>
           </div>
           <div class="col-md-8"> <!-- RIGHT PART OF MODAL -->
             <div class="mg-btm-1em">
