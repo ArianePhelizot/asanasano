@@ -82,7 +82,9 @@
       <div class="padding-rgt-lft-25">
         <div class="row">
           <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
+
             <div class="mg-btm-20 text-center-xs text-center-sm margin-top-20" id="course-coach">
+              <!--  Coach photo ou not  -->
               <% if @course.coach&.user&.photo? %>
                 <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
                                                            width: 50,
@@ -92,15 +94,18 @@
               <% else %>
                 <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic", width: 50%>
               <% end %>
+              <!-- Coach name or not -->
               <% if @course.coach&.first_name.present?  %>
-                <p><%= @course.coach.first_name.capitalize %> &nbsp
-<!-- Button trigger modal PRESENTATION DU COACH-->
+                <div>
+                  <p><%= @course.coach.first_name.capitalize %> &nbsp
+                  <!-- Button trigger modal PRESENTATION DU COACH-->
+                  <i class="fa fa-external-link" data-toggle="modal" data-target="#CoachModal"></i> </p>
+                  <%= render 'coach_modal' %>
 
-<i class="fa fa-external-link" data-toggle="modal" data-target="#CoachModal"></i> </p>
-                <%= render 'coach_modal' %>
+                </div>
 
               <% else %>
-                <p class="text-center-xs text-center-sm">Coach</p>
+                <p class="text-center-xs text-center-sm">À trouver!</p>
               <% end %>
             </div>
           </div>
