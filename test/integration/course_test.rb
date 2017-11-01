@@ -13,7 +13,7 @@ class CourseTest < ActionDispatch::IntegrationTest
       assert_equal 200, page.status_code
       assert page.has_content?("Amélie")
       assert page.has_content?("jeudi 7 septembre")
-      assert page.has_content?("Patin")
+      assert page.has_content?("PATIN")
     end
   end
 end

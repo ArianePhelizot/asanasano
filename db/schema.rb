@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029120338) do
+ActiveRecord::Schema.define(version: 20171101103344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 20171029120338) do
     t.text     "locations"
     t.text     "price"
     t.text     "comments"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "instagram"
+    t.string   "youtube"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "pinterest"
     t.index ["params_set_id"], name: "index_coaches_on_params_set_id", using: :btree
   end
 
