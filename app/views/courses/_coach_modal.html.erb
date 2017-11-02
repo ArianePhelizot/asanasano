@@ -26,7 +26,7 @@
             <!-- Mail -->
             <div class="list-inline text-justify">
               <li><i class="fa fa-envelope-o" aria-hidden="true"></i></li>
-              <li><%= @course.coach.user.email %></li>
+              <li><%= link_to @course.coach.user.email, "mailto:" + @course.coach.user.email %></li>
             </div>
             <!-- Tel -->
             <div class="list-inline text-justify">
