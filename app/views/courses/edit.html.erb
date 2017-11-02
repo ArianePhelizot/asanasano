@@ -4,7 +4,9 @@
       <div class="wrapper-login padded">
         <div class="text-center">
 <!--           <h1>Editer mon activité</h1> -->
-            <%= render 'form_edit' %>
+            <%= render 'form' %>
+            <br>
+            <%= link_to "Revenir sur la page précédente", course_path(@course) %>
         </div>
       </div>
     </div>

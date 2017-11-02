@@ -6,7 +6,8 @@
           <div class="text-center">
             <h1>Proposer une nouvelle activité</h1>
             <h2>au groupe: "<%= @group.name  %>" </h2>
-            <%= render 'form_new' %>
+            <%= render 'form' %>
+            <%= link_to "Je finirai ça plus tard...Je reviens sur mon tableau de bord", dashboard_path %>
           </div>
         </div>
       </div>
