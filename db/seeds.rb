@@ -53,6 +53,7 @@ sport9 = Sport.create!(name: 'Running', icon: open_icon('running_icon.png'))
 sport10 = Sport.create!(name: 'Piscine', icon: open_icon('piscine_icon.png'))
 sport11 = Sport.create!(name: 'Raquettes', icon: open_icon('raquettes_icon.png'))
 sport12 = Sport.create!(name: 'Sport co', icon: open_icon('sports_co_icon.png'))
+sport13 = Sport.create!(name: 'Méditation', icon: open_icon('meditation_icon.png'))
 
 puts "#{Sport.count} sports created"
 
