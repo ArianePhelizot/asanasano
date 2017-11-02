@@ -15,11 +15,11 @@
             </div>
           <% end %>
 
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :email %>
-          <%= f.input :phone_number %>
-          <%= f.input :photo, as: :attachinary, label: 'Profile picture' %>
+          <%= f.input :first_name, label: "Prénom" %>
+          <%= f.input :last_name, label: "Nom" %>
+          <%= f.input :email, label: "Email"  %>
+          <%= f.input :phone_number, label: "Téléphone"  %>
+          <%= f.input :photo, as: :attachinary, label: 'Photo' %>
 
           <div class="terms hidden">
             <%= f.check_box :agreed_to_terms, checked: true %>
