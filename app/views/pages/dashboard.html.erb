@@ -119,7 +119,14 @@
   <% end %>
   <!-- AJOUTER UN NOUVEAU GROUPE -->
     <% if policy(Group).new? %>
-      <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"button-add-a-new-group" %>
-  <% end %>
+      <% if current_user.user_profile_complete? %>
+          <%= link_to "Ajouter un nouveau groupe", new_group_path, class:"button-add-a-new-group" %>
+      <% else %>
+          <%= link_to "Ajouter un nouveau groupe", edit_user_path(@current_user.id),
+                 data: { confirm: "Pour un créer un groupe, vous devez d'abord compléter votre profil utilisateur!" },
+                 class: "button-add-a-new-group"  %>
+      <% end %>
+    <% end %>
 </div>
+
 
