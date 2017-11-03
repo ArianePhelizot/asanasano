@@ -35,6 +35,26 @@
 .course-title h2 {
   margin-top: 14px;
 }
+
+// COURSE STATUS
+
+.course-status {
+ padding-left: 20px;
+ padding-right: 10px;
+}
+
+.draft-status {
+  background-color: $red;
+  color: white;
+}
+
+.published-status {
+  background-color: $green;
+  color: white;
+}
+// END OF COURSE STATUS
+
+
 .wrapper-slots-display {
   background-image: linear-gradient(-225deg,
                     rgba(96,108,136,0.6),
