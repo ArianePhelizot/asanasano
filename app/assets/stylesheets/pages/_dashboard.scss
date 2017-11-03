@@ -74,9 +74,14 @@
 .main-card {
   color: $dark-grey;
 }
+
 .coach-name {
+  position: absolute;
+  top: 110px;
+  left: 77px;
   color: black;
 }
+
 
 // MES PROCHAINES SEANCES //
 .mes-prochaines-seances-container {
@@ -397,6 +402,14 @@ height: 41px;
   color: $dark-grey;
 }
 
+.next-slot-container {
+  position: absolute;
+  left: 30px;
+  top: auto;
+  width: 180px;
+  font-size: 13px;
+}
+
 #calendar-icon {
   position: absolute;
   left: 30px;
@@ -474,12 +487,6 @@ height: 41px;
   text-align: center;
   text-transform: uppercase;
   left: 56px;
-}
-
-.coach-name {
-  position: absolute;
-  top: 110px;
-  left: 55px;
 }
 
 .button-add-a-new-group {

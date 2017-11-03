@@ -53,7 +53,7 @@ class Course < ApplicationRecord
   end
 
   def publishable?
-    valid? && slots.any? && draft?
+    coach.present? && valid? && slots.any? && draft?
   end
 
   def depublishable?

@@ -18,7 +18,7 @@
         <%= f.input :description, :input_html => {:style => 'width: 100%', :rows => 8},
                     placeholder:
                     "Attention, ce petit texte est à soigner. Car il s'agit de VOUS. C'est ici que vous êtes invité(e) à vous présenter et tout nous dire sur votre histoire, votre approche...et plus concrètement sur la ou les expérience(s) que vous souhaitez transmettre et partager. Alors exprimez-vous!" %>
-        <%= f.association :sports, collection: Sport.all.sort_by {|sport| sport.name} , as: :check_boxes %>
+        <%= f.association :sports, collection: Sport.all.sort_by {|sport| sport.name} , as: :check_boxes, label: "Activités" %>
         <%= f.input :training, label:"Formation", :input_html => {:style => 'width: 100%', :rows => 3}, placeholder: "Un diplôme, une certification...obtenu ou et quand? Nous voulons tout savoir" %>
         <%= f.input :experience, label: "Nombre d'années d'expérience", collection: 0..50 %>
         <%= f.label :languages, label:"Langues parlées" %>

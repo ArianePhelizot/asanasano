@@ -75,6 +75,34 @@
   </div>
 </div>
 
+
+<!-- STATUS INFO FOR GROUP OWNER & COACH ONLY -->
+<% if policy(@course).edit? %>
+  <% if @course.draft? && @course.publishable? %> </p>
+    <div class="course-status draft-status text-center">
+      <p>ATTENTION, ce cours n'est pas en ligne. Pour que l'ensemble des membres du groupe "<%= @course.group.name %>" puissent y avoir accès et réserver leur première séance,
+      il est nécessaire au prélable de le publier. </p>
+    </div>
+  <% elsif @course.draft? %>
+    <div class="course-status draft-status text-center">
+      <p>ATTENTION, ce cours n'est pas en ligne. Pour pouvoir le publier, l'ensemble des champs obligatoires doivent être renseignés et une première séance doit être programmée.
+      </p>
+    </div>
+  <% elsif @course.active? && @course.depublishable? %>
+    <div class="course-status published-status text-center">
+      <p>Ce cours est en ligne. Il est visible de l'ensemble des membres du groupe "<%= @course.group.name %>".
+      </p>
+    </div>
+  <% else %>
+    <div class="course-status published-status text-center">
+      <p>Ce cours est en ligne. Il est visible de l'ensemble des membres du groupe "<%= @course.group.name %>".
+        Pour le désactiver, il est nécessaire de s'assurer au préalable qu'il n'y ait aucune séance associée.
+      </p>
+    </div>
+  <% end %>
+<% end %>
+<!-- END OF STATUS INFO FOR GROUP OWNER & COACH ONLY -->
+
 <!-- COURSE DESCRIPTION -->
 <div class="container">
   <div class="row">
@@ -105,7 +133,8 @@
                 <%= render 'coach_modal' %>
 
               <% else %>
-                <p class="text-center-xs text-center-sm">À trouver!</p>
+                <%= image_tag "https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png", id:"coach-pic", width: 50%>
+                <p class="text-center-xs text-center-sm"><span style="color:#EE5F5B"> A trouver!</span></p>
               <% end %>
             </div>
           </div>
@@ -115,26 +144,8 @@
             <div class="text-center-xs text-center-sm">
               <p><strong>Adresse:</strong> <%= @course.address %></p>
               <p><strong>Point de rendez-vous:</strong> <%= @course.meeting_point %></p>
-              <% if policy(@course).edit? %>
-                <p id="status"><strong>Statut du cours:</strong> <%= @course.status.capitalize %></p>
-                <% if @course.draft? && @course.publishable? %> </p>
-                  <p class="text-justify">
-                    ATTENTION, ce cours n'est pas encore mis en ligne. Pour que l'ensemble des membres du groupe <%= @course.group.name %> puissent y avoir accès et réserver leur première séance. il est nécessaire au prélable de le publier.
-                  </p>
-                <% elsif @course.draft? %>
-                  <p class="text-justify">
-                    ATTENTION, ce cours n'a pas été encore mis en ligne. Pour pouvoir le publier, l'ensemble des champs obligatoires doivent être renseignés et une première séance doit être programmée.
-                  </p>
-                <% elsif @course.active? && @course.depublishable? %>
-                  <p class="text-justify">
-                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>.
-                  </p>
-                <% else %>
-                  <p class="text-justify">
-                    Ce cours est en ligne. Il est visible à l'ensemble des membres du groupe <%= @course.group.name %>. Pour le désactiver, il est nécessaire de s'assurer au préalable qu'il n'y ait aucune séance associée.
-                  </p>
-                <% end %>
-              <% end %>
+              <p class="text-justify text-center-xs"><strong>Contenu du cours:</strong> <%= @course.content %></p>
+              <p class="text-justify text-center-xs"><strong>Détails:</strong> <%= @course.details %></p>
               <p class="info-link" id="more-info">Plus d'infos...</p>
             </div>
           </div>
@@ -142,9 +153,6 @@
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
             <div class="hidden text-center-xs" id="more-course-info">
-              <!-- precisions sur les implications liées au statut -->
-              <p class="text-justify text-center-xs"><strong>Contenu du cours:</strong> <%= @course.content %></p>
-              <p class="text-justify text-center-xs"><strong>Détails:</strong> <%= @course.details %></p>
               <p><strong>Nombre maximum de participants:</strong> <%= @course.capacity_max %></p>
             </div>
           </div>
