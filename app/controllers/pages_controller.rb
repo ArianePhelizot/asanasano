@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   helper ApplicationHelper
-  skip_before_action :authenticate_user!, only: [:home, :pro]
+  skip_before_action :authenticate_user!, only: [:home, :pro, :corporate]
 
   def home
     @user = current_user
