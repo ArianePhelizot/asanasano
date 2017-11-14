@@ -284,12 +284,18 @@
 
 
             <!-- Ask for pro account validation -->
-            <div class="padded">
-              <% if current_user.coach_id? && !current_user.coach.validated%>
+            <% if current_user.coach_id? && !current_user.coach.validated%>
+              <div class="padded">
                 <div class="padded-bot-xs">
                   <a href="mailto:hello@asanasano.com?subject=Oui, je veux activer mon compte PRO sur ASANASANO&body=Merci de le valider. Et que ça saute! A bientôt." class="share-link bg-email btn-profile", id="getting-pro"> Valider mon compte PRO</a>
                 </div>
-              <%end%>
+              </div>
+            <%end%>
+
+            <!-- Link_to previous page -->
+
+            <div class="padded-sm">
+              <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
             </div>
 
           </div>
