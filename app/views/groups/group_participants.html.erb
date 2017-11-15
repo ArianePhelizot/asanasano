@@ -70,7 +70,7 @@
     <!-- OWNER ONLY: Liste des invitations en cours + module d'invitations -->
 
     <!-- Liste des invitations en cours -->
-    <% if policy(@group).edit? && !@group.pending_invited_users_only.empty? %>
+    <% if policy(@group).edit?  %>
         <div class="people-list">
             <h3>Liste des invitations en cours </h3>
 
@@ -85,6 +85,12 @@
                   </div>
                 <% end %>
               </div>
+
+             <% if  @group.pending_invited_users_only.empty? %>
+              <div class="white-text text-center">
+                <p>Il n'y a pas d'invitation en cours</p>
+              </div>
+             <% end %>
 
         </div>
 
