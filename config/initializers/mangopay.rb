@@ -10,7 +10,7 @@ MangoPay.configure do |c|
     if Rails.env.production?
       { host: "https://www.asanasano.com" }
     elsif Rails.env.development?
-      { host: "https://f1cfee27.ngrok.io" }
+      { host: "https://009b2f0b.ngrok.io" }
     end
   end
 
