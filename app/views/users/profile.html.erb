@@ -293,10 +293,11 @@
             <%end%>
 
             <!-- Link_to previous page -->
-
-            <div class="padded-sm">
-              <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
-            </div>
+            <% if request.referer.present? %>
+              <div class="padded-sm">
+                <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
+              </div>
+            <%end%>
 
           </div>
         </div>
