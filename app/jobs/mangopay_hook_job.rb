@@ -5,7 +5,7 @@ class MangopayHookJob < ApplicationJob
   def perform
     # Petit audit des hooks créés
     # Liste des hooks existants
-    mangopayhooks = MangoPay::Hook.fetch("page" => 1, "per_page" => 1)
+    mangopayhooks = MangoPay::Hook.fetch("page" => 1, "per_page" => 25)
 
     # Check si hook créé pour l'événement "PAYIN_NORMAL_SUCCEEDED"
     # Si le nb de hook pour "PAYIN_NORMAL_SUCCEEDED" < 1
