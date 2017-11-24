@@ -19,7 +19,7 @@
       <!-- Different use cases depending on user picture status-->
           <!-- if user personnalized its photo -->
           <% if current_user.photo? %>
-            <%= cl_image_tag(current_user.photo.path, gravity: :face,
+            <%= cl_image_tag(current_user.photo, gravity: :face,
                                            width: 30,
                                            height: 30,
                                            crop: "fill",

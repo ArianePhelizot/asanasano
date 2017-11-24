@@ -117,7 +117,7 @@
                 <div data-toggle="modal" data-target="#CoachModal" >
                   <!--  Coach photo ou not  -->
                   <% if @course.coach&.user&.photo? %>
-                    <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
+                    <%= cl_image_tag @course.coach.user.photo, gravity: :face,
                                                                width: 50,
                                                                crop: :fill,
                                                                radius: :max,

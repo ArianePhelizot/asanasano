@@ -72,7 +72,8 @@
                     Vous cherchez de temps en temps à vous faire remplacer ? Au contraire, vous êtes preneurs de remplacement ?
                     Anything...vous pouvez tout nous dire ou nous demander ici.",
                     label:"What else ?" %>
-        <%= f.input :insurance, as: :attachinary, label: 'Responsabilité civile professionnelle' %>
+        <%= f.input :insurance, label: 'Responsabilité civile professionnelle'  %>
+        <%= f.input :insurance_cache, as: :hidden %>
 
         <%= f.submit "Mettre à jour mon profil", class: "btn btn-profile btn-salmon" %>
         <% end %>

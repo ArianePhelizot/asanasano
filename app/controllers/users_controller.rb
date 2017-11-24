@@ -28,6 +28,7 @@ class UsersController < ApplicationController
                                  :email,
                                  :phone_number,
                                  :photo,
+                                 :photo_cache,
                                  :agreed_to_terms)
   end
 end

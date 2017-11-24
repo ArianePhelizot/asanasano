@@ -8,12 +8,13 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  icon       :string
 #
 
 class Sport < ApplicationRecord
-  has_attachment :icon
   has_and_belongs_to_many :coaches
   has_many :courses, dependent: :nullify
+  mount_uploader :icon, IconUploader
 
   validates :name, presence: true
   validates :icon, presence: true

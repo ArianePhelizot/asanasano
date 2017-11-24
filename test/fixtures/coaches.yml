@@ -23,6 +23,7 @@
 #  twitter        :string
 #  linkedin       :string
 #  pinterest      :string
+#  insurance      :string
 #
 # Indexes
 #

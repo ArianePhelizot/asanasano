@@ -25,14 +25,6 @@ GIT
       railties (>= 4.2, < 5.2)
       responders
 
-GIT
-  remote: https://github.com/assembler/attachinary.git
-  revision: 98a895be22edc74b1928ffa3ae116d24bd9818fd
-  specs:
-    attachinary (1.3.1)
-      cloudinary (~> 1.1.0)
-      rails (>= 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -106,6 +98,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     cliver (0.3.2)
     cloudinary (1.1.7)
       aws_cf_signer
@@ -203,6 +201,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (1.8.3)
     jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
@@ -234,6 +233,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     minitest-reporters (1.1.14)
@@ -428,11 +428,11 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   annotate
-  attachinary!
   autoprefixer-rails
   binding_of_caller
   bootstrap-sass
   capybara
+  carrierwave (~> 0.11.2)
   cloudinary
   coffee-rails
   country_select

@@ -64,7 +64,7 @@ class CoachesController < ApplicationController
                                   :twitter, :instagram, :linkedin,
                                   :pinterest, :youtube,
                                   :price, :locations,
-                                  :comments, :availabilities)
+                                  :comments, :availabilities, :insurance, :insurance_cache)
   end
 
   def sports_update
