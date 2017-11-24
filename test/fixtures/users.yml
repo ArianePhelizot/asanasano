@@ -33,6 +33,7 @@
 #  invited_by_type        :string
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
+#  photo                  :string
 #
 # Indexes
 #
@@ -42,6 +43,7 @@
 #  index_users_on_invitations_count     (invitations_count)
 #  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 

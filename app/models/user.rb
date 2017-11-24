@@ -35,6 +35,7 @@
 #  invited_by_type        :string
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
+#  photo                  :string
 #
 # Indexes
 #
@@ -58,7 +59,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :nullify
   has_many :mangopay_logs, dependent: :nullify
 
-  has_attachment :photo
+  mount_uploader :photo, PhotoUploader
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

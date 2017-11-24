@@ -25,6 +25,7 @@
 #  twitter        :string
 #  linkedin       :string
 #  pinterest      :string
+#  insurance      :string
 #
 # Indexes
 #
@@ -36,9 +37,9 @@ class Coach < ApplicationRecord
   has_and_belongs_to_many :groups
   has_one :user
   has_many :courses, dependent: :nullify
-  has_attachment :photo
-  has_attachment :insurance
+
   belongs_to :params_set
+  mount_uploader :insurance, InsuranceUploader
 
   delegate :first_name, to: :user
   delegate :photo, to: :course, prefix: true

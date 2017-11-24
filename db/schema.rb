@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101103344) do
+ActiveRecord::Schema.define(version: 20171124140953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20171101103344) do
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "pinterest"
+    t.string   "insurance"
     t.index ["params_set_id"], name: "index_coaches_on_params_set_id", using: :btree
   end
 
@@ -215,6 +216,7 @@ ActiveRecord::Schema.define(version: 20171101103344) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "icon"
   end
 
   create_table "users", force: :cascade do |t|
@@ -248,6 +250,7 @@ ActiveRecord::Schema.define(version: 20171101103344) do
     t.string   "invited_by_type"
     t.integer  "invited_by_id"
     t.integer  "invitations_count",      default: 0
+    t.string   "photo"
     t.index ["coach_id"], name: "index_users_on_coach_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree

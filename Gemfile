@@ -38,7 +38,7 @@ gem 'uglifier'
 
 gem 'icalendar'
 
-gem 'attachinary', github: 'assembler/attachinary'
+gem 'carrierwave', '~> 0.11.2'
 gem 'cloudinary'
 gem 'coffee-rails'
 
