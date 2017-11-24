@@ -4,8 +4,24 @@ ActiveAdmin.register User do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
+
+
+  #Je n'arrive pas à updater les champs d'un user  cause de l'acceptance des terms
+  #je n'arrive pas à dire / imposer que dans les permit_params => agreed_to_terms: true
+  #ni à overider l'udate d'active admin => à acun moment je n'arrive à rentrer dans mon binding.pry
+# Test this...but doesn't work http://time.to.pullthepl.ug/blog/2012/5/18/bending-activeadmin-to-my-will-with-a-customized-update-action/
+  # def update
+  #   binding.pry
+  #   # This sets the attr_accessor you want later
+  #   params[:user].merge!({ :agreed_to_terms => true })
+  #   # This is taken from the active_admin code
+  #   super
+  # end
+
+
   menu label: "Users"
   permit_params :email, :first_name, :last_name, :coach_id , :phone_number, :admin
+
   #
   # or
   #
@@ -34,6 +50,9 @@ ActiveAdmin.register User do
     column :invitations_count
     column :facebook_picture_url
   end
+
+
+
 
 
   # show do
