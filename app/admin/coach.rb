@@ -14,9 +14,7 @@ ActiveAdmin.register Coach do
     column :description
     column :experience
     column :languages
-    column :sports do
-    raw coach.sports
-  end
+    column :sports
     column :params_set
     actions
   end

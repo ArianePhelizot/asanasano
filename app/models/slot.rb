@@ -35,10 +35,21 @@ class Slot < ApplicationRecord
 
   validates :date, :start_at, :end_at, :course_id, :price_cents, presence: true
   validates :specificities, length: { maximum: 300 }
-  validates :price, numericality: { allow_nil: true, greater_than_or_equal_to: 0.1,
-                                    less_than_or_equal_to: 2500,
-                                    message: "Entrez un prix compris entre 0,10 et 2 500€" }
+  # validates :price, numericality: { allow_nil: true, greater_than_or_equal_to: 0.1,
+  #                                   less_than_or_equal_to: 2500,
+  #                                   message: "Entrez un prix compris entre 0,10 et 2 500€" }
   validates :participants_min, numericality: { only_integer: true }
+  validates :price, numericality: { allow_nil: true }
+  validate :price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
+
+  def price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
+    case action
+    when price.present?
+      if (price > 0.to_money && price < 1.to_money) || price > 2500.to_money
+        errors.add(:price, "Entrez un prix compris égal à 0 ou compris entre 1€ et 2 500€")
+      end
+    end
+  end
 
   def full?
     users.count == course.capacity_max
