@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -36,6 +35,7 @@
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
 #  photo                  :string
+#  user_terms_acceptance  :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -66,8 +66,9 @@ class User < ApplicationRecord
 
   devise :invitable, :omniauthable, omniauth_providers: [:facebook]
 
-  validates_acceptance_of :agreed_to_terms, allow_nil: false,
-                                            message: :terms_not_accepted, on: [:create, :update]
+  validates :user_terms_acceptance, acceptance: true
+  # validates_acceptance_of :user_terms_acceptance, allow_nil: false,
+  #                                           message: :terms_not_accepted, on: [:create, :update]
 
   after_create :send_welcome_email
 
@@ -116,7 +117,7 @@ class User < ApplicationRecord
     user_params[:facebook_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
-    user_params[:agreed_to_terms] = "1"
+    user_params[:user_terms_acceptance] = "1"
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)

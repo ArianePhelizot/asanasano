@@ -29,6 +29,6 @@ class UsersController < ApplicationController
                                  :phone_number,
                                  :photo,
                                  :photo_cache,
-                                 :agreed_to_terms)
+                                 :user_terms_acceptance)
   end
 end
