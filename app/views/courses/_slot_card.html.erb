@@ -71,7 +71,11 @@
   <!-- PRICE & SUBSCRIBE ACTION / CANCEL ACTION OR FULL INFO -->
   <div class="col-xs-12 col-sm-4 pd-top-xs-slot-price pd-top-sm-slot-price pd-top-md-slot-price pd-top-lg-slot-price">
     <div class="price-slot text-center">
-      <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+      <% if slot.price == 0  %>
+        <p><%= "gratuit" %></p>
+      <% else %>
+        <p><%= humanized_money_with_symbol slot.price %></p> <!-- helper qui affiche le prix avec € -->
+      <% end %>
     </div>
     <div class="text-center">
         <% if policy(slot).desinscription_from_course_page? %>
