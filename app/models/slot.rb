@@ -43,12 +43,13 @@ class Slot < ApplicationRecord
   validate :price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
 
   def price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
-    case action
-    when price.present?
+    # rubocop:disable all
+    if price.present?
       if (price > 0.to_money && price < 1.to_money) || price > 2500.to_money
         errors.add(:price, "Entrez un prix compris égal à 0 ou compris entre 1€ et 2 500€")
       end
     end
+    # rubocop:enable all
   end
 
   def full?
