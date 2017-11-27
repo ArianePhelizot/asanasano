@@ -18,7 +18,7 @@ class CoachesController < ApplicationController
 
     if @coach.save
       @user.coach_id = @coach.id
-      @user.agreed_to_terms = true
+      @user.user_terms_acceptance = true
       @user.save
       @user.send_welcome_pro_email
       if @user.account

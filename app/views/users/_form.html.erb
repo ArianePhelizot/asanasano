@@ -22,10 +22,6 @@
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
 
-          <div class="terms hidden">
-            <%= f.check_box :agreed_to_terms, checked: true %>
-          </div>
-
         <%= f.submit "Update profile", class: "btn btn-profile btn-salmon", value: "Mettre à jour" %>
         <% end %>
       </div>
