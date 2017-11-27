@@ -34,6 +34,7 @@
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
 #  photo                  :string
+#  user_terms_acceptance  :boolean          default(FALSE), not null
 #
 # Indexes
 #
