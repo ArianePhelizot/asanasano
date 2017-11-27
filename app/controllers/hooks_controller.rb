@@ -30,7 +30,7 @@ class HooksController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
 
-  def payment_succeeded
+  def payment_succeeded # BEWARE OF IMPACTS ON FREE COURSES, CF ORDER CONTROLLER
     # log_hook_notification
     order_state_changed_to_paid
 
