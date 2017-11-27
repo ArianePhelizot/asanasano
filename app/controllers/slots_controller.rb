@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable all
 class SlotsController < ApplicationController
   before_action :find_course, only: %i(new create edit update)
   before_action :find_slot,
@@ -16,8 +16,6 @@ class SlotsController < ApplicationController
     authorize @slot
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def create
     @slot = Slot.new(slot_params)
     @slot.start_at = DateTime.new(@slot.date.cwyear, @slot.date.month,
@@ -185,12 +183,12 @@ class SlotsController < ApplicationController
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 
   def desinscription_with_refund?
+    # no refund if course is free
     free_refund_policy = @slot.course.coach.params_set.free_refund_policy_in_hours
-    (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy
+    (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy && !@slot.price == 0.to_money
   end
 end
+  # rubocop:enable all
 # rubocop:enable Metrics/ClassLength
