@@ -11,15 +11,20 @@ class TransferJob < ApplicationJob
     create_mangopay_transfers(orders_to_settle)
   end
 
+# rubocop:disable all
   def identify_orders_to_settle
     # selection of all passed slots with paid but not yet settled orders
     paid_orders = Order.all.where(state: "paid")
     non_settled_paid_orders = paid_orders.select { |order| order.settled == false }
-    orders_to_settle = non_settled_paid_orders.select { |order| order.slot.status == "passed" }
+    orders_to_settle_including_free = non_settled_paid_orders.select { |order| order.slot.status == "passed" }
+    # Settle free orders
+    free_orders = orders_to_settle_including_free.select { |order| order.amount == 0.to_money }
+    free_orders.map! do |order| order.settled = true end
+    # Keep the rest
+    orders_to_settle = orders_to_settle_including_free.select { |order| order.settled == false }
     orders_to_settle
   end
 
-# rubocop:disable all
   def create_mangopay_transfers(orders_to_settle)
     orders_to_settle.each do |order|
       slot = order.slot
