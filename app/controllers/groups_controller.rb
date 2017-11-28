@@ -16,6 +16,9 @@ class GroupsController < ApplicationController
 
     if @group.save
       @group.users.push(current_user) # populate the groups_users table
+      if current_user.coach?
+        @group.coaches.push(current_user.coach) # populate  groups_coaches table
+      end
       redirect_to new_group_course_path(@group)
     else
       render :new
