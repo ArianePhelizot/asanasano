@@ -21,8 +21,11 @@ class CoachesController < ApplicationController
       @user.user_terms_acceptance = true
       @user.save
       @user.send_welcome_pro_email
+      @user.groups.each do |group|
+        group.coaches.push(@coach)
+      end
       if @user.account
-        redirect_to edit_user_account_path(@user, @user.account.id)
+        redirect_to profile_path
       else
         redirect_to new_user_account_path(current_user)
       end
