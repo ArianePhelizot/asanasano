@@ -20,7 +20,7 @@ ActiveAdmin.register User do
 
 
   menu label: "Users"
-  permit_params :email, :first_name, :last_name, :coach_id , :phone_number, :admin
+  permit_params :email, :first_name, :last_name, :coach_id , :phone_number, :admin, :user_terms_acceptance
 
   #
   # or
@@ -40,6 +40,7 @@ ActiveAdmin.register User do
     column :last_name
     column :first_name
     column :admin
+    column :user_terms_acceptance
     column :phone_number
     column :created_at
     actions
