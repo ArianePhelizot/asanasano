@@ -31,5 +31,11 @@ module Asanasano
     config.i18n.default_locale = :fr
 
     config.active_job.queue_adapter = :sidekiq
+
+    # looking to fix an active admin issue
+    api_only = true
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.session_store :cookie_store
   end
 end
