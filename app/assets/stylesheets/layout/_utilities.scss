@@ -4,11 +4,11 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
-a {
+a:link, a:visited {
 color: $dark-grey;
 }
 
-a:hover {
+a:hover, a:active {
   color: $dark-grey;
   text-decoration: underline;
 }
