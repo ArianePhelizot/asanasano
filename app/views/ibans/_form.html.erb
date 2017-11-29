@@ -16,7 +16,6 @@
   <%= f.input :account_id, :as => :hidden, :input_html => { :value => @user.account.id } %>
   <%= f.input :iban, label: "IBAN", as: :text %>
 
-
-   <%= f.button :submit, "Enregistrer", class: "btn btn-profile btn-salmon" %>
+  <%= f.submit "Iban", class: "btn btn-profile btn-salmon", value: "Enregistrer" %>
 
 <% end %>
