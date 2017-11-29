@@ -94,7 +94,8 @@ class CoursesController < ApplicationController
   end
 
   def send_email_to_group_users
-    @course.group.users.each do |user|
+    mailing_list = @course.group.users.uniq.select {|user| user.sign_in_count.positive?}
+    mailing_list.each do |user|
       CourseMailer.new_published_course(user, @course).deliver_now
     end
   end
