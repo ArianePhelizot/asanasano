@@ -1,6 +1,10 @@
 # configuration
 MangoPay.configure do |c|
-  c.preproduction = true
+    if Rails.env.production?
+      c.preproduction = false
+    elsif Rails.env.development?
+      c.preproduction = true
+    end
   c.client_id = ENV['MANGOPAY_CLIENT_ID']
   c.client_passphrase = ENV['MANGOPAY_PASSPHRASE']
   # c.log_file = File.join('../../log', 'mangopay.log')
