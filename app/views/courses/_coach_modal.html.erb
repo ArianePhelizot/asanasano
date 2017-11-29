@@ -14,7 +14,7 @@
             <!-- Picture -->
             <div class="text-center padded-sm">
               <% if @course.coach&.user&.photo? %>
-                <%= cl_image_tag @course.coach.user.photo.path, gravity: :face,
+                <%= cl_image_tag @course.coach.user.photo, gravity: :face,
                                              width: 200,
                                              crop: :fill,
                                              radius: :max,
