@@ -9,7 +9,7 @@
       </p>
 
       <p>
-        La prochaine séance prévue est: <%= l(@course.next_slot.start_at, format:"%A%e %B %Y")%> à <%= l(@course.next_slot.start_at, format:"%Hh%M")%>.
+        La prochaine séance prévue est: <%= l(@course.next_slot.start_at, format:"%A %e %B %Y")%> à <%= l(@course.next_slot.start_at, format:"%Hh%M")%>.
       </p>
 
       <p>Pour en savoir plus, découvrir toutes les séances ou vous inscrire, c'est par <a href=<%=course_url(@course)%>>ici</a>.
