@@ -51,9 +51,6 @@ class Account < ApplicationRecord
   validates :legal_person_type, inclusion: [:business, :organization, :soletrader],
                                 if: :legal?
 
-  after_validation :report_validation_errors_to_rollbar
-
-
   def natural?
     person_type == "PERSONNE PHYSIQUE"
   end

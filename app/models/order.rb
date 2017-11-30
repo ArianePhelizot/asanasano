@@ -31,7 +31,6 @@ class Order < ApplicationRecord
   enum state: %i(pending paid failed ask_for_refund refund_for_slot_cancellation
                  failed_refund refunded)
 
-  after_validation :report_validation_errors_to_rollbar
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable LineLength
   def mangopay_order_tag
