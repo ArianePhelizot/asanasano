@@ -53,7 +53,7 @@ class CoursesController < ApplicationController
       send_email_to_group_users
       flash[:notice] = "Le cours a été publié et les emails envoyés."
     end
-    redirect_to dashboard_path
+    redirect_to course_path(@course)
   end
 
   def depublish
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
       @course.draft!
       flash[:notice] = "Le cours a été désactivé et n'est plus visible des membres du groupe."
     end
-    redirect_to dashboard_path
+    redirect_to course_path(@course)
   end
 
   def destroy
