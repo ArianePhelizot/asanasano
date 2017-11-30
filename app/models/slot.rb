@@ -42,6 +42,8 @@ class Slot < ApplicationRecord
   validates :price, numericality: { allow_nil: true }
   validate :price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
 
+  after_validation :report_validation_errors_to_rollbar
+
   def price_is_0_or_greater_than_or_equal_to_1_and_less_than_or_equal_to_2500
     # rubocop:disable all
     if price.present?

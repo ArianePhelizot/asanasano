@@ -70,6 +70,7 @@ class User < ApplicationRecord
   # validates_acceptance_of :user_terms_acceptance, allow_nil: false,
   #                                           message: :terms_not_accepted, on: [:create, :update]
 
+  after_validation :report_validation_errors_to_rollbar
   after_create :send_welcome_email
 
   def coach?
@@ -157,6 +158,10 @@ class User < ApplicationRecord
 
   def send_welcome_pro_email
     UserMailer.welcome_pro(self).deliver_now
+  end
+
+  def full_name
+    self.first_name + " " + self.last_name
   end
 
   private
