@@ -14,7 +14,7 @@ Rollbar.configure do |config|
   # `username`, and `email` methods to fetch those properties. To customize:
   # config.person_method = "my_current_user"
   # config.person_id_method = "my_id"
-  config.person_username_method = "full_name"
+  config.person_username_method = "last_name"
   # config.person_email_method = "my_email"
 
   # If you want to attach custom data to all exception and message reports,
