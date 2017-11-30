@@ -42,8 +42,6 @@ class Course < ApplicationRecord
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500, message: "Vous devez entrez un nombre entre 1 et 500" }
   # rubocop:enable LineLength
 
-  after_validation :report_validation_errors_to_rollbar
-
   def next_slot
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
     active_slots.sort_by(&:start_at).select { |slot| slot.start_at >= Time.now }.first

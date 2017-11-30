@@ -19,12 +19,12 @@
               <%= link_to course_publish_path(@course),
                   method: "patch",
                   data: { confirm: "Prêt à publier le cours? Cette action déclenchera l'envoi d'un email automatique à l'ensemble des membres du groupe qui pourront alors réserver, s'ils le souhaitent, une séance." } do %>
-                <i class="fa fa-power-off edit-delete-icons-color"></i>
+                <i class="fa fa-play edit-delete-icons-color"></i>
               <% end %>
 
             <% elsif @course.draft? %>
               <a href="" id= "uncomplete-course-desc" >
-                <i class="fa fa-power-off edit-delete-icons-color"></i>
+                <i class="fa fa-play edit-delete-icons-color"></i>
               </a>
 
               <div class="alert alert-warning alert-dismissible hidden" role="alert" id= "uncomplete-course-message">
