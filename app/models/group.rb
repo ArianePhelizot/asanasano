@@ -24,6 +24,8 @@ class Group < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :owner_id, presence: true
 
+  after_validation :report_validation_errors_to_rollbar
+
   def group_joined_users_only
     users.reject(&:invitation_token?)
   end

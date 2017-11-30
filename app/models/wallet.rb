@@ -16,4 +16,5 @@
 
 class Wallet < ApplicationRecord
   belongs_to :account
+  after_validation :report_validation_errors_to_rollbar
 end

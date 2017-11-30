@@ -346,6 +346,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.15.5)
+      multi_json
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -468,6 +470,7 @@ DEPENDENCIES
   rails (= 5.0.3)
   rails-i18n
   redis
+  rollbar
   sass-rails
   sidekiq
   sidekiq-failures (~> 1.0)

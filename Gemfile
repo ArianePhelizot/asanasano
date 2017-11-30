@@ -23,6 +23,8 @@ gem 'rails', '5.0.3'
 gem 'rails-i18n'
 gem 'redis'
 
+gem 'rollbar'
+
 gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

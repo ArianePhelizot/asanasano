@@ -48,6 +48,8 @@ class Coach < ApplicationRecord
   validates :description, :params_set_id, presence: true
   validates :description, length: { minimum: 10 }
 
+  after_validation :report_validation_errors_to_rollbar
+
   def name
     "#{user&.first_name} #{user&.last_name} "
   end
