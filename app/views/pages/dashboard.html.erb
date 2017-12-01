@@ -87,8 +87,9 @@
           <div id="no_activity">
             <% if group.courses.empty? %>
               <div class="text-center blue-text">
-                <p>Damned, il n'y pas d'activité proposée...<a href=<%= "mailto:" + group.owner.email%>>
-                <i class="fa fa-envelope-o"> Contacter le responsable du groupe </i> </a></p>
+                <p>Damned, il n'y pas d'activité proposée...</p>
+                <i class="fa fa-envelope-o"></i> <a href=<%= "mailto:" + group.owner.email%>>
+                Contacter le ou la chef </a>
               </div>
             <% end %>
           </div>
