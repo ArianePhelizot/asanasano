@@ -69,14 +69,22 @@ class SlotsController < ApplicationController
       order_to_refund = @slot.orders.select { |order|
         order.state == "paid" && order. settled == false
       }
-      # faire un refund pour chaque order
-      order_to_refund.each do |order|
-        refund_order(order, "refund_for_slot_cancellation")
-        # prévenir les participants après remboursement
-        # avec un mail ad'hoc
+
+      # sauf si cours gratuit, faire un refund pour chaque order
+      unless @slot.price == 0
+        order_to_refund.each do |order|
+          refund_order(order, "refund_for_slot_cancellation")
+        end
+      end
+
+      # settle order to true
+      # & prévenir les participants après remboursement avec un mail ad'hoc
+      order_to_refund.uniq.each do |order|
+        order.settled = true
+        order.save!
+        OrderMailer.slot_cancellation_by_orga_information(order).deliver_now
       end
     end
-
     redirect_to course_path(@course)
   end
 
@@ -187,7 +195,11 @@ class SlotsController < ApplicationController
   def desinscription_with_refund?
     # no refund if course is free
     free_refund_policy = @slot.course.coach.params_set.free_refund_policy_in_hours
-    (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy && !@slot.price == 0.to_money
+    if @slot.price == 0.to_money
+      false
+    else
+    (@slot.start_at.to_i - DateTime.now.to_i) / (60 * 60) > free_refund_policy
+    end
   end
 end
   # rubocop:enable all

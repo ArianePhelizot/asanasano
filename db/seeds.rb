@@ -218,7 +218,7 @@ group1.users = [user1, user2, user3, user4, user5, user7]
 group1.save
 group2.users = [user1, user2, user6]
 group2.save
-group3.users = [user1, user4, user6, user4]
+group3.users = [user1, user2, user4, user6]
 group3.save
 
 puts 'Associating coaches and groups'

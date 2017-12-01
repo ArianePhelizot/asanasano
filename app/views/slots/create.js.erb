@@ -1,9 +1,11 @@
 <% if @slot.errors.any? %>
   $("#new_slot_form").html("<%= j render 'slots/form', course: @course, slot: @slot %>");
 <% else %>
+  <% if @slot.course.draft? %>
   location.reload(true);
+  <% end %>
   $("#slots_display").html("<%= j render 'courses/slots_display', course: @course %>");
   $('html, body').animate({
       scrollTop: $("#slot-card-<%= @slot.id %>").offset().top
-  }, 'slow');
+  }, 'medium');
 <% end %>

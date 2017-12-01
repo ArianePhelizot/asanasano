@@ -15,7 +15,7 @@ fr:
     mailer:
       invitation_instructions:
         subject: 'Vous êtes invité(e) sur ASANASANO...'
-        hello: 'Bonjour %{email}'
+        hello: 'Bonjour,'
         someone_invited_you: "vous a invité(e) à rejoindre le groupe '%{group}' sur ASANASANO*."
         accept: "Oui, j'accepte cette invitation"
         ignore: "Vous ne souhaitez pas accepter cette invitation ? Rien à faire: ignorez juste cet e-mail.<br />"

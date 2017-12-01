@@ -509,3 +509,12 @@ height: 41px;
   color:white;
 }
 
+// NO FUTURE SLOT
+
+.group-container a[href^="mailto"]{
+  font-size: 16px;
+  line-height: 1,4;
+  color: $blue-text;
+  text-decoration: none;
+  // font-family: helvetica neue;
+}
