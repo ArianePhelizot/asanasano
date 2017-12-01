@@ -7,7 +7,11 @@
   <div class="body", style="padding-bottom: 4px">
     <p>Damned, votre séance de <%= @order.slot.course.name %> du <%= l(@order.slot.start_at, format:"%A%e %B %Y")%> vient d'être annulée par les organisateurs.</p>
 
-    <p>Votre compte bancaire sera très rapidement recrédité de <%=@order.amount %> euros.</p>
+    <% unless @order.slot.price == 0 %>
+      <p>Votre compte bancaire sera très rapidement recrédité de <%=@order.amount %> euros.</p>
+    <% end %>
+
+    <p> Pour en savoir plus, <a href=<%= "mailto:" + @order.slot.course.group.owner.email%>>contactez votre organisateur/trice en chef. </a></p>
 
     <p>A très vite sur asanasano,</p>
   </div>
