@@ -7,5 +7,5 @@
   $("#slots_display").html("<%= j render 'courses/slots_display', course: @course %>");
   $('html, body').animate({
       scrollTop: $("#slot-card-<%= @slot.id %>").offset().top
-  }, 'slow');
+  }, 'medium');
 <% end %>
