@@ -79,19 +79,25 @@
     </div>
 
     <div class="text-center">
-        <% if policy(slot).desinscription_from_course_page? %>
-          <%= form_tag orders_path do %>
-            <%= hidden_field_tag 'slot_id', slot.id %>
-            <%= button_tag type: "submit", class: "registered-btn", disabled: true do %>
-              <i class="fa fa-check-circle-o"></i> Inscrit
-            <% end %>
+      <% order = Order.find_by user: current_user, slot: slot, state: "pending" %>
+      <% if !order.nil? %> <!-- if there is a pending order booked by current user n this slot -->
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'slot_id', slot.id %>
+          <%= submit_tag 'commande en cours', class: "registered-btn", disabled: true %>
+      <% end %>
+
+      <% elsif policy(slot).desinscription_from_course_page? %>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'slot_id', slot.id %>
+          <%= button_tag type: "submit", class: "registered-btn", disabled: true do %>
+            <i class="fa fa-check-circle-o"></i> Inscrit
           <% end %>
-          <%= link_to "Me désinscrire", desinscription_from_course_page_slot_path(slot),
-              method: 'patch',
-              class:"desincription-link",
-              remote: true,
-              data: { confirm: "Vous pouvez annuler votre inscription à une séance, sans aucun frais, jusqu'à #{slot.course.coach.params_set.free_refund_policy_in_hours} heures avant le début du cours. En deça de cette limite, le cours est du. Êtes-vous sûr de vouloir vous désinscrire?" }
-          %>
+        <% end %>
+        <%= link_to "Me désinscrire", desinscription_from_course_page_slot_path(slot),
+            method: 'patch',
+            class:"desincription-link",
+            remote: true,
+            data: { confirm: "Vous pouvez annuler votre inscription à une séance, sans aucun frais, jusqu'à #{slot.course.coach.params_set.free_refund_policy_in_hours} heures avant le début du cours. En deça de cette limite, le cours est du. Êtes-vous sûr de vouloir vous désinscrire?" }%>
       <% elsif slot.full? %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'slot_id', slot.id %>
