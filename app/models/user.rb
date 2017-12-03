@@ -71,7 +71,7 @@ class User < ApplicationRecord
   #                                           message: :terms_not_accepted, on: [:create, :update]
 
   after_validation :report_validation_errors_to_rollbar
-  after_create :send_welcome_email
+  after_create :send_welcome_email, :send_new_user_slack_notification
 
   def coach?
     coach_id.present?
@@ -158,6 +158,12 @@ class User < ApplicationRecord
 
   def send_welcome_pro_email
     UserMailer.welcome_pro(self).deliver_now
+  end
+
+  def send_new_user_slack_notification
+    require 'slack-notifier'
+    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+    notifier.ping "Yippee new user:#{self.email} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 
   private

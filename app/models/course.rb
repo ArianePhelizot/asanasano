@@ -42,6 +42,8 @@ class Course < ApplicationRecord
   validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500, message: "Vous devez entrez un nombre entre 1 et 500" }
   # rubocop:enable LineLength
 
+  after_create :send_new_activity_slack_notification
+
   def next_slot
     active_slots = slots.select { |slot| slot.status == "created" || slot.status == "confirmed" }
     active_slots.sort_by(&:start_at).select { |slot| slot.start_at >= Time.now }.first
@@ -58,5 +60,11 @@ class Course < ApplicationRecord
 
   def depublishable?
     active? && slots.none?
+  end
+
+  def send_new_activity_slack_notification
+    require 'slack-notifier'
+    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+    notifier.ping "Wahouh new activity:#{self.name} created for #{self.group.name} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 end
