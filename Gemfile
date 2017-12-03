@@ -24,6 +24,7 @@ gem 'rails-i18n'
 gem 'redis'
 
 gem 'rollbar'
+gem 'slack-notifier'
 
 gem 'annotate'
 gem 'autoprefixer-rails'

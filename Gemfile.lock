@@ -381,6 +381,7 @@ GEM
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
     sixarm_ruby_unaccent (1.1.2)
+    slack-notifier (2.3.1)
     slop (3.6.0)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
@@ -475,6 +476,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-failures (~> 1.0)
   simple_form
+  slack-notifier
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
