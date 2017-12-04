@@ -2,7 +2,28 @@
 #banner-corp {
 background-position: 35% 65%;
 height: 375px;
+color: white;
+text-align: center;
+height: 53vh;
+/* if you have a 70px navbar => height: calc(100vh - 70px); */
+background-size: cover !important;
+// display: flex;
+align-items: center;
+justify-content: center;
+padding-top: 24px;
 }
+
+#banner-corp h1 {
+  margin-top:40px;
+}
+
+#banner-corp p {
+  margin-top:45px;
+  margin-bottom:40px;
+  font-weight: 300px;
+  font-size: 22px;
+}
+
 
 #corporate-hall{
 background-position: 10% 50%;
@@ -13,3 +34,33 @@ height: 250px;
 .title-2nd-banner-corp {
 
 }
+
+#banner-corp-content{
+  margin-top: 26px;
+}
+
+.pro-benefice h3 {
+  font-size: 23px;
+  margin-bottom: 48px;
+  color: $salmon;
+}
+
+.key-fig {
+ margin-top: 10px;
+ margin-bottom: 40px;
+}
+
+.icon-pro {
+  margin-top: 30px;
+  width: 130px;
+  height: 130px;
+}
+
+.key-fig h3{
+ color: $rose-salmon;
+}
+
+.key-fig a{
+ font-size: 9px;
+}
+
