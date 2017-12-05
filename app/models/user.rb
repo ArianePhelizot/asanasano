@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -161,9 +162,9 @@ class User < ApplicationRecord
   end
 
   def send_new_user_slack_notification
-    require 'slack-notifier'
+    require "slack-notifier"
     notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-    notifier.ping "Yippee new user:#{self.email} - #{Rails.application.class.parent_name} - #{Rails.env}"
+    notifier.ping "Yippee new user:#{email} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 
   private
