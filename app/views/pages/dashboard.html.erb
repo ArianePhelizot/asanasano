@@ -142,7 +142,8 @@
               <h4>Pilates, Yoga, Taïchi, Zumba, running...</h4>
               <h4>Vous ne savez pas par quoi commencer ?</h4>
               <p>Nous sommes là pour vous aider </p>
-              <div class="button-add-a-new-group" id="btn-help">Besoin de conseil</div>
+              <%= link_to "Besoin de conseil", new_contact_message_path,
+                 class: "button-add-a-new-group", id: "btn-help"  %>
             </div>
           </div>
         </div>
@@ -153,7 +154,8 @@
               <h4>Recherche prof ou coach désespérement ?</h4>
               <h4>Quelqu'un de qualifié, assuré, apprécié...</h4>
               <p>Là aussi, nous pouvons vous épauler </p>
-              <div class="button-add-a-new-group" id="btn-help">Trouver le bon pro</div>
+              <%= link_to "Trouver le bon pro", new_contact_message_path,
+                 class: "button-add-a-new-group", id: "btn-help"  %>
             </div>
           </div>
         </div>
