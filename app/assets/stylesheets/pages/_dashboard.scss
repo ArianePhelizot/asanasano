@@ -15,14 +15,12 @@
                     rgba(96,108,136,0.6)),
                     url('bg-form2.jpg');
   }
-  .prochaines-seances-text {
+
+  .section-title {
     font-size: 32px;
     text-align: center;
   }
-  .toutes-mes-activites-title {
-    font-size: 32px;
-    text-align: center;
-  }
+
   // CARD-CONTAINER-COURS //
   .card-cours {
     position: relative;
@@ -517,4 +515,33 @@ height: 41px;
   color: $blue-text;
   text-decoration: none;
   // font-family: helvetica neue;
+}
+
+// HELP NEEDED
+
+#db-help {
+  margin-top: 100px;
+  color:white;
+}
+
+.help-sq-image {
+  width: 100%;
+  height: 450px;
+  border: 1px grey solid;
+  background-size: cover;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+  @include box-shadow(#494444 2px 1px 5px);
+}
+
+.content-help {
+  color: white;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 130px;
+}
+
+#btn-help {
+  margin-top: 40px;
 }
