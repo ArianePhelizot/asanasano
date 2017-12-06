@@ -49,7 +49,6 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-
   # Je prends un user qui a un seul slot à venir, dans la même journée
   # Je vérifie que user.next_slots intègre bien ce slot
 
@@ -65,5 +64,4 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "Mary", users(:mary).full_name
     assert_equal nil, users(:rocky).full_name
   end
-
 end
