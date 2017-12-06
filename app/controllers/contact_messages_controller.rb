@@ -3,7 +3,14 @@ class ContactMessagesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def new
-    @message = ContactMessage.new
+    @message = if user_signed_in?
+      ContactMessage.new(name: current_user.full_name,
+                         phone_number: current_user.phone_number,
+                         email: current_user.email)
+    else
+      ContactMessage.new
+    end
+
     authorize @message
   end
 

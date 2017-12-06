@@ -48,6 +48,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
+# rubocop:disable Metrics/ClassLength
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -76,6 +77,17 @@ class User < ApplicationRecord
 
   def coach?
     coach_id.present?
+  end
+
+  def full_name
+    fullname = if first_name && last_name
+      first_name.capitalize + " " + last_name.capitalize
+    elsif first_name
+      first_name.capitalize
+    elsif last_name
+      last_name.capitalize
+    end
+    fullname
   end
 
   def group_list
@@ -174,3 +186,4 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now unless invitation_token?
   end
 end
+# rubocop:enable Metrics/ClassLength
