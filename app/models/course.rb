@@ -38,9 +38,9 @@ class Course < ApplicationRecord
   validates :name, :address, :capacity_max, :group_id, :sport_id, presence: true
   validates :name, length: { maximum: 20 }
   validates :content, :meeting_point, :details, length: { maximum: 300 }
-  # rubocop:disable LineLength
-  validates :capacity_max, numericality: { only_integer: true }, inclusion: { in: 1..500, message: "Vous devez entrez un nombre entre 1 et 500" }
-  # rubocop:enable LineLength
+  validates :capacity_max, numericality: { only_integer: true },
+                           inclusion: { in: 1..500,
+                                        message: "Vous devez entrez un nombre entre 1 et 500" }
 
   after_create :send_new_activity_slack_notification
 
@@ -64,7 +64,9 @@ class Course < ApplicationRecord
 
   def send_new_activity_slack_notification
     require "slack-notifier"
-    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-    notifier.ping "Wahouh new activity:#{name} created for #{group.name} - #{Rails.application.class.parent_name} - #{Rails.env}"
+    slack_hook = "https://hooks.slack.com/services/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"
+    notifier = Slack::Notifier.new slack_hook
+    notifier.ping "Wahouh new activity:#{name} created for #{group.name} -
+    #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 end

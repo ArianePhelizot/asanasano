@@ -12,7 +12,8 @@ class ContactMessagesController < ApplicationController
     authorize @message
     if @message.valid?
       ContactMailer.contact_me(@message).deliver_now
-      redirect_to new_contact_message_path, notice: "Message reçu, Merci! Nous revenons au plus vite vers vous. "
+      flash[:notice] = "Message reçu, Merci! Nous revenons au plus vite vers vous. "
+      redirect_to new_contact_message_path
     else
       render :new
     end

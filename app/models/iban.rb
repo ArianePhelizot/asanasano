@@ -24,7 +24,7 @@ class Iban < ApplicationRecord
   def hidden_iban
     start = iban[0, 4]
     rest = iban[5, iban.length]
-    hidden_rest = rest.chars.map! { |_c| c = "*" }
+    hidden_rest = rest.chars.map! { |_c| "*" }
     start + hidden_rest.join("")
   end
 end
