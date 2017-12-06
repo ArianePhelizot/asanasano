@@ -21,11 +21,10 @@ class Iban < ApplicationRecord
 
   validates_format_of :iban, with: /^[a-zA-Z]{2}\d{2}\s*(\w{4}\s*){2,7}\w{1,4}\s*$/, multiline: true
 
-def hidden_iban
-  start = self.iban[0,4]
-  rest = self.iban[5, iban.length]
-  hidden_rest = rest.chars.map! { |c| c = "*"}
-  start + hidden_rest.join("")
-end
-
+  def hidden_iban
+    start = iban[0, 4]
+    rest = iban[5, iban.length]
+    hidden_rest = rest.chars.map! { |_c| c = "*" }
+    start + hidden_rest.join("")
+  end
 end

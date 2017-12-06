@@ -1,0 +1,25 @@
+<div class="wrapper-devise-form" id="contact-message">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="wrapper-login">
+          <div class="text-center" id="contact-message">
+            <h1>Prise de contact</h1>
+            <%= simple_form_for @message, url: create_contact_message_url do |f| %>
+              <%= notice %>
+              <%= @message.errors.full_messages.join(', ') %>
+              <br>
+              <br>
+              <%= f.input :name, label: 'Votre nom'%>
+              <%= f.input :company, label: 'Organisation, société, association...' %>
+              <%= f.input :email, label: 'Un petit email' %>
+              <%= f.input :phone_number, label: 'Votre numéro de téléphone' %>
+              <%= f.input :body, as: :text, :input_html => { :rows => 10 }, label: 'Votre message !', placeholder:"Dites-nous tout sur vos envies, vos besoins, votre contexte, vos contraintes, vos questions... " %>
+              <%= f.button :submit, "Et envoyer" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -292,12 +292,10 @@
               </div>
             <%end%>
 
-            <!-- Link_to previous page -->
-            <% if request.referer.present? %>
+            <!-- Link_to dashboard -->
               <div class="padded-sm">
-                <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
+                <%= link_to "Retour à mon tableau de bord", dashboard_path %>
               </div>
-            <%end%>
 
           </div>
         </div>

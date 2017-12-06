@@ -63,8 +63,8 @@ class Course < ApplicationRecord
   end
 
   def send_new_activity_slack_notification
-    require 'slack-notifier'
+    require "slack-notifier"
     notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
-    notifier.ping "Wahouh new activity:#{self.name} created for #{self.group.name} - #{Rails.application.class.parent_name} - #{Rails.env}"
+    notifier.ping "Wahouh new activity:#{name} created for #{group.name} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 end

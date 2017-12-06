@@ -2,8 +2,6 @@
 
 class Users::InvitationsController < Devise::InvitationsController
   before_action :update_sanitized_params, only: :update
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
 
   def invite_resource(&block)
     # je regarde si je connais l'adresse email
@@ -38,15 +36,9 @@ class Users::InvitationsController < Devise::InvitationsController
   def for_coaches_only
     @user = User.find_by(email: invite_params[:email])
     # si le user existe, qu'il appartienne ou non au groupe et est un coach
-    if @user.coach?
-      @group.coaches.push(@user.coach)
-    end
+    @group.coaches.push(@user.coach) if @user.coach?
     # ajout au groupe en tant que coach
-  end
-
-
-
-  def after_invite_path_for(_resource)
+  end  def after_invite_path_for(_resource)
     group_participants_path(find_group)
   end
 

@@ -2,7 +2,7 @@
   <div class="banner-content">
     <h1>Pour une société en bonne santé </h1>
     <p>Une solution clé en main <br> qui permet à vos salariés <br>d'organiser simplement et régulièrement <br>des séances de sport au bureau !</p>
-    <%= link_to "Contactez-nous", "mailto:hello@asanasano.com?subject=Prise de contact et demande de devis gratuit&body=Bonjour, Je souhaiterais en savoir plus sur votre service pour la société *******. Merci de me recontacter au plus vite. Prénom Nom, Fonction, Téléphone (A compléter). See you, merci beaucoup! ", class: "btn btn-default btn-lg" %>
+    <%= link_to "Contactez-nous", new_contact_message_path, class: "btn btn-default btn-lg" %>
   </div>
 </div>
 
@@ -86,7 +86,7 @@
 <div class="banner" id="corporate-hall" style="background-image: linear-gradient(-225deg, rgba(168, 31, 0, 0.65) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("hall.jpg") %> );">
   <div id="banner-corp-content">
     <h2 class="title-2nd-banner-corp">Offre de lancement <br> Demandez-nous un audit et un devis gratuit</h2>
-    <%= link_to "C'est par ici!", "mailto:hello@asanasano.com?subject=Prise de contact et demande de devis gratuit&body=Bonjour, Je souhaiterais en savoir plus sur votre service pour la société *******. Merci de me recontacter au plus vite. Prénom Nom, Fonction, Téléphone (A compléter). See you, merci beaucoup! ", class: "btn btn-default btn-lg" %>
+    <%= link_to "C'est par ici!", new_contact_message_path, class: "btn btn-default btn-lg" %>
   </div>
 </div>
 
