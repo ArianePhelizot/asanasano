@@ -78,6 +78,19 @@ class User < ApplicationRecord
     coach_id.present?
   end
 
+  def full_name
+      if self.first_name && self.last_name
+        fullname = self.first_name.capitalize + " " + self.last_name.capitalize
+      elsif self.first_name
+        fullname = self.first_name.capitalize
+      elsif self.last_name
+        fullname = self.last_name.capitalize
+      else
+        fullname = nil
+      end
+    return fullname
+  end
+
   def group_list
     group_list = groups
     if coach?
