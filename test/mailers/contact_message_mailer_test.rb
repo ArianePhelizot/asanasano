@@ -1,7 +1,7 @@
 require "test_helper"
 
+# rubocop:disable all
 class ContactMessageMailerTest < ActionMailer::TestCase
-
   test "contact_me" do
     message = ContactMessage.new name: "anna",
                                  email: "anna@example.org",
@@ -17,3 +17,4 @@ class ContactMessageMailerTest < ActionMailer::TestCase
     assert_match /hello, how are you doing?/, email.body.encoded
   end
 end
+# rubocop:enable all

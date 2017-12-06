@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     authorize @group
   end
 
+# rubocop:disable all
   def create
     @group = Group.new(group_params)
     @group.owner = current_user
@@ -24,6 +25,7 @@ class GroupsController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable all
 
   def edit
     authorize @group

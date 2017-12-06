@@ -163,7 +163,8 @@ class User < ApplicationRecord
 
   def send_new_user_slack_notification
     require "slack-notifier"
-    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+    slack_hook = "https://hooks.slack.com/services/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"
+    notifier = Slack::Notifier.new slack_hook
     notifier.ping "Yippee new user:#{email} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 
