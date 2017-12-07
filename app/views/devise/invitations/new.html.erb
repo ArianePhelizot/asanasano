@@ -19,6 +19,8 @@
 
             <%= f.button :submit, t("devise.invitations.new.submit_button") %>
             <% end %>
+<!--        link to group-participants page -->
+            <%= link_to "Groupe #{Group.find(params[:group_id]).name}", group_participants_path(params[:group_id]) %>
             <!-- Link_to previous page -->
             <% if request.referer.present? %>
               <div class="padded-sm">
