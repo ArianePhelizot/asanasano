@@ -133,53 +133,37 @@
   <div class="section-title" id="db-help">
     <h2>Besoin d'un coup de main ?</h2>
   </div>
-    <div class="container">
-      <div class="row">
 
-        <div class="col-xs-12 col-md-6">
-          <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(200, 200, 200, 0.55) 0%, rgba(150, 150, 150, 0.55) 50%), url(<%= image_path("Businessperson-exercising-sq.png") %> );">
-            <div class="content-help text-center">
-              <h4>Pilates, Yoga, Taïchi, Zumba, running...</h4>
-              <h4>Vous ne savez pas par quoi commencer ?</h4>
-              <p>Nous sommes là pour vous aider </p>
-              <%= link_to "Besoin de conseil", new_contact_message_path,
-                 class: "button-add-a-new-group", id: "btn-help"  %>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(200, 200, 200, 0.55) 0%, rgba(150, 150, 150, 0.55) 50%), url(<%= image_path("Businessperson-exercising-sq.png") %> );">
+          <div class="content-help text-center">
+            <h4>Pilates, Yoga, Taïchi, Zumba, running...</h4>
+            <h4>Vous ne savez pas par quoi commencer ?</h4>
+            <p>Nous sommes là pour vous aider </p>
+            <%= link_to "Besoin de conseil", new_contact_message_path,
+               class: "button-add-a-new-group", id: "btn-help"  %>
           </div>
         </div>
-
-        <div class="col-xs-12 col-md-6">
-          <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(200, 200, 200, 0.55) 0%, rgba(150, 150, 150, 0.55) 50%), url(<%= image_path("business-pers-exercising-2-sq.png") %> );">
-            <div class="content-help text-center">
-              <h4>Recherche prof ou coach désespérement ?</h4>
-              <h4>Quelqu'un de qualifié, assuré, apprécié...</h4>
-              <p>Là aussi, nous pouvons vous épauler </p>
-              <%= link_to "Trouver le bon pro", new_contact_message_path,
-                 class: "button-add-a-new-group", id: "btn-help"  %>
-            </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(200, 200, 200, 0.55) 0%, rgba(150, 150, 150, 0.55) 50%), url(<%= image_path("business-pers-exercising-2-sq.png") %> );">
+          <div class="content-help text-center">
+            <h4>Recherche prof ou coach désespérement ?</h4>
+            <h4>Quelqu'un de qualifié, assuré, apprécié...</h4>
+            <p>Là aussi, nous pouvons vous épauler </p>
+            <%= link_to "Trouver le bon pro", new_contact_message_path,
+               class: "button-add-a-new-group", id: "btn-help"  %>
           </div>
         </div>
-
-<!--
-        <div class="col-xs-12 col-md-6">
-          <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(168, 31, 0, 0.65) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("Businessperson-exercising-sq.png") %> );">
-            <div class="">
-             <h1 class="">Organisez des séances de sport au bureau</h1>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-md-6">
-          <div class="help-sq-image" style="background-image: linear-gradient(-225deg, rgba(168, 31, 0, 0.65) 0%, rgba(0, 16, 61, 0.22) 50%), url(<%= image_path("coach-in-parc-square.png") %> );">
-            <div class="">
-             <h1 class="">Organisez des séances de sport au bureau</h1>
-            </div>
-        </div> -->
       </div>
     </div>
-
   </div>
 
-
+    <!-- Help section button -->
+  <%= link_to "Aide", new_contact_message_path,
+               class: "button-add-a-new-group", id: "btn-help"  %>
 </div>
 
 
