@@ -19,7 +19,12 @@
 
             <%= f.button :submit, t("devise.invitations.new.submit_button") %>
             <% end %>
-
+            <!-- Link_to previous page -->
+            <% if request.referer.present? %>
+              <div class="padded-sm">
+                <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
+              </div>
+            <%end%>
           </div>
         </div>
       </div>
