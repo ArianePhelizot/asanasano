@@ -17,6 +17,13 @@
               <%= f.input :body, as: :text, :input_html => { :rows => 10 }, label: 'Votre message !', placeholder:"Dites-nous tout sur vos envies, vos besoins, votre contexte, vos contraintes, vos questions... " %>
               <%= f.button :submit, "Et envoyer" %>
             <% end %>
+            <!-- Link_to previous page -->
+            <% if request.referer.present? %>
+              <div class="padded-sm">
+                <%= link_to "Retour à la page précédente", request.referer.present? ? request.referer : default_path %>
+              </div>
+            <%end%>
+
           </div>
         </div>
       </div>
