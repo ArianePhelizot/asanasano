@@ -1,0 +1,622 @@
+<div class="container" id="help-section">
+
+<!--  Left menu  -->
+  <div class="col-md-4">
+    <ul class="list-group help-group">
+      <div class="faq-list list-group nav nav-tabs">
+        <a href="#tab1" class="list-group-item active" role="tab" data-toggle="tab"> <i class="fa fa-user-plus" aria-hidden="true"></i> Organisateurs en chef</a>
+        <a href="#tab2" class="list-group-item" role="tab" data-toggle="tab"> <i class="fa fa-product-hunt" aria-hidden="true"></i> Coach / Profs ou Instructeurs</a>
+        <a href="#tab3" class="list-group-item" role="tab" data-toggle="tab"> <i class="fa fa-users" aria-hidden="true"></i> Participants</a>
+        <%= link_to "Autre question...", new_contact_message_path, class: "list-group-item"  %>
+      </div>
+    </ul>
+  </div>
+
+<!--   answers on the right handside -->
+  <div class="col-md-8">
+    <div class="tab-content panels-faq">
+<!-- CHIEF GROUP OWNER       -->
+      <div class="tab-pane active" id="tab1">
+        <div class="panel-group" id="help-accordion-1">
+
+          <div class="panel panel-default panel-help">
+            <a href="#group-owner" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Qui peut-être Organisateur en chef?</h2>
+              </div>
+            </a>
+            <div id="group-owner" class="collapse in">
+              <div class="panel-body">
+                <p>Tout le monde ….peut créer son petit groupe et proposer des activités qu’elles soient payantes ou gratuites.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#group-owner-how-to" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment ça marche grosso modo?</h2>
+              </div>
+            </a>
+            <div id="group-owner-how-to" class="collapse">
+              <div class="panel-body">
+                <ol>
+                  <li>Vous devez d’abord compléter votre profil prénom, nom, coordonnées, photo…on ne peut pas être un chef incognito.</li>
+                  <li>Ensuite, il suffit de « Créer un nouveau groupe »  à partir de votre Tableau de bord en lui donnant un petit nom.</li>
+                  <li>Nous vous invitons dans la foulée à créer votre première activité (Pilates, Yoga, Running ? Le lundi de 12h à 13h ou le jeudi à 18h ?) et à la publier.</li>
+                  <li>Enfin, vous pouvez inviter qui bon vous semble à vous rejoindre en renseignant les adresses mail des participants. S’ils acceptent, qu’ils soient ou non déjà inscrits au service asanasano, ils rejoindront automatiquement votre groupe et pourront voir et réserver toutes les activités que vous leur proposez. </li>
+                </ol>
+                <p>Je suis coach, puis-je également être organisateur ? Et bien oui… on a bien dit « tout le monde ».</p>
+                <p>NB: si les activités proposées ont lieu sur votre lieu de travail, il est indispensable d’obtenir l’autorisation des autorités compétentes comme ont dit!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#which-activity" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Je ne sais pas quel type d’activité proposer à mes collègues, collaborateurs…</h2>
+              </div>
+            </a>
+            <div id="which-activity" class="collapse">
+              <div class="panel-body">
+                <p>Pas de souci. Nous sommes là pour vous aider. En fonction de votre contexte, nous vous proposons de sonder vos collaborateurs, collègues, amis pour cerner au mieux les besoins et envies de chacun et proposer des activités adaptées. Contactez nous!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#no-shower" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Mais nous n’avons ni douche, ni vestiaire...</h2>
+              </div>
+            </a>
+            <div id="no-shower" class="collapse">
+              <div class="panel-body">
+                <p>Nous pouvons vous suggérer des activités parfaitement adaptées à votre contexte. Il est parfaitement possible de faire une petite session de pilates, ou de yoga doux et de reprendre dignement le fil de sa journée. Il existe même du yoga sur chaise, par exemple, qui ne requiert même pas de se changer. Le choix de l’horaire également peut être déterminant…bref, contactez nous pour que nous puissions au mieux vous conseiller.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#meeting-room" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>J’ai bien une salle de réunion que nous pourrions utiliser…mais est-ce bien adapté ?</h2>
+              </div>
+            </a>
+            <div id="meeting-room" class="collapse">
+              <div class="panel-body">
+                <p>Contactez-nous, nous sommes là pour vous conseiller…profitez-en!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-known" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Je connais un super coach, un super prof…puis-je passer par lui ?</h2>
+              </div>
+            </a>
+            <div id="coach-known" class="collapse">
+              <div class="panel-body">
+                <p>Yes, you can ! </p>
+                <p>Il suffit pour cela de l’inviter dans votre groupe et qu’il se crée un compte sur asanasano et renseigne son profil coach. </p>
+                <p>Vous vous mettez d’accord sur les conditions : description du cours, lieu, horaires, prix par participants et nombre minimum de participants.</p>
+                <p>Vous remplissez le formulaire de création d’une nouvelle activité avec toutes ces informations et c’est parti!</p>
+                <p>Ensuite, ce ne sera que du bonheur…plus de problème ni de perte de temps autour de la communication, des réservations, du paiement…</p>
+                <br>
+                <p>Vous souhaitez qu’on le contacte pour vous? C’est possible, donnez-nous ses coordonnées et on s’en occupera avec plaisir!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-search" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment trouver le bon coach, professeur ou instructeur ?</h2>
+              </div>
+            </a>
+            <div id="coach-search" class="collapse">
+              <div class="panel-body">
+                <p>Chez Asanasano, nous connaissons bien déjà des dizaines de coach et professeurs qualifiés, assurés et appréciés.</p>
+                <p>Contactez-nous et dites nous quelles votre recherche: sport, style, lieu des cours, contexte, horaires.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-search-2" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Je cherche désespérément un professeur de krav maga pour intervenir de 6h à 7h du matin dans la lointaine banlieue de Guéret dans la Creuse...</h2>
+              </div>
+            </a>
+            <div id="coach-search-2" class="collapse">
+              <div class="panel-body">
+                <p>Nous mettons un point d’honneur à vous aider. Alors n’hésitez pas à nous solliciter? </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#how-much-for-a-coach" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Combien faut-il prévoir pour un cours de yoga ? Une session de remise en forme ?</h2>
+              </div>
+            </a>
+            <div id="how-much-for-a-coach" class="collapse">
+              <div class="panel-body">
+                <p>Type d’activité, durée du cours, nombre de participants, fréquence, horaire, localisation, expérience du coach/prof sont autant de paramètres à prendre en compte….et les prix peuvent en conséquence varier énormément. </p>
+                <p>Encore une fois, nous sommes là pour vous conseiller et vous trouver la bonne formule, n’hésitez pas à nous contacter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-nego" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment fixer le bon prix par participant ?</h2>
+              </div>
+            </a>
+            <div id="coach-nego" class="collapse">
+              <div class="panel-body">
+                <p>Il est important que chacun s’y retrouve.</p>
+                <p>Il vous faut avec le coach ou le professeur définir un prix par participant et un nombre minimum de participants.</p>
+                <p>Il est important effectivement que le coach / prof ne se déplace pas pour rien !</p>
+                <p>Pour cela, vous devez avoir une idée du budget que vos collègues, amis, collaborateurs sont prêts à mettre et estimer le nombre de participants qui seront réguliers dans la durée (le noyau dur des sportifs irréductibles ! ), en prévoyant une petite marge de sécurité.</p>
+                <p>Nous sommes là pour vous conseiller. N’hésitez pas à nous contacter.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#new-activity" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment proposer une nouvelle activité?</h2>
+              </div>
+            </a>
+            <div id="new-activity" class="collapse">
+              <div class="panel-body">
+                <p>Facilissime…</p>
+
+                <p>Vous savez maintenant ce que vous souhaitez proposer ? Vous avez contacté un pro, trouvé un deal ? La première chose à faire est d’inviter votre futur prof / coach / instructeur dans votre groupe: sur votre Tableau de bord, cliquer en haut à droite du groupe qui vous intéresse sur le petit icône fa fa-users et inviter votre pro à vous rejoindre avec sa simple adresse email. Dès qu’il l’aura accepté et complété son compte pro, vous pourrez finaliser l’opération.</p>
+
+                <p>A partir de votre Tableau de bord, vous pouvez à partir de chaque groupe dont vous êtes «  Organisateur en chef » , « Créer une nouvelle activité ».</p>
+                <ul>
+                  <li>Il suffit pour cela de lui donner un petit nom. « Petit » on a dit, soit 20 caractères maximum.</li>
+                  <li>Choisir un coach: vous pouvez voir dans le menu déroulant tous les coachs que vous aurez invité et qui auront accepté votre invitation et complété leur compte pro.  Vous n’avez pas encore de coach ? Ce n’est pas grave, sélectionnez My Dummie Coach en attendant.</li>
+                  <li>Décrivez l’activité que vous proposez</li>
+                  <li>Renseigner le point de rendez-vous</li>
+                  <li>Donner les derniers petits détails indispensables: équipement ? code porte…je ne sais pas moi!</li>
+                  <li>Définissez le nombre maximum de participants</li>
+                  <li>Choisissez une catégorie parmi celles proposées…C’est juste pour pouvoir mettre une petite illustration sympa</li>
+                </ul>
+                <p>Et validez!</p>
+                <p>Tout est complété ? Créer votre première séance pour mettre en ligne et partager votre activité</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#new-slots" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment créer des séances ?</h2>
+              </div>
+            </a>
+            <div id="new-slots" class="collapse">
+              <div class="panel-body">
+                <p>Vous vous êtes calés avec le coach/prof sur les dates et horaires, le prix et le minimum de participants ? Vous avez réservé la salle ?</p>
+                <p>Vous êtes mûrs pour créer des séances.</p>
+                <p>N’oubliez pas ensuite de publier votre activité si ce n’est déjà fait.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#course-publishing" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment est-ce que je vois si mon activité est bien publiée et visible de l’ensemble des membres de votre groupe?</h2>
+              </div>
+            </a>
+            <div id="course-publishing" class="collapse">
+              <div class="panel-body">
+                <p>Si vous êtes bien l’Organisateur en chef d’un groupe, vous pouvez voir sur votre Tableau de bord en haut à gauche de chaque « carte » d’activité une petite pastille « rouge »  si elle n’est pas encore publiée, « verte » si le cours est déjà en ligne et visible de tous.</p>
+                <p>Vous pouvez également retrouvez cette information en haut de la page « activité » concernée.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#group-invitation" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment invitez mes amis, collègues, collaborateurs, associés, co-workers à rejoindre mon groupe?</h2>
+              </div>
+            </a>
+            <div id="group-invitation" class="collapse">
+              <div class="panel-body">
+                <p>Il suffit d’aller sur votre Tableau de bord et de cliquer  sur le lien « Inviter des participants ». </p>
+                <p>Ok, mais vous en avez des dizaines à convier…vous n’allez quand même pas le faire à la main ? Vous avez raison, contactez-nous en nous transmettant le nom du groupe et les adresses emails de vos invités et nous nous en chargerons pour vous. Sympa, non?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#max-participants" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Comment définir le nombre maximum de participants pour une activité ?</h2>
+              </div>
+            </a>
+            <div id="max-participants" class="collapse">
+              <div class="panel-body">
+                <p>Ce nombre est le plus souvent défini par la capacité maximum de la salle. A titre d’exemple, on estime que pour un cours de pilates ou yoga, il faut compter 3m2 au sol par participants.</p>
+                <p>Le coach / prof / instructeur peut également vous indiquer sa limite au delà de laquelle il ne sera plus à même de donner cours en accompagnant les participants dans les meilleures conditions.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#stuff-needed" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Quel matériel prévoir ?</h2>
+              </div>
+            </a>
+            <div id="stuff-needed" class="collapse">
+              <div class="panel-body">
+                <p>Tout dépend bien évidemment du sport mais également du coach/professeur. Ce point est à évoquer avec lui.</p>
+                <p>Peut-être votre entreprise est-elle prête à investir dans un minimum de matériel, peut-être le coach/prof peut venir avec un minimum d’accessoires, peut-être sera-t-il demandé aux participants de prévoir quid d’une tenue spécifique, d'un tapis etc…Autant de détails qui doivent-être précisés sur la description de l’activité.</p>
+
+                <p>Besoin de faire une demande groupée d’élastique, de tapis, de ballons…que sais-je ? Appelez-nous à l’aide, nous serons ravis de vous aider.</p>
+              </div>
+            </div>
+          </div>
+
+           <div class="panel panel-default panel-help">
+            <a href="#room-prep" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Préparation de la salle….que faut-il prévoir ?</h2>
+              </div>
+            </a>
+            <div id="room-prep" class="collapse">
+              <div class="panel-body">
+                <p>Si la séance a lieu dans une salle donnée, c’est de votre responsabilité de vous assurer qu’elle sera bien disponible au moment voulu et qu’elle sera directement utilisable dès l’heure de démarrage du cours.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#mail-info" data-toggle="collapse" data-parent="#help-accordion-1">
+              <div class="panel-heading">
+                <h2>Quelles informations reçoivent les membres de mon groupe? A quel moment ?</h2>
+              </div>
+            </a>
+            <div id="mail-info" class="collapse">
+              <div class="panel-body">
+                <p>Toutes les personnes que vous invitez à rejoindre votre groupe reçoivent d’abord un un mail d’invitation.</p>
+                <p>S’ils acceptent votre invitation, ils rejoindront alors automatiquement votre groupe.</p>
+                <p>Ils recevront un message par mail à chaque fois que vous proposez une nouvelle activité.</p>
+                <p>Ils recevront un mail tous les dimanche récapitulatif de toutes les séances proposées dans la semaine qui suit.</p>
+                <p>S’ils s’inscrivent à une séance, ils recevront automatiquement un mail de confirmation de leur inscription.</p>
+                <p>S’ils sont inscrits à une séance, ils recevront un petit mail de rappel la veille.</p>
+                <p>Si une séance à laquelle ils sont inscrits est annulée, ils seront également prévenus (et le cas échéant bien évidemment remboursés) si la séance était payante.</p>
+              </div>
+            </div>
+          </div>
+
+         <div class="panel panel-default panel-help">
+          <a href="#not-enough-participants" data-toggle="collapse" data-parent="#help-accordion-1">
+            <div class="panel-heading">
+              <h2>Et s’il n’y a pas assez de monde ?</h2>
+            </div>
+          </a>
+          <div id="not-enough-participants" class="collapse">
+            <div class="panel-body">
+              <p>C’est au prof/coach de décider avant 17h, la veille de la séance, s’il souhaite ou non maintenir le cours dans ces conditions.</p>
+              <p>NB: au démarrage, il faut toujours un peu de temps, 4 à 6 séances pour « lancer » une activité, faire le point et fidéliser un pool de participants réguliers.</p>
+            </div>
+          </div>
+        </div>
+
+
+         <div class="panel panel-default panel-help">
+          <a href="#free-class" data-toggle="collapse" data-parent="#help-accordion-1">
+            <div class="panel-heading">
+              <h2>Peut-on fixer un tarif « découverte » ?</h2>
+            </div>
+          </a>
+          <div id="free-class" class="collapse">
+            <div class="panel-body">
+              <p>Oui, le prix de chaque session peut-être modifié. Vous pouvez donc faire un tarif « découverte » pour une session ou plus…c’est à voir et à négocier avec le coach/prof bien entendu.</p>
+            </div>
+          </div>
+        </div>
+
+         <div class="panel panel-default panel-help">
+          <a href="#corp-subvention" data-toggle="collapse" data-parent="#help-accordion-1">
+            <div class="panel-heading">
+              <h2>Les cours peuvent-ils être subventionnés par l’entreprise ou le CE? Ça se passe comment ?</h2>
+            </div>
+          </a>
+          <div id="corp-subvention" class="collapse">
+            <div class="panel-body">
+              <p>Bien évidemment. N’hésitez pas à nous contacter pour que nous puissions mettre cela en place.Asanasano s’engage également à émettre des factures (pour le compte des profs/coachs qui ont donné les cours) à la demande des participants.</p>
+            </div>
+          </div>
+        </div>
+
+         <div class="panel panel-default panel-help">
+          <a href="#cancel-policy" data-toggle="collapse" data-parent="#help-accordion-1">
+            <div class="panel-heading">
+              <h2>Quelle est la politique d’annulation?</h2>
+            </div>
+          </a>
+          <div id="cancel-policy" class="collapse">
+            <div class="panel-body">
+              <p>Aujourd’hui chaque participants peut annuler sans frais 24h avant le début de la séance qu’il a réservé.</p>
+              <p>Si c’est vous, l’organisateur en chef qui annulez, veillez à anticiper au maximum et à bien vous coordonner avec le coach/prof….si vous souhaitez qu’il revienne!</p>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+<!--
+END OF CHIEF GROUP OWNER FAQ -->
+
+<!-- COACH FAQ -->
+      <div class="tab-pane" id="tab2">
+        <div class="panel-group" id="help-accordion-2">
+
+          <div class="panel panel-default panel-help">
+            <a href="#why-for-coach" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>En quoi Asanasano me simplifie la vie ?</h2>
+              </div>
+            </a>
+            <div id="why-for-coach" class="collapse in">
+              <div class="panel-body">
+                <p>Asanasano simplifie vos cours en entreprises</p>
+                <ul>
+                  <li>Réservation en ligne web & mobile via une plateforme de paiement sécurisé:</li>
+                  <br>
+                  <p>- Pour chaque séance, vous savez à l’avance qui va venir (prénom, nom et photo!) et combien vous aurez de participants</p>
+                  <p>- Vous simplifiez la vie de vos clients, qui s’inscrivent en ligne quand ils le souhaitent et n’ont plus à se préoccuper d’avoir la monnaie ou leur chéquier</p>
+                  <p>- Vous limitez au maximum l'administratif avant et après le cours pour vous consacrer pleinement à celui-ci</p>
+                  <br>
+                  <li>Gestion des annulations & minimum de participation garanti (annulation sinon du cours)</li>
+                  <li>Automatisation des rappels</li>
+                  <li>Gestion des factures</li>
+                </ul>
+                <p>Vous pouvez vous concentrer sur votre cours </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#How-to-coach" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Comment ça marche ?</h2>
+              </div>
+            </a>
+            <div id="How-to-coach" class="collapse in">
+              <div class="panel-body">
+                <ol>
+                  <li>Vous vous inscrivez en tant que coach.</li>
+                  <li>Vous êtes mis en relation avec des gentils Organisateurs en chef à la recherche de professionnels qualifiés.</li>
+                  <li>Vous vous mettez d’accord sur les conditions: cours, durée, lieu, prix, nombre de participants, calendrier</li>
+                </ol>
+                <p>Et c’est parti! </p>
+                <p>NB: et vous pouvez aussi être à la fois Organisateurs en chef et coach/prof</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-inscription" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Que dois-je faire pour m’inscrire ?</h2>
+              </div>
+            </a>
+            <div id="coach-inscription" class="collapse in">
+              <div class="panel-body">
+                <p>Cela peut se faire en 5 minutes montre en main.</p>
+                <ol>
+                  <li> Il faut d’abord, remplir votre profil utilisateur: prénom, nom, coordonnées, photo</li>
+                  <li>Puis renseigner vos données de facturation: date de naissance, type d’organisation, adresse, nationalité</li>
+                  <li>Créer votre compte pro: quelques infos sur vous, votre expérience, vos qualifications, ce que vous proposez, votre présence sur internet et les réseaux sociaux, attestation de responsabilité civile.</li>
+                  <li>Renseigner votre Iban pour pouvoir être payé!</li>
+                  <p>Et demander la validation de votre compte pour gagner en visibilité</p>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-profile-validation" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>A quoi bon demander la validation de mon profil ?</h2>
+              </div>
+            </a>
+            <div id="coach-profile-validation" class="collapse in">
+              <div class="panel-body">
+                <p>Nous vous contacterons pour un petit entretien. </p>
+                <p>Votre profil, vu des utilisateurs apparaîtra comme validé et vous pourrez ainsi être recommandé auprès d’autres clients et prospects!</p>
+                <p>Et si vous ne le faites pas ? …Votre profil n’apparaitra pas comme certifié….et nous ne vous contacterons pas pour vous proposer quoique ce soit…triste non?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#How-much-for-coach" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Ça m’a l’air super…mais combien ça coûte ?</h2>
+              </div>
+            </a>
+            <div id="How-much-for-coach" class="collapse in">
+              <div class="panel-body">
+                <p>Aujourd’hui, Asanasano prélève une commission de 10% sur l’ensemble des transactions pour couvrir les frais financiers et les frais de fonctionnement.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#How-to-nego_with-coach" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Qui décide du prix du cours ?</h2>
+              </div>
+            </a>
+            <div id="How-to-nego_with-coach" class="collapse in">
+              <div class="panel-body">
+                <p>A vous de trouver le bon deal avec vos clients. Le bon deal c’est celui qui satisfait tout le monde dans la durée.</p>
+
+                <p>Sur Asanasano, vous êtes libres de vos prix pour pouvoir parer à toutes les situations: vous avez 5 minutes ou 1h de transport ? Vous fournissez du matériel ? Vous enchainez 2 cours au même endroit ? Vous donnez au sein d’une même structure 3 cours par semaine…différentes donnes, différents prix.</p>
+
+                <p>Sur Asanasano, le prix est défini par participant. Comme cela chacun a la visibilité sur combien il va payer.</p>
+                <p>En revanche, la contrepartie est qu’un nombre de participants est garanti. En deçà d’un certain nombre de réservations, vous pouvez annuler le cours.</p>
+
+                <p>Pour chaque séance, vous pouvez définir un prix et un nombre de participants.
+                Alors n’hésitez pas à proposez des tarifs attractifs « découverte » quand vous vous lancez.</p>
+
+                <p>Et n’oubliez pas de fixer votre prix en prenant en compte notre commission.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#What-if-not-enough-people" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Et s’il n’y pas assez de participants,comment ça se passe?</h2>
+              </div>
+            </a>
+            <div id="What-if-not-enough-people" class="collapse in">
+              <div class="panel-body">
+                <p>Organisateurs et participants sont prévenus des règles du jeu.</p>
+                <p>A tout moment, ils peuvent voir combien de personnes se sont inscrites et qui.</p>
+                <p>Vous recevrez un mail 24h avant le début du cours. C’est à vous de choisir avant 17h, la veille, si vous souhaitez ou non maintenir le cours.</p>
+                <p>Si vous l’annulez, l’ensemble des inscrits seront bien entendu remboursés.</p>
+                <p>Si la situation a tendance à se reproduire, proposez éventuellement à votre noyau dur de participants d’augmenter un peu le prix unitaire du cours pour pouvoir diminuer le nombre minimum requis de participants.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#how-i-get-paid" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Quand est-ce que je suis payée ?</h2>
+              </div>
+            </a>
+            <div id="how-i-get-paid" class="collapse in">
+              <div class="panel-body">
+                <p>3 jours après chaque séance, un virement est effectué directement sur votre compte bancaire…c’est bien pour cela qu’on vous demande de nous communiquer votre IBAN.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#invoice-production" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Qui gère les demandes de factures ?</h2>
+              </div>
+            </a>
+            <div id="invoice-production" class="collapse in">
+              <div class="panel-body">
+                <p>Nous proposons en tant qu’intermédiaire de proposer ce service aux participants: vous n’avez plus à vous en soucier!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#coach-and-group-owner" data-toggle="collapse" data-parent="#help-accordion-2">
+              <div class="panel-heading">
+                <h2>Puis-je moi même être Organisateur en chef d’un groupe ?</h2>
+              </div>
+            </a>
+            <div id="coach-and-group-owner" class="collapse in">
+              <div class="panel-body">
+                <p>Bien entendu!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- END OF COACH FAQ -->
+
+<!-- PARTICIPANTS FAQ -->
+
+      <div class="tab-pane active" id="tab3">
+        <div class="panel-group" id="help-accordion-3">
+
+          <div class="panel panel-default panel-help">
+            <a href="#How-to-book" data-toggle="collapse" data-parent="#help-accordion-3">
+              <div class="panel-heading">
+                <h2>Que dois-je faire pour réserver une séance ?</h2>
+              </div>
+            </a>
+            <div id="How-to-book" class="collapse in">
+              <div class="panel-body">
+                <p>Il vous faut d’abord compléter vos données de facturation….prénom, nom, date de naissance, adresse et nationalité si vous êtes un particulier*. </p>
+                <p>Ensuite il suffit de cliquer sur le bouton « s'inscrire »  de la séance souhaitée et de payer directement sur l’interface ultra-sécurisée de notre partenaire Mangopay.</p>
+                <p>*Pourquoi tout ça me direz-vous ? Et bien parce que c’est comme ça: notre partenaire qui gère le paiement Mangopay respecte la réglementation en vigueur et applique scrupuleusement les règles de KYC (Know Your Customer) qui vise à limiter la blanchiment d’argent et le financement d’activités illégales.
+                La bonne nouvelle, c’est que si par la suite, vous avez besoin d’une facture, nous aurons toutes les informations pour l’établir en bonne et due forme!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#stalking" data-toggle="collapse" data-parent="#help-accordion-3">
+              <div class="panel-heading">
+                <h2>Est-ce que je peux voir qui s’est inscrit à une séance ?</h2>
+              </div>
+            </a>
+            <div id="stalking" class="collapse in">
+              <div class="panel-body">
+                <p>Oui, il est possible de faire sa commère et de voir qui s’est déjà inscrit avant de soi-même s’inscrire …ou mieux de s’inscrire et de lancer le mouvement !</p>
+                <p>La liste des participants est accessible sur chaque séance….dès lors qu’il y a déjà au moins un inscrit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#cancel-for-participants" data-toggle="collapse" data-parent="#help-accordion-3">
+              <div class="panel-heading">
+                <h2>Quelles sont les conditions d’annulation ?</h2>
+              </div>
+            </a>
+            <div id="cancel-for-participants" class="collapse in">
+              <div class="panel-body">
+                <p>Aujourd’hui, vous pouvez annuler sans frais jusqu’à 24h avant la séance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#invoice-process" data-toggle="collapse" data-parent="#help-accordion-3">
+              <div class="panel-heading">
+                <h2>Puis-je avoir une facture ?</h2>
+              </div>
+            </a>
+            <div id="invoice-process" class="collapse in">
+              <div class="panel-body">
+                <p>Pas de souci, demandez là nous et nous vous l’envoyons dans la foulée.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-help">
+            <a href="#participants-and-group-owning" data-toggle="collapse" data-parent="#help-accordion-3">
+              <div class="panel-heading">
+                <h2>Et moi, puis-je proposer des activités ?</h2>
+              </div>
+            </a>
+            <div id="participants-and-group-owning" class="collapse in">
+              <div class="panel-body">
+                <p>Oui, mais pour cela vous devez devenir au préalable Organisateur en chef et créer votre propre groupe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- END OF PARTICIPANTS FAQ -->
+    </div>
+  </div>
+</div>
+

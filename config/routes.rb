@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   # Page corp
   get 'corporate', to:'pages#corporate', as: :corporate
 
+  # Page contact
   get 'contact-message', to: 'contact_messages#new', as: 'new_contact_message'
   post   "contact-message", to: "contact_messages#create", as: 'create_contact_message'
+
+  # Page help
+  get 'help', to:'pages#help', as: :help
 
   # Routes related to Devise and Devise invitable
   devise_for :users,
