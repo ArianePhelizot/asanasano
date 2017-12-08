@@ -48,7 +48,7 @@ class Account < ApplicationRecord
             :legal_representative_birthday, :legal_representative_country_of_residence,
             :legal_representative_nationality,
             presence: true, if: :legal?
-  validates :legal_person_type, inclusion: [:business, :organization, :soletrader],
+  validates :legal_person_type, inclusion: ["business", "organization", "soletrader"],
                                 if: :legal?
 
   def natural?

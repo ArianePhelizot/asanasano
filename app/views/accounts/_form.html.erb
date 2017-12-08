@@ -24,8 +24,9 @@
 <div class="person_type" id="natural-info">
   <%= f.input :birthday, label: "Date d'anniversaire",
               as: :date,
-              start_year: Date.today.year - 90, end_year: Date.today.year - 12,
-              order: [:day, :month, :year] %>
+              start_year: Date.today.year - 60, end_year: Date.today.year - 18,
+              order: [:day, :month, :year],
+              default: Date.parse("1990-01-01") %>
 
   <%= f.input :address_line1, label: "Adresse, ligne 1", as: :text %>
   <%= f.input :address_line2, label: "Adresse ligne 2", as: :text %>
@@ -44,8 +45,9 @@
   <%= f.input :legal_representative_last_name, label: "Nom du représentant légal" %>
   <%= f.input :legal_representative_birthday, label: "Date d'anniversaire du représentant légal",
               as: :date,
-              start_year: Date.today.year - 90, end_year: Date.today.year - 12,
-              order: [:day, :month, :year] %>
+              start_year: Date.today.year - 60, end_year: Date.today.year - 18,
+              order: [:day, :month, :year],
+              default: Date.parse("1990-01-01")  %>
 
   <%= f.input :headquarters_address, label: "Adresse du siège" %>
   <%= f.input :legal_representative_country_of_residence, as: :country, label: "Pays de résidence du représentant légal" %>
