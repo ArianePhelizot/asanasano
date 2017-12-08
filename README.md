@@ -7,3 +7,7 @@ Beware that user terms acceptance are mandatory on user creation and user update
 
 30/11/2017 20:00
 Drop production base, hence unvalid user, wallet, account...created prior this date on MangoPay
+
+Beware
+Dummy coach configuration defined in application_controller.rb
+
