@@ -16,6 +16,5 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
-  def help
-  end
+  def help; end
 end
