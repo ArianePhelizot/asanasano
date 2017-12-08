@@ -43,9 +43,50 @@
 .navbar-wagon-link {
   color: #999999;
   font-size: 16px;
-  text-align: center;
-  min-width: 160px;
+  text-align: left;
+  min-width: 130px;
 }
+
+.quick-access {
+  color: $pale-salmon;
+  font-size: 14px;
+  text-align: center;
+  min-width: 130px;
+  padding: 1px;
+  margin: 3px;
+  border: 1px solid $pale-salmon;
+}
+
+#prof {
+  margin-right: 70px;
+}
+
+.quick-access:hover {
+  color: white;
+  background-color: $pale-salmon;
+  font-weight: bolder;
+  font-size: 14px;
+  text-align: center;
+  min-width: 130px;
+  padding: 1px;
+  margin: 3px;
+  border: 1px solid $pale-salmon;
+  text-decoration: none;
+}
+
+.quick-access.active {
+  color: white;
+  background-color: $pale-salmon;
+  font-weight: bolder;
+  font-size: 14px;
+  text-align: center;
+  min-width: 130px;
+  padding: 1px;
+  margin: 3px;
+  border: 1px solid $pale-salmon;
+  text-decoration: none;
+}
+
 .navbar-wagon-link:hover {
   color: #777777;
   text-decoration: none;
