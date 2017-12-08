@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+  def dummy_coach
+    if Rails.env.production?
+      Coach.find(4)
+    else
+      Coach.find(1)
+    end
+  end
 end

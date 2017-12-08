@@ -62,17 +62,19 @@ puts "#{Sport.count} sports created"
 
 # COACH SEEDS
 
-coach1 = Coach.create!(description: 'Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion', experience: 5, params_set_id: params_set1.id)
-coach2 = Coach.create!(description: 'Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés', experience: 6, params_set_id: params_set1.id)
-coach3 = Coach.create!(description: 'Couteau suisse, fan de sport', experience: 3, params_set_id: params_set1.id)
+coach1 = Coach.create!(description: 'Bonjour et bienvenue sur Asanasano. Mon profil est complètement faux. Si vous m avez sélectionné, c est que peut-être vous êtes à la recherche d un coach, professeur ou instructeur.
+Si tel est le cas, n hésitez pas à nous contacter...nous sommes là pour vous aider!', experience: 0, params_set_id: params_set1.id)
+coach2 = Coach.create!(description: 'Je pratique le yoga depuis 25 ans. Je suis à fonds pour vous faire partager ma passion', experience: 5, params_set_id: params_set1.id)
+coach3 = Coach.create!(description: 'Diplomée en 2010, je donne des cours collectifs et particuliers de yoga hatha, vinyasa et nidra. J accompagne aussi bien débutants que confirmés', experience: 6, params_set_id: params_set1.id)
+coach4 = Coach.create!(description: 'Couteau suisse, fan de sport', experience: 3, params_set_id: params_set1.id)
 
 puts "#{Coach.count} coaches created"
 
 puts 'Associating coaches to sports & vice versa'
 
-sport1.coaches = [coach1, coach2]
-sport9.coaches = [coach3]
-coach3.sports = [sport6, sport10, sport5]
+sport1.coaches = [coach2, coach3]
+sport9.coaches = [coach4]
+coach4.sports = [sport6, sport10, sport5]
 
 # USER SEEDS
 
@@ -80,8 +82,16 @@ def open_photo(filename)
   File.open(Rails.root.join('db', 'photos', filename))
 end
 
+user1 = User.create!(first_name: 'Coach',
+                     last_name: 'Fake',
+                     email: 'coach.fake@gmail.com',
+                     password: 'azerty',
+                     phone_number: '0613990061',
+                     photo: open_photo('dummy-coach.jpeg'),
+                     admin: true,
+                     user_terms_acceptance: true)
 
-user1 = User.create!(first_name: 'Ariane',
+user2 = User.create!(first_name: 'Ariane',
                      last_name: 'PHELIZOT',
                      email: 'ariane.phelizot@gmail.com',
                      password: 'azerty',
@@ -90,7 +100,7 @@ user1 = User.create!(first_name: 'Ariane',
                      admin: true,
                      user_terms_acceptance: true)
 
-user2 = User.create!(first_name: 'Cherine',
+user3 = User.create!(first_name: 'Cherine',
                      last_name: 'ELFADEL',
                      email: 'ariane.phelizot+cherineelf@gmail.com',
                      password: 'azerty',
@@ -98,7 +108,7 @@ user2 = User.create!(first_name: 'Cherine',
                      phone_number: '0671991204',
                      user_terms_acceptance: true)
 
-user3 = User.create!(first_name: 'Faustin',
+user4 = User.create!(first_name: 'Faustin',
                      last_name: 'VEYSSIERE',
                      email: 'ariane.phelizot+faustin_veyssiere@gmail.com',
                      password: 'azerty',
@@ -106,7 +116,7 @@ user3 = User.create!(first_name: 'Faustin',
                      phone_number: '0782095662',
                      user_terms_acceptance: true)
 
-user4 = User.create!(first_name: 'Guillaume',
+user5 = User.create!(first_name: 'Guillaume',
                      last_name: 'JAUFFRET',
                      email: 'ariane.phelizot+guillaume_jauffret@gmail.com',
                      password: 'azerty',
@@ -114,7 +124,7 @@ user4 = User.create!(first_name: 'Guillaume',
                      phone_number: '0665647375',
                      user_terms_acceptance: true)
 
-user5 = User.create!(first_name: 'Isabelle',
+user6 = User.create!(first_name: 'Isabelle',
                      last_name: 'YVAS',
                      email: 'ariane.phelizot+isabelle_yvas@gmail.com',
                      photo: open_photo('isabelle_photo.jpeg'),
@@ -123,7 +133,7 @@ user5 = User.create!(first_name: 'Isabelle',
                      coach: coach1,
                      user_terms_acceptance: true)
 
-user6 = User.create!(first_name: 'Veronica',
+user7 = User.create!(first_name: 'Veronica',
                      last_name: 'OBAMA',
                      email: 'ariane.phelizot+veronica_obama@gmail.com',
                      password: 'azerty',
@@ -132,7 +142,7 @@ user6 = User.create!(first_name: 'Veronica',
                      coach: coach2,
                      user_terms_acceptance: true)
 
-user7 = User.create!(first_name: 'Mathieu',
+user8 = User.create!(first_name: 'Mathieu',
                      last_name: 'BONFILS',
                      email: 'ariane.phelizot+mathieu_bonfils@gmail.com',
                      password: 'azerty',
@@ -147,9 +157,9 @@ puts 'Associating users and coaches'
 
 # GROUPS SEEDS
 
-group1 = Group.create!(owner_id: user1.id, name: 'Le Wagon Marseille')
-group2 = Group.create!(owner_id: user2.id, name: 'Le Wagon')
-group3 = Group.create!(owner_id: user2.id, name: 'Happy in Paris')
+group1 = Group.create!(owner_id: user2.id, name: 'Le Wagon Marseille')
+group2 = Group.create!(owner_id: user3.id, name: 'Le Wagon')
+group3 = Group.create!(owner_id: user3.id, name: 'Happy in Paris')
 
 puts "#{Group.count} groups created"
 
@@ -163,7 +173,7 @@ course1 = Course.create!(name: 'Yoga Hatha',
                          capacity_max: 15,
                          status: 0,
                          group_id: group1.id,
-                         coach_id: coach2.id,
+                         coach_id: coach3.id,
                          sport_id: sport1.id)
 
 course2 = Course.create!(name: 'Mars-Cass 2017',
@@ -174,7 +184,7 @@ course2 = Course.create!(name: 'Mars-Cass 2017',
                          capacity_max: 300,
                          status: 1,
                          group_id: group2.id,
-                         coach_id: coach3.id,
+                         coach_id: coach4.id,
                          sport_id: sport9.id)
 
 course3 = Course.create!(name: 'Barre au sol',
@@ -185,7 +195,7 @@ course3 = Course.create!(name: 'Barre au sol',
                          capacity_max: 8,
                          status: 2,
                          group_id: group2.id,
-                         coach_id: coach3.id,
+                         coach_id: coach4.id,
                          sport_id: sport5.id)
 
 course4 = Course.create!(name: 'Tai Chi Chuan',
@@ -196,7 +206,7 @@ course4 = Course.create!(name: 'Tai Chi Chuan',
                          capacity_max: 30,
                          status: 1,
                          group_id: group1.id,
-                         coach_id: coach3.id,
+                         coach_id: coach4.id,
                          sport_id: sport6.id)
 
 course5 = Course.create!(name: 'Cross fit',
@@ -207,25 +217,25 @@ course5 = Course.create!(name: 'Cross fit',
                          capacity_max: 15,
                          status: 1,
                          group_id: group1.id,
-                         coach_id: coach1.id,
+                         coach_id: coach2.id,
                          sport_id: sport6.id)
 
 puts "#{Course.count} courses created"
 
 puts 'Associating groups and users'
 
-group1.users = [user1, user2, user3, user4, user5, user7]
+group1.users = [user2, user3, user4, user5, user6, user8]
 group1.save
-group2.users = [user1, user2, user6]
+group2.users = [user2, user3, user7]
 group2.save
-group3.users = [user1, user2, user4, user6]
+group3.users = [user2, user3, user5, user7]
 group3.save
 
 puts 'Associating coaches and groups'
 
-group1.coaches = [coach1, coach2, coach3]
-group2.coaches = [coach3]
-group3.coaches = [coach1, coach3]
+group1.coaches = [coach2, coach3, coach4]
+group2.coaches = [coach4]
+group3.coaches = [coach2, coach4]
 
 # ACCOUNT SEEDS
 
@@ -243,6 +253,17 @@ account1 = Account.create!(user_id: user1.id,
 account2 = Account.create!(user_id: user2.id,
                           tag: "User_id: " + user2.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
+                          birthday: Date.new(1975, 12, 26),
+                          address_line1: "10 rue Oberkampf",
+                          postal_code: "75011",
+                          city: "PARIS",
+                          region: "",
+                          country_of_residence: "FR",
+                          nationality: "FR")
+
+account3 = Account.create!(user_id: user3.id,
+                          tag: "User_id: " + user3.id.to_s,
+                          person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1998, 9, 5),
                           address_line1: "4 rue de la Cannebière",
                           postal_code: "13002",
@@ -251,8 +272,8 @@ account2 = Account.create!(user_id: user2.id,
                           country_of_residence: "FR",
                           nationality: "FR")
 
-account3 = Account.create!(user_id: user3.id,
-                          tag: "User_id: " + user3.id.to_s,
+account4 = Account.create!(user_id: user4.id,
+                          tag: "User_id: " + user4.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1997, 2, 27),
                           address_line1: "6 avenue Mac Mahon",
@@ -262,8 +283,8 @@ account3 = Account.create!(user_id: user3.id,
                           country_of_residence: "FR",
                           nationality: "FR")
 
-account4 = Account.create!(user_id: user4.id,
-                          tag: "User_id: " + user4.id.to_s,
+account5 = Account.create!(user_id: user5.id,
+                          tag: "User_id: " + user5.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1987, 6, 15),
                           address_line1: "66 rue de Longchamp",
@@ -274,8 +295,8 @@ account4 = Account.create!(user_id: user4.id,
                           nationality: "FR")
 
 
-account5 = Account.create!(user_id: user5.id,
-                          tag: "User_id: " + user5.id.to_s + " & Coach_id: " + coach1.id.to_s,
+account6 = Account.create!(user_id: user6.id,
+                          tag: "User_id: " + user6.id.to_s + " & Coach_id: " + coach2.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1971, 11, 30),
                           address_line1: "2 rue Eugène Carrière",
@@ -285,8 +306,8 @@ account5 = Account.create!(user_id: user5.id,
                           country_of_residence: "FR",
                           nationality: "FR")
 
-account6 = Account.create!(user_id: user6.id,
-                          tag: "User_id: " + user6.id.to_s + " & Coach_id: " + coach2.id.to_s,
+account7 = Account.create!(user_id: user7.id,
+                          tag: "User_id: " + user7.id.to_s + " & Coach_id: " + coach3.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1993, 5, 8),
                           address_line1: "15 boulevard de Grenelle",
@@ -296,8 +317,8 @@ account6 = Account.create!(user_id: user6.id,
                           country_of_residence: "FR",
                           nationality: "FR")
 
-account7 = Account.create!(user_id: user7.id,
-                          tag: "User_id: " + user7.id.to_s + " & Coach_id: " + coach3.id.to_s,
+account8 = Account.create!(user_id: user8.id,
+                          tag: "User_id: " + user8.id.to_s + " & Coach_id: " + coach4.id.to_s,
                           person_type: "PERSONNE PHYSIQUE",
                           birthday: Date.new(1995, 7, 11),
                           address_line1: "165 rue de Paradis",
@@ -364,9 +385,11 @@ puts "#{Wallet.count} wallets created"
 
 # IBAN SEEDS
 
-iban1 = Iban.create(account_id: user5.account.id, iban: "FR7630001007941234567890185")
-iban2 = Iban.create(account_id: user6.account.id, iban: "FR7630004000031234567890143" )
-iban3 = Iban.create(account_id: user7.account.id, iban: "FR7630006000011234567890189")
+iban1 = Iban.create(account_id: user1.account.id, iban: "FR7630001007941234567890185")
+iban2 = Iban.create(account_id: user6.account.id, iban: "FR7630001007941234567890185")
+iban3 = Iban.create(account_id: user7.account.id, iban: "FR7630004000031234567890143" )
+iban4 = Iban.create(account_id: user8.account.id, iban: "FR7630006000011234567890189")
+
 
   Iban.all.each do |iban|
 
