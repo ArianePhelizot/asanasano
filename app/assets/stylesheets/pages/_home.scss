@@ -26,6 +26,25 @@ padding-top: 50px;
   text-transform: lowercase;
 }
 
+.icon-hp {
+  margin-top: 20px;
+  width: 75px;
+  height: 75px;
+}
+
+.key-benefit h3{
+ color: $red;
+ size: 22px;
+ padding-right:25px;
+ padding-left:25px;
+}
+
+.key-benefit p{
+  size: 14px;
+  padding-right:25px;
+  padding-left:25px;
+}
+
 .style-circle {
   border-left: 3px solid $salmon;
   border-bottom: 2px solid $pale-salmon;

@@ -1,10 +1,6 @@
 // Custom stuff
 // https://codepen.io/moso/pen/vKGxMx?depth=everything&order=popularity&page=1&q=faq&show_forks=true
 
-body {
-  background-color: #eee;
-}
-
 #help-section {
   margin-top: 20px;
 }
@@ -44,7 +40,7 @@ body {
       &.active {
         background-color: #f6f6f6;
         font-weight: 700;
-        color: rgba(0,0,0,.87);
+        color: $pinky;
       }
       &:last-of-type {
         border-bottom-left-radius: 2px;
@@ -53,6 +49,10 @@ body {
       }
     }
   }
+}
+
+.faq-list i {
+  color: $pinky;
 }
 
 .tab-content.panels-faq {
