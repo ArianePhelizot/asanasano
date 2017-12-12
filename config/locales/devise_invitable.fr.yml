@@ -1,9 +1,12 @@
 fr:
   devise:
+    failure:
+      invited: "Vous avez une invitation en attente. Nous vous invitons à l'accepter pour finaliser votre inscription au service."
     invitations:
       send_instructions: "Un e-mail d'invitation a été envoyé à %{email}."
       invitation_token_invalid: "Le jeton d'invitation fourni n'est pas valide!"
       updated: 'Votre mot de passe a été défini avec succès. Vous êtes maintenant connecté.'
+      updated_not_active: "Votre mot de passe a été mis à jour avec succès."
       no_invitations_remaining: "Il n'y a plus d'invitations restantes"
       invitation_removed: 'Votre invitation a été supprimée.'
       new:
@@ -19,3 +22,9 @@ fr:
         someone_invited_you: "vous a invité(e) à rejoindre le groupe '%{group}' sur ASANASANO*."
         accept: "Oui, j'accepte cette invitation"
         ignore: "Vous ne souhaitez pas accepter cette invitation ? Rien à faire: ignorez juste cet e-mail.<br />"
+  time:
+    formats:
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%B %d, %Y %I:%M %p"
