@@ -30,7 +30,7 @@
   <% end %>
 
   <!-- otherwise, for all users -->
-    <p>Voilà, toutes les prochaines séances à venir programmées spécialement pour vous: </p>
+    <p>Voilà, toutes les prochaines séances à venir, programmées tout spécialement pour vous: </p>
     <div style="padding-left: 25px; margin-bottom: 20px;">
       <% @user.next_available_slots.map(&:date).uniq.each do |date| %>
         <strong><%= date_with_mention_if_today_tomorrow(date) %></strong>

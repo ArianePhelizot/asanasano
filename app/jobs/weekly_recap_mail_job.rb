@@ -4,7 +4,7 @@ class WeeklyRecapMailJob < ApplicationJob
 # rubocop:disable all
   def perform
 
-    unless Date.today.sunday?
+   if Date.today.sunday?
       # je sélectionne tous les users à qui sont proposés des activités
       users_to_inform = []
 
