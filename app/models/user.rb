@@ -180,6 +180,20 @@ class User < ApplicationRecord
     notifier.ping "Yippee new user:#{email} - #{Rails.application.class.parent_name} - #{Rails.env}"
   end
 
+  attr_accessor :invitation_instructions
+
+  def self.invite_new_guest!(attributes={}, invited_by)
+   self.invite!(attributes, invited_by) do |invitable|
+     invitable.invitation_instructions = :new_guest_instructions
+   end
+  end
+
+  def self.invite_existing_user!(attributes={}, invited_by)
+   self.invite!(attributes, invited_by) do |invitable|
+     invitable.invitation_instructions = :existing_user_instructions
+   end
+  end
+
   private
 
   def send_welcome_email
