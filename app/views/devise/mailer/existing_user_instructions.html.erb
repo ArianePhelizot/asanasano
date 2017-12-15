@@ -1,0 +1,37 @@
+<div style="color: #64676C";font: sans-serif";margin-left: 10px" >
+
+  <div class="hello", style="padding-bottom: 4px">
+    <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+  </div>
+
+  <div class="body", style="padding-bottom: 4px">
+
+    <h1>C'est ça le mail que je veux !!!!!!!!!!!!!!!</h1>
+    <p><%= (User.find(@resource.invited_by_id).first_name? && User.find(@resource.invited_by_id).last_name?) ? User.find(@resource.invited_by_id).first_name + " " + User.find(@resource.invited_by_id).last_name : User.find(@resource.invited_by_id).email %>
+      <%= t("devise.mailer.invitation_instructions.someone_invited_you", group: @resource.groups.last.name, url: root_url ) %>
+    </p>
+
+    <p>Pour accepter cette invitation, rien de plus simple, il vous suffit de cliquer ici:
+     <%= link_to t("devise.mailer.invitation_instructions.accept"), accept_user_invitation_url(@resource, :invitation_token => @token) %>
+    </p>
+
+    <% if @resource.invitation_due_at %>
+      <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
+    <% end %>
+
+    <p>*Asanasano est un service qui simplifie l'organisation de vos activités collectives.</p>
+
+    <p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+    <p>A très bientôt,</p>
+  </div>
+
+  <div class="signature", style="line-height: 0.4em">
+    <p>Asanasano</p>
+    <p><strong><a href="mailto:hello@asanasano.com", style="color: #64676C";font-family:sans-serif">hello@asanasano.com</a></strong></p>
+    <div style="text-align: center">
+      <a href="www.asanasano.com"><img src="https://www.asanasano.com/assets/ASANASANO-e81a1dd672b0542eb090bb433b0c2b5aa54e456b8dd03cdc3be40b41f341978b.png" alt="Logo Asanasano", style="width:215px;height:60.2;border:0;margin:0 auto"></a>
+    </div>
+  </div>
+
+</div>
+

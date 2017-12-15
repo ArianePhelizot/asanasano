@@ -1,0 +1,28 @@
+<div style="color: #64676C";font: sans-serif";margin-left: 10px" >
+
+  <div class="hello", style="padding-bottom: 4px">
+    <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+  </div>
+
+  <div class="body", style="padding-bottom: 4px">
+
+    <p><%= (User.find(@resource.invited_by_id).first_name? && User.find(@resource.invited_by_id).last_name?) ? User.find(@resource.invited_by_id).first_name + " " + User.find(@resource.invited_by_id).last_name : User.find(@resource.invited_by_id).email %> vous a invité(e) à rejoindre le groupe <%= @resource.groups.last.name %>.
+    </p>
+
+    <p>Vous serez désormais informé(e) automatiquement de l'activité de ce groupe.</p>
+
+    <p>NB: si vous n'êtes pas intéressé(e), vous pouvez à tout moment vous retirez du groupe, en vous <a href=<%=group_participants_url(@resource.groups.last)%>>connectant au service</a>.</p>
+
+    <p>A très bientôt,</p>
+  </div>
+
+  <div class="signature", style="line-height: 0.4em">
+    <p>Asanasano</p>
+    <p><strong><a href="mailto:hello@asanasano.com", style="color: #64676C";font-family:sans-serif">hello@asanasano.com</a></strong></p>
+    <div style="text-align: center">
+      <a href="www.asanasano.com"><img src="https://www.asanasano.com/assets/ASANASANO-e81a1dd672b0542eb090bb433b0c2b5aa54e456b8dd03cdc3be40b41f341978b.png" alt="Logo Asanasano", style="width:215px;height:60.2;border:0;margin:0 auto"></a>
+    </div>
+  </div>
+
+</div>
+
