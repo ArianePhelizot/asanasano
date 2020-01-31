@@ -7,7 +7,7 @@ git_source(:github) do |asanasano|
 end
 
 
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 ruby '2.3.3'
 
 gem 'devise'
